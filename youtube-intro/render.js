@@ -13,6 +13,9 @@ const path = require('path');
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   await page.goto('file://' + path.join(__dirname, 'scene.html'));
   await page.evaluate(() => document.fonts.ready);
+  // logo dimuat sebagai data URL agar canvas tidak "tainted" (file://)
+  const logo = 'data:image/png;base64,' + fs.readFileSync(path.join(__dirname, 'assets', 'logo-badge.png')).toString('base64');
+  await page.evaluate(src => window.setLogo(src), logo);
   const total = await page.evaluate(() => window.TOTAL);
   const n = Math.round(total * fps);
   for (let i = 0; i < n; i++) {
