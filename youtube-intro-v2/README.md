@@ -27,4 +27,4 @@ Butuh Python 3, Chrome/Chromium, dan ffmpeg. `tools/render_mp4.py` berasal dari 
 
 ## Suara
 Efek suara dibuat lewat ElevenLabs (lihat `vo-script.md`) dan diletakkan di `shared/audio/`.
-Bila berkasnya belum ada, video tetap jalan tanpa suara; render ulang setelah berkas audio ditaruh di sana.
+Semua MP4 di `hasil/` sudah bersuara (dinormalkan ±-15 LUFS).
