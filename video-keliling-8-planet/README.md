@@ -1,0 +1,27 @@
+# Video: Keliling 8 Planet Tata Surya
+
+Video edukasi (16:9, 1920×1080, 30 fps, ±8:09) untuk pelajar SD–SMP, dibuat dari naskah
+"Naskah YouTube — Keliling 8 Planet Tata Surya". Gaya storytelling ceria & energik,
+voiceover oleh **Zulfa** (ElevenLabs, model eleven_v4, bahasa Indonesia).
+
+File video final (±139 MB) tidak disimpan di git karena melebihi batas 100 MB GitHub.
+
+## Isi
+- `vo/` — 17 klip voiceover Zulfa per segmen (intro, Matahari, 8 planet, kuis 3 soal, outro).
+- `build/script_data.py` — teks naskah per segmen/paragraf (juga dipakai sebagai caption).
+- `build/build_timeline.py` — menyelaraskan kalimat ke audio (deteksi jeda), menyusun adegan,
+  transisi, timer kuis 5 detik, dan jadwal efek suara → `timeline.json`.
+- `build/engine.js` + `render.html` — animasi canvas prosedural (planet, angka besar, caption,
+  pelacak perjalanan 8 planet, label "Sumber: NASA").
+- `build/capture.js` — merender frame deterministik lewat Playwright/Chromium → H.264.
+- `build/build_audio.py` — musik latar & SFX yang disintesis sendiri (bebas royalti) + ducking VO.
+
+## Render ulang
+```bash
+cd build
+python3 build_timeline.py
+node capture.js range 0 14657 ../video.mp4      # bisa dipecah paralel per rentang frame
+python3 build_audio.py                            # -> build/mix.wav
+ffmpeg -i ../video.mp4 -i mix.wav -map 0:v -map 1:a -c:v copy \
+  -af loudnorm=I=-14:TP=-1.5 -c:a aac -b:a 192k ../Keliling_8_Planet_Tata_Surya.mp4
+```

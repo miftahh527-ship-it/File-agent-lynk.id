@@ -1,0 +1,2206 @@
+{
+ "fps": 30,
+ "width": 1920,
+ "height": 1080,
+ "duration": 488.58,
+ "countdown": [
+  31.49,
+  32.26,
+  33.02,
+  33.81
+ ],
+ "scenes": [
+  {
+   "kind": "segment",
+   "key": "intro",
+   "start": 0.0,
+   "end": 35.46,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 4.98
+    },
+    {
+     "start": 4.98,
+     "end": 8.22
+    },
+    {
+     "start": 8.22,
+     "end": 11.81
+    },
+    {
+     "start": 11.81,
+     "end": 25.55
+    },
+    {
+     "start": 25.55,
+     "end": 34.96
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Ada planet yang satu harinya... lebih lama dari satu tahunnya!",
+     "para": 0,
+     "start": 0.8,
+     "end": 4.98
+    },
+    {
+     "text": "Ada planet yang bisa... mengapung di air!",
+     "para": 1,
+     "start": 4.98,
+     "end": 8.22
+    },
+    {
+     "text": "Dan ada gunung yang tingginya tiga kali Gunung Everest!",
+     "para": 2,
+     "start": 8.22,
+     "end": 11.81
+    },
+    {
+     "text": "Halo, teman-teman penjelajah!",
+     "para": 3,
+     "start": 11.81,
+     "end": 13.66
+    },
+    {
+     "text": "Hari ini kita naik roket imajinasi dan keliling delapan planet di tata surya kita.",
+     "para": 3,
+     "start": 13.66,
+     "end": 19.03
+    },
+    {
+     "text": "Semua fakta di video ini diambil dari data NASA dan lembaga antariksa dunia.",
+     "para": 3,
+     "start": 19.03,
+     "end": 23.97
+    },
+    {
+     "text": "Jadi bukan hoaks, ya!",
+     "para": 3,
+     "start": 23.97,
+     "end": 25.55
+    },
+    {
+     "text": "Siapkan pensil dan kertas, karena di akhir video ada kuis seru.",
+     "para": 4,
+     "start": 25.55,
+     "end": 29.46
+    },
+    {
+     "text": "Yuk, pasang sabuk pengaman... tiga... dua... satu... meluncur!",
+     "para": 4,
+     "start": 29.46,
+     "end": 34.96
+    }
+   ],
+   "planet_idx": 0,
+   "timer_start": null
+  },
+  {
+   "kind": "transition",
+   "key": "matahari",
+   "label": "Kenalan dengan Bos Tata Surya!",
+   "start": 35.46,
+   "end": 37.06
+  },
+  {
+   "kind": "segment",
+   "key": "matahari",
+   "start": 37.06,
+   "end": 78.73,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 14.33
+    },
+    {
+     "start": 14.33,
+     "end": 19.49
+    },
+    {
+     "start": 19.49,
+     "end": 29.76
+    },
+    {
+     "start": 29.76,
+     "end": 34.99
+    },
+    {
+     "start": 34.99,
+     "end": 41.17
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Sebelum ke planet, kenalan dulu sama bosnya: Matahari!",
+     "para": 0,
+     "start": 0.45,
+     "end": 4.69
+    },
+    {
+     "text": "Tahu nggak, Matahari itu besaaar banget.",
+     "para": 0,
+     "start": 4.69,
+     "end": 7.65
+    },
+    {
+     "text": "Kalau Matahari itu kosong di dalamnya, kira-kira 1,3 juta Bumi bisa masuk ke dalamnya!",
+     "para": 0,
+     "start": 7.65,
+     "end": 14.33
+    },
+    {
+     "text": "Lebarnya saja sekitar 109 kali lebar Bumi.",
+     "para": 1,
+     "start": 14.33,
+     "end": 18.15
+    },
+    {
+     "text": "Wow!",
+     "para": 1,
+     "start": 18.15,
+     "end": 19.49
+    },
+    {
+     "text": "Terus, cahaya Matahari yang kamu lihat pagi ini?",
+     "para": 2,
+     "start": 19.49,
+     "end": 22.49
+    },
+    {
+     "text": "Itu butuh sekitar 8 menit untuk sampai ke Bumi.",
+     "para": 2,
+     "start": 22.49,
+     "end": 25.67
+    },
+    {
+     "text": "Jadi kamu sebenarnya melihat Matahari 8 menit yang lalu!",
+     "para": 2,
+     "start": 25.67,
+     "end": 29.76
+    },
+    {
+     "text": "Ingat ya, jangan pernah melihat Matahari langsung dengan mata, bisa merusak mata.",
+     "para": 3,
+     "start": 29.76,
+     "end": 34.99
+    },
+    {
+     "text": "Nah, Matahari punya delapan planet yang setia mengelilinginya.",
+     "para": 4,
+     "start": 34.99,
+     "end": 39.06
+    },
+    {
+     "text": "Kita mulai dari yang paling dekat!",
+     "para": 4,
+     "start": 39.06,
+     "end": 41.17
+    }
+   ],
+   "planet_idx": 0,
+   "timer_start": null
+  },
+  {
+   "kind": "transition",
+   "key": "merkurius",
+   "label": "Planet ke-1",
+   "start": 78.73,
+   "end": 80.33
+  },
+  {
+   "kind": "segment",
+   "key": "merkurius",
+   "start": 80.33,
+   "end": 123.52,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 7.46
+    },
+    {
+     "start": 7.46,
+     "end": 25.88
+    },
+    {
+     "start": 25.88,
+     "end": 36.45
+    },
+    {
+     "start": 36.45,
+     "end": 39.76
+    },
+    {
+     "start": 39.76,
+     "end": 42.69
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Planet mana yang siangnya panas membara, tapi malamnya beku banget?",
+     "para": 0,
+     "start": 0.45,
+     "end": 5.12
+    },
+    {
+     "text": "Jawabannya: Merkurius!",
+     "para": 0,
+     "start": 5.12,
+     "end": 7.46
+    },
+    {
+     "text": "Merkurius adalah planet paling dekat dengan Matahari.",
+     "para": 1,
+     "start": 7.46,
+     "end": 10.85
+    },
+    {
+     "text": "Siang hari, suhunya bisa mencapai 430 derajat Celsius.",
+     "para": 1,
+     "start": 10.85,
+     "end": 15.86
+    },
+    {
+     "text": "Tapi malam hari, bisa turun sampai minus 180 derajat!",
+     "para": 1,
+     "start": 15.86,
+     "end": 20.53
+    },
+    {
+     "text": "Kenapa begitu?",
+     "para": 1,
+     "start": 20.53,
+     "end": 21.73
+    },
+    {
+     "text": "Karena Merkurius hampir tidak punya atmosfer untuk menyimpan panas.",
+     "para": 1,
+     "start": 21.73,
+     "end": 25.88
+    },
+    {
+     "text": "Satu tahun di Merkurius cuma 88 hari Bumi.",
+     "para": 2,
+     "start": 25.88,
+     "end": 29.76
+    },
+    {
+     "text": "Kalau kamu tinggal di sana, kamu ulang tahun kira-kira tiap tiga bulan.",
+     "para": 2,
+     "start": 29.76,
+     "end": 35.14
+    },
+    {
+     "text": "Asyik, kuenya banyak!",
+     "para": 2,
+     "start": 35.14,
+     "end": 36.45
+    },
+    {
+     "text": "Oh iya, Merkurius tidak punya bulan sama sekali.",
+     "para": 3,
+     "start": 36.45,
+     "end": 39.76
+    },
+    {
+     "text": "Lanjut ke tetangga sebelah yang lebih panas lagi!",
+     "para": 4,
+     "start": 39.76,
+     "end": 42.69
+    }
+   ],
+   "planet_idx": 1,
+   "timer_start": null
+  },
+  {
+   "kind": "transition",
+   "key": "venus",
+   "label": "Planet ke-2",
+   "start": 123.52,
+   "end": 125.12
+  },
+  {
+   "kind": "segment",
+   "key": "venus",
+   "start": 125.12,
+   "end": 171.59,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 8.71
+    },
+    {
+     "start": 8.71,
+     "end": 24.53
+    },
+    {
+     "start": 24.53,
+     "end": 39.39
+    },
+    {
+     "start": 39.39,
+     "end": 45.97
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Coba tebak, mana yang lebih lama: satu hari, atau satu tahun?",
+     "para": 0,
+     "start": 0.45,
+     "end": 5.37
+    },
+    {
+     "text": "Di Venus, jawabannya... satu hari!",
+     "para": 0,
+     "start": 5.37,
+     "end": 8.71
+    },
+    {
+     "text": "Venus berputar sangat pelan.",
+     "para": 1,
+     "start": 8.71,
+     "end": 10.87
+    },
+    {
+     "text": "Satu kali putaran butuh 243 hari Bumi.",
+     "para": 1,
+     "start": 10.87,
+     "end": 14.76
+    },
+    {
+     "text": "Padahal untuk mengelilingi Matahari, Venus cuma butuh sekitar 225 hari Bumi.",
+     "para": 1,
+     "start": 14.76,
+     "end": 21.04
+    },
+    {
+     "text": "Jadi satu harinya lebih lama dari satu tahunnya!",
+     "para": 1,
+     "start": 21.04,
+     "end": 24.53
+    },
+    {
+     "text": "Venus juga planet paling panas, suhunya lebih dari 460 derajat Celsius.",
+     "para": 2,
+     "start": 24.53,
+     "end": 30.56
+    },
+    {
+     "text": "Lho, kok bukan Merkurius?",
+     "para": 2,
+     "start": 30.56,
+     "end": 32.6
+    },
+    {
+     "text": "Karena awan tebal Venus memerangkap panas, seperti mobil yang diparkir di bawah terik matahari dengan kaca tertutup.",
+     "para": 2,
+     "start": 32.6,
+     "end": 39.39
+    },
+    {
+     "text": "Bonus: Venus berputar ke arah berlawanan dengan Bumi.",
+     "para": 3,
+     "start": 39.39,
+     "end": 43.13
+    },
+    {
+     "text": "Di sana, Matahari terbit dari barat!",
+     "para": 3,
+     "start": 43.13,
+     "end": 45.97
+    }
+   ],
+   "planet_idx": 2,
+   "timer_start": null
+  },
+  {
+   "kind": "transition",
+   "key": "bumi",
+   "label": "Planet ke-3",
+   "start": 171.59,
+   "end": 173.19
+  },
+  {
+   "kind": "segment",
+   "key": "bumi",
+   "start": 173.19,
+   "end": 204.62,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 8.05
+    },
+    {
+     "start": 8.05,
+     "end": 19.61
+    },
+    {
+     "start": 19.61,
+     "end": 26.68
+    },
+    {
+     "start": 26.68,
+     "end": 30.93
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Dari delapan planet, cuma satu yang sejauh ini diketahui punya kehidupan.",
+     "para": 0,
+     "start": 0.45,
+     "end": 5.2
+    },
+    {
+     "text": "Yap, rumah kita sendiri: Bumi!",
+     "para": 0,
+     "start": 5.2,
+     "end": 8.05
+    },
+    {
+     "text": "Sebagian besar permukaan Bumi, sekitar 71 persen, tertutup air.",
+     "para": 1,
+     "start": 8.05,
+     "end": 12.78
+    },
+    {
+     "text": "Jaraknya dari Matahari pas, tidak terlalu panas dan tidak terlalu dingin, jadi air bisa tetap cair.",
+     "para": 1,
+     "start": 12.78,
+     "end": 19.61
+    },
+    {
+     "text": "Bumi punya satu bulan yang setia menemani.",
+     "para": 2,
+     "start": 19.61,
+     "end": 23.03
+    },
+    {
+     "text": "Kalau Merkurius dan Venus tadi?",
+     "para": 2,
+     "start": 23.03,
+     "end": 25.85
+    },
+    {
+     "text": "Nol!",
+     "para": 2,
+     "start": 25.85,
+     "end": 26.68
+    },
+    {
+     "text": "Jadi, jaga Bumi baik-baik ya, teman-teman.",
+     "para": 3,
+     "start": 26.68,
+     "end": 28.74
+    },
+    {
+     "text": "Kita belum punya planet cadangan!",
+     "para": 3,
+     "start": 28.74,
+     "end": 30.93
+    }
+   ],
+   "planet_idx": 3,
+   "timer_start": null
+  },
+  {
+   "kind": "transition",
+   "key": "mars",
+   "label": "Planet ke-4",
+   "start": 204.62,
+   "end": 206.22
+  },
+  {
+   "kind": "segment",
+   "key": "mars",
+   "start": 206.22,
+   "end": 242.53,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 5.65
+    },
+    {
+     "start": 5.65,
+     "end": 17.35
+    },
+    {
+     "start": 17.35,
+     "end": 27.11
+    },
+    {
+     "start": 27.11,
+     "end": 31.29
+    },
+    {
+     "start": 31.29,
+     "end": 35.81
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Kenapa Mars disebut Planet Merah?",
+     "para": 0,
+     "start": 0.45,
+     "end": 2.73
+    },
+    {
+     "text": "Jawabannya ternyata... karat!",
+     "para": 0,
+     "start": 2.73,
+     "end": 5.65
+    },
+    {
+     "text": "Tanah Mars mengandung banyak besi oksida, alias karat.",
+     "para": 1,
+     "start": 5.65,
+     "end": 9.19
+    },
+    {
+     "text": "Sama seperti paku yang dibiarkan basah, lama-lama jadi merah kecokelatan.",
+     "para": 1,
+     "start": 9.19,
+     "end": 13.91
+    },
+    {
+     "text": "Debu karat inilah yang membuat Mars terlihat merah.",
+     "para": 1,
+     "start": 13.91,
+     "end": 17.35
+    },
+    {
+     "text": "Mars juga punya gunung berapi terbesar di tata surya, namanya Olympus Mons.",
+     "para": 2,
+     "start": 17.35,
+     "end": 22.55
+    },
+    {
+     "text": "Tingginya sekitar tiga kali Gunung Everest, gunung tertinggi di Bumi!",
+     "para": 2,
+     "start": 22.55,
+     "end": 27.11
+    },
+    {
+     "text": "Mars punya dua bulan kecil, namanya Phobos dan Deimos.",
+     "para": 3,
+     "start": 27.11,
+     "end": 31.29
+    },
+    {
+     "text": "Sekarang kita lewati sabuk asteroid, dan masuk ke wilayah planet raksasa!",
+     "para": 4,
+     "start": 31.29,
+     "end": 35.81
+    }
+   ],
+   "planet_idx": 4,
+   "timer_start": null
+  },
+  {
+   "kind": "transition",
+   "key": "jupiter",
+   "label": "Planet ke-5",
+   "start": 242.53,
+   "end": 244.13
+  },
+  {
+   "kind": "segment",
+   "key": "jupiter",
+   "start": 244.13,
+   "end": 282.76,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 8.13
+    },
+    {
+     "start": 8.13,
+     "end": 13.84
+    },
+    {
+     "start": 13.84,
+     "end": 30.71
+    },
+    {
+     "start": 30.71,
+     "end": 38.13
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Ada badai yang sudah berputar ratusan tahun, dan lebih besar dari Bumi.",
+     "para": 0,
+     "start": 0.45,
+     "end": 6.25
+    },
+    {
+     "text": "Di mana?",
+     "para": 0,
+     "start": 6.25,
+     "end": 7.49
+    },
+    {
+     "text": "Di Jupiter!",
+     "para": 0,
+     "start": 7.49,
+     "end": 8.13
+    },
+    {
+     "text": "Jupiter adalah planet terbesar di tata surya.",
+     "para": 1,
+     "start": 8.13,
+     "end": 10.53
+    },
+    {
+     "text": "Lebih dari 1.000 Bumi bisa masuk ke dalamnya!",
+     "para": 1,
+     "start": 10.53,
+     "end": 13.84
+    },
+    {
+     "text": "Bintik merah di Jupiter itu sebenarnya badai raksasa, namanya Bintik Merah Raksasa.",
+     "para": 2,
+     "start": 13.84,
+     "end": 19.23
+    },
+    {
+     "text": "Badai ini sudah ada setidaknya sejak tahun 1800-an.",
+     "para": 2,
+     "start": 19.23,
+     "end": 23.41
+    },
+    {
+     "text": "Sekarang lebarnya sekitar 1,3 kali lebar Bumi.",
+     "para": 2,
+     "start": 23.41,
+     "end": 27.42
+    },
+    {
+     "text": "Dulu malah lebih besar, tapi pelan-pelan menyusut.",
+     "para": 2,
+     "start": 27.42,
+     "end": 30.71
+    },
+    {
+     "text": "Jupiter juga punya lebih dari 90 bulan.",
+     "para": 3,
+     "start": 30.71,
+     "end": 34.21
+    },
+    {
+     "text": "Tapi tunggu dulu, ada planet yang punya lebih banyak lagi!",
+     "para": 3,
+     "start": 34.21,
+     "end": 38.13
+    }
+   ],
+   "planet_idx": 5,
+   "timer_start": null
+  },
+  {
+   "kind": "transition",
+   "key": "saturnus",
+   "label": "Planet ke-6",
+   "start": 282.76,
+   "end": 284.36
+  },
+  {
+   "kind": "segment",
+   "key": "saturnus",
+   "start": 284.36,
+   "end": 324.83,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 6.84
+    },
+    {
+     "start": 6.84,
+     "end": 21.03
+    },
+    {
+     "start": 21.03,
+     "end": 28.96
+    },
+    {
+     "start": 28.96,
+     "end": 39.97
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Planet raksasa yang bisa mengapung di air?",
+     "para": 0,
+     "start": 0.45,
+     "end": 2.92
+    },
+    {
+     "text": "Ada!",
+     "para": 0,
+     "start": 2.92,
+     "end": 5.52
+    },
+    {
+     "text": "Namanya Saturnus.",
+     "para": 0,
+     "start": 5.52,
+     "end": 6.84
+    },
+    {
+     "text": "Saturnus memang besar, tapi sangat ringan untuk ukurannya.",
+     "para": 1,
+     "start": 6.84,
+     "end": 9.46
+    },
+    {
+     "text": "Kepadatannya lebih rendah dari air.",
+     "para": 1,
+     "start": 9.46,
+     "end": 11.85
+    },
+    {
+     "text": "Jadi kalau ada bak mandi sebesar itu, Saturnus bisa mengapung!",
+     "para": 1,
+     "start": 11.85,
+     "end": 16.97
+    },
+    {
+     "text": "Tentu ini cuma bayangan, karena bak mandi sebesar itu tidak ada.",
+     "para": 1,
+     "start": 16.97,
+     "end": 21.03
+    },
+    {
+     "text": "Cincin Saturnus yang cantik itu terbuat terutama dari bongkahan es, ada yang sekecil butiran debu, sampai sebesar rumah.",
+     "para": 2,
+     "start": 21.03,
+     "end": 28.96
+    },
+    {
+     "text": "Dan inilah juara bulan terbanyak!",
+     "para": 3,
+     "start": 28.96,
+     "end": 31.55
+    },
+    {
+     "text": "Per Maret 2025, Saturnus punya 274 bulan yang sudah diketahui.",
+     "para": 3,
+     "start": 31.55,
+     "end": 37.52
+    },
+    {
+     "text": "Jauh lebih banyak dari Jupiter!",
+     "para": 3,
+     "start": 37.52,
+     "end": 39.97
+    }
+   ],
+   "planet_idx": 6,
+   "timer_start": null
+  },
+  {
+   "kind": "transition",
+   "key": "uranus",
+   "label": "Planet ke-7",
+   "start": 324.83,
+   "end": 326.43
+  },
+  {
+   "kind": "segment",
+   "key": "uranus",
+   "start": 326.43,
+   "end": 353.3,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 4.42
+    },
+    {
+     "start": 4.42,
+     "end": 17.57
+    },
+    {
+     "start": 17.57,
+     "end": 26.37
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Ada planet yang berputar sambil rebahan.",
+     "para": 0,
+     "start": 0.45,
+     "end": 3.07
+    },
+    {
+     "text": "Itu Uranus!",
+     "para": 0,
+     "start": 3.07,
+     "end": 4.42
+    },
+    {
+     "text": "Sumbu Uranus miring hampir 98 derajat.",
+     "para": 1,
+     "start": 4.42,
+     "end": 8.14
+    },
+    {
+     "text": "Jadi Uranus mengelilingi Matahari seperti bola yang menggelinding.",
+     "para": 1,
+     "start": 8.14,
+     "end": 12.53
+    },
+    {
+     "text": "Para ilmuwan menduga, dulu Uranus pernah ditabrak benda sebesar planet.",
+     "para": 1,
+     "start": 12.53,
+     "end": 17.57
+    },
+    {
+     "text": "Uranus juga misterius, karena baru satu wahana antariksa yang pernah mengunjunginya dari dekat, yaitu Voyager 2 milik NASA.",
+     "para": 2,
+     "start": 17.57,
+     "end": 26.37
+    }
+   ],
+   "planet_idx": 7,
+   "timer_start": null
+  },
+  {
+   "kind": "transition",
+   "key": "neptunus",
+   "label": "Planet ke-8",
+   "start": 353.3,
+   "end": 354.9
+  },
+  {
+   "kind": "segment",
+   "key": "neptunus",
+   "start": 354.9,
+   "end": 400.25,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 7.53
+    },
+    {
+     "start": 7.53,
+     "end": 19.93
+    },
+    {
+     "start": 19.93,
+     "end": 39.32
+    },
+    {
+     "start": 39.32,
+     "end": 44.85
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Planet paling jauh dari Matahari, ternyata juga planet paling berangin.",
+     "para": 0,
+     "start": 0.45,
+     "end": 6.87
+    },
+    {
+     "text": "Kenalan dengan Neptunus!",
+     "para": 0,
+     "start": 6.87,
+     "end": 7.53
+    },
+    {
+     "text": "Angin di Neptunus bisa melaju lebih dari 2.000 kilometer per jam.",
+     "para": 1,
+     "start": 7.53,
+     "end": 11.58
+    },
+    {
+     "text": "Angin terkuat di Bumi \"cuma\" sekitar 400 kilometer per jam.",
+     "para": 1,
+     "start": 11.58,
+     "end": 15.94
+    },
+    {
+     "text": "Jadi angin Neptunus kira-kira lima kali lebih kencang!",
+     "para": 1,
+     "start": 15.94,
+     "end": 19.93
+    },
+    {
+     "text": "Satu tahun di Neptunus sama dengan sekitar 165 tahun Bumi.",
+     "para": 2,
+     "start": 19.93,
+     "end": 24.89
+    },
+    {
+     "text": "Neptunus ditemukan tahun 1846, dan baru menyelesaikan satu putaran penuh mengelilingi Matahari pada tahun 2011.",
+     "para": 2,
+     "start": 24.89,
+     "end": 34.27
+    },
+    {
+     "text": "Jadi sejak ditemukan, Neptunus baru berulang tahun satu kali!",
+     "para": 2,
+     "start": 34.27,
+     "end": 39.32
+    },
+    {
+     "text": "Neptunus juga satu-satunya planet yang tidak bisa dilihat dengan mata telanjang dari Bumi.",
+     "para": 3,
+     "start": 39.32,
+     "end": 44.85
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": null
+  },
+  {
+   "kind": "transition",
+   "key": "q1",
+   "label": "KUIS!",
+   "start": 400.25,
+   "end": 401.85
+  },
+  {
+   "kind": "segment",
+   "key": "q1",
+   "start": 401.85,
+   "end": 420.32,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 5.73
+    },
+    {
+     "start": 5.73,
+     "end": 12.77
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Saatnya kuis!",
+     "para": 0,
+     "start": 0.45,
+     "end": 1.9
+    },
+    {
+     "text": "Jawab dalam hati, atau tulis di kolom komentar ya!",
+     "para": 0,
+     "start": 1.9,
+     "end": 5.73
+    },
+    {
+     "text": "Soal pertama: planet mana yang paling panas?",
+     "para": 1,
+     "start": 5.73,
+     "end": 9.36
+    },
+    {
+     "text": "A, Merkurius.",
+     "para": 1,
+     "start": 9.36,
+     "end": 11.16
+    },
+    {
+     "text": "B, Venus.",
+     "para": 1,
+     "start": 11.16,
+     "end": 12.77
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": 13.27
+  },
+  {
+   "kind": "segment",
+   "key": "a1",
+   "start": 420.32,
+   "end": 426.67,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 5.85
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Jawabannya: B, Venus!",
+     "para": 0,
+     "start": 0.25,
+     "end": 2.84
+    },
+    {
+     "text": "Karena awan tebalnya memerangkap panas.",
+     "para": 0,
+     "start": 2.84,
+     "end": 5.85
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": null
+  },
+  {
+   "kind": "segment",
+   "key": "q2",
+   "start": 426.67,
+   "end": 436.82,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 4.45
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Soal kedua: planet mana yang punya bulan paling banyak?",
+     "para": 0,
+     "start": 0.45,
+     "end": 4.45
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": 4.95
+  },
+  {
+   "kind": "segment",
+   "key": "a2",
+   "start": 436.82,
+   "end": 442.53,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 5.21
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Jawabannya: Saturnus, dengan 274 bulan!",
+     "para": 0,
+     "start": 0.25,
+     "end": 5.21
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": null
+  },
+  {
+   "kind": "segment",
+   "key": "q3",
+   "start": 442.53,
+   "end": 456.44,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 8.21
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Soal ketiga, ini yang paling susah: di planet mana, satu harinya lebih lama dari satu tahunnya?",
+     "para": 0,
+     "start": 0.45,
+     "end": 8.21
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": 8.71
+  },
+  {
+   "kind": "segment",
+   "key": "a3",
+   "start": 456.44,
+   "end": 463.11,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 6.17
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Jawabannya: Venus lagi!",
+     "para": 0,
+     "start": 0.25,
+     "end": 2.7
+    },
+    {
+     "text": "Berapa yang kamu jawab benar?",
+     "para": 0,
+     "start": 2.7,
+     "end": 4.38
+    },
+    {
+     "text": "Tulis skormu di komentar!",
+     "para": 0,
+     "start": 4.38,
+     "end": 6.17
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": null
+  },
+  {
+   "kind": "segment",
+   "key": "outro",
+   "start": 463.11,
+   "end": 483.58,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 9.38
+    },
+    {
+     "start": 9.38,
+     "end": 19.97
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Wah, perjalanan kita hari ini seru banget!",
+     "para": 0,
+     "start": 0.45,
+     "end": 3.48
+    },
+    {
+     "text": "Kita sudah keliling dari Merkurius yang panas-dingin, sampai Neptunus yang super berangin.",
+     "para": 0,
+     "start": 3.48,
+     "end": 9.38
+    },
+    {
+     "text": "Kalau kamu suka video ini, kasih jempol, subscribe, dan tulis di komentar: planet apa yang mau kita bahas lebih dalam di video berikutnya?",
+     "para": 1,
+     "start": 9.38,
+     "end": 17.82
+    },
+    {
+     "text": "Sampai jumpa, teman-teman penjelajah!",
+     "para": 1,
+     "start": 17.82,
+     "end": 19.97
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": null
+  },
+  {
+   "kind": "endcard",
+   "key": "end",
+   "start": 483.58,
+   "end": 488.58
+  }
+ ],
+ "vo": [
+  {
+   "file": "01_intro.mp3",
+   "t": 0.8,
+   "dur": 34.16
+  },
+  {
+   "file": "02_matahari.mp3",
+   "t": 37.51,
+   "dur": 40.72
+  },
+  {
+   "file": "03_merkurius.mp3",
+   "t": 80.78,
+   "dur": 42.24
+  },
+  {
+   "file": "04_venus.mp3",
+   "t": 125.57,
+   "dur": 45.52
+  },
+  {
+   "file": "05_bumi.mp3",
+   "t": 173.64,
+   "dur": 30.48
+  },
+  {
+   "file": "06_mars.mp3",
+   "t": 206.67,
+   "dur": 35.36
+  },
+  {
+   "file": "07_jupiter.mp3",
+   "t": 244.58,
+   "dur": 37.68
+  },
+  {
+   "file": "08_saturnus.mp3",
+   "t": 284.81,
+   "dur": 39.52
+  },
+  {
+   "file": "09_uranus.mp3",
+   "t": 326.88,
+   "dur": 25.92
+  },
+  {
+   "file": "10_neptunus.mp3",
+   "t": 355.35,
+   "dur": 44.4
+  },
+  {
+   "file": "11_kuis_q1.mp3",
+   "t": 402.3,
+   "dur": 12.32
+  },
+  {
+   "file": "12_q1ans.mp3",
+   "t": 420.57,
+   "dur": 5.6
+  },
+  {
+   "file": "13_q2.mp3",
+   "t": 427.12,
+   "dur": 4.0
+  },
+  {
+   "file": "14_q2ans.mp3",
+   "t": 437.07,
+   "dur": 4.96
+  },
+  {
+   "file": "15_q3.mp3",
+   "t": 442.98,
+   "dur": 7.76
+  },
+  {
+   "file": "16_q3ans.mp3",
+   "t": 456.69,
+   "dur": 5.92
+  },
+  {
+   "file": "17_outro.mp3",
+   "t": 463.56,
+   "dur": 19.52
+  }
+ ],
+ "events": [
+  {
+   "t": 5.23,
+   "sfx": "pop"
+  },
+  {
+   "t": 8.47,
+   "sfx": "pop"
+  },
+  {
+   "t": 12.06,
+   "sfx": "pop"
+  },
+  {
+   "t": 25.8,
+   "sfx": "pop"
+  },
+  {
+   "t": 31.49,
+   "sfx": "beep"
+  },
+  {
+   "t": 32.26,
+   "sfx": "beep"
+  },
+  {
+   "t": 33.02,
+   "sfx": "beep"
+  },
+  {
+   "t": 33.81,
+   "sfx": "launch"
+  },
+  {
+   "t": 35.51,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 37.31,
+   "sfx": "pop"
+  },
+  {
+   "t": 51.64,
+   "sfx": "pop"
+  },
+  {
+   "t": 56.8,
+   "sfx": "pop"
+  },
+  {
+   "t": 67.07,
+   "sfx": "pop"
+  },
+  {
+   "t": 72.3,
+   "sfx": "pop"
+  },
+  {
+   "t": 78.78,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 80.58,
+   "sfx": "pop"
+  },
+  {
+   "t": 88.04,
+   "sfx": "pop"
+  },
+  {
+   "t": 106.46,
+   "sfx": "pop"
+  },
+  {
+   "t": 117.03,
+   "sfx": "pop"
+  },
+  {
+   "t": 120.34,
+   "sfx": "pop"
+  },
+  {
+   "t": 123.57,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 125.37,
+   "sfx": "pop"
+  },
+  {
+   "t": 134.08,
+   "sfx": "pop"
+  },
+  {
+   "t": 149.9,
+   "sfx": "pop"
+  },
+  {
+   "t": 164.76,
+   "sfx": "pop"
+  },
+  {
+   "t": 171.64,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 173.44,
+   "sfx": "pop"
+  },
+  {
+   "t": 181.49,
+   "sfx": "pop"
+  },
+  {
+   "t": 193.05,
+   "sfx": "pop"
+  },
+  {
+   "t": 200.12,
+   "sfx": "pop"
+  },
+  {
+   "t": 204.67,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 206.47,
+   "sfx": "pop"
+  },
+  {
+   "t": 212.12,
+   "sfx": "pop"
+  },
+  {
+   "t": 223.82,
+   "sfx": "pop"
+  },
+  {
+   "t": 233.58,
+   "sfx": "pop"
+  },
+  {
+   "t": 237.76,
+   "sfx": "pop"
+  },
+  {
+   "t": 242.58,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 244.38,
+   "sfx": "pop"
+  },
+  {
+   "t": 252.51,
+   "sfx": "pop"
+  },
+  {
+   "t": 258.22,
+   "sfx": "pop"
+  },
+  {
+   "t": 275.09,
+   "sfx": "pop"
+  },
+  {
+   "t": 282.81,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 284.61,
+   "sfx": "pop"
+  },
+  {
+   "t": 291.45,
+   "sfx": "pop"
+  },
+  {
+   "t": 305.64,
+   "sfx": "pop"
+  },
+  {
+   "t": 313.57,
+   "sfx": "pop"
+  },
+  {
+   "t": 324.88,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 326.68,
+   "sfx": "pop"
+  },
+  {
+   "t": 331.1,
+   "sfx": "pop"
+  },
+  {
+   "t": 344.25,
+   "sfx": "pop"
+  },
+  {
+   "t": 353.35,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 355.15,
+   "sfx": "pop"
+  },
+  {
+   "t": 362.68,
+   "sfx": "pop"
+  },
+  {
+   "t": 375.08,
+   "sfx": "pop"
+  },
+  {
+   "t": 394.47,
+   "sfx": "pop"
+  },
+  {
+   "t": 400.3,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 402.1,
+   "sfx": "pop"
+  },
+  {
+   "t": 407.83,
+   "sfx": "pop"
+  },
+  {
+   "t": 415.12,
+   "sfx": "tick"
+  },
+  {
+   "t": 416.12,
+   "sfx": "tick"
+  },
+  {
+   "t": 417.12,
+   "sfx": "tick"
+  },
+  {
+   "t": 418.12,
+   "sfx": "tick"
+  },
+  {
+   "t": 419.12,
+   "sfx": "tick"
+  },
+  {
+   "t": 420.07,
+   "sfx": "buzz"
+  },
+  {
+   "t": 420.37,
+   "sfx": "correct"
+  },
+  {
+   "t": 420.57,
+   "sfx": "pop"
+  },
+  {
+   "t": 426.92,
+   "sfx": "pop"
+  },
+  {
+   "t": 431.62,
+   "sfx": "tick"
+  },
+  {
+   "t": 432.62,
+   "sfx": "tick"
+  },
+  {
+   "t": 433.62,
+   "sfx": "tick"
+  },
+  {
+   "t": 434.62,
+   "sfx": "tick"
+  },
+  {
+   "t": 435.62,
+   "sfx": "tick"
+  },
+  {
+   "t": 436.57,
+   "sfx": "buzz"
+  },
+  {
+   "t": 436.87,
+   "sfx": "correct"
+  },
+  {
+   "t": 437.07,
+   "sfx": "pop"
+  },
+  {
+   "t": 442.78,
+   "sfx": "pop"
+  },
+  {
+   "t": 451.24,
+   "sfx": "tick"
+  },
+  {
+   "t": 452.24,
+   "sfx": "tick"
+  },
+  {
+   "t": 453.24,
+   "sfx": "tick"
+  },
+  {
+   "t": 454.24,
+   "sfx": "tick"
+  },
+  {
+   "t": 455.24,
+   "sfx": "tick"
+  },
+  {
+   "t": 456.19,
+   "sfx": "buzz"
+  },
+  {
+   "t": 456.49,
+   "sfx": "correct"
+  },
+  {
+   "t": 456.69,
+   "sfx": "pop"
+  },
+  {
+   "t": 463.36,
+   "sfx": "pop"
+  },
+  {
+   "t": 472.74,
+   "sfx": "pop"
+  },
+  {
+   "t": 483.68,
+   "sfx": "chime"
+  }
+ ],
+ "captions": [
+  {
+   "text": "Ada planet yang satu harinya... lebih lama dari satu tahunnya!",
+   "start": 0.8,
+   "end": 5.13
+  },
+  {
+   "text": "Ada planet yang bisa... mengapung di air!",
+   "start": 4.98,
+   "end": 8.37
+  },
+  {
+   "text": "Dan ada gunung yang tingginya tiga kali Gunung Everest!",
+   "start": 8.22,
+   "end": 11.96
+  },
+  {
+   "text": "Halo, teman-teman penjelajah!",
+   "start": 11.81,
+   "end": 13.81
+  },
+  {
+   "text": "Hari ini kita naik roket imajinasi dan keliling delapan planet di tata surya kita.",
+   "start": 13.66,
+   "end": 19.18
+  },
+  {
+   "text": "Semua fakta di video ini diambil dari data NASA dan lembaga antariksa dunia.",
+   "start": 19.03,
+   "end": 24.12
+  },
+  {
+   "text": "Jadi bukan hoaks, ya!",
+   "start": 23.97,
+   "end": 25.7
+  },
+  {
+   "text": "Siapkan pensil dan kertas, karena di akhir video ada kuis seru.",
+   "start": 25.55,
+   "end": 29.61
+  },
+  {
+   "text": "Yuk, pasang sabuk pengaman... tiga... dua... satu... meluncur!",
+   "start": 29.46,
+   "end": 35.11
+  },
+  {
+   "text": "Sebelum ke planet, kenalan dulu sama bosnya: Matahari!",
+   "start": 37.51,
+   "end": 41.9
+  },
+  {
+   "text": "Tahu nggak, Matahari itu besaaar banget.",
+   "start": 41.75,
+   "end": 44.86
+  },
+  {
+   "text": "Kalau Matahari itu kosong di dalamnya, kira-kira 1,3 juta Bumi bisa masuk ke dalamnya!",
+   "start": 44.71,
+   "end": 51.54
+  },
+  {
+   "text": "Lebarnya saja sekitar 109 kali lebar Bumi.",
+   "start": 51.39,
+   "end": 55.36
+  },
+  {
+   "text": "Wow!",
+   "start": 55.21,
+   "end": 56.7
+  },
+  {
+   "text": "Terus, cahaya Matahari yang kamu lihat pagi ini?",
+   "start": 56.55,
+   "end": 59.7
+  },
+  {
+   "text": "Itu butuh sekitar 8 menit untuk sampai ke Bumi.",
+   "start": 59.55,
+   "end": 62.88
+  },
+  {
+   "text": "Jadi kamu sebenarnya melihat Matahari 8 menit yang lalu!",
+   "start": 62.73,
+   "end": 66.97
+  },
+  {
+   "text": "Ingat ya, jangan pernah melihat Matahari langsung dengan mata, bisa merusak mata.",
+   "start": 66.82,
+   "end": 72.2
+  },
+  {
+   "text": "Nah, Matahari punya delapan planet yang setia mengelilinginya.",
+   "start": 72.05,
+   "end": 76.27
+  },
+  {
+   "text": "Kita mulai dari yang paling dekat!",
+   "start": 76.12,
+   "end": 78.38
+  },
+  {
+   "text": "Planet mana yang siangnya panas membara, tapi malamnya beku banget?",
+   "start": 80.78,
+   "end": 85.6
+  },
+  {
+   "text": "Jawabannya: Merkurius!",
+   "start": 85.45,
+   "end": 87.94
+  },
+  {
+   "text": "Merkurius adalah planet paling dekat dengan Matahari.",
+   "start": 87.79,
+   "end": 91.33
+  },
+  {
+   "text": "Siang hari, suhunya bisa mencapai 430 derajat Celsius.",
+   "start": 91.18,
+   "end": 96.34
+  },
+  {
+   "text": "Tapi malam hari, bisa turun sampai minus 180 derajat!",
+   "start": 96.19,
+   "end": 101.01
+  },
+  {
+   "text": "Kenapa begitu?",
+   "start": 100.86,
+   "end": 102.21
+  },
+  {
+   "text": "Karena Merkurius hampir tidak punya atmosfer untuk menyimpan panas.",
+   "start": 102.06,
+   "end": 106.36
+  },
+  {
+   "text": "Satu tahun di Merkurius cuma 88 hari Bumi.",
+   "start": 106.21,
+   "end": 110.24
+  },
+  {
+   "text": "Kalau kamu tinggal di sana, kamu ulang tahun kira-kira tiap tiga bulan.",
+   "start": 110.09,
+   "end": 115.62
+  },
+  {
+   "text": "Asyik, kuenya banyak!",
+   "start": 115.47,
+   "end": 116.93
+  },
+  {
+   "text": "Oh iya, Merkurius tidak punya bulan sama sekali.",
+   "start": 116.78,
+   "end": 120.24
+  },
+  {
+   "text": "Lanjut ke tetangga sebelah yang lebih panas lagi!",
+   "start": 120.09,
+   "end": 123.17
+  },
+  {
+   "text": "Coba tebak, mana yang lebih lama: satu hari, atau satu tahun?",
+   "start": 125.57,
+   "end": 130.64
+  },
+  {
+   "text": "Di Venus, jawabannya... satu hari!",
+   "start": 130.49,
+   "end": 133.98
+  },
+  {
+   "text": "Venus berputar sangat pelan.",
+   "start": 133.83,
+   "end": 136.14
+  },
+  {
+   "text": "Satu kali putaran butuh 243 hari Bumi.",
+   "start": 135.99,
+   "end": 140.03
+  },
+  {
+   "text": "Padahal untuk mengelilingi Matahari, Venus cuma butuh sekitar 225 hari Bumi.",
+   "start": 139.88,
+   "end": 146.31
+  },
+  {
+   "text": "Jadi satu harinya lebih lama dari satu tahunnya!",
+   "start": 146.16,
+   "end": 149.8
+  },
+  {
+   "text": "Venus juga planet paling panas, suhunya lebih dari 460 derajat Celsius.",
+   "start": 149.65,
+   "end": 155.83
+  },
+  {
+   "text": "Lho, kok bukan Merkurius?",
+   "start": 155.68,
+   "end": 157.87
+  },
+  {
+   "text": "Karena awan tebal Venus memerangkap panas, seperti mobil yang diparkir di bawah terik matahari dengan kaca tertutup.",
+   "start": 157.72,
+   "end": 164.66
+  },
+  {
+   "text": "Bonus: Venus berputar ke arah berlawanan dengan Bumi.",
+   "start": 164.51,
+   "end": 168.4
+  },
+  {
+   "text": "Di sana, Matahari terbit dari barat!",
+   "start": 168.25,
+   "end": 171.24
+  },
+  {
+   "text": "Dari delapan planet, cuma satu yang sejauh ini diketahui punya kehidupan.",
+   "start": 173.64,
+   "end": 178.54
+  },
+  {
+   "text": "Yap, rumah kita sendiri: Bumi!",
+   "start": 178.39,
+   "end": 181.39
+  },
+  {
+   "text": "Sebagian besar permukaan Bumi, sekitar 71 persen, tertutup air.",
+   "start": 181.24,
+   "end": 186.12
+  },
+  {
+   "text": "Jaraknya dari Matahari pas, tidak terlalu panas dan tidak terlalu dingin, jadi air bisa tetap cair.",
+   "start": 185.97,
+   "end": 192.95
+  },
+  {
+   "text": "Bumi punya satu bulan yang setia menemani.",
+   "start": 192.8,
+   "end": 196.37
+  },
+  {
+   "text": "Kalau Merkurius dan Venus tadi?",
+   "start": 196.22,
+   "end": 199.19
+  },
+  {
+   "text": "Nol!",
+   "start": 199.04,
+   "end": 200.02
+  },
+  {
+   "text": "Jadi, jaga Bumi baik-baik ya, teman-teman.",
+   "start": 199.87,
+   "end": 202.08
+  },
+  {
+   "text": "Kita belum punya planet cadangan!",
+   "start": 201.93,
+   "end": 204.27
+  },
+  {
+   "text": "Kenapa Mars disebut Planet Merah?",
+   "start": 206.67,
+   "end": 209.1
+  },
+  {
+   "text": "Jawabannya ternyata... karat!",
+   "start": 208.95,
+   "end": 212.02
+  },
+  {
+   "text": "Tanah Mars mengandung banyak besi oksida, alias karat.",
+   "start": 211.87,
+   "end": 215.56
+  },
+  {
+   "text": "Sama seperti paku yang dibiarkan basah, lama-lama jadi merah kecokelatan.",
+   "start": 215.41,
+   "end": 220.28
+  },
+  {
+   "text": "Debu karat inilah yang membuat Mars terlihat merah.",
+   "start": 220.13,
+   "end": 223.72
+  },
+  {
+   "text": "Mars juga punya gunung berapi terbesar di tata surya, namanya Olympus Mons.",
+   "start": 223.57,
+   "end": 228.92
+  },
+  {
+   "text": "Tingginya sekitar tiga kali Gunung Everest, gunung tertinggi di Bumi!",
+   "start": 228.77,
+   "end": 233.48
+  },
+  {
+   "text": "Mars punya dua bulan kecil, namanya Phobos dan Deimos.",
+   "start": 233.33,
+   "end": 237.66
+  },
+  {
+   "text": "Sekarang kita lewati sabuk asteroid, dan masuk ke wilayah planet raksasa!",
+   "start": 237.51,
+   "end": 242.18
+  },
+  {
+   "text": "Ada badai yang sudah berputar ratusan tahun, dan lebih besar dari Bumi.",
+   "start": 244.58,
+   "end": 250.53
+  },
+  {
+   "text": "Di mana?",
+   "start": 250.38,
+   "end": 251.77
+  },
+  {
+   "text": "Di Jupiter!",
+   "start": 251.62,
+   "end": 252.41
+  },
+  {
+   "text": "Jupiter adalah planet terbesar di tata surya.",
+   "start": 252.26,
+   "end": 254.81
+  },
+  {
+   "text": "Lebih dari 1.000 Bumi bisa masuk ke dalamnya!",
+   "start": 254.66,
+   "end": 258.12
+  },
+  {
+   "text": "Bintik merah di Jupiter itu sebenarnya badai raksasa, namanya Bintik Merah Raksasa.",
+   "start": 257.97,
+   "end": 263.51
+  },
+  {
+   "text": "Badai ini sudah ada setidaknya sejak tahun 1800-an.",
+   "start": 263.36,
+   "end": 267.69
+  },
+  {
+   "text": "Sekarang lebarnya sekitar 1,3 kali lebar Bumi.",
+   "start": 267.54,
+   "end": 271.7
+  },
+  {
+   "text": "Dulu malah lebih besar, tapi pelan-pelan menyusut.",
+   "start": 271.55,
+   "end": 274.99
+  },
+  {
+   "text": "Jupiter juga punya lebih dari 90 bulan.",
+   "start": 274.84,
+   "end": 278.49
+  },
+  {
+   "text": "Tapi tunggu dulu, ada planet yang punya lebih banyak lagi!",
+   "start": 278.34,
+   "end": 282.41
+  },
+  {
+   "text": "Planet raksasa yang bisa mengapung di air?",
+   "start": 284.81,
+   "end": 287.43
+  },
+  {
+   "text": "Ada!",
+   "start": 287.28,
+   "end": 290.03
+  },
+  {
+   "text": "Namanya Saturnus.",
+   "start": 289.88,
+   "end": 291.35
+  },
+  {
+   "text": "Saturnus memang besar, tapi sangat ringan untuk ukurannya.",
+   "start": 291.2,
+   "end": 293.97
+  },
+  {
+   "text": "Kepadatannya lebih rendah dari air.",
+   "start": 293.82,
+   "end": 296.36
+  },
+  {
+   "text": "Jadi kalau ada bak mandi sebesar itu, Saturnus bisa mengapung!",
+   "start": 296.21,
+   "end": 301.48
+  },
+  {
+   "text": "Tentu ini cuma bayangan, karena bak mandi sebesar itu tidak ada.",
+   "start": 301.33,
+   "end": 305.54
+  },
+  {
+   "text": "Cincin Saturnus yang cantik itu terbuat terutama dari bongkahan es, ada yang sekecil butiran debu, sampai sebesar rumah.",
+   "start": 305.39,
+   "end": 313.47
+  },
+  {
+   "text": "Dan inilah juara bulan terbanyak!",
+   "start": 313.32,
+   "end": 316.06
+  },
+  {
+   "text": "Per Maret 2025, Saturnus punya 274 bulan yang sudah diketahui.",
+   "start": 315.91,
+   "end": 322.03
+  },
+  {
+   "text": "Jauh lebih banyak dari Jupiter!",
+   "start": 321.88,
+   "end": 324.48
+  },
+  {
+   "text": "Ada planet yang berputar sambil rebahan.",
+   "start": 326.88,
+   "end": 329.65
+  },
+  {
+   "text": "Itu Uranus!",
+   "start": 329.5,
+   "end": 331.0
+  },
+  {
+   "text": "Sumbu Uranus miring hampir 98 derajat.",
+   "start": 330.85,
+   "end": 334.72
+  },
+  {
+   "text": "Jadi Uranus mengelilingi Matahari seperti bola yang menggelinding.",
+   "start": 334.57,
+   "end": 339.11
+  },
+  {
+   "text": "Para ilmuwan menduga, dulu Uranus pernah ditabrak benda sebesar planet.",
+   "start": 338.96,
+   "end": 344.15
+  },
+  {
+   "text": "Uranus juga misterius, karena baru satu wahana antariksa yang pernah mengunjunginya dari dekat, yaitu Voyager 2 milik NASA.",
+   "start": 344.0,
+   "end": 352.95
+  },
+  {
+   "text": "Planet paling jauh dari Matahari, ternyata juga planet paling berangin.",
+   "start": 355.35,
+   "end": 361.92
+  },
+  {
+   "text": "Kenalan dengan Neptunus!",
+   "start": 361.77,
+   "end": 362.58
+  },
+  {
+   "text": "Angin di Neptunus bisa melaju lebih dari 2.000 kilometer per jam.",
+   "start": 362.43,
+   "end": 366.63
+  },
+  {
+   "text": "Angin terkuat di Bumi \"cuma\" sekitar 400 kilometer per jam.",
+   "start": 366.48,
+   "end": 370.99
+  },
+  {
+   "text": "Jadi angin Neptunus kira-kira lima kali lebih kencang!",
+   "start": 370.84,
+   "end": 374.98
+  },
+  {
+   "text": "Satu tahun di Neptunus sama dengan sekitar 165 tahun Bumi.",
+   "start": 374.83,
+   "end": 379.94
+  },
+  {
+   "text": "Neptunus ditemukan tahun 1846, dan baru menyelesaikan satu putaran penuh mengelilingi Matahari pada tahun 2011.",
+   "start": 379.79,
+   "end": 389.32
+  },
+  {
+   "text": "Jadi sejak ditemukan, Neptunus baru berulang tahun satu kali!",
+   "start": 389.17,
+   "end": 394.37
+  },
+  {
+   "text": "Neptunus juga satu-satunya planet yang tidak bisa dilihat dengan mata telanjang dari Bumi.",
+   "start": 394.22,
+   "end": 399.9
+  },
+  {
+   "text": "Saatnya kuis!",
+   "start": 402.3,
+   "end": 403.9
+  },
+  {
+   "text": "Jawab dalam hati, atau tulis di kolom komentar ya!",
+   "start": 403.75,
+   "end": 407.73
+  },
+  {
+   "text": "Soal pertama: planet mana yang paling panas?",
+   "start": 407.58,
+   "end": 411.36
+  },
+  {
+   "text": "A, Merkurius.",
+   "start": 411.21,
+   "end": 413.16
+  },
+  {
+   "text": "B, Venus.",
+   "start": 413.01,
+   "end": 414.77
+  },
+  {
+   "text": "Jawabannya: B, Venus!",
+   "start": 420.57,
+   "end": 423.31
+  },
+  {
+   "text": "Karena awan tebalnya memerangkap panas.",
+   "start": 423.16,
+   "end": 426.32
+  },
+  {
+   "text": "Soal kedua: planet mana yang punya bulan paling banyak?",
+   "start": 427.12,
+   "end": 431.27
+  },
+  {
+   "text": "Jawabannya: Saturnus, dengan 274 bulan!",
+   "start": 437.07,
+   "end": 442.18
+  },
+  {
+   "text": "Soal ketiga, ini yang paling susah: di planet mana, satu harinya lebih lama dari satu tahunnya?",
+   "start": 442.98,
+   "end": 450.89
+  },
+  {
+   "text": "Jawabannya: Venus lagi!",
+   "start": 456.69,
+   "end": 459.29
+  },
+  {
+   "text": "Berapa yang kamu jawab benar?",
+   "start": 459.14,
+   "end": 460.97
+  },
+  {
+   "text": "Tulis skormu di komentar!",
+   "start": 460.82,
+   "end": 462.76
+  },
+  {
+   "text": "Wah, perjalanan kita hari ini seru banget!",
+   "start": 463.56,
+   "end": 466.74
+  },
+  {
+   "text": "Kita sudah keliling dari Merkurius yang panas-dingin, sampai Neptunus yang super berangin.",
+   "start": 466.59,
+   "end": 472.64
+  },
+  {
+   "text": "Kalau kamu suka video ini, kasih jempol, subscribe, dan tulis di komentar: planet apa yang mau kita bahas lebih dalam di video berikutnya?",
+   "start": 472.49,
+   "end": 481.08
+  },
+  {
+   "text": "Sampai jumpa, teman-teman penjelajah!",
+   "start": 480.93,
+   "end": 483.23
+  }
+ ]
+}
