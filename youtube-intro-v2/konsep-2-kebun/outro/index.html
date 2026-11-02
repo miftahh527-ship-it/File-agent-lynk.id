@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Let.growww — Outro (Konsep 2: Kebun senja)</title>
+<link rel="stylesheet" href="../../shared/mf-style.css">
+<style>
+  .tall{position:absolute;width:46px;height:860px;top:20px;background:linear-gradient(90deg,#7C4E2D,#A9733F,#7C4E2D);border-radius:10px}
+  #rope{position:absolute;height:6px;background:#8E5C37;border-radius:3px}
+  #banner{width:1600px;height:330px;z-index:4}
+  #banner .cloth{position:absolute;inset:0;background:linear-gradient(180deg,#FFFAEE,#F7EAD0);border-radius:22px 22px 0 0;
+    box-shadow:0 18px 30px rgba(90,40,10,.25);
+    -webkit-mask:radial-gradient(28px at 50% 100%,#0000 98%,#000) 0 0/80px 100%}
+  #banner .badge{left:60px;top:40px;width:240px;height:240px}
+  #thx{position:absolute;left:350px;top:62px;font:600 68px var(--display);color:var(--ink);white-space:nowrap}
+  #thx .wd{display:inline-block;transform-origin:50% 100%}
+  #sub{position:absolute;left:352px;top:170px;width:1190px;font:700 40px/1.3 var(--body);color:var(--brown)}
+  #sub .wd{display:inline-block}
+  #post{position:absolute;width:44px;height:480px;background:linear-gradient(90deg,#7C4E2D,#A9733F,#7C4E2D);border-radius:10px}
+  .arrow{position:absolute}
+  .arrow .social{position:relative;width:880px;height:160px;gap:20px}
+  .arrow.L .social{clip-path:polygon(9% 0,100% 0,100% 100%,9% 100%,0 50%);padding-left:96px}
+  .arrow.R .social{clip-path:polygon(0 0,91% 0,100% 50%,91% 100%,0 100%);padding-right:96px}
+  .hrt{position:absolute;width:44px;height:44px;opacity:0;z-index:8}
+  #blackout{position:absolute;inset:0;background:#000;opacity:0;z-index:30}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="layer" id="bg"></div>
+  <div id="world"></div>
+  <div class="cursor" id="cur" style="z-index:9"></div>
+  <div class="ripple" id="rip" style="z-index:9"></div>
+  <div id="blackout"></div>
+</div>
+<template id="tpl">
+  <div class="tall" id="t1"></div><div class="tall" id="t2"></div><div id="rope"></div>
+  <div id="banner"><div class="cloth"></div><div class="badge" id="badge"><img src="../../shared/img/logo-badge.png" alt="Maskot Let.growww"></div>
+    <div id="thx">Terima Kasih sudah menonton video kami.</div>
+    <div id="sub">Jangan lupa Subscribe, like, komen dan follow platform sosial kami ya :)</div></div>
+  <div id="post"></div>
+  <div class="arrow L" id="aYT"></div><div class="arrow R" id="aIG"></div>
+</template>
+<script src="../../shared/vendor/gsap.min.js"></script>
+<script src="../../shared/mf-runtime.js"></script>
+<script src="../../shared/garden-world.js"></script>
+<script>
+window.AUDIO_PLAN = { vo: [], music: null, sfx: [
+  { at: .1,  src: '../../shared/audio/sfx-whoosh.mp3',  vol: .35 },
+  { at: .95, src: '../../shared/audio/sfx-sparkle.mp3', vol: .45 },
+  { at: 1.25,src: '../../shared/audio/sfx-jingle.mp3',  vol: .55 },
+  { at: 3.35,src: '../../shared/audio/sfx-wood.mp3',    vol: .45 },
+  { at: 3.6, src: '../../shared/audio/sfx-wood.mp3',    vol: .45 },
+  { at: 5.2, src: '../../shared/audio/sfx-click.mp3',   vol: .6 },
+  { at: 5.3, src: '../../shared/audio/sfx-bell.mp3',    vol: .4 },
+  { at: 6.6, src: '../../shared/audio/sfx-click.mp3',   vol: .6 },
+  { at: 6.7, src: '../../shared/audio/sfx-pop.mp3',     vol: .4 },
+  { at: 7.7, src: '../../shared/audio/sfx-sparkle.mp3', vol: .4 },
+]};
+const { $ } = MF;
+const G = MF.garden($('#bg'), { seed: 41, leaves: 3, pollen: 40,
+  base: 'linear-gradient(180deg,#FFE1B4 0%,#F8BE84 55%,#EE9F6E 100%)',
+  sun: 'radial-gradient(circle,rgba(255,240,200,.95) 0%,rgba(255,196,120,.55) 30%,rgba(255,170,90,0) 66%)' });
+const GWD = GW.build($('#world'), { length: 3600, seed: 8, dusk: true });
+$('#world').appendChild($('#tpl').content.cloneNode(true));
+GWD.place($('#t1'), 1060, 20); GWD.place($('#t2'), 2500, 20);
+GWD.place($('#rope'), 1080, 60).style.width = '1440px';
+GWD.place($('#banner'), 980, 64);
+GWD.place($('#post'), 1758, 420);
+GWD.place($('#aYT'), 900, 450); GWD.place($('#aIG'), 1758, 640);
+const YT = MF.social($('#aYT'), { platform: 'youtube', label: 'YouTube', user: '@Let.growww', b1: 'SUBSCRIBE', b2: '✓ SUBSCRIBED', color: '#FF0033' });
+const IG = MF.social($('#aIG'), { platform: 'instagram', label: 'Instagram', user: '@let.growww', b1: 'Follow', b2: '✓ Following', color: '#4F5BD5' });
+$('#cur').innerHTML = MF.ICON.cursor;
+const THX = MF.words($('#thx')), SUB = MF.words($('#sub'));
+const R = MF.rand(12);
+const HR = Array.from({ length: 9 }, (_, i) => { const h = document.createElement('div'); h.className = 'hrt';
+  h.innerHTML = i % 3 === 2 ? MF.leafSVG() : MF.ICON.heart; $('#stage').appendChild(h); return { el: h, dx: (R() - .5) * 220, up: 110 + R() * 110, d: R() * .4 }; });
+const cam = { x: 120 }, CX = 820;           // posisi akhir kamera
+// tombol dalam koordinat layar saat cam.x = CX, zoom 1
+const bp = (card, ox, oy, k) => () => { const b = card.querySelector('.btn'); return k ? oy + b.offsetTop + b.offsetHeight / 2 : ox + b.offsetLeft + b.offsetWidth / 2 - CX; };
+const BTN = { yt: [bp(YT, 900, 450, 0), bp(YT, 900, 450, 1)], ig: [bp(IG, 1758, 640, 0), bp(IG, 1758, 640, 1)] };
+
+MF.boot({
+  duration: 10,
+  build(tl) {
+    gsap.set('#world', { scale: 2.1, transformOrigin: '340px 200px' });
+    gsap.set('#badge', { scale: 0, rotation: -30 });
+    gsap.set(THX, { scaleY: 0, opacity: 0 }); gsap.set(SUB, { y: 26, opacity: 0 });
+    gsap.set('#aYT', { rotation: -70, transformOrigin: '100% 50%', opacity: 0 });
+    gsap.set('#aIG', { rotation: 70, transformOrigin: '0% 50%', opacity: 0 });
+    gsap.set('#cur', { x: 2000, y: 1150 });
+    // kamera menyusuri kebun senja, tiba di maskot
+    tl.to(cam, { x: CX, duration: 1.2, ease: 'power2.out' }, 0)
+      .to('#badge', { scale: 1, rotation: 0, duration: .55, ease: 'back.out(2)' }, .85)
+      .to('#world', { scale: 1, duration: 1.0, ease: 'power3.inOut' }, 1.35);
+    THX.forEach((w, i) => tl.to(w, { scaleY: 1, opacity: 1, duration: .5, ease: 'elastic.out(1,.6)' }, 1.95 + i * .07));
+    MF.blur(tl, THX, 1.95, .5, { from: 14 });
+    SUB.forEach((w, i) => tl.to(w, { y: 0, opacity: 1, duration: .42, ease: 'power3.out' }, 2.6 + i * .045));
+    MF.blur(tl, SUB, 2.6, .45, { from: 10 });
+    // papan panah berayun ke posisinya
+    tl.to('#aYT', { rotation: 0, opacity: 1, duration: .6, ease: 'back.out(1.8)' }, 3.15)
+      .to('#aIG', { rotation: 0, opacity: 1, duration: .6, ease: 'back.out(1.8)' }, 3.4)
+      .to('#aYT', { rotation: 2, duration: .5, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 3.75)
+      .to('#aIG', { rotation: -2, duration: .5, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 4.0);
+    // kursor
+    tl.to('#cur', { x: BTN.yt[0], y: BTN.yt[1], duration: .85, ease: 'power3.inOut' }, 4.3)
+      .to('#cur', { scale: .85, duration: .08, yoyo: true, repeat: 1 }, 5.16)
+      .fromTo('#rip', { x: BTN.yt[0], y: BTN.yt[1], scale: .4, opacity: .9 }, { scale: 4, opacity: 0, duration: .5, immediateRender: false }, 5.2)
+      .to('#cur', { x: BTN.ig[0], y: BTN.ig[1], duration: .9, ease: 'power3.inOut' }, 5.6)
+      .to('#cur', { scale: .85, duration: .08, yoyo: true, repeat: 1 }, 6.56)
+      .fromTo('#rip', { x: BTN.ig[0], y: BTN.ig[1], scale: .4, opacity: .9 }, { scale: 4, opacity: 0, duration: .5, immediateRender: false }, 6.6)
+      .to('#cur', { x: 2050, y: 1150, duration: .8, ease: 'power2.in' }, 7.1);
+    HR.forEach(h => tl.fromTo(h.el, { x: () => BTN.ig[0]() - 22, y: () => BTN.ig[1]() - 60, opacity: 0, scale: .4 },
+      { x: () => BTN.ig[0]() - 22 + h.dx, y: () => BTN.ig[1]() - 60 - h.up, opacity: 1, scale: 1, duration: .7, ease: 'power2.out' }, 6.65 + h.d)
+      .to(h.el, { opacity: 0, duration: .4 }, 7.35 + h.d));
+    tl.to('#badge', { y: -18, duration: .22, yoyo: true, repeat: 1 }, 7.6)
+      .to(cam, { x: CX + 40, duration: 2.2, ease: 'sine.inOut' }, 7.4)
+      .to('#blackout', { opacity: 1, duration: .7, ease: 'power1.in' }, 9.3);
+  },
+  render(t) { G.update(t); GWD.update(cam.x); YT.classList.toggle('done', t >= 5.2); IG.classList.toggle('done', t >= 6.6); }
+});
+</script>
+</body>
+</html>
