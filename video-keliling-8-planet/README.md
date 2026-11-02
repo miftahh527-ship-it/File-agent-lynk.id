@@ -25,3 +25,12 @@ python3 build_audio.py                            # -> build/mix.wav
 ffmpeg -i ../video.mp4 -i mix.wav -map 0:v -map 1:a -c:v copy \
   -af loudnorm=I=-14:TP=-1.5 -c:a aac -b:a 192k ../Keliling_8_Planet_Tata_Surya.mp4
 ```
+
+## Versi dengan intro channel
+Video final diawali intro lengkap Let.growww (13 detik: logo + layar Perhatian) dari
+`youtube-intro/letgrowww-intro-lengkap.mp4` (branch `claude/letgrowww-youtube-intro-8ys7no`):
+```bash
+ffmpeg -i letgrowww-intro-lengkap.mp4 -i Keliling_8_Planet_Tata_Surya.mp4 -filter_complex \
+  "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[v][a]" -map "[v]" -map "[a]" \
+  -c:v libx264 -crf 19 -c:a aac -b:a 192k Keliling_8_Planet_dengan_Intro.mp4
+```
