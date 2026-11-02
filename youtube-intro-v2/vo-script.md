@@ -5,7 +5,8 @@ Efek suara: ElevenLabs, model `eleven_text_to_sound_v2`, 1 variasi per efek (±1
 Flow ElevenLabs: "Let.growww intro & outro SFX" (`USsLGdksbo5VCeWSCaNP`).
 Musik: tidak ada.
 
-Semua berkas disimpan di `shared/audio/` dan dipakai bersama oleh ketiga konsep.
+Semua berkas disimpan di `shared/audio/` dan dipakai bersama oleh ketiga konsep. Berkas diunduh manual dari flow ElevenLabs
+(`New_sfx_node_2` … `_10`), lalu hening di awalnya dipotong supaya detik `at` di AUDIO_PLAN = detik bunyi.
 
 | Berkas | Prompt | Dipakai untuk |
 |---|---|---|
