@@ -38,7 +38,7 @@ def build(num, slug, title, keys, nbeats):
         if nbeats: item["trim"] = round(SC[key]["beats"][nbeats]["start"] - vt, 3)
         vo.append(item)
         for c in TL["captions"]:
-            if g0 <= c["start"] < g0 + end - 0.2: caps.append(dict(text=c["text"], start=round(c["start"] - g0 + t, 3), end=round(min(c["end"], g0 + end) - g0 + t, 3)))
+            if g0 <= c["start"] < g0 + end - 0.4: caps.append(dict(text=c["text"], start=round(c["start"] - g0 + t, 3), end=round(min(c["end"], g0 + end) - g0 + t, 3)))
         for e in TL["events"]:
             if g0 <= e["t"] < g0 + end: events.append(dict(t=round(e["t"] - g0 + t, 3), sfx=e["sfx"]))
         t += end
