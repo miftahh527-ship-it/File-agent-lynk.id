@@ -4,7 +4,7 @@ Video edukasi (16:9, 1920×1080, 30 fps, ±8:09) untuk pelajar SD–SMP, dibuat 
 "Naskah YouTube — Keliling 8 Planet Tata Surya". Gaya storytelling ceria & energik,
 voiceover oleh **Zulfa** (ElevenLabs, model eleven_v4, bahasa Indonesia).
 
-File video final (±139 MB) tidak disimpan di git karena melebihi batas 100 MB GitHub.
+Video final (dengan intro v2) ada di `Keliling_8_Planet_dengan_Intro_v2.mp4` (1080p, 8:22, ±87 MB — dikompres 2-pass agar muat di bawah batas 100 MB GitHub).
 
 ## Isi
 - `vo/` — 17 klip voiceover Zulfa per segmen (intro, Matahari, 8 planet, kuis 3 soal, outro).
