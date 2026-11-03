@@ -27,10 +27,11 @@ ffmpeg -i ../video.mp4 -i mix.wav -map 0:v -map 1:a -c:v copy \
 ```
 
 ## Versi dengan intro channel
-Video final diawali intro lengkap Let.growww (13 detik: logo + layar Perhatian) dari
-`youtube-intro/letgrowww-intro-lengkap.mp4` (branch `claude/letgrowww-youtube-intro-8ys7no`):
+Video final diawali **intro v2 Let.growww — konsep 3 "Huruf jadi tanaman"** (13 detik: huruf tumbuh
+dari tanah + layar Perhatian) dari `youtube-intro-v2/hasil/konsep-3-huruf-intro-lengkap.mp4`
+(branch `claude/letgrowww-youtube-intro-8ys7no`). Hasil: `Keliling_8_Planet_dengan_Intro_v2.mp4` (8:22).
 ```bash
-ffmpeg -i letgrowww-intro-lengkap.mp4 -i Keliling_8_Planet_Tata_Surya.mp4 -filter_complex \
-  "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[v][a]" -map "[v]" -map "[a]" \
-  -c:v libx264 -crf 19 -c:a aac -b:a 192k Keliling_8_Planet_dengan_Intro.mp4
+ffmpeg -i konsep-3-huruf-intro-lengkap.mp4 -i Keliling_8_Planet_Tata_Surya.mp4 -filter_complex \
+  "[0:a]aresample=48000[a0];[1:a]aresample=48000[a1];[0:v][a0][1:v][a1]concat=n=2:v=1:a=1[v][a]" \
+  -map "[v]" -map "[a]" -c:v libx264 -crf 19 -c:a aac -b:a 192k Keliling_8_Planet_dengan_Intro_v2.mp4
 ```
