@@ -4,7 +4,7 @@
  "title": "Badai Lebih Besar dari Bumi",
  "badge": null,
  "fps": 30,
- "duration": 42.13,
+ "duration": 44.53,
  "scenes": [
   {
    "kind": "segment",
@@ -104,7 +104,7 @@
    "kind": "cta",
    "key": "cta",
    "start": 38.63,
-   "end": 42.13
+   "end": 44.53
   }
  ],
  "vo": [
@@ -112,6 +112,11 @@
    "file": "07_jupiter.mp3",
    "t": 0.45,
    "dur": 37.68
+  },
+  {
+   "file": "18_cta_follow.mp3",
+   "t": 38.88,
+   "dur": 5.146
   }
  ],
  "captions": [
@@ -193,11 +198,11 @@
    "sfx": "whoosh"
   },
   {
-   "t": 40.23,
+   "t": 41.13,
    "sfx": "pop"
   },
   {
-   "t": 40.33,
+   "t": 41.23,
    "sfx": "chime"
   }
  ],

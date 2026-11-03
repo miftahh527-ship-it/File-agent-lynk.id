@@ -4,7 +4,7 @@
  "title": "1,3 Juta Bumi Muat di Matahari!",
  "badge": "☀️ MATAHARI",
  "fps": 30,
- "duration": 38.84,
+ "duration": 41.24,
  "scenes": [
   {
    "kind": "segment",
@@ -92,7 +92,7 @@
    "kind": "cta",
    "key": "cta",
    "start": 35.34,
-   "end": 38.84
+   "end": 41.24
   }
  ],
  "vo": [
@@ -101,6 +101,11 @@
    "t": 0.45,
    "dur": 40.72,
    "trim": 34.54
+  },
+  {
+   "file": "18_cta_follow.mp3",
+   "t": 35.59,
+   "dur": 5.146
   }
  ],
  "captions": [
@@ -176,11 +181,11 @@
    "sfx": "whoosh"
   },
   {
-   "t": 36.94,
+   "t": 37.84,
    "sfx": "pop"
   },
   {
-   "t": 37.04,
+   "t": 37.94,
    "sfx": "chime"
   }
  ],

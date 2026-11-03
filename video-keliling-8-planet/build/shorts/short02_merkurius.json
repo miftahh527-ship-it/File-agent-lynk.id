@@ -4,7 +4,7 @@
  "title": "Siang Membara, Malam Membeku",
  "badge": null,
  "fps": 30,
- "duration": 43.61,
+ "duration": 46.01,
  "scenes": [
   {
    "kind": "segment",
@@ -104,7 +104,7 @@
    "kind": "cta",
    "key": "cta",
    "start": 40.11,
-   "end": 43.61
+   "end": 46.01
   }
  ],
  "vo": [
@@ -113,6 +113,11 @@
    "t": 0.45,
    "dur": 42.24,
    "trim": 39.31
+  },
+  {
+   "file": "18_cta_follow.mp3",
+   "t": 40.36,
+   "dur": 5.146
   }
  ],
  "captions": [
@@ -198,11 +203,11 @@
    "sfx": "whoosh"
   },
   {
-   "t": 41.71,
+   "t": 42.61,
    "sfx": "pop"
   },
   {
-   "t": 41.81,
+   "t": 42.71,
    "sfx": "chime"
   }
  ],

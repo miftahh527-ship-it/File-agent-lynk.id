@@ -4,7 +4,7 @@
  "title": "Satu-satunya Planet Berpenghuni",
  "badge": null,
  "fps": 30,
- "duration": 34.93,
+ "duration": 37.33,
  "scenes": [
   {
    "kind": "segment",
@@ -92,7 +92,7 @@
    "kind": "cta",
    "key": "cta",
    "start": 31.43,
-   "end": 34.93
+   "end": 37.33
   }
  ],
  "vo": [
@@ -100,6 +100,11 @@
    "file": "05_bumi.mp3",
    "t": 0.45,
    "dur": 30.48
+  },
+  {
+   "file": "18_cta_follow.mp3",
+   "t": 31.68,
+   "dur": 5.146
   }
  ],
  "captions": [
@@ -171,11 +176,11 @@
    "sfx": "whoosh"
   },
   {
-   "t": 33.03,
+   "t": 33.93,
    "sfx": "pop"
   },
   {
-   "t": 33.13,
+   "t": 34.03,
    "sfx": "chime"
   }
  ],

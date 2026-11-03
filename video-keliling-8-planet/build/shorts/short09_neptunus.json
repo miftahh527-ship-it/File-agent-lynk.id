@@ -4,7 +4,7 @@
  "title": "Planet Paling Berangin",
  "badge": null,
  "fps": 30,
- "duration": 48.85,
+ "duration": 51.25,
  "scenes": [
   {
    "kind": "segment",
@@ -92,7 +92,7 @@
    "kind": "cta",
    "key": "cta",
    "start": 45.35,
-   "end": 48.85
+   "end": 51.25
   }
  ],
  "vo": [
@@ -100,6 +100,11 @@
    "file": "10_neptunus.mp3",
    "t": 0.45,
    "dur": 44.4
+  },
+  {
+   "file": "18_cta_follow.mp3",
+   "t": 45.6,
+   "dur": 5.146
   }
  ],
  "captions": [
@@ -171,11 +176,11 @@
    "sfx": "whoosh"
   },
   {
-   "t": 46.95,
+   "t": 47.85,
    "sfx": "pop"
   },
   {
-   "t": 47.05,
+   "t": 47.95,
    "sfx": "chime"
   }
  ],

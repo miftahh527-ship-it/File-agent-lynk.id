@@ -4,7 +4,7 @@
  "title": "Planet yang Bisa Mengapung!",
  "badge": null,
  "fps": 30,
- "duration": 43.97,
+ "duration": 46.37,
  "scenes": [
   {
    "kind": "segment",
@@ -104,7 +104,7 @@
    "kind": "cta",
    "key": "cta",
    "start": 40.47,
-   "end": 43.97
+   "end": 46.37
   }
  ],
  "vo": [
@@ -112,6 +112,11 @@
    "file": "08_saturnus.mp3",
    "t": 0.45,
    "dur": 39.52
+  },
+  {
+   "file": "18_cta_follow.mp3",
+   "t": 40.72,
+   "dur": 5.146
   }
  ],
  "captions": [
@@ -193,11 +198,11 @@
    "sfx": "whoosh"
   },
   {
-   "t": 42.07,
+   "t": 42.97,
    "sfx": "pop"
   },
   {
-   "t": 42.17,
+   "t": 43.07,
    "sfx": "chime"
   }
  ],

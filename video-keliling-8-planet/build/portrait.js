@@ -77,10 +77,10 @@ function ctaScene(sc, st, t) {
   for (let i = 0; i < 8; i++) { const a = i * TAU / 8 + t * 0.4; planet(ks[i], PW / 2 + Math.cos(a) * 380, 760 + Math.sin(a) * 260, (i === 4 || i === 5 ? 46 : 34) * eob((st - i * 0.06) / 0.5), t, { tilt: 0.3 }); }
   emo('🚀', PW / 2, 760, 170, { scale: eob(st / 0.5), rot: Math.sin(t * 3) * 0.15 });
   txt('Planet mana yang', PW / 2, 470, 70, { scale: eob((st - 0.2) / 0.5), color: '#fff' });
-  txt('PALING ANEH? 🤔', PW / 2, 1060, 84, { scale: eob((st - 0.6) / 0.5), color: '#ffd23f' });
-  const fa = clamp((st - 1.6) / 0.3);
-  pill('➕ FOLLOW', PW / 2, 1200, 70, { bg: '#ff2d55', fg: '#fff', alpha: fa, scale: eob((st - 1.6) / 0.5) * (1 + 0.05 * Math.sin(t * 6)) });
-  txt('Fakta planet seru tiap hari!', PW / 2, 1340, 52, { alpha: clamp((st - 2.2) / 0.4) });
+  txt('PALING ANEH? 🤔', PW / 2, 1060, 84, { scale: eob((st - 1.3) / 0.5), color: '#ffd23f' });
+  const fa = clamp((st - 2.5) / 0.3);
+  pill('➕ FOLLOW', PW / 2, 1200, 70, { bg: '#ff2d55', fg: '#fff', alpha: fa, scale: eob((st - 2.5) / 0.5) * (1 + 0.05 * Math.sin(t * 6)) });
+  txt('Fakta planet seru tiap hari!', PW / 2, 1340, 52, { alpha: clamp((st - 3.3) / 0.4) });
 }
 
 // ---------------------------------------------------------------- render utama

@@ -4,7 +4,7 @@
  "title": "Planet yang Rebahan",
  "badge": null,
  "fps": 30,
- "duration": 30.37,
+ "duration": 32.77,
  "scenes": [
   {
    "kind": "segment",
@@ -70,7 +70,7 @@
    "kind": "cta",
    "key": "cta",
    "start": 26.87,
-   "end": 30.37
+   "end": 32.77
   }
  ],
  "vo": [
@@ -78,6 +78,11 @@
    "file": "09_uranus.mp3",
    "t": 0.45,
    "dur": 25.92
+  },
+  {
+   "file": "18_cta_follow.mp3",
+   "t": 27.12,
+   "dur": 5.146
   }
  ],
  "captions": [
@@ -130,11 +135,11 @@
    "sfx": "whoosh"
   },
   {
-   "t": 28.47,
+   "t": 29.37,
    "sfx": "pop"
   },
   {
-   "t": 28.57,
+   "t": 29.47,
    "sfx": "chime"
   }
  ],

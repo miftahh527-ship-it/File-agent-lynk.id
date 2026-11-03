@@ -22,7 +22,7 @@ SHORTS = [
     (10, "kuis", "Kuis Planet, Berapa Skormu?", ["q1", "a1", "q2", "a2", "q3", "a3"], None),
 ]
 BADGE = {"matahari": "☀️ MATAHARI", "kuis": "🧠 KUIS"}
-CTA = 3.5
+CTA = 5.9
 
 def build(num, slug, title, keys, nbeats):
     scenes, vo, caps, events = [], [], [], []
@@ -44,7 +44,8 @@ def build(num, slug, title, keys, nbeats):
         t += end
     if slug != "kuis":
         scenes.append(dict(kind="cta", key="cta", start=round(t, 3), end=round(t + CTA, 3)))
-        events += [dict(t=round(t + 0.05, 3), sfx="whoosh"), dict(t=round(t + 1.6, 3), sfx="pop"), dict(t=round(t + 1.7, 3), sfx="chime")]
+        events += [dict(t=round(t + 0.05, 3), sfx="whoosh"), dict(t=round(t + 2.5, 3), sfx="pop"), dict(t=round(t + 2.6, 3), sfx="chime")]
+        vo.append(dict(file="18_cta_follow.mp3", t=round(t + 0.25, 3), dur=5.146))
         t += CTA
     else:
         t += 0.6; scenes[-1]["end"] = round(t, 3)

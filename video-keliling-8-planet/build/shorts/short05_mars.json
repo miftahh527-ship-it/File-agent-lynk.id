@@ -4,7 +4,7 @@
  "title": "Mars Itu Berkarat?",
  "badge": null,
  "fps": 30,
- "duration": 35.14,
+ "duration": 37.54,
  "scenes": [
   {
    "kind": "segment",
@@ -86,7 +86,7 @@
    "kind": "cta",
    "key": "cta",
    "start": 31.64,
-   "end": 35.14
+   "end": 37.54
   }
  ],
  "vo": [
@@ -95,6 +95,11 @@
    "t": 0.45,
    "dur": 35.36,
    "trim": 30.84
+  },
+  {
+   "file": "18_cta_follow.mp3",
+   "t": 31.89,
+   "dur": 5.146
   }
  ],
  "captions": [
@@ -165,11 +170,11 @@
    "sfx": "whoosh"
   },
   {
-   "t": 33.24,
+   "t": 34.14,
    "sfx": "pop"
   },
   {
-   "t": 33.34,
+   "t": 34.24,
    "sfx": "chime"
   }
  ],

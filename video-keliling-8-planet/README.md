@@ -41,18 +41,18 @@ Hasil di `shorts/` (1080×1920, 30 fps, −14 LUFS), mengikuti tabel "Peta pemec
 
 | File | Judul | Durasi |
 |---|---|---|
-| `short01_matahari.mp4` | 1,3 Juta Bumi Muat di Matahari! | 0:39 |
-| `short02_merkurius.mp4` | Siang Membara, Malam Membeku | 0:44 |
-| `short03_venus.mp4` | 1 Hari Lebih Lama dari 1 Tahun?! | 0:50 |
-| `short04_bumi.mp4` | Satu-satunya Planet Berpenghuni | 0:35 |
-| `short05_mars.mp4` | Mars Itu Berkarat? | 0:35 |
-| `short06_jupiter.mp4` | Badai Lebih Besar dari Bumi | 0:42 |
-| `short07_saturnus.mp4` | Planet yang Bisa Mengapung! | 0:44 |
-| `short08_uranus.mp4` | Planet yang Rebahan | 0:30 |
-| `short09_neptunus.mp4` | Planet Paling Berangin | 0:49 |
+| `short01_matahari.mp4` | 1,3 Juta Bumi Muat di Matahari! | 0:41 |
+| `short02_merkurius.mp4` | Siang Membara, Malam Membeku | 0:46 |
+| `short03_venus.mp4` | 1 Hari Lebih Lama dari 1 Tahun?! | 0:52 |
+| `short04_bumi.mp4` | Satu-satunya Planet Berpenghuni | 0:37 |
+| `short05_mars.mp4` | Mars Itu Berkarat? | 0:38 |
+| `short06_jupiter.mp4` | Badai Lebih Besar dari Bumi | 0:45 |
+| `short07_saturnus.mp4` | Planet yang Bisa Mengapung! | 0:46 |
+| `short08_uranus.mp4` | Planet yang Rebahan | 0:33 |
+| `short09_neptunus.mp4` | Planet Paling Berangin | 0:51 |
 | `short10_kuis.mp4` | Kuis Planet, Berapa Skormu? | 1:02 |
 
-- Kalimat [LONG-ONLY] dipotong (Matahari, Merkurius, Mars); planet lain diakhiri layar ajakan follow 3,5 detik.
+- Kalimat [LONG-ONLY] dipotong (Matahari, Merkurius, Mars); Short 1–9 diakhiri layar ajakan follow (5,9 dtk) dengan suara Zulfa: "Mau tahu planet mana yang paling aneh? Follow, ada fakta planet tiap hari!" (`vo/18_cta_follow.mp3`).
 - Tata letak: judul Short di sepertiga atas, adegan dibingkai ulang "kamera" per beat (`build/portrait.js`, tabel `CAM`),
   caption besar sedikit ke kiri agar tidak tertutup tombol YouTube.
 - Render ulang: `cd build && python3 build_shorts.py && ./render_shorts.sh ../shorts`.

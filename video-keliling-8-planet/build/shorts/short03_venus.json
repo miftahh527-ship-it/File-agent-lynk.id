@@ -4,7 +4,7 @@
  "title": "1 Hari Lebih Lama dari 1 Tahun?!",
  "badge": null,
  "fps": 30,
- "duration": 49.97,
+ "duration": 52.37,
  "scenes": [
   {
    "kind": "segment",
@@ -104,7 +104,7 @@
    "kind": "cta",
    "key": "cta",
    "start": 46.47,
-   "end": 49.97
+   "end": 52.37
   }
  ],
  "vo": [
@@ -112,6 +112,11 @@
    "file": "04_venus.mp3",
    "t": 0.45,
    "dur": 45.52
+  },
+  {
+   "file": "18_cta_follow.mp3",
+   "t": 46.72,
+   "dur": 5.146
   }
  ],
  "captions": [
@@ -193,11 +198,11 @@
    "sfx": "whoosh"
   },
   {
-   "t": 48.07,
+   "t": 48.97,
    "sfx": "pop"
   },
   {
-   "t": 48.17,
+   "t": 49.07,
    "sfx": "chime"
   }
  ],
