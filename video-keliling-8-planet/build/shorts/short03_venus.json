@@ -1,0 +1,205 @@
+{
+ "num": 3,
+ "slug": "venus",
+ "title": "1 Hari Lebih Lama dari 1 Tahun?!",
+ "badge": null,
+ "fps": 30,
+ "duration": 49.97,
+ "scenes": [
+  {
+   "kind": "segment",
+   "key": "venus",
+   "start": 0.0,
+   "end": 46.47,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 8.71
+    },
+    {
+     "start": 8.71,
+     "end": 24.53
+    },
+    {
+     "start": 24.53,
+     "end": 39.39
+    },
+    {
+     "start": 39.39,
+     "end": 45.97
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Coba tebak, mana yang lebih lama: satu hari, atau satu tahun?",
+     "para": 0,
+     "start": 0.45,
+     "end": 5.37
+    },
+    {
+     "text": "Di Venus, jawabannya... satu hari!",
+     "para": 0,
+     "start": 5.37,
+     "end": 8.71
+    },
+    {
+     "text": "Venus berputar sangat pelan.",
+     "para": 1,
+     "start": 8.71,
+     "end": 10.87
+    },
+    {
+     "text": "Satu kali putaran butuh 243 hari Bumi.",
+     "para": 1,
+     "start": 10.87,
+     "end": 14.76
+    },
+    {
+     "text": "Padahal untuk mengelilingi Matahari, Venus cuma butuh sekitar 225 hari Bumi.",
+     "para": 1,
+     "start": 14.76,
+     "end": 21.04
+    },
+    {
+     "text": "Jadi satu harinya lebih lama dari satu tahunnya!",
+     "para": 1,
+     "start": 21.04,
+     "end": 24.53
+    },
+    {
+     "text": "Venus juga planet paling panas, suhunya lebih dari 460 derajat Celsius.",
+     "para": 2,
+     "start": 24.53,
+     "end": 30.56
+    },
+    {
+     "text": "Lho, kok bukan Merkurius?",
+     "para": 2,
+     "start": 30.56,
+     "end": 32.6
+    },
+    {
+     "text": "Karena awan tebal Venus memerangkap panas, seperti mobil yang diparkir di bawah terik matahari dengan kaca tertutup.",
+     "para": 2,
+     "start": 32.6,
+     "end": 39.39
+    },
+    {
+     "text": "Bonus: Venus berputar ke arah berlawanan dengan Bumi.",
+     "para": 3,
+     "start": 39.39,
+     "end": 43.13
+    },
+    {
+     "text": "Di sana, Matahari terbit dari barat!",
+     "para": 3,
+     "start": 43.13,
+     "end": 45.97
+    }
+   ],
+   "planet_idx": 2,
+   "timer_start": null
+  },
+  {
+   "kind": "cta",
+   "key": "cta",
+   "start": 46.47,
+   "end": 49.97
+  }
+ ],
+ "vo": [
+  {
+   "file": "04_venus.mp3",
+   "t": 0.45,
+   "dur": 45.52
+  }
+ ],
+ "captions": [
+  {
+   "text": "Coba tebak, mana yang lebih lama: satu hari, atau satu tahun?",
+   "start": 0.45,
+   "end": 5.52
+  },
+  {
+   "text": "Di Venus, jawabannya... satu hari!",
+   "start": 5.37,
+   "end": 8.86
+  },
+  {
+   "text": "Venus berputar sangat pelan.",
+   "start": 8.71,
+   "end": 11.02
+  },
+  {
+   "text": "Satu kali putaran butuh 243 hari Bumi.",
+   "start": 10.87,
+   "end": 14.91
+  },
+  {
+   "text": "Padahal untuk mengelilingi Matahari, Venus cuma butuh sekitar 225 hari Bumi.",
+   "start": 14.76,
+   "end": 21.19
+  },
+  {
+   "text": "Jadi satu harinya lebih lama dari satu tahunnya!",
+   "start": 21.04,
+   "end": 24.68
+  },
+  {
+   "text": "Venus juga planet paling panas, suhunya lebih dari 460 derajat Celsius.",
+   "start": 24.53,
+   "end": 30.71
+  },
+  {
+   "text": "Lho, kok bukan Merkurius?",
+   "start": 30.56,
+   "end": 32.75
+  },
+  {
+   "text": "Karena awan tebal Venus memerangkap panas, seperti mobil yang diparkir di bawah terik matahari dengan kaca tertutup.",
+   "start": 32.6,
+   "end": 39.54
+  },
+  {
+   "text": "Bonus: Venus berputar ke arah berlawanan dengan Bumi.",
+   "start": 39.39,
+   "end": 43.28
+  },
+  {
+   "text": "Di sana, Matahari terbit dari barat!",
+   "start": 43.13,
+   "end": 46.12
+  }
+ ],
+ "events": [
+  {
+   "t": 0.25,
+   "sfx": "pop"
+  },
+  {
+   "t": 8.96,
+   "sfx": "pop"
+  },
+  {
+   "t": 24.78,
+   "sfx": "pop"
+  },
+  {
+   "t": 39.64,
+   "sfx": "pop"
+  },
+  {
+   "t": 46.52,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 48.07,
+   "sfx": "pop"
+  },
+  {
+   "t": 48.17,
+   "sfx": "chime"
+  }
+ ],
+ "countdown": []
+}

@@ -1,0 +1,402 @@
+{
+ "num": 10,
+ "slug": "kuis",
+ "title": "Kuis Planet, Berapa Skormu?",
+ "badge": "🧠 KUIS",
+ "fps": 30,
+ "duration": 61.86,
+ "scenes": [
+  {
+   "kind": "segment",
+   "key": "q1",
+   "start": 0.0,
+   "end": 18.47,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 5.73
+    },
+    {
+     "start": 5.73,
+     "end": 12.77
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Saatnya kuis!",
+     "para": 0,
+     "start": 0.45,
+     "end": 1.9
+    },
+    {
+     "text": "Jawab dalam hati, atau tulis di kolom komentar ya!",
+     "para": 0,
+     "start": 1.9,
+     "end": 5.73
+    },
+    {
+     "text": "Soal pertama: planet mana yang paling panas?",
+     "para": 1,
+     "start": 5.73,
+     "end": 9.36
+    },
+    {
+     "text": "A, Merkurius.",
+     "para": 1,
+     "start": 9.36,
+     "end": 11.16
+    },
+    {
+     "text": "B, Venus.",
+     "para": 1,
+     "start": 11.16,
+     "end": 12.77
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": 13.27
+  },
+  {
+   "kind": "segment",
+   "key": "a1",
+   "start": 18.47,
+   "end": 24.82,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 5.85
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Jawabannya: B, Venus!",
+     "para": 0,
+     "start": 0.25,
+     "end": 2.84
+    },
+    {
+     "text": "Karena awan tebalnya memerangkap panas.",
+     "para": 0,
+     "start": 2.84,
+     "end": 5.85
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": null
+  },
+  {
+   "kind": "segment",
+   "key": "q2",
+   "start": 24.82,
+   "end": 34.97,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 4.45
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Soal kedua: planet mana yang punya bulan paling banyak?",
+     "para": 0,
+     "start": 0.45,
+     "end": 4.45
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": 4.95
+  },
+  {
+   "kind": "segment",
+   "key": "a2",
+   "start": 34.97,
+   "end": 40.68,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 5.21
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Jawabannya: Saturnus, dengan 274 bulan!",
+     "para": 0,
+     "start": 0.25,
+     "end": 5.21
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": null
+  },
+  {
+   "kind": "segment",
+   "key": "q3",
+   "start": 40.68,
+   "end": 54.59,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 8.21
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Soal ketiga, ini yang paling susah: di planet mana, satu harinya lebih lama dari satu tahunnya?",
+     "para": 0,
+     "start": 0.45,
+     "end": 8.21
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": 8.71
+  },
+  {
+   "kind": "segment",
+   "key": "a3",
+   "start": 54.59,
+   "end": 61.86,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 6.17
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Jawabannya: Venus lagi!",
+     "para": 0,
+     "start": 0.25,
+     "end": 2.7
+    },
+    {
+     "text": "Berapa yang kamu jawab benar?",
+     "para": 0,
+     "start": 2.7,
+     "end": 4.38
+    },
+    {
+     "text": "Tulis skormu di komentar!",
+     "para": 0,
+     "start": 4.38,
+     "end": 6.17
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": null
+  }
+ ],
+ "vo": [
+  {
+   "file": "11_kuis_q1.mp3",
+   "t": 0.45,
+   "dur": 12.32
+  },
+  {
+   "file": "12_q1ans.mp3",
+   "t": 18.72,
+   "dur": 5.6
+  },
+  {
+   "file": "13_q2.mp3",
+   "t": 25.27,
+   "dur": 4.0
+  },
+  {
+   "file": "14_q2ans.mp3",
+   "t": 35.22,
+   "dur": 4.96
+  },
+  {
+   "file": "15_q3.mp3",
+   "t": 41.13,
+   "dur": 7.76
+  },
+  {
+   "file": "16_q3ans.mp3",
+   "t": 54.84,
+   "dur": 5.92
+  }
+ ],
+ "captions": [
+  {
+   "text": "Saatnya kuis!",
+   "start": 0.45,
+   "end": 2.05
+  },
+  {
+   "text": "Jawab dalam hati, atau tulis di kolom komentar ya!",
+   "start": 1.9,
+   "end": 5.88
+  },
+  {
+   "text": "Soal pertama: planet mana yang paling panas?",
+   "start": 5.73,
+   "end": 9.51
+  },
+  {
+   "text": "A, Merkurius.",
+   "start": 9.36,
+   "end": 11.31
+  },
+  {
+   "text": "B, Venus.",
+   "start": 11.16,
+   "end": 12.92
+  },
+  {
+   "text": "Jawabannya: B, Venus!",
+   "start": 18.72,
+   "end": 21.46
+  },
+  {
+   "text": "Karena awan tebalnya memerangkap panas.",
+   "start": 21.31,
+   "end": 24.47
+  },
+  {
+   "text": "Soal kedua: planet mana yang punya bulan paling banyak?",
+   "start": 25.27,
+   "end": 29.42
+  },
+  {
+   "text": "Jawabannya: Saturnus, dengan 274 bulan!",
+   "start": 35.22,
+   "end": 40.33
+  },
+  {
+   "text": "Soal ketiga, ini yang paling susah: di planet mana, satu harinya lebih lama dari satu tahunnya?",
+   "start": 41.13,
+   "end": 49.04
+  },
+  {
+   "text": "Jawabannya: Venus lagi!",
+   "start": 54.84,
+   "end": 57.44
+  },
+  {
+   "text": "Berapa yang kamu jawab benar?",
+   "start": 57.29,
+   "end": 59.12
+  },
+  {
+   "text": "Tulis skormu di komentar!",
+   "start": 58.97,
+   "end": 60.91
+  }
+ ],
+ "events": [
+  {
+   "t": 0.25,
+   "sfx": "pop"
+  },
+  {
+   "t": 5.98,
+   "sfx": "pop"
+  },
+  {
+   "t": 13.27,
+   "sfx": "tick"
+  },
+  {
+   "t": 14.27,
+   "sfx": "tick"
+  },
+  {
+   "t": 15.27,
+   "sfx": "tick"
+  },
+  {
+   "t": 16.27,
+   "sfx": "tick"
+  },
+  {
+   "t": 17.27,
+   "sfx": "tick"
+  },
+  {
+   "t": 18.22,
+   "sfx": "buzz"
+  },
+  {
+   "t": 18.52,
+   "sfx": "correct"
+  },
+  {
+   "t": 18.72,
+   "sfx": "pop"
+  },
+  {
+   "t": 25.07,
+   "sfx": "pop"
+  },
+  {
+   "t": 29.77,
+   "sfx": "tick"
+  },
+  {
+   "t": 30.77,
+   "sfx": "tick"
+  },
+  {
+   "t": 31.77,
+   "sfx": "tick"
+  },
+  {
+   "t": 32.77,
+   "sfx": "tick"
+  },
+  {
+   "t": 33.77,
+   "sfx": "tick"
+  },
+  {
+   "t": 34.72,
+   "sfx": "buzz"
+  },
+  {
+   "t": 35.02,
+   "sfx": "correct"
+  },
+  {
+   "t": 35.22,
+   "sfx": "pop"
+  },
+  {
+   "t": 40.93,
+   "sfx": "pop"
+  },
+  {
+   "t": 49.39,
+   "sfx": "tick"
+  },
+  {
+   "t": 50.39,
+   "sfx": "tick"
+  },
+  {
+   "t": 51.39,
+   "sfx": "tick"
+  },
+  {
+   "t": 52.39,
+   "sfx": "tick"
+  },
+  {
+   "t": 53.39,
+   "sfx": "tick"
+  },
+  {
+   "t": 54.34,
+   "sfx": "buzz"
+  },
+  {
+   "t": 54.64,
+   "sfx": "correct"
+  },
+  {
+   "t": 54.84,
+   "sfx": "pop"
+  }
+ ],
+ "countdown": []
+}

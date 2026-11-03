@@ -1,0 +1,193 @@
+{
+ "num": 1,
+ "slug": "matahari",
+ "title": "1,3 Juta Bumi Muat di Matahari!",
+ "badge": "☀️ MATAHARI",
+ "fps": 30,
+ "duration": 38.84,
+ "scenes": [
+  {
+   "kind": "segment",
+   "key": "matahari",
+   "start": 0.0,
+   "end": 35.34,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 14.33
+    },
+    {
+     "start": 14.33,
+     "end": 19.49
+    },
+    {
+     "start": 19.49,
+     "end": 29.76
+    },
+    {
+     "start": 29.76,
+     "end": 34.99
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Sebelum ke planet, kenalan dulu sama bosnya: Matahari!",
+     "para": 0,
+     "start": 0.45,
+     "end": 4.69
+    },
+    {
+     "text": "Tahu nggak, Matahari itu besaaar banget.",
+     "para": 0,
+     "start": 4.69,
+     "end": 7.65
+    },
+    {
+     "text": "Kalau Matahari itu kosong di dalamnya, kira-kira 1,3 juta Bumi bisa masuk ke dalamnya!",
+     "para": 0,
+     "start": 7.65,
+     "end": 14.33
+    },
+    {
+     "text": "Lebarnya saja sekitar 109 kali lebar Bumi.",
+     "para": 1,
+     "start": 14.33,
+     "end": 18.15
+    },
+    {
+     "text": "Wow!",
+     "para": 1,
+     "start": 18.15,
+     "end": 19.49
+    },
+    {
+     "text": "Terus, cahaya Matahari yang kamu lihat pagi ini?",
+     "para": 2,
+     "start": 19.49,
+     "end": 22.49
+    },
+    {
+     "text": "Itu butuh sekitar 8 menit untuk sampai ke Bumi.",
+     "para": 2,
+     "start": 22.49,
+     "end": 25.67
+    },
+    {
+     "text": "Jadi kamu sebenarnya melihat Matahari 8 menit yang lalu!",
+     "para": 2,
+     "start": 25.67,
+     "end": 29.76
+    },
+    {
+     "text": "Ingat ya, jangan pernah melihat Matahari langsung dengan mata, bisa merusak mata.",
+     "para": 3,
+     "start": 29.76,
+     "end": 34.99
+    }
+   ],
+   "planet_idx": 0,
+   "timer_start": null
+  },
+  {
+   "kind": "cta",
+   "key": "cta",
+   "start": 35.34,
+   "end": 38.84
+  }
+ ],
+ "vo": [
+  {
+   "file": "02_matahari.mp3",
+   "t": 0.45,
+   "dur": 40.72,
+   "trim": 34.54
+  }
+ ],
+ "captions": [
+  {
+   "text": "Sebelum ke planet, kenalan dulu sama bosnya: Matahari!",
+   "start": 0.45,
+   "end": 4.84
+  },
+  {
+   "text": "Tahu nggak, Matahari itu besaaar banget.",
+   "start": 4.69,
+   "end": 7.8
+  },
+  {
+   "text": "Kalau Matahari itu kosong di dalamnya, kira-kira 1,3 juta Bumi bisa masuk ke dalamnya!",
+   "start": 7.65,
+   "end": 14.48
+  },
+  {
+   "text": "Lebarnya saja sekitar 109 kali lebar Bumi.",
+   "start": 14.33,
+   "end": 18.3
+  },
+  {
+   "text": "Wow!",
+   "start": 18.15,
+   "end": 19.64
+  },
+  {
+   "text": "Terus, cahaya Matahari yang kamu lihat pagi ini?",
+   "start": 19.49,
+   "end": 22.64
+  },
+  {
+   "text": "Itu butuh sekitar 8 menit untuk sampai ke Bumi.",
+   "start": 22.49,
+   "end": 25.82
+  },
+  {
+   "text": "Jadi kamu sebenarnya melihat Matahari 8 menit yang lalu!",
+   "start": 25.67,
+   "end": 29.91
+  },
+  {
+   "text": "Ingat ya, jangan pernah melihat Matahari langsung dengan mata, bisa merusak mata.",
+   "start": 29.76,
+   "end": 35.14
+  },
+  {
+   "text": "Nah, Matahari punya delapan planet yang setia mengelilinginya.",
+   "start": 34.99,
+   "end": 35.34
+  }
+ ],
+ "events": [
+  {
+   "t": 0.25,
+   "sfx": "pop"
+  },
+  {
+   "t": 14.58,
+   "sfx": "pop"
+  },
+  {
+   "t": 19.74,
+   "sfx": "pop"
+  },
+  {
+   "t": 30.01,
+   "sfx": "pop"
+  },
+  {
+   "t": 35.24,
+   "sfx": "pop"
+  },
+  {
+   "t": 35.39,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 36.94,
+   "sfx": "pop"
+  },
+  {
+   "t": 37.04,
+   "sfx": "chime"
+  }
+ ],
+ "countdown": []
+}

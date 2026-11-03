@@ -1,0 +1,205 @@
+{
+ "num": 6,
+ "slug": "jupiter",
+ "title": "Badai Lebih Besar dari Bumi",
+ "badge": null,
+ "fps": 30,
+ "duration": 42.13,
+ "scenes": [
+  {
+   "kind": "segment",
+   "key": "jupiter",
+   "start": 0.0,
+   "end": 38.63,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 8.13
+    },
+    {
+     "start": 8.13,
+     "end": 13.84
+    },
+    {
+     "start": 13.84,
+     "end": 30.71
+    },
+    {
+     "start": 30.71,
+     "end": 38.13
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Ada badai yang sudah berputar ratusan tahun, dan lebih besar dari Bumi.",
+     "para": 0,
+     "start": 0.45,
+     "end": 6.25
+    },
+    {
+     "text": "Di mana?",
+     "para": 0,
+     "start": 6.25,
+     "end": 7.49
+    },
+    {
+     "text": "Di Jupiter!",
+     "para": 0,
+     "start": 7.49,
+     "end": 8.13
+    },
+    {
+     "text": "Jupiter adalah planet terbesar di tata surya.",
+     "para": 1,
+     "start": 8.13,
+     "end": 10.53
+    },
+    {
+     "text": "Lebih dari 1.000 Bumi bisa masuk ke dalamnya!",
+     "para": 1,
+     "start": 10.53,
+     "end": 13.84
+    },
+    {
+     "text": "Bintik merah di Jupiter itu sebenarnya badai raksasa, namanya Bintik Merah Raksasa.",
+     "para": 2,
+     "start": 13.84,
+     "end": 19.23
+    },
+    {
+     "text": "Badai ini sudah ada setidaknya sejak tahun 1800-an.",
+     "para": 2,
+     "start": 19.23,
+     "end": 23.41
+    },
+    {
+     "text": "Sekarang lebarnya sekitar 1,3 kali lebar Bumi.",
+     "para": 2,
+     "start": 23.41,
+     "end": 27.42
+    },
+    {
+     "text": "Dulu malah lebih besar, tapi pelan-pelan menyusut.",
+     "para": 2,
+     "start": 27.42,
+     "end": 30.71
+    },
+    {
+     "text": "Jupiter juga punya lebih dari 90 bulan.",
+     "para": 3,
+     "start": 30.71,
+     "end": 34.21
+    },
+    {
+     "text": "Tapi tunggu dulu, ada planet yang punya lebih banyak lagi!",
+     "para": 3,
+     "start": 34.21,
+     "end": 38.13
+    }
+   ],
+   "planet_idx": 5,
+   "timer_start": null
+  },
+  {
+   "kind": "cta",
+   "key": "cta",
+   "start": 38.63,
+   "end": 42.13
+  }
+ ],
+ "vo": [
+  {
+   "file": "07_jupiter.mp3",
+   "t": 0.45,
+   "dur": 37.68
+  }
+ ],
+ "captions": [
+  {
+   "text": "Ada badai yang sudah berputar ratusan tahun, dan lebih besar dari Bumi.",
+   "start": 0.45,
+   "end": 6.4
+  },
+  {
+   "text": "Di mana?",
+   "start": 6.25,
+   "end": 7.64
+  },
+  {
+   "text": "Di Jupiter!",
+   "start": 7.49,
+   "end": 8.28
+  },
+  {
+   "text": "Jupiter adalah planet terbesar di tata surya.",
+   "start": 8.13,
+   "end": 10.68
+  },
+  {
+   "text": "Lebih dari 1.000 Bumi bisa masuk ke dalamnya!",
+   "start": 10.53,
+   "end": 13.99
+  },
+  {
+   "text": "Bintik merah di Jupiter itu sebenarnya badai raksasa, namanya Bintik Merah Raksasa.",
+   "start": 13.84,
+   "end": 19.38
+  },
+  {
+   "text": "Badai ini sudah ada setidaknya sejak tahun 1800-an.",
+   "start": 19.23,
+   "end": 23.56
+  },
+  {
+   "text": "Sekarang lebarnya sekitar 1,3 kali lebar Bumi.",
+   "start": 23.41,
+   "end": 27.57
+  },
+  {
+   "text": "Dulu malah lebih besar, tapi pelan-pelan menyusut.",
+   "start": 27.42,
+   "end": 30.86
+  },
+  {
+   "text": "Jupiter juga punya lebih dari 90 bulan.",
+   "start": 30.71,
+   "end": 34.36
+  },
+  {
+   "text": "Tapi tunggu dulu, ada planet yang punya lebih banyak lagi!",
+   "start": 34.21,
+   "end": 38.28
+  }
+ ],
+ "events": [
+  {
+   "t": 0.25,
+   "sfx": "pop"
+  },
+  {
+   "t": 8.38,
+   "sfx": "pop"
+  },
+  {
+   "t": 14.09,
+   "sfx": "pop"
+  },
+  {
+   "t": 30.96,
+   "sfx": "pop"
+  },
+  {
+   "t": 38.68,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 40.23,
+   "sfx": "pop"
+  },
+  {
+   "t": 40.33,
+   "sfx": "chime"
+  }
+ ],
+ "countdown": []
+}

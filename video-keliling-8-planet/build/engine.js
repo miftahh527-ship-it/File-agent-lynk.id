@@ -12,6 +12,7 @@ const mix = (c1, c2, k) => { const a = hex(c1), b = hex(c2); return `rgb(${a.map
 function hex(h) { h = h.replace('#', ''); return [0, 2, 4].map(i => parseInt(h.substr(i, 2), 16)); }
 
 let TL = null;
+var PORTRAIT = false;
 // ---------------------------------------------------------------- teks & UI
 function txt(s, x, y, size, o = {}) {
   const { color = '#fff', w = 700, align = 'center', stroke = '#1d1147', sw = size * 0.14, alpha = 1, scale = 1, rot = 0, base = 'middle', shadow = true } = o;
@@ -493,7 +494,7 @@ SCENES.merkurius = planetScene('merkurius', [[700, 560, 250], [480, 580, 230], [
     bigNum('430°C', 1060, 200, 100, B.lt, { delay: s1 + 0.6, color: '#ff8a5c' });
     thermo(1560, 700, 420, 0.75 - 0.7 * cold, '#4cc9f0', 'MALAM', B.a * clamp((B.lt - s2 + 0.3) / 0.3));
     bigNum('−180°C', 1560, 200, 100, B.lt, { delay: s2 + 0.6, color: '#8fe3ff' });
-    if (B.lt > s4) pill('Hampir tanpa atmosfer = panas kabur!', 960, 900, 40, { alpha: clamp((B.lt - s4) / 0.4) * B.a, bg: '#ffffff' });
+    if (B.lt > s4) pill('Hampir tanpa atmosfer = panas kabur!', PORTRAIT ? 1310 : 960, PORTRAIT ? 930 : 900, 40, { alpha: clamp((B.lt - s4) / 0.4) * B.a, bg: '#ffffff' });
   },
   2: (sc, st, t, B) => {
     const k = clamp(B.lt / 2.4); const day = Math.floor(88 * eo(k));
@@ -684,7 +685,7 @@ SCENES.jupiter = planetScene('jupiter', [[700, 560, 300], [600, 560, 320], [960,
       bigNum('1,3× lebar Bumi', 960, 210, 96, B.lt, { delay: s2 + 0.4 });
     } else factTitle('BINTIK MERAH RAKSASA = BADAI!', B, 210, 960, 76, '#ffd23f');
     const s1 = sentInBeat(sc, B, 1);
-    pill('Sejak 1800-an', 300, 860, 44, { alpha: B.a * clamp((B.lt - s1) / 0.4) });
+    pill('Sejak 1800-an', PORTRAIT ? 430 : 300, 860, 44, { alpha: B.a * clamp((B.lt - s1) / 0.4) });
     if (B.lt > sentInBeat(sc, B, 3)) pill('Pelan-pelan menyusut ↘', 1600, 860, 44, { alpha: B.a * clamp((B.lt - sentInBeat(sc, B, 3)) / 0.4), bg: '#4cc9f0' });
   },
   3: (sc, st, t, B, P) => {
@@ -825,12 +826,12 @@ function quizBg(t) {
 function timerRing(sc, st, t) {
   if (sc.timer_start == null || st < sc.timer_start) return;
   const k = clamp((st - sc.timer_start) / 5), left = Math.ceil(5 - (st - sc.timer_start));
-  const cx = 1660, cy = 300, r = 120;
+  const cx = PORTRAIT ? (sc.key === 'q1' ? 840 : 960) : 1660, cy = PORTRAIT ? 1030 : 300, r = 120;
   X.save(); X.fillStyle = '#fff'; X.beginPath(); X.arc(cx, cy, r + 20, 0, TAU); X.fill();
   X.strokeStyle = k > 0.6 ? '#ff4d6d' : '#3ddc97'; X.lineWidth = 26; X.lineCap = 'round'; X.beginPath(); X.arc(cx, cy, r - 8, -Math.PI / 2, -Math.PI / 2 + TAU * (1 - k)); X.stroke(); X.restore();
   const frac = (st - sc.timer_start) % 1;
   txt(left > 0 ? String(left) : '⏰', cx, cy + 6, 120, { color: '#1d1147', sw: 0, shadow: false, scale: 1 + 0.25 * (1 - eo(frac / 0.3)) });
-  txt('Ayo jawab!', cx, cy + 200, 48, { color: '#ffd23f' });
+  if (PORTRAIT) txt('Ayo jawab!', cx + 360, cy, 60, { color: '#ffd23f' }); else txt('Ayo jawab!', cx, cy + 200, 48, { color: '#ffd23f' });
 }
 function lineup(y, r, t, alpha = 1, bounce = 0, hl = -1) {
   const ks = ORDER.map(k => KIND[k]);

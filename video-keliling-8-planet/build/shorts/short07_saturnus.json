@@ -1,0 +1,205 @@
+{
+ "num": 7,
+ "slug": "saturnus",
+ "title": "Planet yang Bisa Mengapung!",
+ "badge": null,
+ "fps": 30,
+ "duration": 43.97,
+ "scenes": [
+  {
+   "kind": "segment",
+   "key": "saturnus",
+   "start": 0.0,
+   "end": 40.47,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 6.84
+    },
+    {
+     "start": 6.84,
+     "end": 21.03
+    },
+    {
+     "start": 21.03,
+     "end": 28.96
+    },
+    {
+     "start": 28.96,
+     "end": 39.97
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Planet raksasa yang bisa mengapung di air?",
+     "para": 0,
+     "start": 0.45,
+     "end": 2.92
+    },
+    {
+     "text": "Ada!",
+     "para": 0,
+     "start": 2.92,
+     "end": 5.52
+    },
+    {
+     "text": "Namanya Saturnus.",
+     "para": 0,
+     "start": 5.52,
+     "end": 6.84
+    },
+    {
+     "text": "Saturnus memang besar, tapi sangat ringan untuk ukurannya.",
+     "para": 1,
+     "start": 6.84,
+     "end": 9.46
+    },
+    {
+     "text": "Kepadatannya lebih rendah dari air.",
+     "para": 1,
+     "start": 9.46,
+     "end": 11.85
+    },
+    {
+     "text": "Jadi kalau ada bak mandi sebesar itu, Saturnus bisa mengapung!",
+     "para": 1,
+     "start": 11.85,
+     "end": 16.97
+    },
+    {
+     "text": "Tentu ini cuma bayangan, karena bak mandi sebesar itu tidak ada.",
+     "para": 1,
+     "start": 16.97,
+     "end": 21.03
+    },
+    {
+     "text": "Cincin Saturnus yang cantik itu terbuat terutama dari bongkahan es, ada yang sekecil butiran debu, sampai sebesar rumah.",
+     "para": 2,
+     "start": 21.03,
+     "end": 28.96
+    },
+    {
+     "text": "Dan inilah juara bulan terbanyak!",
+     "para": 3,
+     "start": 28.96,
+     "end": 31.55
+    },
+    {
+     "text": "Per Maret 2025, Saturnus punya 274 bulan yang sudah diketahui.",
+     "para": 3,
+     "start": 31.55,
+     "end": 37.52
+    },
+    {
+     "text": "Jauh lebih banyak dari Jupiter!",
+     "para": 3,
+     "start": 37.52,
+     "end": 39.97
+    }
+   ],
+   "planet_idx": 6,
+   "timer_start": null
+  },
+  {
+   "kind": "cta",
+   "key": "cta",
+   "start": 40.47,
+   "end": 43.97
+  }
+ ],
+ "vo": [
+  {
+   "file": "08_saturnus.mp3",
+   "t": 0.45,
+   "dur": 39.52
+  }
+ ],
+ "captions": [
+  {
+   "text": "Planet raksasa yang bisa mengapung di air?",
+   "start": 0.45,
+   "end": 3.07
+  },
+  {
+   "text": "Ada!",
+   "start": 2.92,
+   "end": 5.67
+  },
+  {
+   "text": "Namanya Saturnus.",
+   "start": 5.52,
+   "end": 6.99
+  },
+  {
+   "text": "Saturnus memang besar, tapi sangat ringan untuk ukurannya.",
+   "start": 6.84,
+   "end": 9.61
+  },
+  {
+   "text": "Kepadatannya lebih rendah dari air.",
+   "start": 9.46,
+   "end": 12.0
+  },
+  {
+   "text": "Jadi kalau ada bak mandi sebesar itu, Saturnus bisa mengapung!",
+   "start": 11.85,
+   "end": 17.12
+  },
+  {
+   "text": "Tentu ini cuma bayangan, karena bak mandi sebesar itu tidak ada.",
+   "start": 16.97,
+   "end": 21.18
+  },
+  {
+   "text": "Cincin Saturnus yang cantik itu terbuat terutama dari bongkahan es, ada yang sekecil butiran debu, sampai sebesar rumah.",
+   "start": 21.03,
+   "end": 29.11
+  },
+  {
+   "text": "Dan inilah juara bulan terbanyak!",
+   "start": 28.96,
+   "end": 31.7
+  },
+  {
+   "text": "Per Maret 2025, Saturnus punya 274 bulan yang sudah diketahui.",
+   "start": 31.55,
+   "end": 37.67
+  },
+  {
+   "text": "Jauh lebih banyak dari Jupiter!",
+   "start": 37.52,
+   "end": 40.12
+  }
+ ],
+ "events": [
+  {
+   "t": 0.25,
+   "sfx": "pop"
+  },
+  {
+   "t": 7.09,
+   "sfx": "pop"
+  },
+  {
+   "t": 21.28,
+   "sfx": "pop"
+  },
+  {
+   "t": 29.21,
+   "sfx": "pop"
+  },
+  {
+   "t": 40.52,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 42.07,
+   "sfx": "pop"
+  },
+  {
+   "t": 42.17,
+   "sfx": "chime"
+  }
+ ],
+ "countdown": []
+}

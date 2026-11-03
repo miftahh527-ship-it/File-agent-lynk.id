@@ -35,3 +35,24 @@ ffmpeg -i konsep-3-huruf-intro-lengkap.mp4 -i Keliling_8_Planet_Tata_Surya.mp4 -
   "[0:a]aresample=48000[a0];[1:a]aresample=48000[a1];[0:v][a0][1:v][a1]concat=n=2:v=1:a=1[v][a]" \
   -map "[v]" -map "[a]" -c:v libx264 -crf 19 -c:a aac -b:a 192k Keliling_8_Planet_dengan_Intro_v2.mp4
 ```
+
+## Shorts 9:16 (10 video)
+Hasil di `shorts/` (1080×1920, 30 fps, −14 LUFS), mengikuti tabel "Peta pemecahan Shorts" di naskah:
+
+| File | Judul | Durasi |
+|---|---|---|
+| `short01_matahari.mp4` | 1,3 Juta Bumi Muat di Matahari! | 0:39 |
+| `short02_merkurius.mp4` | Siang Membara, Malam Membeku | 0:44 |
+| `short03_venus.mp4` | 1 Hari Lebih Lama dari 1 Tahun?! | 0:50 |
+| `short04_bumi.mp4` | Satu-satunya Planet Berpenghuni | 0:35 |
+| `short05_mars.mp4` | Mars Itu Berkarat? | 0:35 |
+| `short06_jupiter.mp4` | Badai Lebih Besar dari Bumi | 0:42 |
+| `short07_saturnus.mp4` | Planet yang Bisa Mengapung! | 0:44 |
+| `short08_uranus.mp4` | Planet yang Rebahan | 0:30 |
+| `short09_neptunus.mp4` | Planet Paling Berangin | 0:49 |
+| `short10_kuis.mp4` | Kuis Planet, Berapa Skormu? | 1:02 |
+
+- Kalimat [LONG-ONLY] dipotong (Matahari, Merkurius, Mars); planet lain diakhiri layar ajakan follow 3,5 detik.
+- Tata letak: judul Short di sepertiga atas, adegan dibingkai ulang "kamera" per beat (`build/portrait.js`, tabel `CAM`),
+  caption besar sedikit ke kiri agar tidak tertutup tombol YouTube.
+- Render ulang: `cd build && python3 build_shorts.py && ./render_shorts.sh ../shorts`.

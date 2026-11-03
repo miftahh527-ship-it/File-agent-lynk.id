@@ -1,0 +1,182 @@
+{
+ "num": 5,
+ "slug": "mars",
+ "title": "Mars Itu Berkarat?",
+ "badge": null,
+ "fps": 30,
+ "duration": 35.14,
+ "scenes": [
+  {
+   "kind": "segment",
+   "key": "mars",
+   "start": 0.0,
+   "end": 31.64,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 5.65
+    },
+    {
+     "start": 5.65,
+     "end": 17.35
+    },
+    {
+     "start": 17.35,
+     "end": 27.11
+    },
+    {
+     "start": 27.11,
+     "end": 31.29
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Kenapa Mars disebut Planet Merah?",
+     "para": 0,
+     "start": 0.45,
+     "end": 2.73
+    },
+    {
+     "text": "Jawabannya ternyata... karat!",
+     "para": 0,
+     "start": 2.73,
+     "end": 5.65
+    },
+    {
+     "text": "Tanah Mars mengandung banyak besi oksida, alias karat.",
+     "para": 1,
+     "start": 5.65,
+     "end": 9.19
+    },
+    {
+     "text": "Sama seperti paku yang dibiarkan basah, lama-lama jadi merah kecokelatan.",
+     "para": 1,
+     "start": 9.19,
+     "end": 13.91
+    },
+    {
+     "text": "Debu karat inilah yang membuat Mars terlihat merah.",
+     "para": 1,
+     "start": 13.91,
+     "end": 17.35
+    },
+    {
+     "text": "Mars juga punya gunung berapi terbesar di tata surya, namanya Olympus Mons.",
+     "para": 2,
+     "start": 17.35,
+     "end": 22.55
+    },
+    {
+     "text": "Tingginya sekitar tiga kali Gunung Everest, gunung tertinggi di Bumi!",
+     "para": 2,
+     "start": 22.55,
+     "end": 27.11
+    },
+    {
+     "text": "Mars punya dua bulan kecil, namanya Phobos dan Deimos.",
+     "para": 3,
+     "start": 27.11,
+     "end": 31.29
+    }
+   ],
+   "planet_idx": 4,
+   "timer_start": null
+  },
+  {
+   "kind": "cta",
+   "key": "cta",
+   "start": 31.64,
+   "end": 35.14
+  }
+ ],
+ "vo": [
+  {
+   "file": "06_mars.mp3",
+   "t": 0.45,
+   "dur": 35.36,
+   "trim": 30.84
+  }
+ ],
+ "captions": [
+  {
+   "text": "Kenapa Mars disebut Planet Merah?",
+   "start": 0.45,
+   "end": 2.88
+  },
+  {
+   "text": "Jawabannya ternyata... karat!",
+   "start": 2.73,
+   "end": 5.8
+  },
+  {
+   "text": "Tanah Mars mengandung banyak besi oksida, alias karat.",
+   "start": 5.65,
+   "end": 9.34
+  },
+  {
+   "text": "Sama seperti paku yang dibiarkan basah, lama-lama jadi merah kecokelatan.",
+   "start": 9.19,
+   "end": 14.06
+  },
+  {
+   "text": "Debu karat inilah yang membuat Mars terlihat merah.",
+   "start": 13.91,
+   "end": 17.5
+  },
+  {
+   "text": "Mars juga punya gunung berapi terbesar di tata surya, namanya Olympus Mons.",
+   "start": 17.35,
+   "end": 22.7
+  },
+  {
+   "text": "Tingginya sekitar tiga kali Gunung Everest, gunung tertinggi di Bumi!",
+   "start": 22.55,
+   "end": 27.26
+  },
+  {
+   "text": "Mars punya dua bulan kecil, namanya Phobos dan Deimos.",
+   "start": 27.11,
+   "end": 31.44
+  },
+  {
+   "text": "Sekarang kita lewati sabuk asteroid, dan masuk ke wilayah planet raksasa!",
+   "start": 31.29,
+   "end": 31.64
+  }
+ ],
+ "events": [
+  {
+   "t": 0.25,
+   "sfx": "pop"
+  },
+  {
+   "t": 5.9,
+   "sfx": "pop"
+  },
+  {
+   "t": 17.6,
+   "sfx": "pop"
+  },
+  {
+   "t": 27.36,
+   "sfx": "pop"
+  },
+  {
+   "t": 31.54,
+   "sfx": "pop"
+  },
+  {
+   "t": 31.69,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 33.24,
+   "sfx": "pop"
+  },
+  {
+   "t": 33.34,
+   "sfx": "chime"
+  }
+ ],
+ "countdown": []
+}

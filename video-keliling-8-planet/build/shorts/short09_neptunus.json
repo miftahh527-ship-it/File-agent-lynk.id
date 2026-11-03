@@ -1,0 +1,183 @@
+{
+ "num": 9,
+ "slug": "neptunus",
+ "title": "Planet Paling Berangin",
+ "badge": null,
+ "fps": 30,
+ "duration": 48.85,
+ "scenes": [
+  {
+   "kind": "segment",
+   "key": "neptunus",
+   "start": 0.0,
+   "end": 45.35,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 7.53
+    },
+    {
+     "start": 7.53,
+     "end": 19.93
+    },
+    {
+     "start": 19.93,
+     "end": 39.32
+    },
+    {
+     "start": 39.32,
+     "end": 44.85
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Planet paling jauh dari Matahari, ternyata juga planet paling berangin.",
+     "para": 0,
+     "start": 0.45,
+     "end": 6.87
+    },
+    {
+     "text": "Kenalan dengan Neptunus!",
+     "para": 0,
+     "start": 6.87,
+     "end": 7.53
+    },
+    {
+     "text": "Angin di Neptunus bisa melaju lebih dari 2.000 kilometer per jam.",
+     "para": 1,
+     "start": 7.53,
+     "end": 11.58
+    },
+    {
+     "text": "Angin terkuat di Bumi \"cuma\" sekitar 400 kilometer per jam.",
+     "para": 1,
+     "start": 11.58,
+     "end": 15.94
+    },
+    {
+     "text": "Jadi angin Neptunus kira-kira lima kali lebih kencang!",
+     "para": 1,
+     "start": 15.94,
+     "end": 19.93
+    },
+    {
+     "text": "Satu tahun di Neptunus sama dengan sekitar 165 tahun Bumi.",
+     "para": 2,
+     "start": 19.93,
+     "end": 24.89
+    },
+    {
+     "text": "Neptunus ditemukan tahun 1846, dan baru menyelesaikan satu putaran penuh mengelilingi Matahari pada tahun 2011.",
+     "para": 2,
+     "start": 24.89,
+     "end": 34.27
+    },
+    {
+     "text": "Jadi sejak ditemukan, Neptunus baru berulang tahun satu kali!",
+     "para": 2,
+     "start": 34.27,
+     "end": 39.32
+    },
+    {
+     "text": "Neptunus juga satu-satunya planet yang tidak bisa dilihat dengan mata telanjang dari Bumi.",
+     "para": 3,
+     "start": 39.32,
+     "end": 44.85
+    }
+   ],
+   "planet_idx": 8,
+   "timer_start": null
+  },
+  {
+   "kind": "cta",
+   "key": "cta",
+   "start": 45.35,
+   "end": 48.85
+  }
+ ],
+ "vo": [
+  {
+   "file": "10_neptunus.mp3",
+   "t": 0.45,
+   "dur": 44.4
+  }
+ ],
+ "captions": [
+  {
+   "text": "Planet paling jauh dari Matahari, ternyata juga planet paling berangin.",
+   "start": 0.45,
+   "end": 7.02
+  },
+  {
+   "text": "Kenalan dengan Neptunus!",
+   "start": 6.87,
+   "end": 7.68
+  },
+  {
+   "text": "Angin di Neptunus bisa melaju lebih dari 2.000 kilometer per jam.",
+   "start": 7.53,
+   "end": 11.73
+  },
+  {
+   "text": "Angin terkuat di Bumi \"cuma\" sekitar 400 kilometer per jam.",
+   "start": 11.58,
+   "end": 16.09
+  },
+  {
+   "text": "Jadi angin Neptunus kira-kira lima kali lebih kencang!",
+   "start": 15.94,
+   "end": 20.08
+  },
+  {
+   "text": "Satu tahun di Neptunus sama dengan sekitar 165 tahun Bumi.",
+   "start": 19.93,
+   "end": 25.04
+  },
+  {
+   "text": "Neptunus ditemukan tahun 1846, dan baru menyelesaikan satu putaran penuh mengelilingi Matahari pada tahun 2011.",
+   "start": 24.89,
+   "end": 34.42
+  },
+  {
+   "text": "Jadi sejak ditemukan, Neptunus baru berulang tahun satu kali!",
+   "start": 34.27,
+   "end": 39.47
+  },
+  {
+   "text": "Neptunus juga satu-satunya planet yang tidak bisa dilihat dengan mata telanjang dari Bumi.",
+   "start": 39.32,
+   "end": 45.0
+  }
+ ],
+ "events": [
+  {
+   "t": 0.25,
+   "sfx": "pop"
+  },
+  {
+   "t": 7.78,
+   "sfx": "pop"
+  },
+  {
+   "t": 20.18,
+   "sfx": "pop"
+  },
+  {
+   "t": 39.57,
+   "sfx": "pop"
+  },
+  {
+   "t": 45.4,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 46.95,
+   "sfx": "pop"
+  },
+  {
+   "t": 47.05,
+   "sfx": "chime"
+  }
+ ],
+ "countdown": []
+}

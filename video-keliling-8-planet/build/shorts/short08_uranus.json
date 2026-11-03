@@ -1,0 +1,142 @@
+{
+ "num": 8,
+ "slug": "uranus",
+ "title": "Planet yang Rebahan",
+ "badge": null,
+ "fps": 30,
+ "duration": 30.37,
+ "scenes": [
+  {
+   "kind": "segment",
+   "key": "uranus",
+   "start": 0.0,
+   "end": 26.87,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 4.42
+    },
+    {
+     "start": 4.42,
+     "end": 17.57
+    },
+    {
+     "start": 17.57,
+     "end": 26.37
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Ada planet yang berputar sambil rebahan.",
+     "para": 0,
+     "start": 0.45,
+     "end": 3.07
+    },
+    {
+     "text": "Itu Uranus!",
+     "para": 0,
+     "start": 3.07,
+     "end": 4.42
+    },
+    {
+     "text": "Sumbu Uranus miring hampir 98 derajat.",
+     "para": 1,
+     "start": 4.42,
+     "end": 8.14
+    },
+    {
+     "text": "Jadi Uranus mengelilingi Matahari seperti bola yang menggelinding.",
+     "para": 1,
+     "start": 8.14,
+     "end": 12.53
+    },
+    {
+     "text": "Para ilmuwan menduga, dulu Uranus pernah ditabrak benda sebesar planet.",
+     "para": 1,
+     "start": 12.53,
+     "end": 17.57
+    },
+    {
+     "text": "Uranus juga misterius, karena baru satu wahana antariksa yang pernah mengunjunginya dari dekat, yaitu Voyager 2 milik NASA.",
+     "para": 2,
+     "start": 17.57,
+     "end": 26.37
+    }
+   ],
+   "planet_idx": 7,
+   "timer_start": null
+  },
+  {
+   "kind": "cta",
+   "key": "cta",
+   "start": 26.87,
+   "end": 30.37
+  }
+ ],
+ "vo": [
+  {
+   "file": "09_uranus.mp3",
+   "t": 0.45,
+   "dur": 25.92
+  }
+ ],
+ "captions": [
+  {
+   "text": "Ada planet yang berputar sambil rebahan.",
+   "start": 0.45,
+   "end": 3.22
+  },
+  {
+   "text": "Itu Uranus!",
+   "start": 3.07,
+   "end": 4.57
+  },
+  {
+   "text": "Sumbu Uranus miring hampir 98 derajat.",
+   "start": 4.42,
+   "end": 8.29
+  },
+  {
+   "text": "Jadi Uranus mengelilingi Matahari seperti bola yang menggelinding.",
+   "start": 8.14,
+   "end": 12.68
+  },
+  {
+   "text": "Para ilmuwan menduga, dulu Uranus pernah ditabrak benda sebesar planet.",
+   "start": 12.53,
+   "end": 17.72
+  },
+  {
+   "text": "Uranus juga misterius, karena baru satu wahana antariksa yang pernah mengunjunginya dari dekat, yaitu Voyager 2 milik NASA.",
+   "start": 17.57,
+   "end": 26.52
+  }
+ ],
+ "events": [
+  {
+   "t": 0.25,
+   "sfx": "pop"
+  },
+  {
+   "t": 4.67,
+   "sfx": "pop"
+  },
+  {
+   "t": 17.82,
+   "sfx": "pop"
+  },
+  {
+   "t": 26.92,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 28.47,
+   "sfx": "pop"
+  },
+  {
+   "t": 28.57,
+   "sfx": "chime"
+  }
+ ],
+ "countdown": []
+}

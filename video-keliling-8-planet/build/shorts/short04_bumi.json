@@ -1,0 +1,183 @@
+{
+ "num": 4,
+ "slug": "bumi",
+ "title": "Satu-satunya Planet Berpenghuni",
+ "badge": null,
+ "fps": 30,
+ "duration": 34.93,
+ "scenes": [
+  {
+   "kind": "segment",
+   "key": "bumi",
+   "start": 0.0,
+   "end": 31.43,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 8.05
+    },
+    {
+     "start": 8.05,
+     "end": 19.61
+    },
+    {
+     "start": 19.61,
+     "end": 26.68
+    },
+    {
+     "start": 26.68,
+     "end": 30.93
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Dari delapan planet, cuma satu yang sejauh ini diketahui punya kehidupan.",
+     "para": 0,
+     "start": 0.45,
+     "end": 5.2
+    },
+    {
+     "text": "Yap, rumah kita sendiri: Bumi!",
+     "para": 0,
+     "start": 5.2,
+     "end": 8.05
+    },
+    {
+     "text": "Sebagian besar permukaan Bumi, sekitar 71 persen, tertutup air.",
+     "para": 1,
+     "start": 8.05,
+     "end": 12.78
+    },
+    {
+     "text": "Jaraknya dari Matahari pas, tidak terlalu panas dan tidak terlalu dingin, jadi air bisa tetap cair.",
+     "para": 1,
+     "start": 12.78,
+     "end": 19.61
+    },
+    {
+     "text": "Bumi punya satu bulan yang setia menemani.",
+     "para": 2,
+     "start": 19.61,
+     "end": 23.03
+    },
+    {
+     "text": "Kalau Merkurius dan Venus tadi?",
+     "para": 2,
+     "start": 23.03,
+     "end": 25.85
+    },
+    {
+     "text": "Nol!",
+     "para": 2,
+     "start": 25.85,
+     "end": 26.68
+    },
+    {
+     "text": "Jadi, jaga Bumi baik-baik ya, teman-teman.",
+     "para": 3,
+     "start": 26.68,
+     "end": 28.74
+    },
+    {
+     "text": "Kita belum punya planet cadangan!",
+     "para": 3,
+     "start": 28.74,
+     "end": 30.93
+    }
+   ],
+   "planet_idx": 3,
+   "timer_start": null
+  },
+  {
+   "kind": "cta",
+   "key": "cta",
+   "start": 31.43,
+   "end": 34.93
+  }
+ ],
+ "vo": [
+  {
+   "file": "05_bumi.mp3",
+   "t": 0.45,
+   "dur": 30.48
+  }
+ ],
+ "captions": [
+  {
+   "text": "Dari delapan planet, cuma satu yang sejauh ini diketahui punya kehidupan.",
+   "start": 0.45,
+   "end": 5.35
+  },
+  {
+   "text": "Yap, rumah kita sendiri: Bumi!",
+   "start": 5.2,
+   "end": 8.2
+  },
+  {
+   "text": "Sebagian besar permukaan Bumi, sekitar 71 persen, tertutup air.",
+   "start": 8.05,
+   "end": 12.93
+  },
+  {
+   "text": "Jaraknya dari Matahari pas, tidak terlalu panas dan tidak terlalu dingin, jadi air bisa tetap cair.",
+   "start": 12.78,
+   "end": 19.76
+  },
+  {
+   "text": "Bumi punya satu bulan yang setia menemani.",
+   "start": 19.61,
+   "end": 23.18
+  },
+  {
+   "text": "Kalau Merkurius dan Venus tadi?",
+   "start": 23.03,
+   "end": 26.0
+  },
+  {
+   "text": "Nol!",
+   "start": 25.85,
+   "end": 26.83
+  },
+  {
+   "text": "Jadi, jaga Bumi baik-baik ya, teman-teman.",
+   "start": 26.68,
+   "end": 28.89
+  },
+  {
+   "text": "Kita belum punya planet cadangan!",
+   "start": 28.74,
+   "end": 31.08
+  }
+ ],
+ "events": [
+  {
+   "t": 0.25,
+   "sfx": "pop"
+  },
+  {
+   "t": 8.3,
+   "sfx": "pop"
+  },
+  {
+   "t": 19.86,
+   "sfx": "pop"
+  },
+  {
+   "t": 26.93,
+   "sfx": "pop"
+  },
+  {
+   "t": 31.48,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 33.03,
+   "sfx": "pop"
+  },
+  {
+   "t": 33.13,
+   "sfx": "chime"
+  }
+ ],
+ "countdown": []
+}

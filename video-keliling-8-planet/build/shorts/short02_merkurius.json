@@ -1,0 +1,215 @@
+{
+ "num": 2,
+ "slug": "merkurius",
+ "title": "Siang Membara, Malam Membeku",
+ "badge": null,
+ "fps": 30,
+ "duration": 43.61,
+ "scenes": [
+  {
+   "kind": "segment",
+   "key": "merkurius",
+   "start": 0.0,
+   "end": 40.11,
+   "beats": [
+    {
+     "start": 0.0,
+     "end": 7.46
+    },
+    {
+     "start": 7.46,
+     "end": 25.88
+    },
+    {
+     "start": 25.88,
+     "end": 36.45
+    },
+    {
+     "start": 36.45,
+     "end": 39.76
+    }
+   ],
+   "sentences": [
+    {
+     "text": "Planet mana yang siangnya panas membara, tapi malamnya beku banget?",
+     "para": 0,
+     "start": 0.45,
+     "end": 5.12
+    },
+    {
+     "text": "Jawabannya: Merkurius!",
+     "para": 0,
+     "start": 5.12,
+     "end": 7.46
+    },
+    {
+     "text": "Merkurius adalah planet paling dekat dengan Matahari.",
+     "para": 1,
+     "start": 7.46,
+     "end": 10.85
+    },
+    {
+     "text": "Siang hari, suhunya bisa mencapai 430 derajat Celsius.",
+     "para": 1,
+     "start": 10.85,
+     "end": 15.86
+    },
+    {
+     "text": "Tapi malam hari, bisa turun sampai minus 180 derajat!",
+     "para": 1,
+     "start": 15.86,
+     "end": 20.53
+    },
+    {
+     "text": "Kenapa begitu?",
+     "para": 1,
+     "start": 20.53,
+     "end": 21.73
+    },
+    {
+     "text": "Karena Merkurius hampir tidak punya atmosfer untuk menyimpan panas.",
+     "para": 1,
+     "start": 21.73,
+     "end": 25.88
+    },
+    {
+     "text": "Satu tahun di Merkurius cuma 88 hari Bumi.",
+     "para": 2,
+     "start": 25.88,
+     "end": 29.76
+    },
+    {
+     "text": "Kalau kamu tinggal di sana, kamu ulang tahun kira-kira tiap tiga bulan.",
+     "para": 2,
+     "start": 29.76,
+     "end": 35.14
+    },
+    {
+     "text": "Asyik, kuenya banyak!",
+     "para": 2,
+     "start": 35.14,
+     "end": 36.45
+    },
+    {
+     "text": "Oh iya, Merkurius tidak punya bulan sama sekali.",
+     "para": 3,
+     "start": 36.45,
+     "end": 39.76
+    }
+   ],
+   "planet_idx": 1,
+   "timer_start": null
+  },
+  {
+   "kind": "cta",
+   "key": "cta",
+   "start": 40.11,
+   "end": 43.61
+  }
+ ],
+ "vo": [
+  {
+   "file": "03_merkurius.mp3",
+   "t": 0.45,
+   "dur": 42.24,
+   "trim": 39.31
+  }
+ ],
+ "captions": [
+  {
+   "text": "Planet mana yang siangnya panas membara, tapi malamnya beku banget?",
+   "start": 0.45,
+   "end": 5.27
+  },
+  {
+   "text": "Jawabannya: Merkurius!",
+   "start": 5.12,
+   "end": 7.61
+  },
+  {
+   "text": "Merkurius adalah planet paling dekat dengan Matahari.",
+   "start": 7.46,
+   "end": 11.0
+  },
+  {
+   "text": "Siang hari, suhunya bisa mencapai 430 derajat Celsius.",
+   "start": 10.85,
+   "end": 16.01
+  },
+  {
+   "text": "Tapi malam hari, bisa turun sampai minus 180 derajat!",
+   "start": 15.86,
+   "end": 20.68
+  },
+  {
+   "text": "Kenapa begitu?",
+   "start": 20.53,
+   "end": 21.88
+  },
+  {
+   "text": "Karena Merkurius hampir tidak punya atmosfer untuk menyimpan panas.",
+   "start": 21.73,
+   "end": 26.03
+  },
+  {
+   "text": "Satu tahun di Merkurius cuma 88 hari Bumi.",
+   "start": 25.88,
+   "end": 29.91
+  },
+  {
+   "text": "Kalau kamu tinggal di sana, kamu ulang tahun kira-kira tiap tiga bulan.",
+   "start": 29.76,
+   "end": 35.29
+  },
+  {
+   "text": "Asyik, kuenya banyak!",
+   "start": 35.14,
+   "end": 36.6
+  },
+  {
+   "text": "Oh iya, Merkurius tidak punya bulan sama sekali.",
+   "start": 36.45,
+   "end": 39.91
+  },
+  {
+   "text": "Lanjut ke tetangga sebelah yang lebih panas lagi!",
+   "start": 39.76,
+   "end": 40.11
+  }
+ ],
+ "events": [
+  {
+   "t": 0.25,
+   "sfx": "pop"
+  },
+  {
+   "t": 7.71,
+   "sfx": "pop"
+  },
+  {
+   "t": 26.13,
+   "sfx": "pop"
+  },
+  {
+   "t": 36.7,
+   "sfx": "pop"
+  },
+  {
+   "t": 40.01,
+   "sfx": "pop"
+  },
+  {
+   "t": 40.16,
+   "sfx": "whoosh"
+  },
+  {
+   "t": 41.71,
+   "sfx": "pop"
+  },
+  {
+   "t": 41.81,
+   "sfx": "chime"
+  }
+ ],
+ "countdown": []
+}

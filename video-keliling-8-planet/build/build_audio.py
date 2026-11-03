@@ -1,10 +1,12 @@
 """Mixer audio: VO Zulfa + musik latar ceria (disintesis) + SFX, dengan ducking otomatis."""
-import json, os, subprocess, wave
+import json, os, subprocess, wave, sys
 import numpy as np
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SR = 48000
-TL = json.load(open(os.path.join(ROOT, "build", "timeline.json")))
+TL_PATH = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "build", "timeline.json")
+OUT_PATH = sys.argv[2] if len(sys.argv) > 2 else os.path.join(ROOT, "build", "mix.wav")
+TL = json.load(open(TL_PATH))
 N = int(TL["duration"] * SR) + SR
 rs = np.random.default_rng(1)
 
@@ -96,12 +98,15 @@ def sfx(name):
 def main():
     vo = np.zeros(N)
     for v in TL["vo"]:
-        x = load(os.path.join(ROOT, "vo", v["file"])); i = int(v["t"] * SR); vo[i:i + len(x)] += x[: N - i]
+        x = load(os.path.join(ROOT, "vo", v["file"]))
+        if v.get("trim"):
+            x = x[: int(v["trim"] * SR)].copy(); f = int(0.12 * SR); x[-f:] *= np.linspace(1, 0, f)
+        i = int(v["t"] * SR); vo[i:i + len(x)] += x[: N - i]
     # ducking: musik turun saat VO berbicara
     mask = np.zeros(N)
     for v in TL["vo"]:
-        i, j = int((v["t"] - 0.15) * SR), int((v["t"] + v["dur"] + 0.1) * SR); mask[max(0, i):j] = 1
-    k = int(0.25 * SR); mask = np.convolve(mask, np.ones(k) / k, mode="same")
+        i, j = int((v["t"] - 0.15) * SR), int((v["t"] + v.get("trim", v["dur"]) + 0.1) * SR); mask[max(0, i):j] = 1
+    k = int(0.25 * SR); c = np.concatenate([[0.0], np.cumsum(mask)]); idx = np.arange(N); lo = np.clip(idx - k // 2, 0, N); hi = np.clip(idx + k // 2, 0, N); mask = (c[hi] - c[lo]) / k
     gain = 0.30 - 0.19 * mask   # 0.30 tanpa VO, 0.11 saat VO
     mus = music() * gain
     fx = np.zeros(N)
@@ -114,7 +119,7 @@ def main():
     mixR = vo * 1.0 + np.roll(mus, int(0.012 * SR)) + fx * 0.8
     mix = np.stack([mixL, mixR], 1)[:end]
     mix /= max(1e-6, np.abs(mix).max()) / 0.89
-    out = os.path.join(ROOT, "build", "mix.wav")
+    out = OUT_PATH
     with wave.open(out, "wb") as w:
         w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR)
         w.writeframes((mix * 32767).astype("<i2").tobytes())
