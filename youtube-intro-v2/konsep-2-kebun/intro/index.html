@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Let.growww — Intro (Konsep 2: Jalan-jalan di kebun)</title>
+<link rel="stylesheet" href="../../shared/mf-style.css">
+<style>
+  #nameSign{width:820px;height:270px}
+  #nameSign .post{top:230px;height:420px}
+  #nameSign .board{background:linear-gradient(180deg,#FFFBF1,#F3E5C8);box-shadow:inset 0 0 0 10px #B07A4E,0 24px 40px rgba(74,46,29,.3)}
+  #nameSign .wm{left:0;right:0;top:66px;text-align:center;font-size:136px}
+  #stand{width:400px;height:700px}
+  #stand .post{left:178px;top:380px;height:320px}
+  #stand .badge{left:0;top:0;width:400px;height:400px}
+  #ribbon{width:980px;height:96px;z-index:5}
+  #ribbon .cloth{position:absolute;inset:0;background:#FFF6E2;border-radius:14px;box-shadow:0 12px 22px rgba(74,46,29,.22);
+    clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%)}
+  #ribbon .tag{left:0;right:0;top:18px;text-align:center;font-size:52px}
+  #notice{width:1440px;height:650px}
+  #notice .post{top:600px;height:300px}
+  #paper{position:absolute;left:46px;top:46px;right:46px;bottom:46px;border-radius:14px;padding:42px 66px;transform-origin:50% 0;
+    background:linear-gradient(180deg,#FFFBF1,#F8EEDA);box-shadow:0 8px 16px rgba(74,46,29,.22)}
+  .pin{position:absolute;top:-12px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FFB86B,#E07A2E)}
+  #paper h1{display:flex;align-items:center;gap:22px;font:600 86px var(--display);color:var(--ink);line-height:1}
+  #paper h1 .ico{width:92px;height:92px}
+  #body{margin-top:26px;font:600 48px/1.38 var(--body);color:var(--ink)} #body .wd{display:inline-block}
+  #thanks{margin-top:24px;font:600 56px var(--display);color:var(--leaf)}
+  #peek{width:230px;height:230px;z-index:6}
+  #blackout{position:absolute;inset:0;background:#000;opacity:0;z-index:30}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="layer" id="bg"></div>
+  <div id="world"></div>
+  <div id="blackout"></div>
+</div>
+<template id="tpl">
+  <div class="sign" id="nameSign"><div class="post" style="left:150px"></div><div class="post" style="right:150px"></div><div class="board"></div><div class="wm" id="wm">Let.growww</div></div>
+  <div id="stand"><div class="sign"><div class="post" style="left:178px;top:380px;height:320px"></div></div><div class="badge" id="badge"><img src="../../shared/img/logo-badge.png" alt="Maskot Let.growww"></div></div>
+  <div id="ribbon"><div class="cloth"></div><div class="tag" id="tag">mari bertumbuh bersama</div></div>
+  <div class="sign" id="notice"><div class="post" style="left:260px"></div><div class="post" style="right:260px"></div><div class="board"></div>
+    <div id="paper"><span class="pin" style="left:40px"></span><span class="pin" style="right:40px"></span>
+      <h1><span class="ico" id="wico"></span><span id="wtitle">Perhatian</span></h1>
+      <div id="body">Informasi yang kami sajikan adalah berdasarkan data. Untuk menghindari ketidak akuratan informasi, mohon dipastikan terlebih dahulu agar data sesuai dan tervalidasi.</div>
+      <div id="thanks">Terima Kasih</div></div></div>
+  <div class="badge" id="peek"><img src="../../shared/img/logo-badge.png" alt=""></div>
+</template>
+<script src="../../shared/vendor/gsap.min.js"></script>
+<script src="../../shared/mf-runtime.js"></script>
+<script src="../../shared/garden-world.js"></script>
+<script>
+window.AUDIO_PLAN = { vo: [], music: null, sfx: [
+  { at: .1,  src: '../../shared/audio/sfx-whoosh.mp3',  vol: .35 },
+  { at: 1.3, src: '../../shared/audio/sfx-wood.mp3',    vol: .5 },
+  { at: 1.5, src: '../../shared/audio/sfx-jingle.mp3',  vol: .6 },
+  { at: 2.35,src: '../../shared/audio/sfx-sparkle.mp3', vol: .45 },
+  { at: 2.95,src: '../../shared/audio/sfx-pop.mp3',     vol: .35 },
+  { at: 4.42,src: '../../shared/audio/sfx-whoosh.mp3',  vol: .55 },
+  { at: 5.3, src: '../../shared/audio/sfx-pop.mp3',     vol: .35 },
+  { at: 5.75,src: '../../shared/audio/sfx-bell.mp3',    vol: .35 },
+  { at: 7.3, src: '../../shared/audio/sfx-pop.mp3',     vol: .35 },
+]};
+const { $ } = MF;
+const G = MF.garden($('#bg'), { seed: 31, leaves: 4, base: 'linear-gradient(180deg,#FFF4DA 0%,#F6E6C4 60%,#EBD7AE 100%)' });
+const world = $('#world');
+const GWD = GW.build(world, { length: 6200, seed: 4 });
+$('#world').appendChild($('#tpl').content.cloneNode(true));
+GWD.place($('#nameSign'), 1800, 290);
+GWD.place($('#stand'), 2700, 190);
+GWD.place($('#ribbon'), 2060, 690);
+GWD.place($('#notice'), 4100, 150);
+GWD.place($('#peek'), 5380, 610);
+$('#wico').innerHTML = MF.ICON.warn;
+const W = MF.wordmark($('#wm')), TAG = MF.words($('#tag')), BODY = MF.words($('#body'));
+const cam = { x: -200 };
+
+MF.boot({
+  duration: 13,
+  build(tl) {
+    gsap.set('#world', { scale: 1.25, transformOrigin: '960px 520px' });
+    gsap.set('#nameSign', { y: 640 });
+    gsap.set(W, { y: -60, opacity: 0, rotation: -12 });
+    gsap.set('#badge', { scale: 0, rotation: -25 });
+    gsap.set('#ribbon', { scaleX: 0, transformOrigin: '50% 50%' });
+    gsap.set(TAG, { opacity: 0, y: 20 });
+    gsap.set('#paper', { rotation: -8, y: -700 });
+    gsap.set('#wico', { scale: 0 }); gsap.set('#wtitle', { opacity: 0, x: -40 });
+    gsap.set(BODY, { opacity: 0, y: 22 }); gsap.set('#thanks', { opacity: 0, scale: .5, transformOrigin: '0 50%' });
+    gsap.set('#peek', { y: 520 });
+
+    // 1. kamera menyusuri jalan setapak
+    tl.to(cam, { x: 1240, duration: 1.5, ease: 'power2.inOut' }, 0)
+      .to('#world', { scale: 1.4, duration: 1.4, ease: 'power1.inOut' }, 0);
+    // 2. papan nama muncul dari tanah, huruf menempel
+    tl.to('#nameSign', { y: 0, duration: .5, ease: 'back.out(1.6)' }, .85);
+    W.forEach((c, i) => tl.to(c, { y: 0, opacity: 1, rotation: 0, duration: .45, ease: 'back.out(2.6)' }, 1.4 + i * .05));
+    MF.blur(tl, W, 1.4, .45, { from: 16 });
+    // 3. mundur (wide) memperlihatkan maskot + pita tagline
+    tl.to(cam, { x: 1590, duration: 1.0, ease: 'power3.inOut' }, 2.0)
+      .to('#world', { scale: 1, duration: 1.0, ease: 'power3.inOut' }, 2.0)
+      .to('#badge', { scale: 1, rotation: 0, duration: .6, ease: 'back.out(2)' }, 2.3)
+      .to('#ribbon', { scaleX: 1, duration: .5, ease: 'back.out(1.4)' }, 2.85);
+    TAG.forEach((w, i) => tl.to(w, { opacity: 1, y: 0, duration: .4, ease: 'power3.out' }, 3.0 + i * .08));
+    MF.blur(tl, TAG, 3.0, .45, { from: 10 });
+    tl.to('#badge', { y: -18, duration: .25, yoyo: true, repeat: 1, ease: 'power2.out' }, 3.5)
+      .to('#world', { scale: 1.05, duration: .9, ease: 'sine.inOut' }, 3.5);
+    // 4. whip ke papan pengumuman
+    tl.to(cam, { x: 3860, duration: .62, ease: 'power3.inOut' }, 4.4)
+      .to('#world', { scale: 1, duration: .62, ease: 'power3.inOut' }, 4.4);
+    MF.blur(tl, '#world', 4.68, .4, { from: 26, ax: 1, ay: .04 });
+    // 5. Perhatian: kertas dipaku ke papan
+    tl.to('#paper', { y: 0, duration: .5, ease: 'power3.out' }, 5.0)
+      .to('#paper', { rotation: 0, duration: .9, ease: 'elastic.out(1,.35)' }, 5.3)
+      .to('#wico', { scale: 1, duration: .45, ease: 'back.out(2.6)' }, 5.7)
+      .to('#wtitle', { opacity: 1, x: 0, duration: .45, ease: 'power3.out' }, 5.78);
+    MF.blur(tl, '#wtitle', 5.78, .45, { from: 16, ax: 1, ay: .08 });
+    BODY.forEach((w, i) => tl.to(w, { opacity: 1, y: 0, duration: .4, ease: 'power3.out' }, 6.05 + i * .035));
+    tl.to('#thanks', { opacity: 1, scale: 1, duration: .55, ease: 'back.out(2)' }, 7.0)
+      .to('#peek', { y: 0, duration: .55, ease: 'back.out(1.8)' }, 7.25)
+      .to('#peek', { rotation: 7, duration: .9, yoyo: true, repeat: 4, ease: 'sine.inOut' }, 7.8)
+      .to(cam, { x: 3900, duration: 4.5, ease: 'sine.inOut' }, 7.6)
+      .to('#blackout', { opacity: 1, duration: .6, ease: 'power1.in' }, 12.4);
+  },
+  render(t) { G.update(t); GWD.update(cam.x); }
+});
+</script>
+</body>
+</html>

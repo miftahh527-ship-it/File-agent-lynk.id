@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Let.growww — Outro (Konsep 3: Huruf jadi tanaman)</title>
+<link rel="stylesheet" href="../../shared/mf-style.css">
+<style>
+  #band{position:absolute;left:-60px;top:560px;width:2040px;height:1200px;z-index:2;
+    background:radial-gradient(ellipse at 50% 0%,#7A4E36 0%,#5E3B27 40%,#3F2618 100%);border-radius:50% 50% 0 0/50px 50px 0 0}
+  #band .bg-grain{opacity:.4}
+  #mask{position:absolute;left:0;top:0;width:1920px;height:572px;overflow:hidden;z-index:3}
+  #thx{position:absolute;left:0;width:1920px;top:448px;text-align:center;font:600 90px var(--display);color:var(--ink);white-space:nowrap}
+  #thx .wd{display:inline-block}
+  #thx .wd.hl{color:var(--leaf)}
+  #seedDot{position:absolute;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:var(--marigold);z-index:5}
+  #badge{left:820px;top:80px;width:280px;height:280px;z-index:5}
+  #sub{position:absolute;left:0;width:1920px;top:620px;text-align:center;font:700 44px var(--body);color:#FBEBD0;z-index:4}
+  #sub .wd{display:inline-block}
+  .slot{position:absolute;top:760px;width:780px;height:200px;z-index:4;overflow:visible}
+  .slot .social{left:0;top:0}
+  .slot .sprig{position:absolute;right:-14px;top:-40px;width:70px;height:70px;transform-origin:0 100%}
+  #s1{left:150px} #s2{left:990px}
+  .hrt{position:absolute;width:44px;height:44px;opacity:0;z-index:8}
+  #blackout{position:absolute;inset:0;background:#000;opacity:0;z-index:30}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="layer" id="bg"></div>
+  <div id="world">
+    <div id="mask"><div id="thx">Terima Kasih sudah menonton video kami.</div></div>
+    <div id="band"><div class="bg-grain"></div></div>
+    <div id="seedDot"></div>
+    <div class="badge" id="badge"><img src="../../shared/img/logo-badge.png" alt="Maskot Let.growww"></div>
+    <div id="sub">Jangan lupa Subscribe, like, komen dan follow platform sosial kami ya :)</div>
+    <div class="slot" id="s1"><span class="sprig"></span></div>
+    <div class="slot" id="s2"><span class="sprig"></span></div>
+  </div>
+  <div class="cursor" id="cur" style="z-index:9"></div>
+  <div class="ripple" id="rip" style="z-index:9"></div>
+  <div id="blackout"></div>
+</div>
+<script src="../../shared/vendor/gsap.min.js"></script>
+<script src="../../shared/mf-runtime.js"></script>
+<script>
+window.AUDIO_PLAN = { vo: [], music: null, sfx: [
+  { at: .05, src: '../../shared/audio/sfx-whoosh.mp3',  vol: .4 },
+  { at: .6,  src: '../../shared/audio/sfx-pop.mp3',     vol: .4 },
+  { at: .8,  src: '../../shared/audio/sfx-sparkle.mp3', vol: .45 },
+  { at: 1.05,src: '../../shared/audio/sfx-sprout.mp3',  vol: .4 },
+  { at: 1.5, src: '../../shared/audio/sfx-jingle.mp3',  vol: .55 },
+  { at: 3.1, src: '../../shared/audio/sfx-sprout.mp3',  vol: .4 },
+  { at: 5.2, src: '../../shared/audio/sfx-click.mp3',   vol: .6 },
+  { at: 5.3, src: '../../shared/audio/sfx-bell.mp3',    vol: .4 },
+  { at: 6.6, src: '../../shared/audio/sfx-click.mp3',   vol: .6 },
+  { at: 6.7, src: '../../shared/audio/sfx-pop.mp3',     vol: .4 },
+  { at: 7.7, src: '../../shared/audio/sfx-sparkle.mp3', vol: .4 },
+]};
+const { $ } = MF;
+const G = MF.garden($('#bg'), { seed: 61, leaves: 5, base: 'linear-gradient(180deg,#FFF8E8 0%,#F7EBD3 70%,#EEDCB8 100%)' });
+const YT = MF.social($('#s1'), { platform: 'youtube', label: 'YouTube', user: '@Let.growww', b1: 'SUBSCRIBE', b2: '✓ SUBSCRIBED', color: '#FF0033' });
+const IG = MF.social($('#s2'), { platform: 'instagram', label: 'Instagram', user: '@let.growww', b1: 'Follow', b2: '✓ Following', color: '#4F5BD5' });
+document.querySelectorAll('.sprig').forEach(s => s.innerHTML = MF.leafSVG());
+$('#cur').innerHTML = MF.ICON.cursor;
+const THX = MF.words($('#thx')), SUB = MF.words($('#sub'));
+THX[0].classList.add('hl'); THX[1].classList.add('hl');       // "Terima Kasih" hijau tunas
+const R = MF.rand(14);
+const HR = Array.from({ length: 9 }, (_, i) => { const h = document.createElement('div'); h.className = 'hrt';
+  h.innerHTML = i % 3 === 2 ? MF.leafSVG() : MF.ICON.heart; $('#stage').appendChild(h); return { el: h, dx: (R() - .5) * 220, up: 110 + R() * 110, d: R() * .4 }; });
+const bp = (card, ox, oy, k) => () => { const b = card.querySelector('.btn'); return k ? oy + b.offsetTop + b.offsetHeight / 2 : ox + b.offsetLeft + b.offsetWidth / 2; };
+const BTN = { yt: [bp(YT, 150, 760, 0), bp(YT, 150, 760, 1)], ig: [bp(IG, 990, 760, 0), bp(IG, 990, 760, 1)] };
+
+MF.boot({
+  duration: 10,
+  build(tl) {
+    gsap.set('#band', { y: 560 });
+    gsap.set('#seedDot', { x: 960, y: -60 });
+    gsap.set('#badge', { clipPath: 'circle(0% at 50% 50%)' });
+    gsap.set(THX, { y: 160 });
+    gsap.set(SUB, { y: 30, opacity: 0 });
+    gsap.set(['#s1', '#s2'], { y: 420 });
+    gsap.set('.sprig', { scale: 0, rotation: -40 });
+    gsap.set('#cur', { x: 2000, y: 1150 });
+    // tanah naik; benih (titik) jatuh lalu mekar jadi maskot
+    tl.to('#band', { y: 0, duration: .55, ease: 'power3.out' }, 0)
+      .to('#seedDot', { y: 220, duration: .5, ease: 'bounce.out' }, .1)
+      .to('#seedDot', { scale: 6.4, duration: .25, ease: 'power2.in' }, .6)
+      .to('#badge', { clipPath: 'circle(72% at 50% 50%)', duration: .45, ease: 'back.out(1.5)' }, .7)
+      .to('#seedDot', { opacity: 0, duration: .2 }, .8);
+    // kata menyembul dari tanah
+    THX.forEach((w, i) => tl.to(w, { y: 0, duration: .7, ease: 'elastic.out(1,.6)' }, 1.05 + i * .1));
+    SUB.forEach((w, i) => tl.to(w, { y: 0, opacity: 1, duration: .42, ease: 'power3.out' }, 2.2 + i * .045));
+    MF.blur(tl, SUB, 2.2, .45, { from: 10 });
+    // kartu tumbuh dari tanah, bertunas
+    tl.to('#s1', { y: 0, duration: .6, ease: 'back.out(1.5)' }, 3.0)
+      .to('#s2', { y: 0, duration: .6, ease: 'back.out(1.5)' }, 3.2)
+      .to('.sprig', { scale: 1, rotation: 0, duration: .5, ease: 'back.out(3)', stagger: .2 }, 3.6);
+    // kursor
+    tl.to('#cur', { x: BTN.yt[0], y: BTN.yt[1], duration: .85, ease: 'power3.inOut' }, 4.3)
+      .to('#cur', { scale: .85, duration: .08, yoyo: true, repeat: 1 }, 5.16)
+      .fromTo('#rip', { x: BTN.yt[0], y: BTN.yt[1], scale: .4, opacity: .9 }, { scale: 4, opacity: 0, duration: .5, immediateRender: false }, 5.2)
+      .to('#cur', { x: BTN.ig[0], y: BTN.ig[1], duration: .9, ease: 'power3.inOut' }, 5.6)
+      .to('#cur', { scale: .85, duration: .08, yoyo: true, repeat: 1 }, 6.56)
+      .fromTo('#rip', { x: BTN.ig[0], y: BTN.ig[1], scale: .4, opacity: .9 }, { scale: 4, opacity: 0, duration: .5, immediateRender: false }, 6.6)
+      .to('#cur', { x: 2050, y: 1150, duration: .8, ease: 'power2.in' }, 7.1);
+    HR.forEach(h => tl.fromTo(h.el, { x: () => BTN.ig[0]() - 22, y: () => BTN.ig[1]() - 60, opacity: 0, scale: .4 },
+      { x: () => BTN.ig[0]() - 22 + h.dx, y: () => BTN.ig[1]() - 60 - h.up, opacity: 1, scale: 1, duration: .7, ease: 'power2.out' }, 6.65 + h.d)
+      .to(h.el, { opacity: 0, duration: .4 }, 7.35 + h.d));
+    tl.to('#badge', { y: -20, duration: .22, yoyo: true, repeat: 1 }, 7.6)
+      .to('#world', { scale: 1.03, transformOrigin: '960px 540px', duration: 2.2, ease: 'sine.inOut' }, 7.4)
+      .to('#blackout', { opacity: 1, duration: .7, ease: 'power1.in' }, 9.3);
+  },
+  render(t) {
+    G.update(t); YT.classList.toggle('done', t >= 5.2); IG.classList.toggle('done', t >= 6.6);
+    if (t > 2.3) THX.forEach((w, i) => { w.style.transform = `skewX(${Math.sin(t * 1.8 + i * .7) * 2}deg)`; });
+    if (t > 4.4) document.querySelectorAll('.sprig').forEach((s, i) => { s.style.transform = `rotate(${Math.sin(t * 2.2 + i) * 10}deg)`; });
+  }
+});
+</script>
+</body>
+</html>
