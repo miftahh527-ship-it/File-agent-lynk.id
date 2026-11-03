@@ -1,5 +1,8 @@
 # Let.growww — intro & outro YouTube v2 (skill Motion Format)
 
+**Konsep terpilih: `konsep-3-huruf` (Huruf jadi tanaman).** File siap pakai:
+`hasil/konsep-3-huruf-intro-5detik.mp4`, `hasil/konsep-3-huruf-intro-lengkap.mp4`, `hasil/konsep-3-huruf-outro-10detik.mp4`.
+
 Tiga konsep untuk dipilih. Masing-masing berisi **intro** (5 dtk + layar Perhatian, total 13 dtk) dan
 **outro** (10 dtk). 16:9, 1920×1080, 30 fps.
 
