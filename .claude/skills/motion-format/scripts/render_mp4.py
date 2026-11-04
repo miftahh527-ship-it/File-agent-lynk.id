@@ -21,7 +21,7 @@ Path lain: env CHROME=/path/ke/chrome, FFMPEG=/path/ke/ffmpeg.
 """
 import argparse, base64, json, os, pathlib, platform, shutil, socket, struct, subprocess, sys, tempfile, time, urllib.request
 
-PORT = 9333
+PORT = int(os.environ.get('MF_PORT', '9333'))  # MF_PORT=xxxx untuk render paralel
 
 
 def find_chrome():

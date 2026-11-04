@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="id">
+<!-- Made with the Bang Motion skill v1.4.0 by Bang Tutorial (https://youtube.com/bangtutorial) - MIT - https://github.com/bangtutorial/bang-motion · dimodifikasi untuk skill Motion Format (suara ElevenLabs + render bersuara) -->
+<head>
+<meta charset="utf-8">
+<title>__TITLE__</title>
+<!--
+  Kartun panggung · Bagian 1 (Pembuka + Bab 1) · 81,5 dtk · VO Zulfa (ElevenLabs eleven_v4)
+  Panggung: 1 gua & cap tangan · 2 kemah gua · 3 kamar & HP · 4 halaman & kapsul waktu ·
+            5 sabana Afrika · 6 jalan raya · 7 aula saudara jauh
+  Autoplay + loop tanpa player; ?debug=1 panel scrub; ?clean=1 tahan untuk export.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;height:100%;background:#14133D;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;overflow:hidden;background:#14133D}
+#world{position:absolute;inset:0;will-change:filter}
+#dbg{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);display:none;gap:12px;align-items:center;padding:10px 16px;border-radius:14px;background:rgba(14,16,22,.9);color:#cfd5e3;font:13px system-ui;z-index:50}
+#cap{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);width:max-content;max-width:1560px;box-sizing:border-box;padding:12px 34px 14px;border-radius:20px;background:rgba(24,26,38,.72);color:#FFFFFF;font:600 46px/1.22 Fredoka,sans-serif;text-align:center;letter-spacing:.2px;opacity:0;z-index:20;text-shadow:0 2px 0 rgba(0,0,0,.25);white-space:normal}
+#dbg input{width:420px}#dbg span{font-variant-numeric:tabular-nums;min-width:7ch}
+</style>
+</head>
+<body>
+<div id="stage"><div id="world"><svg id="scene" width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;inset:0" font-family="Fredoka, sans-serif"></svg></div>
+<div id="cap"><span></span></div>
+<div id="dbg"><button id="dPlay">Pause</button><input id="dScrub" type="range" min="0" max="1000" value="0"><span id="dClock">0.00s</span></div></div>
+<audio id="vo" src="" preload="auto"></audio>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

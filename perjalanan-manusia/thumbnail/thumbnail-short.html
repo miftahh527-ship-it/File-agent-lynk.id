@@ -1,0 +1,1259 @@
+<!doctype html>
+<html lang="id">
+<!-- Made with the Bang Motion skill v1.4.0 by Bang Tutorial (https://youtube.com/bangtutorial) - MIT - https://github.com/bangtutorial/bang-motion · dimodifikasi untuk skill Motion Format (suara ElevenLabs + render bersuara) -->
+<head>
+<meta charset="utf-8">
+<title>Thumbnail short</title>
+<!--
+  Kartun panggung · Bagian 1 (Pembuka + Bab 1) · 81,5 dtk · VO Zulfa (ElevenLabs eleven_v4)
+  Panggung: 1 gua & cap tangan · 2 kemah gua · 3 kamar & HP · 4 halaman & kapsul waktu ·
+            5 sabana Afrika · 6 jalan raya · 7 aula saudara jauh
+  Autoplay + loop tanpa player; ?debug=1 panel scrub; ?clean=1 tahan untuk export.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;height:100%;background:#14133D;overflow:hidden}
+#stage{position:absolute;left:0;top:0;transform-origin:0 0 !important;transform:scale(1.0) !important;width:1080px;height:1920px;overflow:hidden;background:#14133D}
+#world{position:absolute;inset:0;will-change:filter}
+#dbg{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);display:none;gap:12px;align-items:center;padding:10px 16px;border-radius:14px;background:rgba(14,16,22,.9);color:#cfd5e3;font:13px system-ui;z-index:50}
+#cap{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);width:max-content;max-width:1560px;box-sizing:border-box;padding:12px 34px 14px;border-radius:20px;background:rgba(24,26,38,.72);color:#FFFFFF;font:600 46px/1.22 Fredoka,sans-serif;text-align:center;letter-spacing:.2px;opacity:0;z-index:20;text-shadow:0 2px 0 rgba(0,0,0,.25);white-space:normal}
+#dbg input{width:420px}#dbg span{font-variant-numeric:tabular-nums;min-width:7ch}
+</style>
+</head>
+<body>
+<div id="stage"><div id="world"><svg id="scene" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0" font-family="Fredoka, sans-serif"></svg></div>
+<div id="cap"><span></span></div>
+<div id="dbg"><button id="dPlay">Pause</button><input id="dScrub" type="range" min="0" max="1000" value="0"><span id="dClock">0.00s</span></div></div>
+<audio id="vo" src="" preload="auto"></audio>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>window.STAGE={w:1080,h:1920};</script><script>
+/* dibuat oleh naskah/caps.py — teks subtitle + durasi tiap klip VO */
+window.VODATA={
+"s-1": {
+"dur": 26.593,
+"cap": [
+[
+0,
+1.98,
+"Lukisan gua tertua di dunia..."
+],
+[
+1.98,
+3.65,
+"ada di Indonesia!"
+],
+[
+3.65,
+5.73,
+"Di Gua Liang Metanduno, Pulau Muna,"
+],
+[
+5.73,
+6.92,
+"Sulawesi Tenggara,"
+],
+[
+6.92,
+9.1,
+"ada cap tangan merah yang berumur"
+],
+[
+9.1,
+11.54,
+"paling sedikit 67.800 tahun! Caranya?"
+],
+[
+11.54,
+14.08,
+"Tangan ditempel ke dinding,"
+],
+[
+14.08,
+15.27,
+"lalu pewarna merah"
+],
+[
+15.27,
+17.18,
+"disemburkan di sekelilingnya."
+],
+[
+17.18,
+19.01,
+"Jadi, seniman tertua di"
+],
+[
+19.01,
+20.53,
+"dunia ada di Indonesia!"
+],
+[
+20.53,
+23.59,
+"Mau tahu perjalanan 300.000 tahun manusia?"
+],
+[
+23.59,
+26.6,
+"Tonton versi lengkapnya di kanal ini!"
+]
+]
+},
+"b1-1": {
+"dur": 7.628,
+"cap": [
+[
+0,
+4.68,
+"Tangan ini dilukis di dinding gua hampir 68.000 tahun yang lalu!"
+],
+[
+4.68,
+7.52,
+"Tahukah kamu di mana? Di Indonesia!"
+]
+]
+},
+"b1-2": {
+"dur": 12.434,
+"cap": [
+[
+0,
+1.85,
+"Dulu, manusia tinggal di gua."
+],
+[
+1.85,
+5.74,
+"Mereka belum bisa bertani dan belum bisa menulis."
+],
+[
+5.74,
+10.68,
+"Sekarang, kita bisa mengirim pesan ke seluruh dunia hanya dalam satu detik!"
+],
+[
+10.68,
+12.35,
+"Bagaimana bisa begitu?"
+]
+]
+},
+"b1-3": {
+"dur": 8.594,
+"cap": [
+[
+0,
+1.72,
+"Ayo, naik mesin waktu!"
+],
+[
+1.72,
+6.44,
+"Kita akan menempuh perjalanan 300.000 tahun hanya dalam 15 menit."
+],
+[
+6.44,
+8.42,
+"Siap? Kita berangkat!"
+]
+]
+},
+"b1-4": {
+"dur": 24.268,
+"cap": [
+[
+0,
+4.97,
+"Perhentian pertama: Afrika, sekitar 300.000 tahun yang lalu."
+],
+[
+4.97,
+8.28,
+"Di Jebel Irhoud, Maroko, ilmuwan menemukan fosil"
+],
+[
+8.28,
+11.3,
+"tertua dari spesies kita, yaitu Homo sapiens."
+],
+[
+11.3,
+12.98,
+"Artinya, \"manusia bijak\"."
+],
+[
+12.98,
+16.52,
+"Wajah mereka sudah mirip dengan kita."
+],
+[
+16.52,
+20.47,
+"Kalau mereka memakai topi dan berjalan di jalan raya hari ini,"
+],
+[
+20.47,
+24.22,
+"mungkin kita tidak sadar bahwa mereka manusia purba!"
+]
+]
+},
+"b1-5": {
+"dur": 22.518,
+"cap": [
+[
+0,
+5.0,
+"Pada zaman itu, kita punya \"saudara jauh\", seperti Neanderthal di Eropa."
+],
+[
+5.0,
+7.31,
+"Indonesia juga punya kisah penting!"
+],
+[
+7.31,
+11.04,
+"Fosil Homo erectus ditemukan di Sangiran dan Trinil, Jawa."
+],
+[
+11.04,
+15.99,
+"Lalu, Homo floresiensis yang bertubuh mungil ditemukan di Liang Bua, Flores."
+],
+[
+15.99,
+20.04,
+"Sekarang, semua spesies manusia lain sudah punah."
+],
+[
+20.04,
+22.47,
+"Yang tersisa hanya kita."
+]
+]
+},
+"b2-1": {
+"dur": 16.196,
+"cap": [
+[
+0,
+2.16,
+"Manusia purba belum bertani."
+],
+[
+2.16,
+7.69,
+"Mereka berburu hewan dan meramu, yaitu mengumpulkan buah dan umbi dari alam."
+],
+[
+7.69,
+10.87,
+"Kalau makanan habis? Mereka pindah tempat!"
+],
+[
+10.87,
+12.84,
+"Alat mereka terbuat dari batu."
+],
+[
+12.84,
+16.06,
+"Karena itu, masa ini disebut Zaman Batu."
+]
+]
+},
+"b2-2": {
+"dur": 8.438,
+"cap": [
+[
+0,
+2.96,
+"Penemuan pentingnya adalah memanfaatkan api!"
+],
+[
+2.96,
+8.47,
+"Api dipakai untuk menghangatkan badan, mengusir binatang buas, dan memasak makanan."
+]
+]
+},
+"b2-3": {
+"dur": 11.546,
+"cap": [
+[
+0,
+3.11,
+"Puluhan ribu tahun yang lalu, sebagian Homo sapiens"
+],
+[
+3.11,
+6.77,
+"mulai keluar dari Afrika dan menyebar ke seluruh dunia."
+],
+[
+6.77,
+11.57,
+"Untuk sampai ke Australia, mereka kemungkinan melewati kepulauan Indonesia."
+]
+]
+},
+"b2-4": {
+"dur": 21.159,
+"cap": [
+[
+0,
+3.68,
+"Pada Januari 2026, peneliti Indonesia dan Australia"
+],
+[
+3.68,
+7.25,
+"mengumumkan temuan besar di jurnal ilmiah Nature."
+],
+[
+7.25,
+11.32,
+"Di Gua Liang Metanduno, Pulau Muna, Sulawesi Tenggara,"
+],
+[
+11.32,
+16.32,
+"ada cap tangan merah yang berumur paling sedikit 67.800 tahun!"
+],
+[
+16.32,
+21.15,
+"Inilah lukisan gua tertua di dunia yang usianya sudah dibuktikan."
+]
+]
+},
+"b2-5": {
+"dur": 17.711,
+"cap": [
+[
+0,
+1.69,
+"Bagaimana cara membuatnya?"
+],
+[
+1.69,
+8.02,
+"Tangan ditempel ke dinding, lalu pewarna merah disemburkan di sekelilingnya."
+],
+[
+8.02,
+9.9,
+"Di Maros, Sulawesi Selatan,"
+],
+[
+9.9,
+13.85,
+"juga ada lukisan babi hutan yang berumur sekitar 51.200 tahun."
+],
+[
+13.85,
+17.96,
+"Jadi, seniman tertua di dunia ada di Indonesia!"
+]
+]
+},
+"b3-1": {
+"dur": 17.554,
+"cap": [
+[
+0,
+5.69,
+"Sekitar 12.000 tahun yang lalu, zaman es berakhir dan Bumi mulai menghangat."
+],
+[
+5.69,
+9.69,
+"Di wilayah subur Timur Tengah yang dijuluki Bulan Sabit Subur,"
+],
+[
+9.69,
+12.14,
+"manusia mulai menanam gandum dan jelai."
+],
+[
+12.14,
+15.78,
+"Mereka juga menjinakkan kambing dan domba."
+],
+[
+15.78,
+17.8,
+"Inilah Revolusi Pertanian!"
+]
+]
+},
+"b3-2": {
+"dur": 7.549,
+"cap": [
+[
+0,
+3.88,
+"Pertanian juga muncul di tempat lain: padi di Tiongkok,"
+],
+[
+3.88,
+7.8,
+"jagung di Amerika Tengah, dan kebun di Papua Nugini."
+]
+]
+},
+"b3-3": {
+"dur": 18.521,
+"cap": [
+[
+0,
+3.53,
+"Karena harus menjaga ladang, manusia mulai menetap."
+],
+[
+3.53,
+6.12,
+"Rumah-rumah berkumpul menjadi desa."
+],
+[
+6.12,
+10.23,
+"Makanan bisa disimpan, dan jumlah manusia pun bertambah."
+],
+[
+10.23,
+15.08,
+"Tapi waktu itu, penduduk seluruh dunia diperkirakan hanya sekitar 5 juta orang."
+],
+[
+15.08,
+18.51,
+"Lebih sedikit dari penduduk Jakarta hari ini!"
+]
+]
+},
+"b4-1": {
+"dur": 17.711,
+"cap": [
+[
+0,
+3.94,
+"Di tepi sungai besar, desa-desa tumbuh menjadi kota."
+],
+[
+3.94,
+8.43,
+"Lalu, lahirlah peradaban, yaitu masyarakat yang punya kota,"
+],
+[
+8.43,
+11.89,
+"pemimpin, aturan, dan pembagian pekerjaan."
+],
+[
+11.89,
+17.96,
+"Peradaban awal muncul di Mesopotamia, Mesir, Lembah Indus, dan Tiongkok."
+]
+]
+},
+"b4-2": {
+"dur": 20.506,
+"cap": [
+[
+0,
+2.85,
+"Di Mesopotamia, wilayah Irak sekarang,"
+],
+[
+2.85,
+6.71,
+"bangsa Sumeria menemukan tulisan sekitar tahun 3200 SM."
+],
+[
+6.71,
+12.74,
+"Bentuknya seperti paku yang ditekan ke tanah liat, sehingga disebut huruf paku."
+],
+[
+12.74,
+18.52,
+"Awalnya, tulisan dipakai untuk mencatat, misalnya jumlah karung gandum."
+],
+[
+18.52,
+20.37,
+"Mirip buku catatan toko!"
+]
+]
+},
+"b4-3": {
+"dur": 6.766,
+"cap": [
+[
+0,
+3.57,
+"Sejak ada tulisan, dimulailah zaman sejarah."
+],
+[
+3.57,
+7.02,
+"Masa sebelumnya disebut zaman prasejarah."
+]
+]
+},
+"b4-4": {
+"dur": 14.524,
+"cap": [
+[
+0,
+3.25,
+"Di Mesir, orang menulis dengan hieroglif dan"
+],
+[
+3.25,
+7.09,
+"membangun Piramida Agung Giza sekitar tahun 2560 SM."
+],
+[
+7.09,
+10.15,
+"Pada masa ini juga ditemukan roda,"
+],
+[
+10.15,
+14.42,
+"yang membuat pengangkutan barang jauh lebih mudah."
+]
+]
+},
+"b5-1": {
+"dur": 25.966,
+"cap": [
+[
+0,
+4.21,
+"Ribuan tahun berikutnya, kerajaan-kerajaan besar bermunculan."
+],
+[
+4.21,
+10.12,
+"Yunani memperkenalkan awal demokrasi, yaitu rakyat ikut menentukan keputusan."
+],
+[
+10.12,
+13.93,
+"Romawi terkenal dengan jalan dan hukumnya."
+],
+[
+13.93,
+19.58,
+"Di Tiongkok, sekitar tahun 105 M, Cai Lun menyempurnakan cara membuat kertas."
+],
+[
+19.58,
+22.95,
+"Sekitar abad ke-9, Baghdad menjadi pusat ilmu,"
+],
+[
+22.95,
+25.98,
+"dan Al-Khawarizmi mengembangkan aljabar."
+]
+]
+},
+"b5-2": {
+"dur": 12.748,
+"cap": [
+[
+0,
+1.64,
+"Bagaimana dengan Nusantara?"
+],
+[
+1.64,
+6.43,
+"Zaman sejarah Indonesia dimulai dengan tulisan tertua di Nusantara,"
+],
+[
+6.43,
+9.06,
+"yaitu prasasti Yupa dari Kerajaan Kutai,"
+],
+[
+9.06,
+12.79,
+"Kalimantan Timur, sekitar abad ke-4 atau ke-5 Masehi."
+]
+]
+},
+"b5-3": {
+"dur": 18.442,
+"cap": [
+[
+0,
+4.6,
+"Setelah itu, muncul Sriwijaya di Sumatra, sekitar abad ke-7."
+],
+[
+4.6,
+8.96,
+"Sriwijaya adalah kerajaan maritim yang menguasai jalur laut."
+],
+[
+8.96,
+15.4,
+"Lalu, Candi Borobudur dibangun oleh Wangsa Syailendra sekitar abad ke-8 sampai ke-9."
+],
+[
+15.4,
+18.69,
+"Inilah candi Buddha terbesar di dunia!"
+]
+]
+},
+"b5-4": {
+"dur": 14.759,
+"cap": [
+[
+0,
+3.52,
+"Majapahit berdiri pada tahun 1293 dan terkenal"
+],
+[
+3.52,
+6.43,
+"dengan Sumpah Palapa Patih Gajah Mada."
+],
+[
+6.43,
+11.98,
+"Kemudian, berdiri kerajaan-kerajaan Islam seperti Samudra Pasai,"
+],
+[
+11.98,
+14.61,
+"Demak, Ternate, dan Tidore."
+]
+]
+},
+"b5-5": {
+"dur": 12.591,
+"cap": [
+[
+0,
+4.81,
+"Nusantara ramai didatangi pedagang dari India, Tiongkok, dan Arab."
+],
+[
+4.81,
+6.23,
+"Apa yang mereka cari?"
+],
+[
+6.23,
+8.37,
+"Rempah-rempah dari Maluku!"
+],
+[
+8.37,
+12.58,
+"Rempah inilah yang nantinya mengubah sejarah dunia."
+]
+]
+},
+"b6-1": {
+"dur": 13.636,
+"cap": [
+[
+0,
+5.08,
+"Sekitar tahun 1440, Johannes Gutenberg di Jerman mengembangkan mesin cetak."
+],
+[
+5.08,
+9.29,
+"Buku yang dulu disalin dengan tangan selama berbulan-bulan,"
+],
+[
+9.29,
+11.66,
+"kini bisa dibuat banyak dan cepat."
+],
+[
+11.66,
+13.89,
+"Ilmu pun menyebar luas."
+]
+]
+},
+"b6-2": {
+"dur": 21.786,
+"cap": [
+[
+0,
+2.3,
+"Karena rempah sangat mahal,"
+],
+[
+2.3,
+7.77,
+"bangsa Eropa berlomba mencari jalan laut menuju sumbernya."
+],
+[
+7.77,
+11.74,
+"Tahun 1492, Columbus tiba di Amerika."
+],
+[
+11.74,
+15.77,
+"Tahun 1498, Vasco da Gama sampai di India."
+],
+[
+15.77,
+21.8,
+"Lalu, tahun 1511, Portugis menaklukkan Malaka dan menuju Maluku."
+]
+]
+},
+"b6-3": {
+"dur": 15.386,
+"cap": [
+[
+0,
+3.31,
+"Penjelajahan ini menghubungkan seluruh benua,"
+],
+[
+3.31,
+8.92,
+"tetapi juga membawa penjajahan, termasuk bagi Indonesia."
+],
+[
+8.92,
+12.19,
+"Tahun 1602, Belanda mendirikan VOC."
+],
+[
+12.19,
+15.38,
+"Itulah awal masa penjajahan yang panjang."
+]
+]
+},
+"b6-4": {
+"dur": 17.476,
+"cap": [
+[
+0,
+6.86,
+"Cara manusia mencari tahu juga berubah, yaitu lewat pengamatan dan percobaan."
+],
+[
+6.86,
+11.94,
+"Sekitar tahun 1609, Galileo meneropong bulan-bulan Jupiter."
+],
+[
+11.94,
+17.32,
+"Lalu, pada tahun 1687, Isaac Newton menjelaskan hukum gravitasi."
+]
+]
+},
+"b7-1": {
+"dur": 14.916,
+"cap": [
+[
+0,
+3.86,
+"Sekitar tahun 1760, di Inggris terjadi Revolusi Industri."
+],
+[
+3.86,
+8.66,
+"Pekerjaan yang dulu dilakukan dengan tangan, kini dikerjakan mesin."
+],
+[
+8.66,
+15.17,
+"Mesin uap yang disempurnakan James Watt menggerakkan pabrik, kapal, dan kereta api."
+]
+]
+},
+"b7-2": {
+"dur": 10.371,
+"cap": [
+[
+0,
+6.0,
+"Penemuan lain pun menyusul: vaksin cacar oleh Edward Jenner, bola lampu Thomas Edison,"
+],
+[
+6.0,
+10.62,
+"pesawat Wright bersaudara, dan penisilin oleh Alexander Fleming."
+]
+]
+},
+"b7-3": {
+"dur": 22.282,
+"cap": [
+[
+0,
+1.25,
+"Lihat grafik ini."
+],
+[
+1.25,
+4.72,
+"Butuh ratusan ribu tahun sampai jumlah"
+],
+[
+4.72,
+9.06,
+"manusia mencapai 1 miliar, sekitar tahun 1800."
+],
+[
+9.06,
+13.31,
+"Setelah Revolusi Industri, dengan makanan, kebersihan,"
+],
+[
+13.31,
+17.63,
+"dan obat yang lebih baik, jumlahnya melonjak cepat!"
+],
+[
+17.63,
+22.21,
+"2 miliar pada tahun 1930, dan 3 miliar pada tahun 1960."
+]
+]
+},
+"b7-4": {
+"dur": 12.278,
+"cap": [
+[
+0,
+2.33,
+"Tapi, pabrik juga membawa polusi."
+],
+[
+2.33,
+7.51,
+"Banyak pekerja, termasuk anak-anak, bekerja terlalu lama."
+],
+[
+7.51,
+12.17,
+"Dari situ, manusia belajar membuat aturan kerja yang lebih adil."
+]
+]
+},
+"b8-1": {
+"dur": 13.401,
+"cap": [
+[
+0,
+6.84,
+"Abad ke-20 membawa masa sulit: Perang Dunia I dan Perang Dunia II."
+],
+[
+6.84,
+13.38,
+"Setelahnya, pada tahun 1945, dibentuklah PBB untuk menjaga perdamaian."
+]
+]
+},
+"b8-2": {
+"dur": 13.793,
+"cap": [
+[
+0,
+4.06,
+"Di tahun yang sama, pada tanggal 17 Agustus 1945,"
+],
+[
+4.06,
+9.53,
+"Soekarno dan Hatta membacakan Proklamasi Kemerdekaan Indonesia."
+],
+[
+9.53,
+14.04,
+"Setelah ratusan tahun dijajah, Indonesia merdeka!"
+]
+]
+},
+"b8-3": {
+"dur": 19.801,
+"cap": [
+[
+0,
+6.27,
+"Tahun 1969, lewat misi Apollo 11, manusia pertama kali berjalan di Bulan!"
+],
+[
+6.27,
+11.06,
+"Komputer yang dulu sebesar ruangan terus mengecil."
+],
+[
+11.06,
+16.85,
+"Lalu, pada tahun 1989, Tim Berners-Lee merancang World Wide Web."
+],
+[
+16.85,
+20.05,
+"Kini, dunia ada di genggaman kita."
+]
+]
+},
+"b8-4": {
+"dur": 19.331,
+"cap": [
+[
+0,
+5.79,
+"Menurut PBB, jumlah manusia mencapai 8 miliar pada tahun 2022,"
+],
+[
+5.79,
+9.43,
+"dan sekitar 8,3 miliar pada tahun 2026."
+],
+[
+9.43,
+15.98,
+"Harapan hidup juga naik, dari sekitar 46 tahun pada tahun 1950,"
+],
+[
+15.98,
+19.58,
+"menjadi sekitar 73 tahun sekarang."
+]
+]
+},
+"b8-5": {
+"dur": 14.367,
+"cap": [
+[
+0,
+3.15,
+"Kita kini hidup di zaman kecerdasan buatan."
+],
+[
+3.15,
+8.91,
+"Tapi, kita juga menghadapi tantangan baru: perubahan iklim dan sampah plastik."
+],
+[
+8.91,
+10.85,
+"Siapa yang akan menyelesaikannya?"
+],
+[
+10.85,
+14.34,
+"Generasi berikutnya. Yaitu... kamu!"
+]
+]
+},
+"b9-1": {
+"dur": 12.513,
+"cap": [
+[
+0,
+5.7,
+"Dari gua sampai smartphone, setiap penemuan dibangun di atas penemuan sebelumnya."
+],
+[
+5.7,
+8.86,
+"Petani pertama tidak pernah membayangkan ponsel."
+],
+[
+8.86,
+12.51,
+"Tapi, tanpa mereka, ponsel tidak akan ada."
+]
+]
+},
+"b9-2": {
+"dur": 17.398,
+"cap": [
+[
+0,
+1.51,
+"Sekarang, saatnya kuis!"
+],
+[
+1.51,
+4.48,
+"Tulis jawabanmu di kolom komentar, ya."
+],
+[
+4.48,
+8.49,
+"Pertama: di pulau mana ada lukisan gua tertua di dunia?"
+],
+[
+8.49,
+13.26,
+"Kedua: apa nama tulisan bangsa Sumeria?"
+],
+[
+13.26,
+17.42,
+"Ketiga: apa nama prasasti tertua di Indonesia?"
+]
+]
+},
+"b9-3": {
+"dur": 11.468,
+"cap": [
+[
+0,
+5.59,
+"Sejarah manusia belum selesai, dan bab berikutnya sedang ditulis oleh kita semua."
+],
+[
+5.59,
+10.27,
+"Kalau kamu suka videonya, tekan suka, bagikan, dan berlangganan, ya."
+],
+[
+10.27,
+11.72,
+"Sampai jumpa!"
+]
+]
+}
+};
+
+let DUR=60;   /* diisi ulang oleh adegan.js tiap bagian */
+const $=(s,r=document)=>r.querySelector(s);
+const W=(window.STAGE||{}).w||1920,H=(window.STAGE||{}).h||1080,NS='http://www.w3.org/2000/svg',XL='http://www.w3.org/1999/xlink';
+/* palet segar (bukan palet intro): tosca, biru listrik, kuning cerah, koral, lilac, lime, indigo malam */
+const C={ink:'#2E3448',indigo:'#3E4366',indigo2:'#4D5378',night:'#1F2233',blue:'#5B8DB8',blue2:'#4A78A0',sky:'#A9D4DE',sky2:'#EEF5F0',
+  mint:'#6BAE9A',mint2:'#4F8F7C',lime:'#A3C47A',lime2:'#86AA5E',sun:'#E8C15A',coral:'#D9735E',pink:'#E2A39C',lilac:'#B3A8C8',lilac2:'#8E84A8',
+  sand:'#E8CFA0',sand2:'#D4AE74',white:'#FFFFFF',paper:'#F3F1EC',skin:'#C98A62',skinKid:'#D9A07A',wood:'#8A5A3C',bone:'#F2E8D2',red:'#C8443C'};
+function fit(){const s=Math.min(innerWidth/W,innerHeight/H);$('#stage').style.transform=`translate(-50%,-50%) scale(${s})`;}addEventListener('resize',fit);fit();
+const rnd=i=>{const s=Math.sin(i*127.1+311.7)*43758.5453;return s-Math.floor(s);};
+
+/* ---------- penyusun bentuk ---------- */
+const S=$('#scene');
+function N(tag,a={},p=S){const n=document.createElementNS(NS,tag);for(const k in a)n.setAttribute(k,a[k]);p.appendChild(n);return n;}
+const G=(a={},p=S)=>N('g',a,p),R=(x,y,w,h,f,rx=0,p=S,a={})=>N('rect',{x,y,width:w,height:h,rx,fill:f,...a},p),
+  CI=(cx,cy,r,f,p=S,a={})=>N('circle',{cx,cy,r,fill:f,...a},p),EL=(cx,cy,rx,ry,f,p=S,a={})=>N('ellipse',{cx,cy,rx,ry,fill:f,...a},p),
+  PA=(d,f,p=S,a={})=>N('path',{d,fill:f||'none',...a},p),
+  LN=(d,st,w,p=S,a={})=>N('path',{d,fill:'none',stroke:st,'stroke-width':w,'stroke-linecap':'round','stroke-linejoin':'round',...a},p),
+  TX=(x,y,t,size,f,p=S,a={})=>{const n=N('text',{x,y,'font-size':size,fill:f,'font-weight':600,'text-anchor':'middle',...a},p);n.textContent=t;return n;},
+  shadow=(x,y,rx,p=S)=>EL(x,y,rx,16,C.night,p,{opacity:.16}),
+  sh=(hex,f)=>{const n=parseInt(hex.slice(1),16);const r=Math.min(255,Math.round(((n>>16)&255)*f)),g=Math.min(255,Math.round(((n>>8)&255)*f)),b=Math.min(255,Math.round((n&255)*f));return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);};
+function J(el,tx=0,ty=0){const j={el,tx,ty,x:0,y:0,r:0,sx:1,sy:1,apply(){el.setAttribute('transform',`translate(${j.tx+j.x},${j.ty+j.y}) rotate(${j.r}) scale(${j.sx},${j.sy})`);}};j.apply();return j;}
+const defs=N('defs',{},S);
+function lg(id,stops,x2=0,y2=1){const g=N('linearGradient',{id,x1:0,y1:0,x2,y2},defs);stops.forEach(([o,c,op=1])=>N('stop',{offset:o,'stop-color':c,'stop-opacity':op},g));}
+function rg(id,stops){const g=N('radialGradient',{id},defs);stops.forEach(([o,c,op=1])=>N('stop',{offset:o,'stop-color':c,'stop-opacity':op},g));}
+lg('caveG',[[0,'#474C6E'],[1,'#262A40']]);lg('camp',[[0,'#5A5B80'],[1,'#3A3C5C']]);lg('skyA',[[0,'#9CCBD8'],[1,'#EEF4EE']]);
+lg('skyS',[[0,'#93C4D4'],[.75,'#D7E8E2'],[1,'#F1E4C2']]);lg('room',[[0,'#ECE8EE'],[1,'#F2E6E0']]);lg('curtain',[[0,'#3A3F5E'],[1,'#1F2233']]);
+lg('city',[[0,'#9CCBD8'],[1,'#EFF4F0']]);lg('spot',[[0,'#F4ECCF',.55],[1,'#F4ECCF',0]]);
+rg('spray',[[0,C.coral,.95],[.55,C.coral,.7],[1,C.coral,0]]);rg('fireGlow',[[0,C.sun,.55],[1,C.sun,0]]);rg('hole',[[0,'#000'],[.55,'#000'],[1,'#fff']]);
+rg('glowSoft',[[0,'#FFFFFF',.9],[1,'#FFFFFF',0]]);
+
+/* ---------- panggung ---------- */
+const scenes=[];
+function scene(name){const g=G({'data-name':name},S);g.style.display='none';const sc={name,g,cam:{x:W/2,y:H/2,z:1.1,ox:0,oy:0},
+  apply(){const c=sc.cam;g.setAttribute('transform',`translate(${W/2-(c.x+c.ox)*c.z},${H/2-(c.y+c.oy)*c.z}) scale(${c.z})`);}};sc.apply();scenes.push(sc);return sc;}
+
+/* ---------- KARAKTER: rig sendi (kaki di y=0) ---------- */
+function character(p,x,ground,scale,o={}){
+  const {who='v',shirt=C.blue,pants=C.ink,shoes='#2E2C3A',hair=C.ink,skin=C.skinKid,style='short',tunic=false,sx=1,brow=false,beard=false,blush=false}=o;
+  const sd=shadow(x,ground+4,72*scale*sx,p),place=G({transform:`translate(${x},${ground}) scale(${scale*sx},${scale})`},p),rootEl=G({},place),root=J(rootEl),ref={root,place,who,scale,sd};
+  const legC=tunic?skin:pants,footC=tunic?sh(skin,.8):shoes;
+  for(const side of ['R','L']){const lx=side==='L'?-26:26,dk=side==='R'?.86:1;
+    const tEl=G({},rootEl),thigh=J(tEl,lx,-214);R(-24,-10,48,118,sh(legC,dk),21,tEl);
+    const sEl=G({},tEl),shin=J(sEl,0,102);R(-21,-8,42,108,sh(legC,dk),18,sEl);
+    const fEl=G({},sEl),foot=J(fEl,0,96);PA('M -24 -10 L 16 -10 C 24 4 46 4 50 16 L 50 26 L -26 26 Z',sh(footC,dk),fEl);
+    ref[side+'thigh']=thigh;ref[side+'shin']=shin;ref[side+'foot']=foot;}
+  const tEl=G({},rootEl),torso=J(tEl,0,-214);ref.torso=torso;
+  const arm=(side,front)=>{const s=side==='L'?-1:1,aEl=G({},tEl),a=J(aEl,50*s,-126);R(-17,-16,34,98,tunic?(front?skin:sh(skin,.88)):(front?shirt:sh(shirt,.86)),16,aEl);
+    const fEl=G({},aEl),f=J(fEl,0,78);R(-15,-12,30,90,front?skin:sh(skin,.9),14,fEl);const hEl=G({},fEl),h=J(hEl,0,74);EL(0,4,17,21,front?skin:sh(skin,.9),hEl);
+    ref[side+'arm']=a;ref[side+'fore']=f;ref[side+'hand']=h;};
+  arm('R',false);
+  PA('M -48 -152 C -64 -144 -70 -112 -66 -76 L -58 8 C -28 22 32 22 60 8 L 67 -76 C 71 -112 60 -144 45 -152 Z',shirt,tEl);
+  PA('M 46 -146 C 64 -130 68 -100 64 -62 L 57 8 L 36 12 L 40 -140 Z',sh(shirt,.88),tEl);
+  if(tunic){PA('M -60 0 L -44 34 L -24 8 L -4 38 L 16 8 L 38 34 L 60 0 Z',shirt,tEl);LN('M -40 -150 L 46 -20',sh(shirt,.72),9,tEl);}
+  else R(-58,-2,117,22,sh(shirt,.82),9,tEl);
+  R(-15,-178,30,40,skin,12,tEl);
+  arm('L',true);
+  const hEl=G({},tEl),head=J(hEl,0,-160);ref.head=head;ref.faces={};
+  if(style==='pony'){EL(84,-118,22,46,hair,hEl,{transform:'rotate(-18 84 -118)'});CI(70,-150,14,C.coral,hEl);}
+  if(style==='wild')PA('M -92 -86 C -112 -150 -70 -205 -10 -196 C 40 -214 104 -176 96 -112 C 104 -86 92 -62 80 -60 L -80 -60 C -96 -62 -100 -74 -92 -86 Z',hair,hEl);
+  EL(-72,-70,13,20,skin,hEl);EL(72,-70,13,20,skin,hEl);PA('M -74 -120 C -74 -180 74 -180 74 -120 L 74 -60 C 74 -6 -74 -6 -74 -60 Z',skin,hEl);
+  if(style==='wild')PA('M -76 -112 C -70 -170 70 -170 76 -112 L 58 -122 L 40 -106 L 18 -126 L -4 -108 L -26 -126 L -46 -106 L -62 -120 Z',hair,hEl);
+  else PA('M -76 -110 C -80 -175 80 -175 76 -110 L 62 -104 C 20 -130 -10 -120 -50 -108 Z',hair,hEl);
+  if(beard)PA('M -66 -76 C -64 -6 64 -6 66 -76 C 50 -44 30 -40 0 -40 C -30 -40 -50 -44 -66 -76 Z',hair,hEl);
+  if(blush){EL(-44,-62,13,8,C.pink,hEl,{opacity:.75});EL(44,-62,13,8,C.pink,hEl,{opacity:.75});}
+  const eyes=G({},hEl),ej=J(eyes,0,-86);ref.eyes=ej;CI(-28,0,7.5,C.ink,eyes);CI(28,0,7.5,C.ink,eyes);CI(-25,-3,2.4,C.white,eyes);CI(31,-3,2.4,C.white,eyes);
+  if(brow)LN('M -50 -102 C -20 -112 20 -112 50 -102',sh(skin,.62),12,hEl);
+  else{LN('M -40 -104 C -33 -110 -22 -110 -16 -106',C.ink,4,hEl);LN('M 16 -106 C 22 -110 33 -110 40 -104',C.ink,4,hEl);}
+  ref.mouth=LN('M -16 -46 C -6 -36 6 -36 16 -46',beard?C.night:C.ink,5,hEl);
+  return ref;}
+/* kostum siap pakai */
+const NARA={who:'nara',shirt:C.coral,pants:C.indigo,hair:'#2A2350',style:'pony',blush:true};
+const BIMA={who:'bima',shirt:C.blue,pants:C.ink,hair:'#1E1A3F',style:'short',blush:true};
+const PURBA={who:'purba',shirt:'#C98B5E',skin:'#B97A52',hair:'#2A1E3D',style:'wild',tunic:true,beard:true};
+
+/* ---------- mesin animasi ---------- */
+const tl=gsap.timeline({paused:true}),world=$('#world');
+const show=(t,at,d=.4)=>tl.fromTo(t,{opacity:0},{opacity:1,duration:d,ease:'power2.out',immediateRender:false},at),hide=(t,at,d=.35)=>tl.to(t,{opacity:0,duration:d,ease:'power2.in'},at);
+const rot=(j,at,v,dur,ease='power2.inOut')=>tl.to(j,{r:v,duration:dur,ease,onUpdate:j.apply},at);
+const sway=(j,at,v,dur)=>tl.to(j,{r:v,duration:dur,ease:'sine.inOut',yoyo:true,repeat:-1,onUpdate:j.apply},at);
+const spin=(j,at,period)=>tl.fromTo(j,{r:0},{r:360,duration:period,ease:'none',repeat:-1,onUpdate:j.apply,immediateRender:false},at);
+const prop=(j,at,vars,dur,ease='power2.inOut')=>tl.to(j,{...vars,duration:dur,ease,onUpdate:j.apply},at);
+const pop=(j,at,dur=.5)=>{tl.set(j,{sx:0,sy:0,onUpdate:j.apply},0);tl.set(j.el,{opacity:0},0);tl.set(j.el,{opacity:1},at);tl.to(j,{sx:1,sy:1,duration:dur,ease:'back.out(2.2)',onUpdate:j.apply},at);};
+const drift=(el,at,{y=-200,x=0,scale=null,dur=3,peak=.8}={})=>{const to={y,x,duration:dur,ease:'sine.out',repeat:-1,immediateRender:false};if(scale!=null)to.scale=scale;
+  tl.fromTo(el,{y:0,x:0,scale:scale!=null?.5:1,transformOrigin:'50% 50%'},to,at);tl.to(el,{keyframes:{opacity:[0,peak,peak,0],easeEach:'none'},duration:dur,repeat:-1,ease:'none'},at);};
+function flyAlong(el,d,at,dur,{scale=1,ease='power1.inOut'}={}){const p=N('path',{d},defs),L=p.getTotalLength(),o={q:0};
+  const put=()=>{const pt=p.getPointAtLength(o.q*L);el.setAttribute('transform',`translate(${pt.x},${pt.y}) scale(${scale})`);};put();
+  tl.fromTo(o,{q:0},{q:1,duration:dur,ease,onUpdate:put,immediateRender:false},at);}
+const cam=(sc,at,x,y,z,dur=1.6,ease='sine.inOut')=>tl.to(sc.cam,{x,y,z,duration:dur,ease,onUpdate:sc.apply},at);
+function cut(at,from,to){tl.set(from.g,{display:'none'},at);tl.set(to.g,{display:'block'},at);}
+function slide(at,from,to,axis='x',dist=96){const o=axis==='x'?'ox':'oy';
+  tl.to(from.cam,{[o]:-dist,duration:.28,ease:'power2.in',onUpdate:from.apply},at);tl.set(to.cam,{[o]:dist,onUpdate:to.apply},at+.28);cut(at+.28,from,to);
+  tl.to(to.cam,{[o]:0,duration:.42,ease:'power3.out',onUpdate:to.apply},at+.28);
+  const b={v:0};tl.to(b,{v:10,duration:.28,ease:'power2.in',onUpdate(){world.style.filter=`blur(${b.v}px)`}},at);
+  tl.to(b,{v:0,duration:.42,ease:'power3.out',onUpdate(){world.style.filter=b.v>.05?`blur(${b.v}px)`:'none'}},at+.28);}
+function idle(ch,from,to=DUR){sway(ch.torso,from,1.1,1.7);sway(ch.head,from+.3,-1.7,2.3);
+  const kf=[{duration:3.1+ch.who.length*.17},{duration:.01},{duration:.13},{duration:.01}];
+  tl.to(ch.eyes,{keyframes:kf.map((k,i)=>({sy:i===1||i===2?.08:1,...k})),repeat:-1,ease:'none',onUpdate:ch.eyes.apply},from);}
+const MOUTH={senang:'M -16 -46 C -6 -36 6 -36 16 -46',lebar:'M -22 -50 C -12 -26 12 -26 22 -50 Z',cemas:'M -16 -38 C -6 -46 6 -46 16 -38',kaget:'M -9 -48 C -9 -30 9 -30 9 -48 Z'};
+const face=(ch,e,at)=>tl.to(ch.mouth,{attr:{d:MOUTH[e]},duration:.1},at);
+function walk(ch,at,dur,dx){const n=Math.max(1,Math.round(dur/.39));
+  tl.to(ch.root,{x:'+='+dx,duration:dur,ease:'none',onUpdate:ch.root.apply},at);tl.to(ch.sd,{x:'+='+dx*ch.scale,duration:dur,ease:'none'},at);
+  const leg=(j,a,b)=>tl.fromTo(j,{r:a},{r:b,duration:.39,ease:'sine.inOut',yoyo:true,repeat:n-1,onUpdate:j.apply,immediateRender:false},at);
+  leg(ch.Lthigh,-15,15);leg(ch.Rthigh,15,-15);leg(ch.Lshin,0,18);leg(ch.Rshin,18,0);leg(ch.Larm,12,-12);
+  tl.fromTo(ch.root,{y:0},{y:-5,duration:.195,ease:'sine.inOut',yoyo:true,repeat:n*2-1,onUpdate:ch.root.apply,immediateRender:false},at);
+  [ch.Lthigh,ch.Rthigh,ch.Lshin,ch.Rshin,ch.Larm].forEach(j=>rot(j,at+dur,0,.3));}
+function wave(ch,at,side='L'){const s=side==='L'?1:-1;rot(ch[side+'arm'],at,150*s,.35,'back.out(1.6)');tl.to(ch[side+'fore'],{r:25*s,duration:.22,yoyo:true,repeat:5,ease:'sine.inOut',onUpdate:ch[side+'fore'].apply},at+.3);
+  rot(ch[side+'arm'],at+1.7,0,.4);rot(ch[side+'fore'],at+1.7,0,.4);}
+function hop(ch,at){tl.to(ch.root,{y:-34,duration:.18,ease:'power2.out',yoyo:true,repeat:3,onUpdate:ch.root.apply},at);}
+
+/* ---------- benda berulang ---------- */
+function handShape(par,fill,s=1){const g=G({},par);EL(0,34*s,60*s,70*s,fill,g);
+  [[-46,4,-24,.82],[-20,-16,-8,.95],[6,-22,0,1],[32,-14,10,.92],[62,30,52,.7]].forEach(([x,y,r,l])=>R(-14*s,-84*l*s,28*s,(84*l+18)*s,fill,14*s,g,{transform:`translate(${x*s},${y*s}) rotate(${r})`}));return g;}
+function bird(p,x,y,s=1,col=C.ink){const g=G({},p),b=G({transform:`translate(${x},${y}) scale(${s})`},g);const wl=G({},b),wr=G({},b);
+  LN('M 0 0 C -14 -14 -30 -14 -42 -4',col,6,wl);LN('M 0 0 C 14 -14 30 -14 42 -4',col,6,wr);const jl=J(wl),jr=J(wr);
+  tl.to(jl,{r:22,duration:.22,yoyo:true,repeat:-1,ease:'sine.inOut',onUpdate:jl.apply},0);tl.to(jr,{r:-22,duration:.22,yoyo:true,repeat:-1,ease:'sine.inOut',onUpdate:jr.apply},0);return g;}
+function cloud(p,x,y,s=1,f=C.white,op=.95){const g=G({},p),c=G({transform:`translate(${x},${y}) scale(${s})`,opacity:op},g);
+  EL(0,0,120,46,f,c);CI(-50,-20,48,f,c);CI(30,-34,60,f,c);CI(84,-6,40,f,c);return g;}
+function tuft(p,x,y,s,col){const g=G({},p),j=J(g,x,y);LN(`M 0 0 L ${-14*s} ${-46*s} M 0 0 L 0 ${-60*s} M 0 0 L ${16*s} ${-44*s}`,col,7*s,g);return j;}
+function makeCapsule(p,x,ground){const k={};const place=G({transform:`translate(${x},${ground})`},p);k.sd=shadow(0,6,250,place);
+  const bodyEl=G({},place);k.body=J(bodyEl);
+  [-150,0,150].forEach(lx=>{LN(`M ${lx} -80 L ${lx*1.25} 0`,C.indigo2,18,bodyEl);EL(lx*1.25,2,34,10,C.indigo,bodyEl);});
+  k.flame=G({opacity:0},bodyEl);PA('M -70 -60 C -60 20 -20 80 0 120 C 20 80 60 20 70 -60 Z',C.sun,k.flame);PA('M -36 -60 C -30 0 -10 40 0 70 C 10 40 30 0 36 -60 Z',C.white,k.flame);
+  PA('M -250 -330 C -280 -230 -250 -130 -320 -60 L -220 -90 Z',C.coral,bodyEl);PA('M 250 -330 C 280 -230 250 -130 320 -60 L 220 -90 Z',C.coral,bodyEl);
+  EL(0,-330,255,290,C.paper,bodyEl);PA('M -255 -330 C -255 -170 -150 -40 0 -40 C 150 -40 255 -170 255 -330 Z',sh(C.paper,.93),bodyEl);
+  R(-255,-250,510,34,C.blue,0,bodyEl,{'clip-path':'none'});
+  LN('M 0 -620 L 0 -700',C.indigo2,10,bodyEl);k.tip=CI(0,-708,18,C.coral,bodyEl);
+  CI(0,-460,98,C.blue2,bodyEl);k.glass=CI(0,-460,80,'#CFE6EA',bodyEl);PA('M -50 -500 C -30 -530 10 -535 30 -520',null,bodyEl,{stroke:C.white,'stroke-width':12,'stroke-linecap':'round',opacity:.8});
+  k.faces=G({opacity:0},bodyEl);[[-30,'#2A2350',C.skinKid],[32,'#1E1A3F',C.skinKid]].forEach(([fx,hc,sc])=>{CI(fx,-440,32,sc,k.faces);PA(`M ${fx-33} -446 C ${fx-34} -486 ${fx+34} -486 ${fx+33} -446 Z`,hc,k.faces);CI(fx-11,-436,4,C.ink,k.faces);CI(fx+11,-436,4,C.ink,k.faces);LN(`M ${fx-9} -420 C ${fx-3} -414 ${fx+3} -414 ${fx+9} -420`,C.ink,3,k.faces);});
+  R(30,-300,140,230,C.blue2,26,bodyEl);k.door=R(30,-300,140,230,C.blue,26,bodyEl);CI(150,-190,9,C.sun,bodyEl);
+  R(-262,-336,268,156,C.ink,22,bodyEl);R(-252,-326,248,136,'#1A2030',16,bodyEl);
+  k.num=TX(-128,-268,'2026',42,C.mint,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,'font-variant-numeric':'tabular-nums'});
+  k.sub=TX(-128,-218,'15 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
+  k.lights=[];for(let i=0;i<7;i++){const a=Math.PI*(.12+i*.127);k.lights.push(CI(Math.cos(a)*-232,-330+Math.sin(a)*-260+520*0,11,i%2?C.sun:C.mint,bodyEl));}
+  k.lights.forEach((l,i)=>{const a=Math.PI*(1.08+i*.14);l.setAttribute('cx',Math.cos(a)*236);l.setAttribute('cy',-330+Math.sin(a)*270);});
+  k.place=place;return k;}
+const fmt=v=>{const n=Math.round(Math.abs(v)).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');return (v<0?'−':'')+n;};
+
+/* ---------- SUARA + SUBTITLE: say(idKlip, detik) menaruh VO dan teksnya sekaligus ---------- */
+window.AUDIO_PLAN={vo:[],sfx:[],music:null};
+const AUD=window.AUDBASE||'../../audio-semua/',CAPS=[];
+function vdur(id){return VODATA[id].dur;}
+function say(id,at,vol=1){AUDIO_PLAN.vo.push({at,src:AUD+id+'.mp3',vol});VODATA[id].cap.forEach(([a,b,t])=>CAPS.push({a:at+a,b:at+b,t}));return at+vdur(id);}
+function sfx(name,at,vol=.4){AUDIO_PLAN.sfx.push({at,src:AUD+'sfx-'+name+'.mp3',vol});}
+/* urutkan klip: tiap klip mulai setelah klip sebelumnya + jeda; kembalikan detik mulai tiap klip */
+function voPlan(ids,t0=1.0,gap=.7,gaps={}){const T={};let t=t0;ids.forEach(id=>{T[id]=t;say(id,t);t+=vdur(id)+(gaps[id]!=null?gaps[id]:gap);});T.end=t-gap;return T;}
+const capEl=document.getElementById('cap'),capTx=capEl&&capEl.firstElementChild;let capCur=null;
+function capRender(t){if(!capEl)return;let c=null;for(const k of CAPS){if(t>=k.a&&t<k.b){c=k;break;}}
+  if(c!==capCur){capCur=c;capTx.textContent=c?c.t:'';}
+  const o=c?Math.min(1,(t-c.a)/.12,(c.b-t)/.12):0;capEl.style.opacity=o.toFixed(3);capEl.style.transform=`translateX(-50%) translateY(${((1-Math.min(1,(t-(c?c.a:0))/.18))*10).toFixed(1)}px)`;}
+gsap.ticker.add(()=>capRender(tl.time()));
+
+/* ============ BENDA BERSAMA (dipakai semua bab) ============ */
+lg('skyD',[[0,'#2E3550'],[1,'#56607E']]);lg('skyN',[[0,'#1F2438'],[1,'#3B4462']]);lg('sea',[[0,'#7FB2C4'],[1,'#5B8DB8']]);
+lg('desert',[[0,'#A9D0DB'],[.7,'#F0E2C0'],[1,'#F3D9A6']]);lg('ice',[[0,'#C9DDE6'],[1,'#EEF4F6']]);lg('tunnel',[[0,'#262A40'],[1,'#3A3F5E']]);
+lg('board',[[0,'#4D5378'],[1,'#3E4366']]);lg('smog',[[0,'#8E8E94'],[1,'#C9C3B8']]);
+function bgSky(p,id='skyA'){return R(-900,-900,3800,2900,`url(#${id})`,0,p);}
+function bgGround(p,gy,top=C.lime2,base=C.sand){R(-900,gy,3800,900,base,0,p);R(-900,gy-10,3800,24,top,0,p);}
+function bgHills(p,b,col=C.mint,op=.7){return PA(`M -900 ${b} C -400 ${b-120} 0 ${b-40} 500 ${b-110} C 1000 ${b-170} 1500 ${b-60} 2000 ${b-130} C 2400 ${b-170} 2700 ${b-80} 2900 ${b-100} L 2900 ${b+400} L -900 ${b+400} Z`,col,p,{opacity:op});}
+function roundTree(p,x,gy,s=1,c1=C.mint2,c2=C.mint){R(x-14*s,gy-260*s,28*s,260*s,'#6E5A48',10,p);const g=G({},p),j=J(g,x,gy-250*s);CI(0,-50*s,120*s,c1,g);CI(-80*s,10*s,84*s,c2,g);CI(84*s,0,92*s,c2,g);return j;}
+function hut(p,x,gy,s=1,wall='#C9A47A',roof='#8A6A4A'){const g=G({transform:`translate(${x},${gy}) scale(${s})`},p);R(-110,-150,220,150,wall,8,g);PA('M -150 -140 L 0 -260 L 150 -140 Z',roof,g);R(-30,-90,60,90,'#5E4A3A',6,g);return g;}
+function house(p,x,gy,s=1,wall=C.paper,roof=C.coral){const g=G({transform:`translate(${x},${gy}) scale(${s})`},p);R(-120,-180,240,180,wall,6,g);PA('M -150 -170 L 0 -290 L 150 -170 Z',roof,g);R(-34,-100,68,100,C.indigo2,6,g);R(50,-140,50,44,C.sky,4,g);R(-100,-140,50,44,C.sky,4,g);return g;}
+/* label diegetik: papan nama 1–2 baris, dimunculkan dengan pop() */
+function tag(p,x,y,l1,l2='',{w=null,c1=C.ink,c2=C.mint2,bg=C.white,s1=40,s2=32}={}){const g=G({},p),j=J(g,x,y);const ww=w||Math.max(l1.length*s1*.56,l2.length*s2*.56)+60,hh=l2?s1+s2+44:s1+36;
+  R(-ww/2,-hh/2,ww,hh,bg,16,g);TX(0,l2?-hh/2+s1+12:s1*.36,l1,s1,c1,g,{'font-weight':700});if(l2)TX(0,hh/2-18,l2,s2,c2,g);return j;}
+function stamp(p,x,y,txt,col=C.coral,size=44,rot=-8){const g=G({},p),j=J(g,x,y);const w=txt.length*size*.6+60;R(-w/2,-size*.9,w,size*1.8,'none',14,g,{stroke:col,'stroke-width':7,transform:`rotate(${rot})`});TX(0,size*.35,txt,size,col,g,{'font-weight':700,transform:`rotate(${rot})`});return j;}
+/* peta dunia ekuirektangular (lon,lat) → kotak w×h */
+const CONT={na:[[-165,65],[-140,70],[-95,72],[-65,62],[-55,50],[-70,43],[-80,32],[-80,25],[-90,29],[-97,24],[-97,18],[-88,15],[-80,8],[-84,10],[-105,20],[-117,32],[-125,48],[-140,60],[-165,60]],
+  sa:[[-80,10],[-60,10],[-50,0],[-35,-6],[-40,-22],[-58,-38],[-68,-55],[-74,-45],[-70,-18],[-81,-5]],
+  eu:[[-10,36],[-9,44],[-2,48],[5,52],[10,56],[18,60],[25,70],[40,68],[45,50],[40,45],[28,41],[22,38],[15,38],[10,44],[3,42],[-5,36]],
+  af:[[-17,15],[-16,24],[-10,30],[-5,36],[10,37],[32,31],[34,28],[43,12],[51,12],[40,-15],[33,-26],[20,-35],[12,-17],[9,4],[-8,5],[-15,10]],
+  as:[[40,68],[70,75],[110,77],[140,72],[178,67],[160,58],[140,52],[130,42],[122,38],[122,25],[108,20],[106,10],[100,14],[100,4],[98,16],[92,22],[88,22],[80,14],[77,8],[72,20],[62,25],[57,26],[52,15],[44,12],[34,28],[36,36],[28,41],[40,45],[45,50]],
+  au:[[114,-22],[122,-17],[131,-12],[137,-12],[142,-11],[146,-19],[153,-27],[150,-37],[140,-38],[130,-32],[115,-34]],
+  uk:[[-5,50],[1,51],[0,54],[-3,58],[-6,56],[-5,53]],jp:[[130,31],[136,34],[141,38],[142,44],[140,41],[134,35]],
+  mg:[[44,-25],[47,-25],[50,-15],[49,-12],[44,-17]],
+  su:[[95,5],[98,4],[106,-4],[105,-6],[101,-2],[95,3]],jv:[[105,-6],[111,-6.5],[114,-7.5],[110,-8],[106,-7]],
+  bo:[[109,1],[112,3],[117,7],[119,5],[118,1],[116,-3],[111,-3],[109,-1]],sl:[[119,1],[124,1.5],[121,0],[123,-1],[122,-5],[120,-5],[120,-2]],
+  pp:[[131,-1],[138,-2],[146,-6],[150,-10],[141,-9],[137,-5],[132,-3]]};
+function worldMap(p,x,y,w,h,{land=C.lime,sea='url(#sea)',grid=true}={}){const g=G({transform:`translate(${x},${y})`},p);R(0,0,w,h,sea,28,g);
+  if(grid)for(let i=1;i<6;i++){LN(`M ${w*i/6} 20 L ${w*i/6} ${h-20}`,C.white,2,g,{opacity:.15});LN(`M 20 ${h*i/6} L ${w-20} ${h*i/6}`,C.white,2,g,{opacity:.15});}
+  const P=(lo,la)=>[((lo+180)/360)*w,((80-la)/140)*h];const m={g,P,pt:(lo,la)=>{const[a,b]=P(lo,la);return[x+a,y+b];},parts:{}};
+  for(const k in CONT){const d='M '+CONT[k].map(([a,b])=>P(a,b).map(v=>v.toFixed(1)).join(' ')).join(' L ')+' Z';m.parts[k]=PA(d,land,g,{stroke:land,'stroke-width':10,'stroke-linejoin':'round'});}return m;}
+function mapBox(p,x,y,w,h,[lo0,lo1,la0,la1],keys=null,{land=C.lime,sea='url(#sea)'}={}){const g=G({transform:`translate(${x},${y})`},p);R(0,0,w,h,sea,28,g);
+  const cp=N('clipPath',{id:'mb'+x+'_'+y},defs);R(0,0,w,h,null,28,cp);const inner=G({'clip-path':`url(#mb${x}_${y})`},g);
+  const P=(lo,la)=>[((lo-lo0)/(lo1-lo0))*w,((la1-la)/(la1-la0))*h];const m={g,inner,P,pt:(lo,la)=>{const[a,b]=P(lo,la);return[x+a,y+b];},parts:{}};
+  for(const k of (keys||Object.keys(CONT))){const d='M '+CONT[k].map(([a,b])=>P(a,b).map(v=>v.toFixed(1)).join(' ')).join(' L ')+' Z';m.parts[k]=PA(d,land,inner,{stroke:land,'stroke-width':14,'stroke-linejoin':'round'});}return m;}
+const capT=(T,id,i)=>T[id]+VODATA[id].cap[i][0];
+function pin(p,x,y,col=C.coral,s=1){const g=G({},p),j=J(g,x,y);G({},g);PA(`M 0 0 C ${-30*s} ${-40*s} ${-30*s} ${-76*s} 0 ${-80*s} C ${30*s} ${-76*s} ${30*s} ${-40*s} 0 0 Z`,col,g);CI(0,-52*s,12*s,C.white,g);return j;}
+/* garis rute yang menggambar dirinya */
+function route(p,d,col=C.coral,w=8,dash=true){const n=PA(d,null,p,{stroke:col,'stroke-width':w,'stroke-linecap':'round','stroke-linejoin':'round'});const L=n.getTotalLength();n.setAttribute('stroke-dasharray',L);n.setAttribute('stroke-dashoffset',L);n._L=L;return n;}
+const drawOn=(n,at,dur=1.2,ease='power1.inOut')=>tl.to(n,{attr:{'stroke-dashoffset':0},duration:dur,ease},at);
+function ship(p,x,y,s=1,sail=C.paper,hull='#7A5A44'){const g=G({},p),b=G({transform:`translate(${x},${y}) scale(${s})`},g);const bob=J(G({},b));PA('M -120 0 L 120 0 L 90 50 L -90 50 Z',hull,bob.el);LN('M 0 0 L 0 -200',C.ink,8,bob.el);PA('M 6 -190 C 90 -150 90 -60 6 -20 Z',sail,bob.el);PA('M -6 -170 C -70 -130 -70 -70 -6 -40 Z',sh(sail,.9),bob.el);return {g,bob};}
+function bob(sh_,at,amp=6,dur=1.2){tl.to(sh_.bob,{y:amp,r:2,duration:dur,yoyo:true,repeat:-1,ease:'sine.inOut',onUpdate:sh_.bob.apply},at);}
+function waves(p,y,col=C.white,n=10,op=.5){const g=G({},p);for(let i=0;i<n;i++)LN(`M ${-600+i*360} ${y+(i%2)*30} c 30 -16 60 -16 90 0 c 30 16 60 16 90 0`,col,6,g,{opacity:op});return g;}
+function stars(p,n=40,h=700){const out=[];for(let i=0;i<n;i++)out.push(CI(-700+rnd(i+300)*3300,-400+rnd(i+400)*h,2+rnd(i+500)*3,C.paper,p,{opacity:.4+rnd(i)*.5}));return out;}
+function twinkle(list,at){list.forEach((s,i)=>tl.to(s,{keyframes:{opacity:[.9,.2,.9]},duration:1.2+rnd(i)*1.6,repeat:-1,ease:'none'},at+rnd(i+9)));}
+function sack(p,x,y,s=1,col='#C9A47A'){const g=G({transform:`translate(${x},${y}) scale(${s})`},p);PA('M -40 0 C -50 -50 -30 -80 -14 -86 L 14 -86 C 30 -80 50 -50 40 0 Z',col,g);LN('M -16 -80 L 16 -80',sh(col,.7),6,g);return g;}
+/* panggung pembuka tiap bab: kapsul menembus terowongan waktu, layar = tahun tujuan + nama bab */
+function bumper(year,label){const sc=scene('terowongan');const p=sc.g;R(-900,-900,3800,2900,'url(#tunnel)',0,p);
+  const rings=[];for(let i=0;i<8;i++)rings.push(CI(960,540,60,'none',p,{stroke:i%2?C.lilac:C.mint,'stroke-width':10,opacity:0}));
+  const streaks=[];for(let i=0;i<22;i++){const a=i*2.39,r=120+rnd(i)*80;streaks.push(LN(`M ${960+Math.cos(a)*r} ${540+Math.sin(a)*r} l ${Math.cos(a)*90} ${Math.sin(a)*90}`,C.paper,5,p,{opacity:0}));}
+  const k=makeCapsule(p,960,820);k.sd.setAttribute('opacity',0);[].forEach.call(k.body.el.querySelectorAll('path'),()=>{});
+  show(k.faces,0,.01);k.num.textContent=year;k.num.setAttribute('fill',C.sun);k.sub.textContent=label;k.sub.setAttribute('opacity',1);k.sub.setAttribute('font-size',26);
+  rings.forEach((r,i)=>tl.fromTo(r,{attr:{r:40},opacity:0},{keyframes:{opacity:[0,.8,0]},attr:{r:1300},duration:1.6,ease:'power1.in',repeat:-1,immediateRender:false},i*.2));
+  streaks.forEach((s,i)=>{const a=i*2.39;tl.fromTo(s,{x:0,y:0,opacity:0},{keyframes:{opacity:[0,.8,0]},x:Math.cos(a)*900,y:Math.sin(a)*900,duration:.9,repeat:-1,ease:'power2.in',immediateRender:false},rnd(i)*.9);});
+  tl.to(k.body,{r:3,y:-14,duration:.4,yoyo:true,repeat:-1,ease:'sine.inOut',onUpdate:k.body.apply},0);show(k.flame,0,.01);tl.to(k.flame,{keyframes:{opacity:[1,.6,1]},duration:.12,repeat:-1},0);
+  k.lights.forEach((l,i)=>tl.to(l,{keyframes:{opacity:[1,.2,1]},duration:.5,repeat:-1},i*.07));
+  tl.set(p,{display:'block'},0);Object.assign(sc.cam,{x:960,y:560,z:1.35});sc.apply();cam(sc,0,960,520,1.5,3.2,'power1.inOut');
+  sfx('dial',.15,.4);sfx('luncur',2.55,.45);return sc;}
+function capStart(){/* cadangan */}
+
+const P=scene('thumb');{const p=P.g;R(-400,-400,1900,2800,'url(#caveG)',0,p);for(let i=0;i<12;i++)EL(-100+(i%3)*500,200+Math.floor(i/3)*480+rnd(i)*200,240,90,'#4A5074',p,{opacity:.5});
+  CI(540,860,620,'url(#fireGlow)',p,{opacity:.5});const hp=G({transform:'translate(540,880) rotate(-8)'},p);CI(0,0,380,'url(#spray)',hp);handShape(hp,'#3D4264',2.4);
+  for(let i=0;i<22;i++){const a=i*2.4,r=300+rnd(i)*120;CI(Math.cos(a)*r,Math.sin(a)*r,8+rnd(i+5)*10,C.coral,hp,{opacity:.85});}
+  const mk=(y,s,txt,f)=>{const t=N('text',{x:540,y,'font-size':s,'font-weight':700,fill:f,stroke:C.night,'stroke-width':s*.16,'paint-order':'stroke','stroke-linejoin':'round','text-anchor':'middle','font-family':'Fredoka, sans-serif'},p);t.textContent=txt;};
+  mk(420,150,'TERTUA',C.sun);mk(560,140,'DI DUNIA!',C.sun);mk(1440,110,'Indonesia',C.paper);
+  R(430,1490,220,44,C.red,6,p);R(430,1534,220,44,C.paper,6,p);}
+P.g.style.display='block';Object.assign(P.cam,{x:540,y:960,z:1});P.apply();DUR=1;
+
+function fit(){}
+</script></body></html>
