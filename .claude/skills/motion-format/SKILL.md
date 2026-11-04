@@ -1,17 +1,17 @@
 ---
 name: motion-format
-description: Membuat motion graphic dan video lewat chat — promo, opener, intro kanal, bumper, kinetic typography, demo produk/SaaS, dan explainer (kartun, jurnalisme visual, katalog, sketsa, aksi kontinu) 16:9, 9:16, atau 1:1 — memakai HTML + CSS + GSAP, lengkap dengan voiceover dan efek suara dari ElevenLabs, lalu dirender jadi MP4 bersuara. Gunakan skill ini setiap kali user meminta "video", "video promo", "iklan", "opener", "intro", "motion graphic", "animasi", "bumper", "kinetic typography", "explainer", "video penjelasan", "konten Reels/TikTok/Shorts animasi", ingin menambahkan voiceover atau efek suara, ingin merender animasi web jadi MP4, atau mengeluh hasil animasi "seperti PPT" — bahkan bila mereka tidak menyebut kata "motion graphic". Juga untuk explainer kartun yang dibangun langsung di After Effects lewat bridge/MCP Higgsfield.
+description: Membuat motion graphic dan video lewat chat — promo, opener, intro kanal, bumper, kinetic typography, demo produk/SaaS, dan explainer (kartun, jurnalisme visual, katalog, sketsa, aksi kontinu) 16:9, 9:16, atau 1:1 — memakai HTML + CSS + GSAP, lengkap dengan voiceover dan efek suara dari ElevenLabs, lalu dirender jadi MP4 bersuara. Gunakan skill ini setiap kali user meminta "video", "video promo", "iklan", "opener", "intro", "motion graphic", "animasi", "bumper", "kinetic typography", "explainer", "video penjelasan", "konten Reels/TikTok/Shorts animasi", ingin menambahkan voiceover atau efek suara, ingin merender animasi web jadi MP4, meminta video untuk YouTube (long + Short + deskripsi + thumbnail, dengan intro kanal tetap), atau mengeluh hasil animasi "seperti PPT" — bahkan bila mereka tidak menyebut kata "motion graphic". Juga untuk explainer kartun yang dibangun langsung di After Effects lewat bridge/MCP Higgsfield.
 license: MIT
 metadata:
   author: Motion Format
-  version: "1.0.0"
-  updated: "2026-09-28"
+  version: "1.1.0"
+  updated: "2026-11-04"
   based_on: "Bang Motion v1.19.0 oleh Bang Tutorial (https://github.com/bangtutorial/bang-motion), lisensi MIT"
 ---
 
 # Motion Format — motion graphic lewat chat, lengkap dengan suara
 
-**v1.0.0 · Motion Format · MIT.** Dibangun di atas **Bang Motion v1.19.0** karya
+**v1.1.0 · Motion Format · MIT.** Dibangun di atas **Bang Motion v1.19.0** karya
 [Bang Tutorial](https://youtube.com/bangtutorial) (MIT) — seluruh hukum anti-PPT, starter,
 dan resep teknis berasal dari sana. Tambahan Motion Format: alur untuk pemula lewat chat,
 suara ElevenLabs (VO per adegan + efek suara), modul suara di semua starter, dan render MP4
@@ -60,6 +60,23 @@ di `references/explainer.md` (gaya dipilih di pertanyaan yang sama).
 5. **Bangun animasi** dari starter yang benar; isi `window.AUDIO_PLAN`.
 6. **Preview & revisi 1 kalimat** — lihat di bawah.
 7. **Render MP4 bersuara** — `scripts/render_mp4.py`, cek 8 detik dulu lalu render penuh.
+
+### Brief YouTube = paket lima hasil (WAJIB)
+
+Setiap brief yang tujuannya YouTube ("video YouTube", "untuk kanal", "upload ke YouTube")
+WAJIB menghasilkan lima hal, bukan hanya satu MP4. Baca `references/paket-youtube.md` dulu.
+
+1. **Video long 16:9** dengan **intro kanal yang sudah ditetapkan** di depannya — intro tetap
+   ada di `assets/intro-kanal/intro.mp4`, ditempel lewat `scripts/gabung_intro.py`, tidak
+   pernah didesain ulang. Belum ada → tanyakan sekali (kirim MP4 atau dibuatkan), lalu simpan.
+2. **Short 9:16 (≤ 60 dtk)** dari satu tema paling menarik di video long (pilih dari 3
+   kandidat), dibangun ulang tegak, tanpa intro, hook di 2 detik pertama.
+3. **Deskripsi** (`youtube.md`): 3 opsi judul, deskripsi, chapter (digeser durasi intro),
+   hashtag, tag — untuk long dan Short.
+4. **Thumbnail long** 1280×720 dan 5. **thumbnail Short** 1080×1920 — HTML lalu PNG lewat
+   `scripts/thumbnail.py`, gaya mewarisi style brief long.
+
+Jangan berhenti setelah video long untuk bertanya "mau short-nya juga?" — kelimanya bagian brief.
 
 ### Paket Gaya (tambahan berbayar Motion Format)
 
@@ -569,6 +586,8 @@ bagian 1 dan 1b. Ringkasnya:
       naskah VO lengkap + ajakan mengirim audio untuk disinkronkan
 - [ ] Revisi 1 kalimat: hanya sasaran yang diubah, detik yang berubah dipotret ulang,
       perubahan dilaporkan satu kalimat
+- [ ] Brief YouTube: kelima hasil paket ada dan lolos checklist `references/paket-youtube.md`
+      (long + intro tetap, Short, `youtube.md`, thumbnail long, thumbnail Short)
 - [ ] MP4: render cek `--sampai 8` sebelum render penuh; hasil punya track audio bila
       `AUDIO_PLAN` berisi
 - [ ] Explainer: gaya, rasio, durasi, dan suara sudah ditanya dalam SATU
@@ -623,6 +642,10 @@ dan buat layer dari belakang ke depan. Build 10 panggung ≈ 1 jam, 0 kredit.
 | Berkas | Kapan dibaca |
 |---|---|
 | `references/gaya-kartun-mf.md` *(Paket Gaya, bila terpasang)* | explainer gaya kartun kertas Motion Format: kulit terkunci, tanda tangan gerak, 10 karakter, kerangka adegan, SFX per momen — starter `assets/starter-explainer-mf-kartun.html`, galeri `assets/mf-karakter-galeri.html`, audio `assets/audio-mf/` |
+| `references/paket-youtube.md` | SETIAP brief untuk YouTube: intro kanal tetap, Short dari tema terbaik, deskripsi + chapter, thumbnail long & Short, checklist paket |
+| `assets/intro-kanal/` | intro kanal yang sudah ditetapkan (`intro.mp4` + `intro.json`) — dipakai ulang tanpa diubah |
+| `scripts/gabung_intro.py` | tempel intro kanal di depan video long (menyamakan resolusi/fps/audio, mencetak geseran chapter) |
+| `scripts/thumbnail.py` | potret thumbnail HTML → PNG 1280×720 / 1080×1920 (`--short`) + versi kecil untuk uji keterbacaan |
 | `references/suara-elevenlabs.md` | SETIAP video bersuara: plugin ElevenLabs, naskah VO, pilih suara, hemat kuota, efek suara, simpan berkas, AUDIO_PLAN, render bersuara |
 | `scripts/render_mp4.py` | EXPORT MP4 bersuara (Python 3 + Chrome + ffmpeg, tanpa Node): `--sampai N` untuk cek, `--fps`, `--out` |
 | `references/kartun-panggung.md` | KARTUN PANGGUNG: satu panggung per adegan, kamera ≥1,08, cut/geser 96 px, rig sendi + transform manual, kepala raster + ekspresi lokal, nol caption, palet flat |

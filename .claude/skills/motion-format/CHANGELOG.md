@@ -1,5 +1,15 @@
 # Riwayat perubahan — Motion Format
 
+## 1.1.0 · 4 November 2026
+
+**Baru**
+- Paket YouTube: setiap brief untuk YouTube menghasilkan lima hal — video long dengan intro
+  kanal tetap, Short 9:16 dari tema paling menarik, deskripsi (`youtube.md`), thumbnail long,
+  dan thumbnail Short. Panduan di `references/paket-youtube.md`.
+- `assets/intro-kanal/` → tempat intro kanal yang sudah ditetapkan.
+- `scripts/gabung_intro.py` → tempel intro di depan video (resolusi/fps/audio disamakan).
+- `scripts/thumbnail.py` → thumbnail HTML jadi PNG + versi kecil untuk uji keterbacaan.
+
 ## 1.0.0 · 28 September 2026
 
 Rilis pertama, berbasis Bang Motion v1.19.0 (riwayat versi sebelumnya ada di
