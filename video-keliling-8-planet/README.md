@@ -56,3 +56,7 @@ Hasil di `shorts/` (1080×1920, 30 fps, −14 LUFS), mengikuti tabel "Peta pemec
 - Tata letak: judul Short di sepertiga atas, adegan dibingkai ulang "kamera" per beat (`build/portrait.js`, tabel `CAM`),
   caption besar sedikit ke kiri agar tidak tertutup tombol YouTube.
 - Render ulang: `cd build && python3 build_shorts.py && ./render_shorts.sh ../shorts`.
+
+## Thumbnail
+`thumbnail/thumbnail_video_panjang.jpg` (1280×720) untuk video panjang, dan `thumbnail/cover_shortNN_*.jpg` (1080×1920)
+untuk tiap Short. Render ulang: `cd build && node capture_thumbs.js ../thumbnail-png` (desain di `build/thumb.js`).
