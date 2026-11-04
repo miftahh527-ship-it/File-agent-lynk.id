@@ -68,7 +68,7 @@ WAJIB menghasilkan lima hal, bukan hanya satu MP4. Baca `references/paket-youtub
 
 1. **Video long 16:9** dengan **intro kanal yang sudah ditetapkan** di depannya — intro tetap
    ada di `assets/intro-kanal/intro.mp4`, ditempel lewat `scripts/gabung_intro.py` dengan
-   **transisi memudar** (1 dtk) ke video, tidak pernah didesain ulang. Belum ada → tanyakan sekali (kirim MP4 atau dibuatkan), lalu simpan.
+   **transisi memudar lewat layar hitam** (1 dtk) ke video, tidak pernah didesain ulang. Belum ada → tanyakan sekali (kirim MP4 atau dibuatkan), lalu simpan.
 2. **Short 9:16 (≤ 60 dtk)** dari satu tema paling menarik di video long (pilih dari 3
    kandidat), dibangun ulang tegak, tanpa intro, hook di 2 detik pertama.
 3. **Deskripsi** (`youtube.md`): 3 opsi judul, deskripsi, chapter (digeser durasi intro),
@@ -644,7 +644,7 @@ dan buat layer dari belakang ke depan. Build 10 panggung ≈ 1 jam, 0 kredit.
 | `references/gaya-kartun-mf.md` *(Paket Gaya, bila terpasang)* | explainer gaya kartun kertas Motion Format: kulit terkunci, tanda tangan gerak, 10 karakter, kerangka adegan, SFX per momen — starter `assets/starter-explainer-mf-kartun.html`, galeri `assets/mf-karakter-galeri.html`, audio `assets/audio-mf/` |
 | `references/paket-youtube.md` | SETIAP brief untuk YouTube: intro kanal tetap, Short dari tema terbaik, deskripsi + chapter, thumbnail long & Short, checklist paket |
 | `assets/intro-kanal/` | intro kanal yang sudah ditetapkan (`intro.mp4` + `intro.json`) — dipakai ulang tanpa diubah |
-| `scripts/gabung_intro.py` | tempel intro kanal di depan video long dengan transisi memudar (menyamakan resolusi/fps/audio, mencetak geseran chapter) |
+| `scripts/gabung_intro.py` | tempel intro kanal di depan video long dengan transisi memudar lewat layar hitam (menyamakan resolusi/fps/audio, mencetak geseran chapter) |
 | `scripts/thumbnail.py` | potret thumbnail HTML → PNG 1280×720 / 1080×1920 (`--short`) + versi kecil untuk uji keterbacaan |
 | `references/suara-elevenlabs.md` | SETIAP video bersuara: plugin ElevenLabs, naskah VO, pilih suara, hemat kuota, efek suara, simpan berkas, AUDIO_PLAN, render bersuara |
 | `scripts/render_mp4.py` | EXPORT MP4 bersuara (Python 3 + Chrome + ffmpeg, tanpa Node): `--sampai N` untuk cek, `--fps`, `--out` |

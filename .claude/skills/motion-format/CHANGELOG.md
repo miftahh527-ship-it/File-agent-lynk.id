@@ -7,8 +7,8 @@
   kanal tetap, Short 9:16 dari tema paling menarik, deskripsi (`youtube.md`), thumbnail long,
   dan thumbnail Short. Panduan di `references/paket-youtube.md`.
 - `assets/intro-kanal/` → tempat intro kanal yang sudah ditetapkan.
-- `scripts/gabung_intro.py` → tempel intro di depan video dengan transisi memudar 1 dtk
-  (`--pudar`, `--gaya hitam`; resolusi/fps/audio disamakan).
+- `scripts/gabung_intro.py` → tempel intro di depan video dengan transisi memudar lewat layar
+  hitam 1 dtk (`--pudar`, `--gaya silang`; resolusi/fps/audio disamakan).
 - `scripts/thumbnail.py` → thumbnail HTML jadi PNG + versi kecil untuk uji keterbacaan.
 
 ## 1.0.0 · 28 September 2026

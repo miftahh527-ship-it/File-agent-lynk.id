@@ -5,11 +5,13 @@ Pemakaian:
   python3 gabung_intro.py <video-utama.mp4>                      # → <video-utama>-youtube.mp4
   python3 gabung_intro.py <video-utama.mp4> --intro intro.mp4 --out hasil.mp4
   python3 gabung_intro.py <video-utama.mp4> --pudar 1.5          # transisi memudar 1,5 dtk (default 1 dtk)
-  python3 gabung_intro.py <video-utama.mp4> --gaya hitam         # memudar lewat layar hitam
+  python3 gabung_intro.py <video-utama.mp4> --gaya silang        # pudar silang langsung ke video
   python3 gabung_intro.py <video-utama.mp4> --pudar 0            # tanpa transisi (cut langsung)
 
 Intro default: ../assets/intro-kanal/intro.mp4 (relatif ke script ini).
-Intro disambung ke video dengan transisi MEMUDAR (pudar silang 1 dtk, gambar dan suara sekaligus).
+Intro disambung ke video dengan transisi MEMUDAR (default: memudar lewat layar hitam 1 dtk —
+0,5 dtk akhir intro memudar ke hitam, lalu 0,5 dtk awal video muncul dari hitam; suara ikut memudar.
+Tidak bertumpuk, jadi video utama mulai tepat di akhir intro).
 Intro diskalakan (letterbox bila rasionya beda) ke resolusi & fps video utama. Bagian yang tidak
 bersuara diberi audio senyap supaya sambungan audio tetap rapi. Durasi intro dicetak — pakai untuk
 menggeser timestamp chapter di deskripsi.
@@ -48,8 +50,8 @@ def main():
     ap.add_argument('--intro', default=str(DEFAULT_INTRO), help=f'MP4 intro (default: {DEFAULT_INTRO})')
     ap.add_argument('--out', default='', help='nama MP4 hasil (default: <video>-youtube.mp4)')
     ap.add_argument('--pudar', type=float, default=1.0, help='durasi transisi memudar dalam detik (0 = cut langsung)')
-    ap.add_argument('--gaya', choices=['silang', 'hitam'], default='silang',
-                    help='silang = intro memudar langsung ke video (default); hitam = memudar lewat layar hitam')
+    ap.add_argument('--gaya', choices=['hitam', 'silang'], default='hitam',
+                    help='hitam = memudar lewat layar hitam (default); silang = intro memudar langsung ke video')
     a = ap.parse_args()
 
     video, intro = pathlib.Path(a.video), pathlib.Path(a.intro)
@@ -82,19 +84,30 @@ def main():
     fc = [f'[0:v]{norm_v},settb=AVTB[v0]', f'[1:v]{norm_v},settb=AVTB[v1]',
           f"[{silent.get('intro', 0)}:a]{norm_a}[a0]",
           f"[{silent.get('video', 1)}:a]{norm_a}[a1]"]
-    if d > 0:
-        trans = 'fadeblack' if a.gaya == 'hitam' else 'fade'
-        fc += [f'[v0][v1]xfade=transition={trans}:duration={d:.3f}:offset={mi["dur"] - d:.3f}[v]',
+    if d > 0 and a.gaya == 'hitam':
+        # Simetris: separuh durasi intro memudar ke hitam, separuh durasi video muncul dari hitam.
+        # Tidak bertumpuk, jadi video utama mulai tepat di akhir intro.
+        h = d / 2
+        st = mi['dur'] - h
+        fc = [f'[0:v]{norm_v},fade=t=out:st={st:.3f}:d={h:.3f}[v0]',
+              f'[1:v]{norm_v},fade=t=in:st=0:d={h:.3f}[v1]',
+              f"[{silent.get('intro', 0)}:a]{norm_a},afade=t=out:st={st:.3f}:d={h:.3f}[a0]",
+              f"[{silent.get('video', 1)}:a]{norm_a},afade=t=in:st=0:d={h:.3f}[a1]",
+              '[v0][a0][v1][a1]concat=n=2:v=1:a=1[v][a]']
+        geser = mi['dur']
+    elif d > 0:
+        fc += [f'[v0][v1]xfade=transition=fade:duration={d:.3f}:offset={mi["dur"] - d:.3f}[v]',
                f'[a0][a1]acrossfade=d={d:.3f}:c1=tri:c2=tri[a]']
+        geser = mi['dur'] - d
     else:
         fc += ['[v0][a0][v1][a1]concat=n=2:v=1:a=1[v][a]']
+        geser = mi['dur']
 
     cmd += ['-filter_complex', ';'.join(fc), '-map', '[v]', '-map', '[a]',
             '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p',
             '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', str(out)]
     subprocess.run(cmd, check=True)
 
-    geser = mi['dur'] - d
     jenis = f'{"pudar lewat hitam" if a.gaya == "hitam" else "pudar silang"} {d:.1f} dtk' if d > 0 else 'cut langsung'
     print(f'\nSelesai: {out}')
     print(f'Intro {mi["dur"]:.2f} dtk · transisi {jenis} · video utama {mv["dur"]:.2f} dtk · '
