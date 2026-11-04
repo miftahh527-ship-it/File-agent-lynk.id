@@ -15,3 +15,8 @@ Sumber naskah: "Naskah YouTube — Perjalanan Panjang Manusia" (@Miftah Hadi, 4 
 | 5 | 57,4 | 22,5 | Aula saudara jauh | [warmly] Pada zaman itu, kita punya "saudara jauh", seperti Neanderthal di Eropa. [excited] Indonesia juga punya kisah penting! Fosil Homo erectus ditemukan di Sangiran dan Trinil, Jawa. Lalu, Homo floresiensis yang bertubuh mungil ditemukan di Liang Bua, Flores. [softly] Sekarang, semua spesies manusia lain sudah punah. [pause] Yang tersisa hanya kita. |
 
 Durasi Bagian 1: 81,5 dtk (video utama, sebelum intro kanal).
+
+## Catatan produksi (permintaan user)
+
+- Revisi 2 palet: warna dibuat natural/kalem (saturasi diturunkan) — tosca redup, biru batu, kuning madu, koral bata, lilac abu, indigo malam. Berlaku juga untuk bab berikutnya.
+- **Backsound:** setelah semua bab digabung jadi satu video long, tambahkan musik latar (instrumental ceria-lembut, cocok anak, tanpa vokal) di bawah VO, volume ±0,12–0,15, memudar masuk di awal & keluar di akhir. Dibuat saat penggabungan akhir.
