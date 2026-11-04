@@ -85,11 +85,16 @@ long (palet, font, tanda tangan gerak) — tidak perlu persetujuan gaya kedua.
    # → nama-proyek/nama-proyek-youtube.mp4
    ```
 
-   Script mengikuti resolusi & fps video utama, menambahkan audio senyap bila salah satu
-   tidak bersuara, lalu menyambung intro → video. Opsi: `--intro path.mp4`,
-   `--out nama.mp4`, `--jeda 0.3` (hitam sejenak di sambungan, default 0).
-3. Durasi intro dicatat; **semua timestamp chapter di deskripsi digeser sebesar durasi
-   intro** (video utama mulai di detik intro, bukan 0:00).
+   **Sambungan intro → video selalu memakai transisi memudar** (pudar silang 1 dtk, gambar
+   dan suara memudar bersamaan) — bukan cut. Script mengikuti resolusi & fps video utama
+   dan menambahkan audio senyap bila salah satu tidak bersuara. Opsi: `--pudar 1.5`
+   (durasi pudar), `--gaya hitam` (memudar lewat layar hitam), `--pudar 0` (cut, hanya
+   bila user memintanya), `--intro path.mp4`, `--out nama.mp4`.
+   Supaya pudarnya enak, **detik pertama video utama jangan langsung berisi teks/aksi
+   penting** — mulai dengan latar/establishing yang sudah bergerak, isi masuk ≥ 1 dtk.
+3. Script mencetak geseran chapter = durasi intro − durasi pudar (intro 13 dtk, pudar
+   1 dtk → video utama mulai di 0:12). **Semua timestamp chapter di deskripsi digeser
+   sebesar angka itu**, bukan ditebak.
 
 ## Langkah 3 — short: ambil tema paling menarik
 
@@ -147,7 +152,7 @@ Satu berkas berisi dua bagian yang siap disalin-tempel. Bahasa mengikuti bahasa 
 
 ⏱️ Chapter
 0:00 Intro
-0:06 <judul adegan/bagian 1>
+0:12 <judul adegan/bagian 1>
 …
 
 🔗 Link
@@ -229,7 +234,7 @@ Pesan penutup memuat daftar lima hasil dengan path lengkap, ditambah:
 ## Checklist paket YouTube
 
 - [ ] Intro dari `assets/intro-kanal/intro.mp4`, tidak diubah; ditempel di depan video long
-      lewat `gabung_intro.py`; hasil `-youtube.mp4` diputar & sambungannya dicek (potret
+      lewat `gabung_intro.py` dengan transisi memudar (default 1 dtk); hasil `-youtube.mp4` diputar & sambungannya dicek (potret
       detik intro-akhir dan detik video-awal)
 - [ ] Short tanpa intro; hook di 2 detik pertama; 9:16 ditata ulang (bukan crop);
       teks di zona aman; ≤ 60 dtk; suara sama dengan long

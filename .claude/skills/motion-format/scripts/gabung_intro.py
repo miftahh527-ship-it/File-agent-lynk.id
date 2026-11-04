@@ -4,9 +4,12 @@
 Pemakaian:
   python3 gabung_intro.py <video-utama.mp4>                      # → <video-utama>-youtube.mp4
   python3 gabung_intro.py <video-utama.mp4> --intro intro.mp4 --out hasil.mp4
-  python3 gabung_intro.py <video-utama.mp4> --jeda 0.3           # layar hitam 0,3 dtk di sambungan
+  python3 gabung_intro.py <video-utama.mp4> --pudar 1.5          # transisi memudar 1,5 dtk (default 1 dtk)
+  python3 gabung_intro.py <video-utama.mp4> --gaya hitam         # memudar lewat layar hitam
+  python3 gabung_intro.py <video-utama.mp4> --pudar 0            # tanpa transisi (cut langsung)
 
 Intro default: ../assets/intro-kanal/intro.mp4 (relatif ke script ini).
+Intro disambung ke video dengan transisi MEMUDAR (pudar silang 1 dtk, gambar dan suara sekaligus).
 Intro diskalakan (letterbox bila rasionya beda) ke resolusi & fps video utama. Bagian yang tidak
 bersuara diberi audio senyap supaya sambungan audio tetap rapi. Durasi intro dicetak — pakai untuk
 menggeser timestamp chapter di deskripsi.
@@ -44,7 +47,9 @@ def main():
     ap.add_argument('video', help='MP4 video utama (tanpa intro)')
     ap.add_argument('--intro', default=str(DEFAULT_INTRO), help=f'MP4 intro (default: {DEFAULT_INTRO})')
     ap.add_argument('--out', default='', help='nama MP4 hasil (default: <video>-youtube.mp4)')
-    ap.add_argument('--jeda', type=float, default=0.0, help='detik layar hitam senyap di sambungan')
+    ap.add_argument('--pudar', type=float, default=1.0, help='durasi transisi memudar dalam detik (0 = cut langsung)')
+    ap.add_argument('--gaya', choices=['silang', 'hitam'], default='silang',
+                    help='silang = intro memudar langsung ke video (default); hitam = memudar lewat layar hitam')
     a = ap.parse_args()
 
     video, intro = pathlib.Path(a.video), pathlib.Path(a.intro)
@@ -64,6 +69,7 @@ def main():
               f'setsar=1,fps={FPS:.6f},format=yuv420p')
     norm_a = 'aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo'
 
+    d = max(0.0, min(a.pudar, mi['dur'] - 0.1, mv['dur'] - 0.1))
     cmd = [ffmpeg, '-y', '-v', 'error', '-stats', '-i', str(intro), '-i', str(video)]
     idx = 2
     silent = {}
@@ -72,17 +78,14 @@ def main():
             cmd += ['-f', 'lavfi', '-t', f"{m['dur']:.3f}", '-i', 'anullsrc=r=48000:cl=stereo']
             silent[key] = idx
             idx += 1
-    if a.jeda > 0:
-        cmd += ['-f', 'lavfi', '-t', f'{a.jeda:.3f}', '-i', f'color=c=black:s={W}x{H}:r={FPS:.6f}',
-                '-f', 'lavfi', '-t', f'{a.jeda:.3f}', '-i', 'anullsrc=r=48000:cl=stereo']
-        gap_v, gap_a = idx, idx + 1
 
-    fc = [f'[0:v]{norm_v}[v0]', f'[1:v]{norm_v}[v1]',
+    fc = [f'[0:v]{norm_v},settb=AVTB[v0]', f'[1:v]{norm_v},settb=AVTB[v1]',
           f"[{silent.get('intro', 0)}:a]{norm_a}[a0]",
           f"[{silent.get('video', 1)}:a]{norm_a}[a1]"]
-    if a.jeda > 0:
-        fc += [f'[{gap_v}:v]{norm_v}[vg]', f'[{gap_a}:a]{norm_a}[ag]',
-               '[v0][a0][vg][ag][v1][a1]concat=n=3:v=1:a=1[v][a]']
+    if d > 0:
+        trans = 'fadeblack' if a.gaya == 'hitam' else 'fade'
+        fc += [f'[v0][v1]xfade=transition={trans}:duration={d:.3f}:offset={mi["dur"] - d:.3f}[v]',
+               f'[a0][a1]acrossfade=d={d:.3f}:c1=tri:c2=tri[a]']
     else:
         fc += ['[v0][a0][v1][a1]concat=n=2:v=1:a=1[v][a]']
 
@@ -91,12 +94,13 @@ def main():
             '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', str(out)]
     subprocess.run(cmd, check=True)
 
-    geser = mi['dur'] + max(a.jeda, 0)
+    geser = mi['dur'] - d
+    jenis = f'{"pudar lewat hitam" if a.gaya == "hitam" else "pudar silang"} {d:.1f} dtk' if d > 0 else 'cut langsung'
     print(f'\nSelesai: {out}')
-    print(f'Intro {mi["dur"]:.2f} dtk · video utama {mv["dur"]:.2f} dtk · total {geser + mv["dur"]:.2f} dtk')
+    print(f'Intro {mi["dur"]:.2f} dtk · transisi {jenis} · video utama {mv["dur"]:.2f} dtk · '
+          f'total {geser + mv["dur"]:.2f} dtk')
     print(f'Geser semua timestamp chapter sebesar {geser:.2f} dtk (video utama mulai di '
           f'{int(geser // 60)}:{int(geser % 60):02d}).')
-
 
 if __name__ == '__main__':
     main()
