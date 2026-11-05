@@ -142,21 +142,21 @@ window.VODATA={
 ]
 },
 "b1-3": {
-"dur": 8.594,
+"dur": 8.046,
 "cap": [
 [
 0,
-1.72,
+1.71,
 "Ayo, naik mesin waktu!"
 ],
 [
-1.72,
-6.44,
-"Kita akan menempuh perjalanan 300.000 tahun hanya dalam 15 menit."
+1.71,
+6.09,
+"Kita akan menempuh perjalanan 300.000 tahun hanya dalam 11 menit."
 ],
 [
-6.44,
-8.42,
+6.09,
+8.3,
 "Siap? Kita berangkat!"
 ]
 ]
@@ -1169,7 +1169,7 @@ function makeCapsule(p,x,ground){const k={};const place=G({transform:`translate(
   R(30,-300,140,230,C.blue2,26,bodyEl);k.door=R(30,-300,140,230,C.blue,26,bodyEl);CI(150,-190,9,C.sun,bodyEl);
   R(-262,-336,268,156,C.ink,22,bodyEl);R(-252,-326,248,136,'#1A2030',16,bodyEl);
   k.num=TX(-128,-268,'2026',42,C.mint,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,'font-variant-numeric':'tabular-nums'});
-  k.sub=TX(-128,-218,'15 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
+  k.sub=TX(-128,-218,'11 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
   k.lights=[];for(let i=0;i<7;i++){const a=Math.PI*(.12+i*.127);k.lights.push(CI(Math.cos(a)*-232,-330+Math.sin(a)*-260+520*0,11,i%2?C.sun:C.mint,bodyEl));}
   k.lights.forEach((l,i)=>{const a=Math.PI*(1.08+i*.14);l.setAttribute('cx',Math.cos(a)*236);l.setAttribute('cy',-330+Math.sin(a)*270);});
   k.place=place;return k;}
@@ -1248,6 +1248,14 @@ function bumper(year,label){const sc=scene('terowongan');const p=sc.g;R(-900,-90
   sfx('dial',.15,.4);sfx('luncur',2.55,.45);return sc;}
 function capStart(){/* cadangan */}
 
+/* FOTO ASLI + SUMBER: bingkai putih, foto, lalu label & kredit di bawah foto (bagian dari bingkai) */
+window.IMGWAIT=window.IMGWAIT||[];const FOTO=AUD.replace('audio-semua','foto');
+function photo(p,x,y,w,file,ar,l1,l2,{rot=-2,s1=36,s2=30}={}){const h=w/ar,g=G({},p),j=J(g,x,y);const inner=G({transform:`rotate(${rot})`},g);
+  const H=h+40+s1+s2+40;R(-w/2-20+10,-h/2-20+14,w+40,H,C.night,14,inner,{opacity:.35});R(-w/2-20,-h/2-20,w+40,H,C.paper,14,inner);
+  const href=FOTO+file;const im=N('image',{x:-w/2,y:-h/2,width:w,height:h,preserveAspectRatio:'xMidYMid slice'},inner);im.setAttributeNS(XL,'href',href);im.setAttribute('href',href);
+  IMGWAIT.push(new Promise(r=>{const i=new Image();i.onload=i.onerror=()=>r();i.src=href;}));
+  TX(0,h/2+20+s1,l1,s1,C.ink,inner,{'font-weight':700});TX(0,h/2+30+s1+s2,l2,s2,C.mint2,inner,{'font-weight':600});return j;}
+
 </script>
 <script>
 /* SHORT 9:16 — Lukisan gua tertua di dunia ada di Indonesia (±29 dtk, tanpa intro) */
@@ -1271,9 +1279,9 @@ tl.set(S1.g,{display:'block'},0);Object.assign(S1.cam,{x:540,y:860,z:1.5});S1.ap
 /* ---------- S2 PETA: Pulau Muna + umur ---------- */
 const S2=scene('peta');{const p=S2.g;R(-800,-800,2700,3500,'url(#skyD)',0,p);S2.m=mapBox(p,40,420,1000,1000,[117,127,-8,2],['sl','bo','jv']);const m=S2.m;
   S2.muna=EL(...m.pt(122.6,-4.9),26,44,C.sun,p,{opacity:0});S2.ring=CI(...m.pt(122.6,-4.9),46,'none',p,{stroke:C.coral,'stroke-width':8,opacity:0});
-  S2.tag=tag(p,540,410,'Liang Metanduno','Pulau Muna · Sulawesi Tenggara',{s1:52,s2:36});S2.st=stamp(p,540,960,'≥ 67.800 tahun',C.coral,76,-6);}
+  S2.tag=tag(p,540,410,'Liang Metanduno','Pulau Muna · Sulawesi Tenggara',{s1:52,s2:36});S2.st=stamp(p,540,960,'≥ 67.800 tahun',C.coral,76,-6);S2.card=photo(p,600,880,760,'metanduno-perahu.jpg',1.5,'Gua Liang Metanduno, Pulau Muna','Purnawibawa · CC BY-SA 4.0 · Wikimedia Commons',{s1:36,s2:30});S2.card.el.setAttribute('opacity',0);}
 {const t=c(2)-.2;slide(t,S1,S2,'y',72);Object.assign(S2.cam,{x:540,y:860,z:1.12});S2.apply();pop(S2.tag,t+.3);show(S2.muna,t+.8,.3);
-  tl.to(S2.ring,{keyframes:{opacity:[0,1,0]},attr:{r:140},duration:1.1,repeat:-1},t+.8);cam(S2,t+.4,600,1000,1.15,2.6,'power2.inOut');pop(S2.st,c(5)+.2,.5);sfx('pop',c(5)+.2,.45);}
+  tl.to(S2.ring,{keyframes:{opacity:[0,1,0]},attr:{r:140},duration:1.1,repeat:-1},t+.8);cam(S2,t+.4,600,1000,1.15,2.6,'power2.inOut');tl.to(S2.card.el,{opacity:1,duration:.01},c(3)+.2);tl.fromTo(S2.card,{y:80,r:-5},{y:0,r:0,duration:.5,ease:'back.out(1.6)',onUpdate:S2.card.apply,immediateRender:false},c(3)+.2);tl.to(S2.card.el,{opacity:0,duration:.25},c(5)-.1);pop(S2.st,c(5)+.2,.5);sfx('pop',c(5)+.2,.45);}
 
 /* ---------- S3 CARANYA: tangan + semburan pewarna ---------- */
 const S3=scene('cara');{const p=S3.g;R(-800,-800,2700,3500,'url(#caveG)',0,p);for(let i=0;i<10;i++)EL(-200+(i%3)*500,300+Math.floor(i/3)*500,220,90,'#4A5074',p,{opacity:.5});
@@ -1288,8 +1296,8 @@ const S3=scene('cara');{const p=S3.g;R(-800,-800,2700,3500,'url(#caveG)',0,p);fo
   show(S3.print,c(7)+.3,1.0);tl.to(S3.tube,{x:600,duration:.4,ease:'power2.in',onUpdate:S3.tube.apply},c(8)+1.0);tl.to(S3.hand,{y:800,duration:.6,ease:'power2.in',onUpdate:S3.hand.apply},c(8)+1.1);cam(S3,t,540,820,1.3,3.5,'sine.inOut');}
 
 /* ---------- S4 SENIMAN TERTUA: Nara & Bima bersorak ---------- */
-const S4=scene('sorak');{const p=S4.g,gy=1300;R(-800,-800,2700,3500,'url(#caveG)',0,p);const hp=G({transform:'translate(540,640) rotate(-8)'},p);CI(0,0,260,'url(#spray)',hp);handShape(hp,'#494F73',1.5);
-  R(-800,gy,2700,900,'#262A3E',0,p);S4.nara=character(p,360,gy,1.0,NARA);S4.bima=character(p,720,gy,1.0,BIMA);
+const S4=scene('sorak');{const p=S4.g,gy=1540;R(-800,-800,2700,3500,'url(#caveG)',0,p);const hp=G({transform:'translate(540,640) rotate(-8)'},p);CI(0,0,260,'url(#spray)',hp);handShape(hp,'#494F73',1.5);
+  R(-800,gy,2700,900,'#262A3E',0,p);S4.card=photo(p,540,520,560,'pettakere.jpg',4/3,'Cap tangan asli · Maros','Cahyo · CC BY-SA 3.0 · Wikimedia Commons',{s1:36,s2:30,rot:-3});S4.nara=character(p,360,gy,1.0,NARA);S4.bima=character(p,720,gy,1.0,BIMA);
   S4.conf=[];for(let i=0;i<30;i++)S4.conf.push(R(rnd(i)*1080,-80,16,28,[C.red,C.paper,C.sun,C.mint][i%4],3,p,{opacity:0}));}
 {const t=c(9)-.3;slide(t,S3,S4,'x',96);Object.assign(S4.cam,{x:540,y:980,z:1.12});S4.apply();idle(S4.nara,t);idle(S4.bima,t);
   face(S4.nara,'lebar',t+.3);face(S4.bima,'lebar',t+.3);wave(S4.nara,t+.4,'L');wave(S4.bima,t+.5,'R');hop(S4.nara,t+.8);hop(S4.bima,t+.9);
@@ -1389,7 +1397,7 @@ var MF = (function(){
       return a.play().then(function(){ a.pause(); a.currentTime = 0; a.volume = v; on = true; }, function(e){ a.volume = v; throw e; }); }
   };
 })();
-document.fonts.ready.then(()=>{applyAll();window.OPENER.ready=true;if(q.has('clean'))return;if(!hasVO&&!MF.has){start();return;}
+Promise.all([document.fonts.ready,...(window.IMGWAIT||[])]).then(()=>{applyAll();window.OPENER.ready=true;if(q.has('clean'))return;if(!hasVO&&!MF.has){start();return;}
   (hasVO?vo.play():MF.probe()).then(()=>{audioOn=hasVO;vo.currentTime=0;tl.play(0);}).catch(()=>{const go=()=>{removeEventListener('pointerdown',go);removeEventListener('keydown',go);start();};addEventListener('pointerdown',go);addEventListener('keydown',go);});});
 
 </script>

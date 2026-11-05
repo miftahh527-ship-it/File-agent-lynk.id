@@ -56,3 +56,11 @@ function bumper(year,label){const sc=scene('terowongan');const p=sc.g;R(-900,-90
   tl.set(p,{display:'block'},0);Object.assign(sc.cam,{x:960,y:560,z:1.35});sc.apply();cam(sc,0,960,520,1.5,3.2,'power1.inOut');
   sfx('dial',.15,.4);sfx('luncur',2.55,.45);return sc;}
 function capStart(){/* cadangan */}
+
+/* FOTO ASLI + SUMBER: bingkai putih, foto, lalu label & kredit di bawah foto (bagian dari bingkai) */
+window.IMGWAIT=window.IMGWAIT||[];const FOTO=AUD.replace('audio-semua','foto');
+function photo(p,x,y,w,file,ar,l1,l2,{rot=-2,s1=36,s2=30}={}){const h=w/ar,g=G({},p),j=J(g,x,y);const inner=G({transform:`rotate(${rot})`},g);
+  const H=h+40+s1+s2+40;R(-w/2-20+10,-h/2-20+14,w+40,H,C.night,14,inner,{opacity:.35});R(-w/2-20,-h/2-20,w+40,H,C.paper,14,inner);
+  const href=FOTO+file;const im=N('image',{x:-w/2,y:-h/2,width:w,height:h,preserveAspectRatio:'xMidYMid slice'},inner);im.setAttributeNS(XL,'href',href);im.setAttribute('href',href);
+  IMGWAIT.push(new Promise(r=>{const i=new Image();i.onload=i.onerror=()=>r();i.src=href;}));
+  TX(0,h/2+20+s1,l1,s1,C.ink,inner,{'font-weight':700});TX(0,h/2+30+s1+s2,l2,s2,C.mint2,inner,{'font-weight':600});return j;}

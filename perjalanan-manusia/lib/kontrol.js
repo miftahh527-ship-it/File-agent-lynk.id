@@ -78,5 +78,5 @@ var MF = (function(){
       return a.play().then(function(){ a.pause(); a.currentTime = 0; a.volume = v; on = true; }, function(e){ a.volume = v; throw e; }); }
   };
 })();
-document.fonts.ready.then(()=>{applyAll();window.OPENER.ready=true;if(q.has('clean'))return;if(!hasVO&&!MF.has){start();return;}
+Promise.all([document.fonts.ready,...(window.IMGWAIT||[])]).then(()=>{applyAll();window.OPENER.ready=true;if(q.has('clean'))return;if(!hasVO&&!MF.has){start();return;}
   (hasVO?vo.play():MF.probe()).then(()=>{audioOn=hasVO;vo.currentTime=0;tl.play(0);}).catch(()=>{const go=()=>{removeEventListener('pointerdown',go);removeEventListener('keydown',go);start();};addEventListener('pointerdown',go);addEventListener('keydown',go);});});
