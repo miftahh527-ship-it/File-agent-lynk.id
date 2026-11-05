@@ -9,7 +9,7 @@ Subtitle dibuat otomatis dari teks di bawah (`naskah/caps.py` → `lib/captions.
 | s-1 | 26.6 dtk | Lukisan gua tertua di dunia... ada di Indonesia! Di Gua Liang Metanduno, Pulau Muna, Sulawesi Tenggara, ada cap tangan merah yang berumur paling sedikit 67.800 tahun! Caranya? Tangan ditempel ke dinding, lalu pewarna merah disemburkan di sekelilingnya. Jadi, seniman tertua di dunia ada di Indonesia! Mau tahu perjalanan 300.000 tahun manusia? Tonton versi lengkapnya di kanal ini! |
 | b1-1 | 7.6 dtk | Tangan ini dilukis di dinding gua hampir 68.000 tahun yang lalu! Tahukah kamu di mana? Di Indonesia! |
 | b1-2 | 12.4 dtk | Dulu, manusia tinggal di gua. Mereka belum bisa bertani dan belum bisa menulis. Sekarang, kita bisa mengirim pesan ke seluruh dunia hanya dalam satu detik! Bagaimana bisa begitu? |
-| b1-3 | 8.6 dtk | Ayo, naik mesin waktu! Kita akan menempuh perjalanan 300.000 tahun hanya dalam 15 menit. Siap? Kita berangkat! |
+| b1-3 | 8.0 dtk | Ayo, naik mesin waktu! Kita akan menempuh perjalanan 300.000 tahun hanya dalam 11 menit. Siap? Kita berangkat! |
 | b1-4 | 24.3 dtk | Perhentian pertama: Afrika, sekitar 300.000 tahun yang lalu. Di Jebel Irhoud, Maroko, ilmuwan menemukan fosil tertua dari spesies kita, yaitu Homo sapiens. Artinya, "manusia bijak". Wajah mereka sudah mirip dengan kita. Kalau mereka memakai topi dan berjalan di jalan raya hari ini, mungkin kita tidak sadar bahwa mereka manusia purba! |
 | b1-5 | 22.5 dtk | Pada zaman itu, kita punya "saudara jauh", seperti Neanderthal di Eropa. Indonesia juga punya kisah penting! Fosil Homo erectus ditemukan di Sangiran dan Trinil, Jawa. Lalu, Homo floresiensis yang bertubuh mungil ditemukan di Liang Bua, Flores. Sekarang, semua spesies manusia lain sudah punah. Yang tersisa hanya kita. |
 | b2-1 | 16.2 dtk | Manusia purba belum bertani. Mereka berburu hewan dan meramu, yaitu mengumpulkan buah dan umbi dari alam. Kalau makanan habis? Mereka pindah tempat! Alat mereka terbuat dari batu. Karena itu, masa ini disebut Zaman Batu. |
@@ -50,3 +50,5 @@ Subtitle dibuat otomatis dari teks di bawah (`naskah/caps.py` → `lib/captions.
 
 - Revisi 2 palet: warna dibuat natural/kalem (saturasi diturunkan) — tosca redup, biru batu, kuning madu, koral bata, lilac abu, indigo malam. Berlaku juga untuk bab berikutnya.
 - **Backsound:** setelah semua bab digabung jadi satu video long, tambahkan musik latar (instrumental ceria-lembut, cocok anak, tanpa vokal) di bawah VO, volume ±0,12–0,15, memudar masuk di awal & keluar di akhir. Dibuat saat penggabungan akhir.
+
+- Revisi 3 (5 Nov 2026): durasi yang diucapkan disamakan dengan durasi asli video. b1-3 dibuat ulang ("lima belas menit" → "sebelas menit"; video utama 10:59, dengan intro 11:12), layar kapsul "11 MENIT", subtitle, dan judul opsi 2 di youtube.md ikut disesuaikan.

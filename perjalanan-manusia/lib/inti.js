@@ -129,7 +129,7 @@ function makeCapsule(p,x,ground){const k={};const place=G({transform:`translate(
   R(30,-300,140,230,C.blue2,26,bodyEl);k.door=R(30,-300,140,230,C.blue,26,bodyEl);CI(150,-190,9,C.sun,bodyEl);
   R(-262,-336,268,156,C.ink,22,bodyEl);R(-252,-326,248,136,'#1A2030',16,bodyEl);
   k.num=TX(-128,-268,'2026',42,C.mint,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,'font-variant-numeric':'tabular-nums'});
-  k.sub=TX(-128,-218,'15 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
+  k.sub=TX(-128,-218,'11 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
   k.lights=[];for(let i=0;i<7;i++){const a=Math.PI*(.12+i*.127);k.lights.push(CI(Math.cos(a)*-232,-330+Math.sin(a)*-260+520*0,11,i%2?C.sun:C.mint,bodyEl));}
   k.lights.forEach((l,i)=>{const a=Math.PI*(1.08+i*.14);l.setAttribute('cx',Math.cos(a)*236);l.setAttribute('cy',-330+Math.sin(a)*270);});
   k.place=place;return k;}

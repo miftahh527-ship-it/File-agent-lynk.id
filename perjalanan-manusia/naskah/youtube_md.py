@@ -11,7 +11,7 @@ md=f"""# Video long ({tot})
 
 ## Judul (pilih satu)
 1. Perjalanan 300.000 Tahun: Dari Gua Sampai Smartphone
-2. Sejarah Manusia dalam 12 Menit — Lukisan Tertua Dunia Ada di Indonesia!
+2. Sejarah Manusia dalam 11 Menit — Lukisan Tertua Dunia Ada di Indonesia!
 3. Dari Manusia Gua ke Zaman HP: Kisah 300.000 Tahun Manusia
 
 ## Deskripsi

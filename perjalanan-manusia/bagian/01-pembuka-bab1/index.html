@@ -30,6 +30,76 @@ html,body{margin:0;height:100%;background:#14133D;overflow:hidden}
 <script>
 /* dibuat oleh naskah/caps.py — teks subtitle + durasi tiap klip VO */
 window.VODATA={
+"s-1": {
+"dur": 26.593,
+"cap": [
+[
+0,
+1.98,
+"Lukisan gua tertua di dunia..."
+],
+[
+1.98,
+3.65,
+"ada di Indonesia!"
+],
+[
+3.65,
+5.73,
+"Di Gua Liang Metanduno, Pulau Muna,"
+],
+[
+5.73,
+6.92,
+"Sulawesi Tenggara,"
+],
+[
+6.92,
+9.1,
+"ada cap tangan merah yang berumur"
+],
+[
+9.1,
+11.54,
+"paling sedikit 67.800 tahun! Caranya?"
+],
+[
+11.54,
+14.08,
+"Tangan ditempel ke dinding,"
+],
+[
+14.08,
+15.27,
+"lalu pewarna merah"
+],
+[
+15.27,
+17.18,
+"disemburkan di sekelilingnya."
+],
+[
+17.18,
+19.01,
+"Jadi, seniman tertua di"
+],
+[
+19.01,
+20.53,
+"dunia ada di Indonesia!"
+],
+[
+20.53,
+23.59,
+"Mau tahu perjalanan 300.000 tahun manusia?"
+],
+[
+23.59,
+26.6,
+"Tonton versi lengkapnya di kanal ini!"
+]
+]
+},
 "b1-1": {
 "dur": 7.628,
 "cap": [
@@ -71,21 +141,21 @@ window.VODATA={
 ]
 },
 "b1-3": {
-"dur": 8.594,
+"dur": 8.046,
 "cap": [
 [
 0,
-1.72,
+1.71,
 "Ayo, naik mesin waktu!"
 ],
 [
-1.72,
-6.44,
-"Kita akan menempuh perjalanan 300.000 tahun hanya dalam 15 menit."
+1.71,
+6.09,
+"Kita akan menempuh perjalanan 300.000 tahun hanya dalam 11 menit."
 ],
 [
-6.44,
-8.42,
+6.09,
+8.3,
 "Siap? Kita berangkat!"
 ]
 ]
@@ -969,7 +1039,7 @@ window.VODATA={
 
 let DUR=60;   /* diisi ulang oleh adegan.js tiap bagian */
 const $=(s,r=document)=>r.querySelector(s);
-const W=1920,H=1080,NS='http://www.w3.org/2000/svg',XL='http://www.w3.org/1999/xlink';
+const W=(window.STAGE||{}).w||1920,H=(window.STAGE||{}).h||1080,NS='http://www.w3.org/2000/svg',XL='http://www.w3.org/1999/xlink';
 /* palet segar (bukan palet intro): tosca, biru listrik, kuning cerah, koral, lilac, lime, indigo malam */
 const C={ink:'#2E3448',indigo:'#3E4366',indigo2:'#4D5378',night:'#1F2233',blue:'#5B8DB8',blue2:'#4A78A0',sky:'#A9D4DE',sky2:'#EEF5F0',
   mint:'#6BAE9A',mint2:'#4F8F7C',lime:'#A3C47A',lime2:'#86AA5E',sun:'#E8C15A',coral:'#D9735E',pink:'#E2A39C',lilac:'#B3A8C8',lilac2:'#8E84A8',
@@ -999,8 +1069,8 @@ rg('glowSoft',[[0,'#FFFFFF',.9],[1,'#FFFFFF',0]]);
 
 /* ---------- panggung ---------- */
 const scenes=[];
-function scene(name){const g=G({'data-name':name},S);g.style.display='none';const sc={name,g,cam:{x:960,y:540,z:1.1,ox:0,oy:0},
-  apply(){const c=sc.cam;g.setAttribute('transform',`translate(${960-(c.x+c.ox)*c.z},${540-(c.y+c.oy)*c.z}) scale(${c.z})`);}};sc.apply();scenes.push(sc);return sc;}
+function scene(name){const g=G({'data-name':name},S);g.style.display='none';const sc={name,g,cam:{x:W/2,y:H/2,z:1.1,ox:0,oy:0},
+  apply(){const c=sc.cam;g.setAttribute('transform',`translate(${W/2-(c.x+c.ox)*c.z},${H/2-(c.y+c.oy)*c.z}) scale(${c.z})`);}};sc.apply();scenes.push(sc);return sc;}
 
 /* ---------- KARAKTER: rig sendi (kaki di y=0) ---------- */
 function character(p,x,ground,scale,o={}){
@@ -1098,7 +1168,7 @@ function makeCapsule(p,x,ground){const k={};const place=G({transform:`translate(
   R(30,-300,140,230,C.blue2,26,bodyEl);k.door=R(30,-300,140,230,C.blue,26,bodyEl);CI(150,-190,9,C.sun,bodyEl);
   R(-262,-336,268,156,C.ink,22,bodyEl);R(-252,-326,248,136,'#1A2030',16,bodyEl);
   k.num=TX(-128,-268,'2026',42,C.mint,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,'font-variant-numeric':'tabular-nums'});
-  k.sub=TX(-128,-218,'15 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
+  k.sub=TX(-128,-218,'11 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
   k.lights=[];for(let i=0;i<7;i++){const a=Math.PI*(.12+i*.127);k.lights.push(CI(Math.cos(a)*-232,-330+Math.sin(a)*-260+520*0,11,i%2?C.sun:C.mint,bodyEl));}
   k.lights.forEach((l,i)=>{const a=Math.PI*(1.08+i*.14);l.setAttribute('cx',Math.cos(a)*236);l.setAttribute('cy',-330+Math.sin(a)*270);});
   k.place=place;return k;}
@@ -1106,7 +1176,7 @@ const fmt=v=>{const n=Math.round(Math.abs(v)).toString().replace(/\B(?=(\d{3})+(
 
 /* ---------- SUARA + SUBTITLE: say(idKlip, detik) menaruh VO dan teksnya sekaligus ---------- */
 window.AUDIO_PLAN={vo:[],sfx:[],music:null};
-const AUD='../../audio-semua/',CAPS=[];
+const AUD=window.AUDBASE||'../../audio-semua/',CAPS=[];
 function vdur(id){return VODATA[id].dur;}
 function say(id,at,vol=1){AUDIO_PLAN.vo.push({at,src:AUD+id+'.mp3',vol});VODATA[id].cap.forEach(([a,b,t])=>CAPS.push({a:at+a,b:at+b,t}));return at+vdur(id);}
 function sfx(name,at,vol=.4){AUDIO_PLAN.sfx.push({at,src:AUD+'sfx-'+name+'.mp3',vol});}
@@ -1331,7 +1401,7 @@ tl.to(P3.rf,{keyframes:{opacity:[1,.4,1]},duration:.3,repeat:-1},15.1);
 
 /* =====================================================================
    PANGGUNG 4 — HALAMAN + KAPSUL WAKTU: dial berputar ke −300.000
-   VO3 22.4 · "tiga ratus ribu tahun" ~25.6–26.9 · "15 menit" ~27.8 · "Kita berangkat!" 29.8
+   VO3 22.4 · "tiga ratus ribu tahun" ~25.6–26.9 · "sebelas menit" ~27.0 · "Siap?" 28.7 · "Kita berangkat!" 29.45
    ===================================================================== */
 const P4=scene('kapsul');{const p=P4.g,gy=960;
   R(-600,-1400,3200,2900,'url(#skyA)',0,p);P4.clouds=[cloud(p,300,240,1),cloud(p,1300,180,.8),cloud(p,1800,320,.6),cloud(p,700,-200,.9),cloud(p,1500,-500,.7)];
@@ -1356,15 +1426,15 @@ show(P4.cap.faces,24.7,.25);
 cam(P4,24.4,930,690,1.72,.9,'power2.inOut');
 const dialV={v:2026};tl.to(dialV,{v:-300000,duration:2.3,ease:'power3.inOut',onUpdate(){P4.cap.num.textContent=fmt(dialV.v);}},24.7);
 tl.fromTo(P4.cap.num,{attr:{'font-size':42}},{attr:{'font-size':48},duration:.18,yoyo:true,repeat:1,ease:'power2.out',immediateRender:false},27.0);
-tl.to(P4.cap.num,{fill:C.sun,duration:.01},27.0);show(P4.cap.sub,27.8,.3);
+tl.to(P4.cap.num,{fill:C.sun,duration:.01},27.0);show(P4.cap.sub,27.2,.3);
 cam(P4,28.2,1060,560,1.22,1.0,'power2.inOut');
 P4.cap.lights.forEach((l,i)=>{tl.to(l,{keyframes:{opacity:[1,.25,1]},duration:1.2,repeat:-1,ease:'none'},22+i*.17);});
 tl.to(P4.cap.tip,{keyframes:{opacity:[1,.2,1]},duration:.6,repeat:-1},22);
-tl.to(P4.cap.body,{x:7,duration:.05,yoyo:true,repeat:30,ease:'sine.inOut',onUpdate:P4.cap.body.apply},29.2);
-P4.puffs.forEach((pf,i)=>drift(pf,29.4+i*.08,{y:-120,x:(rnd(i)-.5)*260,scale:2,dur:1.2,peak:.95}));
-show(P4.cap.flame,30.3,.15);tl.to(P4.cap.flame,{keyframes:{opacity:[1,.7,1]},duration:.12,repeat:-1},30.45);
-tl.to(P4.cap.body,{y:-1500,duration:.75,ease:'power2.in',onUpdate:P4.cap.body.apply},30.65);tl.to(P4.cap.sd,{opacity:0,attr:{rx:60},duration:.5},30.65);
-cam(P4,30.6,1060,300,1.25,.6,'power2.in');
+tl.to(P4.cap.body,{x:7,duration:.05,yoyo:true,repeat:30,ease:'sine.inOut',onUpdate:P4.cap.body.apply},28.8);
+P4.puffs.forEach((pf,i)=>drift(pf,29.0+i*.08,{y:-120,x:(rnd(i)-.5)*260,scale:2,dur:1.2,peak:.95}));
+show(P4.cap.flame,29.95,.15);tl.to(P4.cap.flame,{keyframes:{opacity:[1,.7,1]},duration:.12,repeat:-1},30.1);
+tl.to(P4.cap.body,{y:-1500,duration:.75,ease:'power2.in',onUpdate:P4.cap.body.apply},30.3);tl.to(P4.cap.sd,{opacity:0,attr:{rx:60},duration:.5},30.3);
+cam(P4,30.25,1060,300,1.25,.6,'power2.in');
 P4.clouds.forEach((c,i)=>tl.fromTo(c,{x:0},{x:120+i*20,duration:9,ease:'none',immediateRender:false},22));P4.trees.forEach((j,i)=>sway(j,22+i*.4,2,1.8));P4.tufts.forEach((j,i)=>sway(j,22+i*.1,8,.9+rnd(i)*.5));
 P4.flies.forEach((f,i)=>tl.fromTo(f,{x:0,y:0},{x:260-i*400,y:-60,duration:4,ease:'sine.inOut',yoyo:true,repeat:-1,immediateRender:false},22));
 
@@ -1526,7 +1596,7 @@ P7.refl.forEach((r,i)=>tl.to(r,{keyframes:{opacity:[.18,.05,.18]},x:30,duration:
 /* ---------- SUARA + SUBTITLE ---------- */
 say('b1-1',1.2);say('b1-2',9.4);say('b1-3',22.4);say('b1-4',32.4);say('b1-5',57.4);
 [[ 'senter',1.75,.55],['pop',8.0,.4],['pop',12.9,.35],['pop',13.9,.35],['kirim',16.6,.4],['kirim',17.4,.35],['kirim',18.2,.35],['pop',20.4,.35],
- ['dial',24.7,.45],['luncur',30.55,.5],['pop',31.95,.4],['pop',37.75,.3],['pop',42.9,.35],['pop',50.1,.4],['pop',62.6,.3],['senter',77.7,.45]].forEach(([n,t,v])=>sfx(n,t,v));
+ ['dial',24.7,.45],['luncur',30.2,.5],['pop',31.95,.4],['pop',37.75,.3],['pop',42.9,.35],['pop',50.1,.4],['pop',62.6,.3],['senter',77.7,.45]].forEach(([n,t,v])=>sfx(n,t,v));
 DUR=81.5;tl.to({},{duration:.01},DUR);
 
 </script>

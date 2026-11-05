@@ -150,7 +150,7 @@ tl.to(P3.rf,{keyframes:{opacity:[1,.4,1]},duration:.3,repeat:-1},15.1);
 
 /* =====================================================================
    PANGGUNG 4 — HALAMAN + KAPSUL WAKTU: dial berputar ke −300.000
-   VO3 22.4 · "tiga ratus ribu tahun" ~25.6–26.9 · "15 menit" ~27.8 · "Kita berangkat!" 29.8
+   VO3 22.4 · "tiga ratus ribu tahun" ~25.6–26.9 · "sebelas menit" ~27.0 · "Siap?" 28.7 · "Kita berangkat!" 29.45
    ===================================================================== */
 const P4=scene('kapsul');{const p=P4.g,gy=960;
   R(-600,-1400,3200,2900,'url(#skyA)',0,p);P4.clouds=[cloud(p,300,240,1),cloud(p,1300,180,.8),cloud(p,1800,320,.6),cloud(p,700,-200,.9),cloud(p,1500,-500,.7)];
@@ -175,15 +175,15 @@ show(P4.cap.faces,24.7,.25);
 cam(P4,24.4,930,690,1.72,.9,'power2.inOut');
 const dialV={v:2026};tl.to(dialV,{v:-300000,duration:2.3,ease:'power3.inOut',onUpdate(){P4.cap.num.textContent=fmt(dialV.v);}},24.7);
 tl.fromTo(P4.cap.num,{attr:{'font-size':42}},{attr:{'font-size':48},duration:.18,yoyo:true,repeat:1,ease:'power2.out',immediateRender:false},27.0);
-tl.to(P4.cap.num,{fill:C.sun,duration:.01},27.0);show(P4.cap.sub,27.8,.3);
+tl.to(P4.cap.num,{fill:C.sun,duration:.01},27.0);show(P4.cap.sub,27.2,.3);
 cam(P4,28.2,1060,560,1.22,1.0,'power2.inOut');
 P4.cap.lights.forEach((l,i)=>{tl.to(l,{keyframes:{opacity:[1,.25,1]},duration:1.2,repeat:-1,ease:'none'},22+i*.17);});
 tl.to(P4.cap.tip,{keyframes:{opacity:[1,.2,1]},duration:.6,repeat:-1},22);
-tl.to(P4.cap.body,{x:7,duration:.05,yoyo:true,repeat:30,ease:'sine.inOut',onUpdate:P4.cap.body.apply},29.2);
-P4.puffs.forEach((pf,i)=>drift(pf,29.4+i*.08,{y:-120,x:(rnd(i)-.5)*260,scale:2,dur:1.2,peak:.95}));
-show(P4.cap.flame,30.3,.15);tl.to(P4.cap.flame,{keyframes:{opacity:[1,.7,1]},duration:.12,repeat:-1},30.45);
-tl.to(P4.cap.body,{y:-1500,duration:.75,ease:'power2.in',onUpdate:P4.cap.body.apply},30.65);tl.to(P4.cap.sd,{opacity:0,attr:{rx:60},duration:.5},30.65);
-cam(P4,30.6,1060,300,1.25,.6,'power2.in');
+tl.to(P4.cap.body,{x:7,duration:.05,yoyo:true,repeat:30,ease:'sine.inOut',onUpdate:P4.cap.body.apply},28.8);
+P4.puffs.forEach((pf,i)=>drift(pf,29.0+i*.08,{y:-120,x:(rnd(i)-.5)*260,scale:2,dur:1.2,peak:.95}));
+show(P4.cap.flame,29.95,.15);tl.to(P4.cap.flame,{keyframes:{opacity:[1,.7,1]},duration:.12,repeat:-1},30.1);
+tl.to(P4.cap.body,{y:-1500,duration:.75,ease:'power2.in',onUpdate:P4.cap.body.apply},30.3);tl.to(P4.cap.sd,{opacity:0,attr:{rx:60},duration:.5},30.3);
+cam(P4,30.25,1060,300,1.25,.6,'power2.in');
 P4.clouds.forEach((c,i)=>tl.fromTo(c,{x:0},{x:120+i*20,duration:9,ease:'none',immediateRender:false},22));P4.trees.forEach((j,i)=>sway(j,22+i*.4,2,1.8));P4.tufts.forEach((j,i)=>sway(j,22+i*.1,8,.9+rnd(i)*.5));
 P4.flies.forEach((f,i)=>tl.fromTo(f,{x:0,y:0},{x:260-i*400,y:-60,duration:4,ease:'sine.inOut',yoyo:true,repeat:-1,immediateRender:false},22));
 
@@ -345,5 +345,5 @@ P7.refl.forEach((r,i)=>tl.to(r,{keyframes:{opacity:[.18,.05,.18]},x:30,duration:
 /* ---------- SUARA + SUBTITLE ---------- */
 say('b1-1',1.2);say('b1-2',9.4);say('b1-3',22.4);say('b1-4',32.4);say('b1-5',57.4);
 [[ 'senter',1.75,.55],['pop',8.0,.4],['pop',12.9,.35],['pop',13.9,.35],['kirim',16.6,.4],['kirim',17.4,.35],['kirim',18.2,.35],['pop',20.4,.35],
- ['dial',24.7,.45],['luncur',30.55,.5],['pop',31.95,.4],['pop',37.75,.3],['pop',42.9,.35],['pop',50.1,.4],['pop',62.6,.3],['senter',77.7,.45]].forEach(([n,t,v])=>sfx(n,t,v));
+ ['dial',24.7,.45],['luncur',30.2,.5],['pop',31.95,.4],['pop',37.75,.3],['pop',42.9,.35],['pop',50.1,.4],['pop',62.6,.3],['senter',77.7,.45]].forEach(([n,t,v])=>sfx(n,t,v));
 DUR=81.5;tl.to({},{duration:.01},DUR);

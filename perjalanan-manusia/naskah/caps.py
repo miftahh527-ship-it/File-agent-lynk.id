@@ -4,7 +4,7 @@ import vo
 P1 = [
  ('b1-1','Tangan ini dilukis di dinding gua hampir 68.000 tahun yang lalu! Tahukah kamu di mana? Di Indonesia!'),
  ('b1-2','Dulu, manusia tinggal di gua. Mereka belum bisa bertani dan belum bisa menulis. Sekarang, kita bisa mengirim pesan ke seluruh dunia hanya dalam satu detik! Bagaimana bisa begitu?'),
- ('b1-3','Ayo, naik mesin waktu! Kita akan menempuh perjalanan 300.000 tahun hanya dalam 15 menit. Siap? Kita berangkat!'),
+ ('b1-3','Ayo, naik mesin waktu! Kita akan menempuh perjalanan 300.000 tahun hanya dalam 11 menit. Siap? Kita berangkat!'),
  ('b1-4','Perhentian pertama: Afrika, sekitar 300.000 tahun yang lalu. Di Jebel Irhoud, Maroko, ilmuwan menemukan fosil tertua dari spesies kita, yaitu Homo sapiens. Artinya, "manusia bijak". Wajah mereka sudah mirip dengan kita. Kalau mereka memakai topi dan berjalan di jalan raya hari ini, mungkin kita tidak sadar bahwa mereka manusia purba!'),
  ('b1-5','Pada zaman itu, kita punya "saudara jauh", seperti Neanderthal di Eropa. Indonesia juga punya kisah penting! Fosil Homo erectus ditemukan di Sangiran dan Trinil, Jawa. Lalu, Homo floresiensis yang bertubuh mungil ditemukan di Liang Bua, Flores. Sekarang, semua spesies manusia lain sudah punah. Yang tersisa hanya kita.'),
 ]

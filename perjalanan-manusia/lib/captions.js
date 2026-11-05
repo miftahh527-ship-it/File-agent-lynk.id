@@ -111,21 +111,21 @@ window.VODATA={
 ]
 },
 "b1-3": {
-"dur": 8.594,
+"dur": 8.046,
 "cap": [
 [
 0,
-1.72,
+1.71,
 "Ayo, naik mesin waktu!"
 ],
 [
-1.72,
-6.44,
-"Kita akan menempuh perjalanan 300.000 tahun hanya dalam 15 menit."
+1.71,
+6.09,
+"Kita akan menempuh perjalanan 300.000 tahun hanya dalam 11 menit."
 ],
 [
-6.44,
-8.42,
+6.09,
+8.3,
 "Siap? Kita berangkat!"
 ]
 ]
