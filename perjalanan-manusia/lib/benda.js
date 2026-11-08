@@ -24,12 +24,15 @@ const CONT={na:[[-165,65],[-140,70],[-95,72],[-65,62],[-55,50],[-70,43],[-80,32]
   su:[[95,5],[98,4],[106,-4],[105,-6],[101,-2],[95,3]],jv:[[105,-6],[111,-6.5],[114,-7.5],[110,-8],[106,-7]],
   bo:[[109,1],[112,3],[117,7],[119,5],[118,1],[116,-3],[111,-3],[109,-1]],sl:[[119,1],[124,1.5],[121,0],[123,-1],[122,-5],[120,-5],[120,-2]],
   pp:[[131,-1],[138,-2],[146,-6],[150,-10],[141,-9],[137,-5],[132,-3]]};
-/* garis pantai asli dari data Natural Earth (lib/peta-data.js, domain publik) */
-function landD(arr,P,[a0,a1,b0,b1],keep=null){let d='';for(const r of arr){let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9,cx=0,cy=0;
+/* garis pantai buatan sendiri (lib/peta-data.js), dihaluskan dengan kurva Catmull-Rom tertutup */
+function landD(arr,P,[a0,a1,b0,b1],keep=null){let d='';for(const r of arr){let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9,cx=0,cy=0;const n=r.length/2;
     for(let i=0;i<r.length;i+=2){const lo=r[i],la=r[i+1];cx+=lo;cy+=la;if(lo<x0)x0=lo;if(lo>x1)x1=lo;if(la<y0)y0=la;if(la>y1)y1=la;}
-    if(x1<a0||x0>a1||y1<b0||y0>b1)continue;if(keep&&!keep(cx/(r.length/2),cy/(r.length/2),x1-x0))continue;
-    for(let i=0;i<r.length;i+=2){const q=P(r[i],r[i+1]);d+=(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1);}d+='Z';}return d;}
-function landInto(g,P,box,land,sw=2){return PA(landD(PETA.dunia,P,box)+landD(PETA.nusantara,P,box),land,g,{stroke:sh(land,.82),'stroke-width':sw,'stroke-linejoin':'round'});}
+    if(x1<a0||x0>a1||y1<b0||y0>b1)continue;if(keep&&!keep(cx/n,cy/n,x1-x0))continue;
+    const q=[];for(let i=0;i<r.length;i+=2)q.push(P(r[i],r[i+1]));const k=i=>q[(i+n)%n],t=.9/6,F=v=>v.toFixed(1);
+    d+='M'+F(q[0][0])+' '+F(q[0][1]);for(let i=0;i<n;i++){const p0=k(i-1),p1=k(i),p2=k(i+1),p3=k(i+2);
+      d+='C'+F(p1[0]+(p2[0]-p0[0])*t)+' '+F(p1[1]+(p2[1]-p0[1])*t)+' '+F(p2[0]-(p3[0]-p1[0])*t)+' '+F(p2[1]-(p3[1]-p1[1])*t)+' '+F(p2[0])+' '+F(p2[1]);}d+='Z';}return d;}
+function landInto(g,P,box,land,sw=2){const el=PA(landD(PETA.dunia,P,box)+landD(PETA.nusantara,P,box),land,g,{stroke:sh(land,.82),'stroke-width':sw,'stroke-linejoin':'round'});
+  const sea=landD(PETA.laut,P,box);if(sea)PA(sea,'#7FB2C4',g,{stroke:sh(land,.82),'stroke-width':sw});return el;}
 function worldMap(p,x,y,w,h,{land=C.lime,sea='url(#sea)',grid=true}={}){const g=G({transform:`translate(${x},${y})`},p);R(0,0,w,h,sea,28,g);
   if(grid)for(let i=1;i<6;i++){LN(`M ${w*i/6} 20 L ${w*i/6} ${h-20}`,C.white,2,g,{opacity:.15});LN(`M 20 ${h*i/6} L ${w-20} ${h*i/6}`,C.white,2,g,{opacity:.15});}
   const P=(lo,la)=>[((lo+180)/360)*w,((80-la)/140)*h];const m={g,P,pt:(lo,la)=>{const[a,b]=P(lo,la);return[x+a,y+b];},parts:{}};

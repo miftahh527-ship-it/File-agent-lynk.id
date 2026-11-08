@@ -18,4 +18,4 @@ Tata letak (skill motion-format 1.2, Hukum #5 "Rapi"): `python3 naskah/cek.py` m
 Elemen SVG diberi peran (`data-tata="teks|subjek|gambar"`), label/kartu memakai penjaga tepi (`data-jaga`: memudar sebelum terpotong frame), kartu foto `data-boleh-tumpuk`.
 Pengecualian sah proyek ini: subtitle (#cap, berlatar blok gelap, selalu di depan) di atas tubuh tokoh/gambar.
 
-Peta: garis pantai asli dari Natural Earth (domain publik) → `lib/peta-data.js`, dibuat ulang dengan `python3 -I naskah/peta.py <folder-geojson> lib/peta-data.js`.
+Peta: digambar sendiri (titik lon/lat buatan tangan di `lib/peta-data.js`, dihaluskan dengan kurva) — tidak memakai data peta dari internet.
