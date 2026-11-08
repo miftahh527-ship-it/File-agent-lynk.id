@@ -1,5 +1,26 @@
 # Riwayat perubahan — Motion Format
 
+## 1.2.0 · 8 November 2026
+
+**Baru**
+- Hukum #5 "Rapi" + `references/tata-letak.md`: lajur per adegan (16:9, 9:16, 1:1), jarak
+  minimum 48 px, satu elemen dominan, penjajaran, perlakuan gambar seragam, daftar tumpukan
+  yang sah (`data-boleh-tumpuk`), peta tata letak di rundown, jebakan.
+- `scripts/cek_tata_letak.py`: cek tiap 0,25 dtk — teks menimpa teks, gambar menutupi teks,
+  teks terpotong tepi (galat); gambar bertumpuk, teks di luar zona aman, jarak < 24 px
+  (peringatan); `--gambar` memotret tiap masalah dengan kotak merah/kuning. Juga untuk thumbnail.
+
+**Diperbaiki di starter explainer** (semua kini 0 galat)
+- Kartun, katalog, jurnalisme, sketsa: label, catatan tangan, dan kalimat tidak lagi
+  berhimpitan — dipisah ke lajur gambar/label/kalimat; lingkaran anotasi memeluk gambarnya;
+  stempel tidak menutup teks dokumen; kalimat adegan 2 rata tengah terhadap gambarnya;
+  kamera close-up diarahkan ke pusat gambar.
+- Kartun: kata sorotan teal ("satu ide") selalu hilang karena class `.hl.t` bentrok dengan
+  `.t{opacity:0}` → diganti `.hl.teal`.
+- Latar kertas diperlebar sehingga tepi kertas tidak lagi tampak sebagai garis vertikal di adegan 2.
+- Aksi kontinu: jarak label "JARAK" → angka besar.
+- Titik yang terlepas setelah kata sorotan dihapus (judul tanpa titik, Hukum #4).
+
 ## 1.1.0 · 4 November 2026
 
 **Baru**

@@ -26,16 +26,16 @@ html,body{margin:0;height:100%;background:#0a0a0a;overflow:hidden}
 #filters{position:fixed;width:0;height:0;opacity:0;pointer-events:none}
 .t{position:absolute;opacity:0}
 .w{display:inline-block;white-space:nowrap;margin:0 .1em;opacity:0;will-change:transform,opacity}
-.paper{position:absolute;inset:-1400px;background:var(--paper)}
-.grain{position:absolute;inset:-1400px;opacity:.28;mix-blend-mode:multiply;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .2 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
-.stain{position:absolute;inset:-1400px;pointer-events:none;background:radial-gradient(60% 40% at 20% 15%,rgba(242,107,29,.10),transparent 70%),radial-gradient(50% 35% at 85% 80%,rgba(31,158,149,.10),transparent 70%)}
+.paper{position:absolute;inset:-1400px -3000px -1400px -1400px;background:var(--paper)}
+.grain{position:absolute;inset:-1400px -3000px -1400px -1400px;opacity:.28;mix-blend-mode:multiply;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .2 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+.stain{position:absolute;inset:-1400px -3000px -1400px -1400px;pointer-events:none;background:radial-gradient(60% 40% at 20% 15%,rgba(242,107,29,.10),transparent 70%),radial-gradient(50% 35% at 85% 80%,rgba(31,158,149,.10),transparent 70%)}
 .cut{position:absolute;opacity:0;will-change:transform,filter;filter:drop-shadow(0 30px 40px rgba(34,30,27,.30))}
 .cut img{display:block;width:100%}
 .ph{display:grid;place-items:center;width:100%;height:100%;border-radius:28px;background:#d9c9a8;color:#6b5f52;font-family:"Caveat",cursive;font-size:44px;text-align:center}
 .line{position:absolute;left:120px;right:120px;font-weight:800;font-size:92px;line-height:1.02;letter-spacing:-.02em;color:var(--ink);opacity:0}
 .hl{position:relative;display:inline-block;padding:.02em .18em;border-radius:.18em;color:#fff}
 .hl i{position:absolute;inset:0;border-radius:inherit;transform:scaleX(0);transform-origin:0 50%;z-index:-1;background:var(--orange)}
-.hl.t i{background:var(--teal)} .hl.r i{background:var(--red)}
+.hl.teal i{background:var(--teal)}   /* jangan pakai class "t" untuk varian: .t = elemen tersembunyi */ .hl.r i{background:var(--red)}
 .name{position:absolute;font-weight:700;font-size:34px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:0;white-space:nowrap}
 .hand{position:absolute;font-family:"Caveat",cursive;font-weight:700;font-size:56px;color:var(--teal);opacity:0;white-space:nowrap}
 .ghost{position:absolute;font-weight:800;font-size:380px;line-height:.85;letter-spacing:-.04em;color:rgba(34,30,27,.07);white-space:nowrap;opacity:0}
@@ -50,16 +50,20 @@ html,body{margin:0;height:100%;background:#0a0a0a;overflow:hidden}
 <div id="stage">
   <div id="world">
     <div class="paper"></div><div class="grain"></div><div class="stain"></div>
-    <div class="ghost" id="ghost" style="left:520px;top:120px">1526</div>
-    <div class="cut" id="cutA" style="left:220px;top:180px;width:620px;height:620px"><div class="ph">GANTI: cutout ilustrasi<br>(generate → hapus latar)</div></div>
-    <div class="cut" id="cutB" style="left:1060px;top:260px;width:640px;height:520px"><div class="ph">GANTI: cutout kedua</div></div>
-    <svg class="anno" id="annoA" style="position:absolute;left:180px;top:140px;width:720px;height:720px;overflow:visible" viewBox="0 0 720 720"><path id="ring" d="M60 380 C40 200 200 60 380 60 C560 60 680 200 660 380 C640 560 500 660 340 660 C180 660 80 540 60 380 Z"/></svg>
-    <div class="line t" id="line1" style="left:120px;top:860px">Kalimat pendek dengan <span class="hl"><i></i>kata kunci</span>.</div>
-    <div class="name" id="nameA" style="left:250px;top:820px">LABEL NAMA · 34 PX</div>
-    <div class="hand" id="handA" style="left:1100px;top:820px">catatan tangan ≥ 48 px</div>
+    <!-- TATA LETAK adegan 1 (references/tata-letak.md): lajur gambar y 120–690 · lajur label y 730–775 ·
+         lajur kalimat y 840–935 · jarak antar-elemen ≥ 48 px · tidak ada teks di atas gambar -->
+    <div class="ghost" id="ghost" data-tata="dekor" style="left:520px;top:120px">1526</div>
+    <div style="display:contents" data-boleh-tumpuk>   <!-- anotasi melingkari gambarnya sendiri: tumpukan disengaja -->
+      <div class="cut" id="cutA" style="left:200px;top:120px;width:560px;height:560px"><div class="ph" data-tata="gambar">GANTI: cutout ilustrasi<br>(generate → hapus latar)</div></div>
+      <svg class="anno" id="annoA" style="position:absolute;left:110px;top:30px;width:720px;height:720px;overflow:visible" viewBox="0 0 720 720"><path id="ring" d="M60 380 C40 200 200 60 380 60 C560 60 680 200 660 380 C640 560 500 660 340 660 C180 660 80 540 60 380 Z"/></svg>
+    </div>
+    <div class="cut" id="cutB" style="left:1060px;top:180px;width:600px;height:480px"><div class="ph" data-tata="gambar">GANTI: cutout kedua</div></div>
+    <div class="name" id="nameA" style="left:200px;top:735px">LABEL NAMA · 34 PX</div>
+    <div class="hand" id="handA" style="left:1060px;top:705px">catatan tangan ≥ 48 px</div>
+    <div class="line t" id="line1" style="left:120px;top:840px">Kalimat pendek dengan <span class="hl"><i></i>kata kunci</span></div>
     <!-- adegan 2: di luar frame, dicapai lewat push-through kamera -->
-    <div class="cut" id="cutC" style="left:2480px;top:230px;width:700px;height:620px"><div class="ph">GANTI: cutout adegan 2</div></div>
-    <div class="line t" id="line2" style="left:2440px;top:880px;right:auto;width:1500px">Adegan kedua, <span class="hl t"><i></i>satu ide</span> saja.</div>
+    <div class="cut" id="cutC" style="left:2480px;top:160px;width:680px;height:600px"><div class="ph" data-tata="gambar">GANTI: cutout adegan 2</div></div>
+    <div class="line t" id="line2" style="left:2120px;top:880px;right:auto;width:1400px;text-align:center">Adegan kedua, <span class="hl teal"><i></i>satu ide</span> saja</div>
   </div>
   <div class="vig"></div>
   <div id="dbg"><button id="dPlay">Pause</button><input id="dScrub" type="range" min="0" max="1000" value="0"><span id="dClock">0.00s</span></div>
@@ -117,10 +121,10 @@ const settle=(cutAt,x,y,z)=>tl.to(C,{x,y,z:z*.94,duration:1.1,ease:'power3.out',
 const breath=(a,b,z)=>tl.to(C,{z,duration:b-a,ease:'sine.inOut',onUpdate:applyCam},a);                       // napas halus saat "diam"
 
 /* ---------- contoh koreografi (ganti isinya, pertahankan polanya) ---------- */
-tl.set(C,{x:530,y:490,z:1.8,onUpdate:applyCam},0);              // mulai close-up aset A
+tl.set(C,{x:480,y:400,z:1.8,onUpdate:applyCam},0);              // mulai close-up aset A (pusat cutA)
 tl.fromTo('#ghost',{opacity:0,y:40},{opacity:1,y:0,duration:1.2,ease:'power2.out'},.2);
 fly('#cutA',.3);
-look(2.2,1380,520,1.6,1.4);                                     // meluncur ke aset B
+look(2.2,1360,420,1.6,1.4);                                     // meluncur ke aset B (pusat cutB)
 fly('#cutB',2.5,{from:{x:400,y:0,rotate:-6,scale:.9}});
 home(4.2);                                                      // zoom out SELESAI di 5.4 → baru teks
 say('#line1',5.5);
