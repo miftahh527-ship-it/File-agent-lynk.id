@@ -132,7 +132,8 @@ Tema yang butuh konteks panjang dari adegan lain → bukan kandidat.
 - VO: tulis naskah baru yang padat untuk Short (bukan memotong file VO long, karena kalimat
   long biasanya merujuk adegan lain). Suara/voice_id SAMA dengan long. Efek suara boleh
   dipakai ulang dari `../assets/audio/`.
-- Hukum anti-PPT, determinisme, dan checklist SKILL.md tetap berlaku penuh.
+- Hukum anti-PPT, determinisme, tata letak (lajur 9:16 di `references/tata-letak.md`), dan
+  checklist SKILL.md tetap berlaku penuh; `cek_tata_letak.py short/` harus 0 galat.
 - Render: `python3 scripts/render_mp4.py nama-proyek/short --out nama-proyek-short.mp4`.
 
 ## Langkah 4 — deskripsi (`youtube.md`)
@@ -200,7 +201,9 @@ python3 scripts/thumbnail.py nama-proyek/short/thumbnail-short.html --short   # 
 ```
 
 Script juga membuat `*-kecil.png` (thumbnail long 246×138, ukuran di daftar saran HP) untuk
-uji keterbacaan — LIHAT berkas kecil itu sebelum menyerahkan.
+uji keterbacaan — LIHAT berkas kecil itu sebelum menyerahkan. Cek juga tata letaknya
+(`python3 scripts/cek_tata_letak.py thumbnail-long.html` / `--ukuran 1080x1920` untuk Short):
+0 galat — teks tidak menimpa subjek atau teks lain, tidak terpotong tepi.
 
 **Hukum thumbnail (long, 1280×720):**
 

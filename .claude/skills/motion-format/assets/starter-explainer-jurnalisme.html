@@ -26,8 +26,8 @@ html,body{margin:0;height:100%;background:#0a0a0a;overflow:hidden}
 #filters{position:fixed;width:0;height:0;opacity:0;pointer-events:none}
 .t{position:absolute;opacity:0}
 .w{display:inline-block;white-space:nowrap;margin:0 .1em;opacity:0;will-change:transform,opacity}
-.paper{position:absolute;inset:-1400px;background:var(--bg)}
-.grain{position:absolute;inset:-1400px;pointer-events:none;opacity:.14;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E")}
+.paper{position:absolute;inset:-1400px -3000px -1400px -1400px;background:var(--bg)}
+.grain{position:absolute;inset:-1400px -3000px -1400px -1400px;pointer-events:none;opacity:.14;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E")}
 .cut{position:absolute;opacity:0;overflow:hidden;will-change:transform,filter}
 .cut img{display:block;width:100%;height:100%;object-fit:cover}
 .cut::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(11,11,12,.85))}
@@ -50,16 +50,19 @@ html,body{margin:0;height:100%;background:#0a0a0a;overflow:hidden}
 <div id="stage">
   <div id="world">
     <div class="paper"></div><div class="grain"></div>
-    <div class="ghost" id="ghost" style="left:520px;top:120px">2026</div>
-    <div class="cut" id="cutA" style="left:160px;top:120px;width:900px;height:640px"><div class="ph">GANTI: foto asli berlisensi<br>(Wikimedia Commons / NASA)<br>+ tag sumber</div></div>
-    <div class="cut" id="cutB" style="left:1120px;top:300px;width:640px;height:480px"><div class="ph">GANTI: foto kedua</div></div>
-    <svg class="anno" id="annoA" style="position:absolute;left:180px;top:140px;width:720px;height:720px;overflow:visible" viewBox="0 0 720 720"><path id="ring" d="M60 380 C40 200 200 60 380 60 C560 60 680 200 660 380 C640 560 500 660 340 660 C180 660 80 540 60 380 Z"/></svg>
-    <div class="line t" id="line1" style="left:120px;top:860px">Judul tegas dengan <span class="hl"><i></i>sorotan kuning</span>.</div>
-    <div class="name" id="nameA" style="left:250px;top:820px">FOTO: NAMA FOTOGRAFER / CC BY-SA</div>
-    <div class="hand" id="handA" style="left:1100px;top:820px">anotasi 52 px</div>
+    <!-- TATA LETAK adegan 1 (references/tata-letak.md): lajur gambar y 110–710 · lajur label/kredit y 735–785 · lajur kalimat y 840–935 · jarak antar-elemen ≥ 48 px · tidak ada teks di atas foto -->
+    <div class="ghost" id="ghost" data-tata="dekor" style="left:520px;top:120px">2026</div>
+    <div style="display:contents" data-boleh-tumpuk>   <!-- anotasi melingkari gambarnya sendiri: tumpukan disengaja -->
+      <div class="cut" id="cutA" style="left:160px;top:110px;width:840px;height:600px"><div class="ph" data-tata="gambar">GANTI: foto asli berlisensi<br>(Wikimedia Commons / NASA)<br>+ tag sumber</div></div>
+      <svg class="anno" id="annoA" style="position:absolute;left:270px;top:30px;width:720px;height:720px;overflow:visible" viewBox="0 0 720 720"><path id="ring" d="M60 380 C40 200 200 60 380 60 C560 60 680 200 660 380 C640 560 500 660 340 660 C180 660 80 540 60 380 Z"/></svg>
+    </div>
+    <div class="cut" id="cutB" style="left:1060px;top:200px;width:600px;height:450px"><div class="ph" data-tata="gambar">GANTI: foto kedua</div></div>
+    <div class="name" id="nameA" style="left:160px;top:740px">FOTO: NAMA FOTOGRAFER / CC BY-SA</div>
+    <div class="hand" id="handA" style="left:1060px;top:705px">anotasi 52 px</div>
+    <div class="line t" id="line1" style="left:120px;top:840px">Judul tegas dengan <span class="hl"><i></i>sorotan kuning</span></div>
     <!-- adegan 2: di luar frame, dicapai lewat push-through kamera -->
-    <div class="cut" id="cutC" style="left:2400px;top:160px;width:960px;height:640px"><div class="ph">GANTI: foto adegan 2</div></div>
-    <div class="line t" id="line2" style="left:2440px;top:880px;right:auto;width:1500px">Peringatan pakai <span class="hl r"><i></i>merah</span>.</div>
+    <div class="cut" id="cutC" style="left:2400px;top:160px;width:960px;height:640px"><div class="ph" data-tata="gambar">GANTI: foto adegan 2</div></div>
+    <div class="line t" id="line2" style="left:2180px;top:880px;right:auto;width:1400px;text-align:center">Peringatan pakai <span class="hl r"><i></i>merah</span></div>
   </div>
   <div class="vig"></div>
   <div id="dbg"><button id="dPlay">Pause</button><input id="dScrub" type="range" min="0" max="1000" value="0"><span id="dClock">0.00s</span></div>
@@ -117,10 +120,10 @@ const settle=(cutAt,x,y,z)=>tl.to(C,{x,y,z:z*.94,duration:1.1,ease:'power3.out',
 const breath=(a,b,z)=>tl.to(C,{z,duration:b-a,ease:'sine.inOut',onUpdate:applyCam},a);                       // napas halus saat "diam"
 
 /* ---------- contoh koreografi (ganti isinya, pertahankan polanya) ---------- */
-tl.set(C,{x:530,y:490,z:1.8,onUpdate:applyCam},0);              // mulai close-up aset A
+tl.set(C,{x:580,y:410,z:1.8,onUpdate:applyCam},0);              // mulai close-up aset A (pusat cutA)
 tl.fromTo('#ghost',{opacity:0,y:40},{opacity:1,y:0,duration:1.2,ease:'power2.out'},.2);
 fly('#cutA',.3);
-look(2.2,1380,520,1.6,1.4);                                     // meluncur ke aset B
+look(2.2,1360,425,1.6,1.4);                                     // meluncur ke aset B (pusat cutB)
 fly('#cutB',2.5,{from:{x:400,y:0,rotate:-6,scale:.9}});
 home(4.2);                                                      // zoom out SELESAI di 5.4 → baru teks
 say('#line1',5.5);

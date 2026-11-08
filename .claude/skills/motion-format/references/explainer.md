@@ -368,7 +368,9 @@ lebar ke close-up "terkesan tiba-tiba karena latar tiba-tiba zoom in".
   kalimat (kalimat pembuka yang sudah dibawa VO adalah kandidat pertama).
 - Panorama (kota, kapal): pan menyusur 2,5–3 dtk pada z 1,3–1,5, baru ke
   HOME. Objek yang masuk dari samping "disambut" kamera yang ikut bergerak.
-- Wajib: latar/kertas jauh lebih luas dari frame (`inset:-1400px`) dan
+- Wajib: latar/kertas jauh lebih luas dari frame DAN dari semua adegan di dunia (starter:
+  `inset:-1400px -3000px -1400px -1400px`, karena adegan 2 ada di x ±2400–3900; tepi kertas yang
+  terlihat = garis vertikal keras di frame) dan
   vignette DI LUAR rig; jangan tumpuk tween scale lain pada rig (kamera
   bernapas digantikan koreografi ini).
 

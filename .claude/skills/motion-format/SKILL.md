@@ -4,14 +4,14 @@ description: Membuat motion graphic dan video lewat chat — promo, opener, intr
 license: MIT
 metadata:
   author: Motion Format
-  version: "1.1.0"
-  updated: "2026-11-04"
+  version: "1.2.0"
+  updated: "2026-11-08"
   based_on: "Bang Motion v1.19.0 oleh Bang Tutorial (https://github.com/bangtutorial/bang-motion), lisensi MIT"
 ---
 
 # Motion Format — motion graphic lewat chat, lengkap dengan suara
 
-**v1.1.0 · Motion Format · MIT.** Dibangun di atas **Bang Motion v1.19.0** karya
+**v1.2.0 · Motion Format · MIT.** Dibangun di atas **Bang Motion v1.19.0** karya
 [Bang Tutorial](https://youtube.com/bangtutorial) (MIT) — seluruh hukum anti-PPT, starter,
 dan resep teknis berasal dari sana. Tambahan Motion Format: alur untuk pemula lewat chat,
 suara ElevenLabs (VO per adegan + efek suara), modul suara di semua starter, dan render MP4
@@ -57,8 +57,9 @@ di `references/explainer.md` (gaya dipilih di pertanyaan yang sama).
    adegan).
 4. **Suara ElevenLabs** — VO per adegan + efek suara, SEBELUM animasi, supaya timing
    mengikuti suara. Baca `references/suara-elevenlabs.md`.
-5. **Bangun animasi** dari starter yang benar; isi `window.AUDIO_PLAN`.
-6. **Preview & revisi 1 kalimat** — lihat di bawah.
+5. **Bangun animasi** dari starter yang benar, mengikuti peta tata letak; isi `window.AUDIO_PLAN`.
+6. **Cek tata letak** (`scripts/cek_tata_letak.py`, target 0 galat), lalu **preview & revisi
+   1 kalimat** — lihat di bawah.
 7. **Render MP4 bersuara** — `scripts/render_mp4.py`, cek 8 detik dulu lalu render penuh.
 
 ### Brief YouTube = paket lima hasil (WAJIB)
@@ -428,6 +429,23 @@ bagian 1 dan 1b. Ringkasnya:
 - Pertimbangkan selang-seling gelap–terang bila segmennya memang berganti
   mood; bukan kewajiban mekanis.
 
+## Hukum #5 — Rapi: setiap elemen punya tempat, tidak ada yang tumpang tindih
+
+Baca `references/tata-letak.md` sebelum rundown. Ringkasnya:
+
+- Frame dibagi **lajur** (16:9: gambar y 110–710 · label 730–790 · kalimat 840–950; 9:16 dan
+  1:1 di dokumen). Satu jenis elemen per lajur, jarak antar-elemen ≥ 48 px (batas mutlak 24),
+  ditambah cadangan untuk kamera bernapas dan objek melayang.
+- **Teks tidak pernah menimpa teks, gambar tidak pernah menutupi teks**, teks tidak terpotong
+  tepi frame. Tumpukan hanya yang sah (anotasi di atas gambarnya sendiri, tag di dalam foto,
+  dokumen di sudut foto ≤ 25 %, kartu bertumpuk rapi) dan dibungkus `data-boleh-tumpuk`.
+- Satu elemen dominan per adegan, ≤ 5 elemen bermakna terlihat bersamaan, satu sumbu
+  penjajaran, perlakuan gambar seragam (radius, bayangan, bingkai, rotasi).
+- Elemen lama keluar sebelum elemen baru masuk ke tempat yang sama; tidak ada sisa dari adegan
+  sebelumnya.
+- Rundown memuat **peta tata letak** per adegan; sebelum preview jalankan
+  `python3 scripts/cek_tata_letak.py <folder> --gambar` sampai **0 galat**, lalu lihat potretnya.
+
 ## Alur kerja
 
 0. **Kenali jenisnya** (tabel "Jenis pekerjaan"). Explainer → buka
@@ -447,7 +465,8 @@ bagian 1 dan 1b. Ringkasnya:
 2. **Tulis rundown dari konsep yang dipilih** — tabel `detik | adegan |
    kalimat | visual`. Jumlah dan jenis adegan mengikuti konsep
    (`references/opener-konsep.md`), bukan pola hook → fitur → fitur → janji →
-   logo → CTA. Total 25–40 detik. Minta persetujuan user atas rundown ini
+   logo → CTA. Total 25–40 detik. Di bawah tiap adegan tulis **peta tata letak** (lajur,
+   posisi tiap elemen, urutan masuk-keluar — `references/tata-letak.md`). Minta persetujuan user atas rundown ini
    sebelum menulis kode; merombak rundown murah, merombak kode mahal.
 3. **Scaffold arsitektur.** Opener/promo/bumper/typography: salin
    `assets/starter-opener.html` (stage 1920×1080, rig kamera `#world`, scene
@@ -463,7 +482,9 @@ bagian 1 dan 1b. Ringkasnya:
    `references/techniques.md` (split per huruf + motion blur berarah,
    pan 3D per kata, menu transisi, mockup UI). Resep adalah perkakas, bukan
    daftar belanja: pakai hanya yang dituntut konsep.
-5. **Verifikasi VISUAL, bukan cuma "kode jalan".** Kamu tidak bisa menonton
+5. **Verifikasi VISUAL, bukan cuma "kode jalan".** Mulai dengan
+   `python3 scripts/cek_tata_letak.py <folder-proyek> --gambar` (tumpang tindih, teks
+   terpotong, jarak terlalu rapat — tiap 0,25 dtk) sampai 0 galat. Kamu tidak bisa menonton
    video; kamu hanya bisa melihat FRAME. Potret 6–20 detik kunci (awal
    tiap adegan, saat teks muncul, transisi) dengan `scripts/snap.mjs`
    (puppeteer, buka `file://`, tanpa server), susun jadi lembar kontak, dan
@@ -492,6 +513,10 @@ bagian 1 dan 1b. Ringkasnya:
 
 ## Checklist sebelum menyerahkan
 
+- [ ] Tata letak (Hukum #5): peta tata letak per adegan ada di rundown; `cek_tata_letak.py`
+      0 galat; tidak ada teks menimpa teks / gambar menutupi teks / teks terpotong tepi; jarak
+      antar-elemen ≥ 48 px; tumpukan hanya yang sah dan dibungkus `data-boleh-tumpuk`; satu
+      elemen dominan, satu sumbu penjajaran, perlakuan gambar seragam
 - [ ] Style brief (tema, palet dari brand, font display berkarakter, satu
       bahasa latar, tanda tangan gerak, momen istimewa) ditulis dan disetujui
       SEBELUM kode
@@ -653,6 +678,8 @@ dan buat layer dari belakang ke depan. Build 10 panggung ≈ 1 jam, 0 kredit.
 | `scripts/kepala-ekspresi.py` | kepala hasil generate → varian senang/cemas/kaget + kedip, dibuat lokal (deteksi pupil & mulut) |
 | `references/ae-bridge-higgsfield.md` | BRIDGE: membangun kartun panggung langsung di AE lewat MCP Higgsfield — batas bridge, jebakan (null 960,540; parent ke CAM berkeyframe; reorder rusak), arsitektur CAM per panggung, rig native, relay contact sheet, penyerahan |
 | `scripts/ae/bridge/aset-svg.py`, `svg2png.cjs`, `rig-tokoh.py` | BRIDGE: aset ilustrasi dari kode → SVG + manifest → PNG 2× (puppeteer); generator ±90 op `ae_batch` untuk satu karakter bersendi |
+| `references/tata-letak.md` | SETIAP video & thumbnail, sebelum rundown: lajur 16:9/9:16/1:1, jarak minimum, penjajaran, perlakuan gambar, tumpukan yang sah (`data-boleh-tumpuk`), peta tata letak, jebakan |
+| `scripts/cek_tata_letak.py` | VERIFIKASI tata letak tiap 0,25 dtk: teks menimpa teks, gambar menutupi teks, teks terpotong tepi, jarak < 24 px; `--gambar` memotret tiap masalah (butuh Python + Chrome, tanpa Node) |
 | `references/anti-ppt.md` | sebelum mendesain adegan |
 | `references/opener-konsep.md` | OPENER/PROMO sebelum rundown: tiga kandidat konsep, menu 19 konsep (termasuk estafet benda, pamer sistem brand, klaim → cara → hasil, ekosistem UI hidup, pop flat berfoto, menembus bentuk bergradien, dan tur produk berselang klaim, semuanya diturunkan dari layanan/aset/produk brand), panduan layout-warna-ritme, panduan animasi UI untuk app/SaaS, panduan foto dalam opener (input user / generate via MCP), menu fitur, pembuka, penutup, transisi tanpa cut yang dibawa objek, sidik jari struktur — mencegah kerangka template |
 | `references/explainer.md` | bila yang diminta explainer/video penjelasan (kartun+VO, jurnalisme visual foto, katalog putih, sketsa vintage, atau aksi kontinu; default 16:9, 9:16 hanya bila diminta) |
