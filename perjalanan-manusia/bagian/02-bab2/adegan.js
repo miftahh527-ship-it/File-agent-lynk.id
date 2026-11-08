@@ -89,7 +89,7 @@ const P4b=scene('lab-gua');{const p=P4b.g,gy=960;R(-900,-900,3800,2900,'url(#cav
   P4b.r1=character(p,520,gy,.9,{who:'peneliti1',shirt:C.mint,pants:C.indigo,hair:'#2A2350',skin:'#D9A07A'});P4b.r2=character(p,1500,gy,.9,{who:'peneliti2',shirt:C.sun,pants:C.ink,hair:'#3A2A44',skin:'#B97A52',style:'pony'});
   [P4b.r1,P4b.r2].forEach(r=>{const hg=G({},r.head.el);PA('M -82 -116 C -80 -196 80 -196 82 -116 Z',C.sun,hg);R(-90,-124,180,16,sh(C.sun,.8),8,hg);CI(0,-176,14,C.paper,hg);});
   P4b.beam=PA('',C.paper,p,{opacity:.12});const dv=G({},P4b.r2.Rhand.el);R(-26,-20,52,70,C.ink,8,dv);P4b.scr=R(-18,-12,36,30,C.mint,4,dv);
-  P4b.st1=stamp(p,1000,760,'≥ 67.800 tahun',C.coral,54);P4b.st2=stamp(p,1000,190,'Tertua di dunia!',C.sun,48,6);
+  P4b.st1=stamp(p,1000,690,'≥ 67.800 tahun',C.coral,54);P4b.st2=stamp(p,1000,190,'Tertua di dunia!',C.sun,48,6);
   P4b.dust=[];for(let i=0;i<8;i++)P4b.dust.push(CI(1000+(rnd(i+20)-.5)*400,500,4,C.paper,p,{opacity:0}));}
 {const t=T['b2-4']-.4;slide(t,P3,P4,'x',96);Object.assign(P4.cam,{x:960,y:540,z:1.12});P4.apply();
   pop(P4.jr,t+.5);sfx('pop',t+.5,.3);tl.to(P4.jr,{r:-4,duration:.8,yoyo:true,repeat:3,ease:'sine.inOut',onUpdate:P4.jr.apply},t+1);
@@ -101,7 +101,7 @@ const P4b=scene('lab-gua');{const p=P4b.g,gy=960;R(-900,-900,3800,2900,'url(#cav
   cut(c3+.3,F1,P4b);Object.assign(P4b.cam,{x:1000,y:560,z:1.2});P4b.apply();idle(P4b.r1,c3);idle(P4b.r2,c3);
   rot(P4b.r2.Rarm,c3,-40,.4);rot(P4b.r2.Rfore,c3,-70,.4);tl.to(P4b.scr,{keyframes:{fill:[C.mint,C.sun,C.mint]},duration:.6,repeat:-1},c3);
   const bm={k:0};tl.to(bm,{k:1,duration:2,ease:'sine.inOut',yoyo:true,repeat:-1,onUpdate(){const x=900+bm.k*220;P4b.beam.setAttribute('d',`M 1430 650 L ${x-90} ${380+bm.k*60} L ${x+90} ${480+bm.k*60} Z`);}},c3);
-  rot(P4b.r1.Rarm,c3+.3,-80,.5,'power2.out');rot(P4b.r1.Rfore,c3+.3,-10,.5);cam(P4b,c3+.2,1000,520,1.5,1.4,'power2.inOut');pop(P4b.st1,c3+2.0);sfx('pop',c3+2.0,.35);
+  rot(P4b.r1.Rarm,c3+.3,-80,.5,'power2.out');rot(P4b.r1.Rfore,c3+.3,-10,.5);cam(P4b,c3+.2,1000,500,1.4,1.4,'power2.inOut');pop(P4b.st1,c3+2.0);sfx('pop',c3+2.0,.35);
   const c4=capT(T,'b2-4',4);pop(P4b.st2,c4+.6);face(P4b.r1,'lebar',c4+.6);face(P4b.r2,'lebar',c4+.6);hop(P4b.r1,c4+.8);cam(P4b,c4,1000,500,1.25,1.2,'power2.inOut');
   P4b.dust.forEach((d,i)=>drift(d,c3+i*.3,{y:-200,dur:3,peak:.6}));tl.to(P4b.halo,{keyframes:{opacity:[1,.8,1]},duration:1.6,repeat:-1},c3);}
 

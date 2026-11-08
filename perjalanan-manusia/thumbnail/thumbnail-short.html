@@ -1054,7 +1054,7 @@ const G=(a={},p=S)=>N('g',a,p),R=(x,y,w,h,f,rx=0,p=S,a={})=>N('rect',{x,y,width:
   CI=(cx,cy,r,f,p=S,a={})=>N('circle',{cx,cy,r,fill:f,...a},p),EL=(cx,cy,rx,ry,f,p=S,a={})=>N('ellipse',{cx,cy,rx,ry,fill:f,...a},p),
   PA=(d,f,p=S,a={})=>N('path',{d,fill:f||'none',...a},p),
   LN=(d,st,w,p=S,a={})=>N('path',{d,fill:'none',stroke:st,'stroke-width':w,'stroke-linecap':'round','stroke-linejoin':'round',...a},p),
-  TX=(x,y,t,size,f,p=S,a={})=>{const n=N('text',{x,y,'font-size':size,fill:f,'font-weight':600,'text-anchor':'middle',...a},p);n.textContent=t;return n;},
+  TX=(x,y,t,size,f,p=S,a={})=>{const n=N('text',{'data-tata':'teks',x,y,'font-size':size,fill:f,'font-weight':600,'text-anchor':'middle',...a},G({'data-jaga':''},p));n.textContent=t;return n;},
   shadow=(x,y,rx,p=S)=>EL(x,y,rx,16,C.night,p,{opacity:.16}),
   sh=(hex,f)=>{const n=parseInt(hex.slice(1),16);const r=Math.min(255,Math.round(((n>>16)&255)*f)),g=Math.min(255,Math.round(((n>>8)&255)*f)),b=Math.min(255,Math.round((n&255)*f));return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);};
 function J(el,tx=0,ty=0){const j={el,tx,ty,x:0,y:0,r:0,sx:1,sy:1,apply(){el.setAttribute('transform',`translate(${j.tx+j.x},${j.ty+j.y}) rotate(${j.r}) scale(${j.sx},${j.sy})`);}};j.apply();return j;}
@@ -1075,7 +1075,7 @@ function scene(name){const g=G({'data-name':name},S);g.style.display='none';cons
 /* ---------- KARAKTER: rig sendi (kaki di y=0) ---------- */
 function character(p,x,ground,scale,o={}){
   const {who='v',shirt=C.blue,pants=C.ink,shoes='#2E2C3A',hair=C.ink,skin=C.skinKid,style='short',tunic=false,sx=1,brow=false,beard=false,blush=false}=o;
-  const sd=shadow(x,ground+4,72*scale*sx,p),place=G({transform:`translate(${x},${ground}) scale(${scale*sx},${scale})`},p),rootEl=G({},place),root=J(rootEl),ref={root,place,who,scale,sd};
+  const sd=shadow(x,ground+4,72*scale*sx,p),place=G({'data-tata':'subjek',transform:`translate(${x},${ground}) scale(${scale*sx},${scale})`},p),rootEl=G({},place),root=J(rootEl),ref={root,place,who,scale,sd};
   const legC=tunic?skin:pants,footC=tunic?sh(skin,.8):shoes;
   for(const side of ['R','L']){const lx=side==='L'?-26:26,dk=side==='R'?.86:1;
     const tEl=G({},rootEl),thigh=J(tEl,lx,-214);R(-24,-10,48,118,sh(legC,dk),21,tEl);
@@ -1167,8 +1167,8 @@ function makeCapsule(p,x,ground){const k={};const place=G({transform:`translate(
   k.faces=G({opacity:0},bodyEl);[[-30,'#2A2350',C.skinKid],[32,'#1E1A3F',C.skinKid]].forEach(([fx,hc,sc])=>{CI(fx,-440,32,sc,k.faces);PA(`M ${fx-33} -446 C ${fx-34} -486 ${fx+34} -486 ${fx+33} -446 Z`,hc,k.faces);CI(fx-11,-436,4,C.ink,k.faces);CI(fx+11,-436,4,C.ink,k.faces);LN(`M ${fx-9} -420 C ${fx-3} -414 ${fx+3} -414 ${fx+9} -420`,C.ink,3,k.faces);});
   R(30,-300,140,230,C.blue2,26,bodyEl);k.door=R(30,-300,140,230,C.blue,26,bodyEl);CI(150,-190,9,C.sun,bodyEl);
   R(-262,-336,268,156,C.ink,22,bodyEl);R(-252,-326,248,136,'#1A2030',16,bodyEl);
-  k.num=TX(-128,-268,'2026',42,C.mint,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,'font-variant-numeric':'tabular-nums'});
-  k.sub=TX(-128,-218,'11 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
+  k.num=TX(-128,-274,'2026',42,C.mint,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,'font-variant-numeric':'tabular-nums'});
+  k.sub=TX(-128,-206,'11 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
   k.lights=[];for(let i=0;i<7;i++){const a=Math.PI*(.12+i*.127);k.lights.push(CI(Math.cos(a)*-232,-330+Math.sin(a)*-260+520*0,11,i%2?C.sun:C.mint,bodyEl));}
   k.lights.forEach((l,i)=>{const a=Math.PI*(1.08+i*.14);l.setAttribute('cx',Math.cos(a)*236);l.setAttribute('cy',-330+Math.sin(a)*270);});
   k.place=place;return k;}
@@ -1188,6 +1188,15 @@ function capRender(t){if(!capEl)return;let c=null;for(const k of CAPS){if(t>=k.a
   const o=c?Math.min(1,(t-c.a)/.12,(c.b-t)/.12):0;capEl.style.opacity=o.toFixed(3);capEl.style.transform=`translateX(-50%) translateY(${((1-Math.min(1,(t-(c?c.a:0))/.18))*10).toFixed(1)}px)`;}
 gsap.ticker.add(()=>capRender(tl.time()));
 
+/* PENJAGA TEPI (Hukum #5 tata letak): label/teks yang mulai keluar frame memudar lebih dulu,
+   jadi teks tidak pernah tampil terpotong tepi saat kamera zoom/geser. Deterministik: hanya
+   bergantung pada posisi kamera di detik itu. */
+function jagaTepi(){const st=document.getElementById('stage');if(!st)return;const S0=st.getBoundingClientRect(),m=10*S0.width/W,S={left:S0.left+m,top:S0.top+m,right:S0.right-m,bottom:S0.bottom-m};
+  for(const e of document.querySelectorAll('[data-jaga]')){const r=e.getBoundingClientRect();if(r.width<1||r.height<1)continue;
+    const vx=Math.max(0,Math.min(r.right,S.right)-Math.max(r.left,S.left)),vy=Math.max(0,Math.min(r.bottom,S.bottom)-Math.max(r.top,S.top));
+    const f=vx*vy/(r.width*r.height),o=Math.max(0,Math.min(1,(f-.99)/.01));e.style.opacity=o<1?o.toFixed(3):'';}}
+gsap.ticker.add(jagaTepi);
+
 /* ============ BENDA BERSAMA (dipakai semua bab) ============ */
 lg('skyD',[[0,'#2E3550'],[1,'#56607E']]);lg('skyN',[[0,'#1F2438'],[1,'#3B4462']]);lg('sea',[[0,'#7FB2C4'],[1,'#5B8DB8']]);
 lg('desert',[[0,'#A9D0DB'],[.7,'#F0E2C0'],[1,'#F3D9A6']]);lg('ice',[[0,'#C9DDE6'],[1,'#EEF4F6']]);lg('tunnel',[[0,'#262A40'],[1,'#3A3F5E']]);
@@ -1199,9 +1208,9 @@ function roundTree(p,x,gy,s=1,c1=C.mint2,c2=C.mint){R(x-14*s,gy-260*s,28*s,260*s
 function hut(p,x,gy,s=1,wall='#C9A47A',roof='#8A6A4A'){const g=G({transform:`translate(${x},${gy}) scale(${s})`},p);R(-110,-150,220,150,wall,8,g);PA('M -150 -140 L 0 -260 L 150 -140 Z',roof,g);R(-30,-90,60,90,'#5E4A3A',6,g);return g;}
 function house(p,x,gy,s=1,wall=C.paper,roof=C.coral){const g=G({transform:`translate(${x},${gy}) scale(${s})`},p);R(-120,-180,240,180,wall,6,g);PA('M -150 -170 L 0 -290 L 150 -170 Z',roof,g);R(-34,-100,68,100,C.indigo2,6,g);R(50,-140,50,44,C.sky,4,g);R(-100,-140,50,44,C.sky,4,g);return g;}
 /* label diegetik: papan nama 1–2 baris, dimunculkan dengan pop() */
-function tag(p,x,y,l1,l2='',{w=null,c1=C.ink,c2=C.mint2,bg=C.white,s1=40,s2=32}={}){const g=G({},p),j=J(g,x,y);const ww=w||Math.max(l1.length*s1*.56,l2.length*s2*.56)+60,hh=l2?s1+s2+44:s1+36;
+function tag(p,x,y,l1,l2='',{w=null,c1=C.ink,c2=C.mint2,bg=C.white,s1=40,s2=32}={}){const g0=G({},p),j=J(g0,x,y),g=G({'data-jaga':''},g0);const ww=w||Math.max(l1.length*s1*.56,l2.length*s2*.56)+60,hh=l2?s1+s2+44:s1+36;
   R(-ww/2,-hh/2,ww,hh,bg,16,g);TX(0,l2?-hh/2+s1+12:s1*.36,l1,s1,c1,g,{'font-weight':700});if(l2)TX(0,hh/2-18,l2,s2,c2,g);return j;}
-function stamp(p,x,y,txt,col=C.coral,size=44,rot=-8){const g=G({},p),j=J(g,x,y);const w=txt.length*size*.6+60;R(-w/2,-size*.9,w,size*1.8,'none',14,g,{stroke:col,'stroke-width':7,transform:`rotate(${rot})`});TX(0,size*.35,txt,size,col,g,{'font-weight':700,transform:`rotate(${rot})`});return j;}
+function stamp(p,x,y,txt,col=C.coral,size=44,rot=-8){const g0=G({},p),j=J(g0,x,y),g=G({'data-jaga':''},g0);const w=txt.length*size*.6+60;R(-w/2,-size*.9,w,size*1.8,'none',14,g,{stroke:col,'stroke-width':7,transform:`rotate(${rot})`});TX(0,size*.35,txt,size,col,g,{'font-weight':700,transform:`rotate(${rot})`});return j;}
 /* peta dunia ekuirektangular (lon,lat) → kotak w×h */
 const CONT={na:[[-165,65],[-140,70],[-95,72],[-65,62],[-55,50],[-70,43],[-80,32],[-80,25],[-90,29],[-97,24],[-97,18],[-88,15],[-80,8],[-84,10],[-105,20],[-117,32],[-125,48],[-140,60],[-165,60]],
   sa:[[-80,10],[-60,10],[-50,0],[-35,-6],[-40,-22],[-58,-38],[-68,-55],[-74,-45],[-70,-18],[-81,-5]],
@@ -1246,6 +1255,14 @@ function bumper(year,label){const sc=scene('terowongan');const p=sc.g;R(-900,-90
   tl.set(p,{display:'block'},0);Object.assign(sc.cam,{x:960,y:560,z:1.35});sc.apply();cam(sc,0,960,520,1.5,3.2,'power1.inOut');
   sfx('dial',.15,.4);sfx('luncur',2.55,.45);return sc;}
 function capStart(){/* cadangan */}
+
+/* FOTO ASLI + SUMBER: bingkai putih, foto, lalu label & kredit di bawah foto (bagian dari bingkai) */
+window.IMGWAIT=window.IMGWAIT||[];const FOTO=AUD.replace('audio-semua','foto');
+function photo(p,x,y,w,file,ar,l1,l2,{rot=-2,s1=36,s2=30}={}){const h=w/ar,g=G({'data-boleh-tumpuk':''},p),j=J(g,x,y);const inner=G({transform:`rotate(${rot})`,'data-jaga':''},g);
+  const H=h+56+s1+s2+56;R(-w/2-20+10,-h/2-20+14,w+40,H,C.night,14,inner,{opacity:.35});R(-w/2-20,-h/2-20,w+40,H,C.paper,14,inner);
+  const href=FOTO+file;const im=N('image',{'data-tata':'gambar',x:-w/2,y:-h/2,width:w,height:h,preserveAspectRatio:'xMidYMid slice'},inner);im.setAttributeNS(XL,'href',href);im.setAttribute('href',href);
+  IMGWAIT.push(new Promise(r=>{const i=new Image();i.onload=i.onerror=()=>r();i.src=href;}));
+  TX(0,h/2+30+s1,l1,s1,C.ink,inner,{'font-weight':700});TX(0,h/2+52+s1+s2,l2,s2,C.mint2,inner,{'font-weight':600});return j;}
 
 /* Thumbnail Short: SIAPA PELUKISNYA? */
 const P=scene('thumb');{const p=P.g;R(-400,-400,1900,2800,'url(#caveG)',0,p);for(let i=0;i<12;i++)EL(-100+(i%3)*500,200+Math.floor(i/3)*480+rnd(i)*200,240,90,'#4A5074',p,{opacity:.45});

@@ -15,7 +15,7 @@ const G=(a={},p=S)=>N('g',a,p),R=(x,y,w,h,f,rx=0,p=S,a={})=>N('rect',{x,y,width:
   CI=(cx,cy,r,f,p=S,a={})=>N('circle',{cx,cy,r,fill:f,...a},p),EL=(cx,cy,rx,ry,f,p=S,a={})=>N('ellipse',{cx,cy,rx,ry,fill:f,...a},p),
   PA=(d,f,p=S,a={})=>N('path',{d,fill:f||'none',...a},p),
   LN=(d,st,w,p=S,a={})=>N('path',{d,fill:'none',stroke:st,'stroke-width':w,'stroke-linecap':'round','stroke-linejoin':'round',...a},p),
-  TX=(x,y,t,size,f,p=S,a={})=>{const n=N('text',{x,y,'font-size':size,fill:f,'font-weight':600,'text-anchor':'middle',...a},p);n.textContent=t;return n;},
+  TX=(x,y,t,size,f,p=S,a={})=>{const n=N('text',{'data-tata':'teks',x,y,'font-size':size,fill:f,'font-weight':600,'text-anchor':'middle',...a},G({'data-jaga':''},p));n.textContent=t;return n;},
   shadow=(x,y,rx,p=S)=>EL(x,y,rx,16,C.night,p,{opacity:.16}),
   sh=(hex,f)=>{const n=parseInt(hex.slice(1),16);const r=Math.min(255,Math.round(((n>>16)&255)*f)),g=Math.min(255,Math.round(((n>>8)&255)*f)),b=Math.min(255,Math.round((n&255)*f));return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);};
 function J(el,tx=0,ty=0){const j={el,tx,ty,x:0,y:0,r:0,sx:1,sy:1,apply(){el.setAttribute('transform',`translate(${j.tx+j.x},${j.ty+j.y}) rotate(${j.r}) scale(${j.sx},${j.sy})`);}};j.apply();return j;}
@@ -36,7 +36,7 @@ function scene(name){const g=G({'data-name':name},S);g.style.display='none';cons
 /* ---------- KARAKTER: rig sendi (kaki di y=0) ---------- */
 function character(p,x,ground,scale,o={}){
   const {who='v',shirt=C.blue,pants=C.ink,shoes='#2E2C3A',hair=C.ink,skin=C.skinKid,style='short',tunic=false,sx=1,brow=false,beard=false,blush=false}=o;
-  const sd=shadow(x,ground+4,72*scale*sx,p),place=G({transform:`translate(${x},${ground}) scale(${scale*sx},${scale})`},p),rootEl=G({},place),root=J(rootEl),ref={root,place,who,scale,sd};
+  const sd=shadow(x,ground+4,72*scale*sx,p),place=G({'data-tata':'subjek',transform:`translate(${x},${ground}) scale(${scale*sx},${scale})`},p),rootEl=G({},place),root=J(rootEl),ref={root,place,who,scale,sd};
   const legC=tunic?skin:pants,footC=tunic?sh(skin,.8):shoes;
   for(const side of ['R','L']){const lx=side==='L'?-26:26,dk=side==='R'?.86:1;
     const tEl=G({},rootEl),thigh=J(tEl,lx,-214);R(-24,-10,48,118,sh(legC,dk),21,tEl);
@@ -128,8 +128,8 @@ function makeCapsule(p,x,ground){const k={};const place=G({transform:`translate(
   k.faces=G({opacity:0},bodyEl);[[-30,'#2A2350',C.skinKid],[32,'#1E1A3F',C.skinKid]].forEach(([fx,hc,sc])=>{CI(fx,-440,32,sc,k.faces);PA(`M ${fx-33} -446 C ${fx-34} -486 ${fx+34} -486 ${fx+33} -446 Z`,hc,k.faces);CI(fx-11,-436,4,C.ink,k.faces);CI(fx+11,-436,4,C.ink,k.faces);LN(`M ${fx-9} -420 C ${fx-3} -414 ${fx+3} -414 ${fx+9} -420`,C.ink,3,k.faces);});
   R(30,-300,140,230,C.blue2,26,bodyEl);k.door=R(30,-300,140,230,C.blue,26,bodyEl);CI(150,-190,9,C.sun,bodyEl);
   R(-262,-336,268,156,C.ink,22,bodyEl);R(-252,-326,248,136,'#1A2030',16,bodyEl);
-  k.num=TX(-128,-268,'2026',42,C.mint,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,'font-variant-numeric':'tabular-nums'});
-  k.sub=TX(-128,-218,'11 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
+  k.num=TX(-128,-274,'2026',42,C.mint,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,'font-variant-numeric':'tabular-nums'});
+  k.sub=TX(-128,-206,'11 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
   k.lights=[];for(let i=0;i<7;i++){const a=Math.PI*(.12+i*.127);k.lights.push(CI(Math.cos(a)*-232,-330+Math.sin(a)*-260+520*0,11,i%2?C.sun:C.mint,bodyEl));}
   k.lights.forEach((l,i)=>{const a=Math.PI*(1.08+i*.14);l.setAttribute('cx',Math.cos(a)*236);l.setAttribute('cy',-330+Math.sin(a)*270);});
   k.place=place;return k;}
@@ -148,3 +148,12 @@ function capRender(t){if(!capEl)return;let c=null;for(const k of CAPS){if(t>=k.a
   if(c!==capCur){capCur=c;capTx.textContent=c?c.t:'';}
   const o=c?Math.min(1,(t-c.a)/.12,(c.b-t)/.12):0;capEl.style.opacity=o.toFixed(3);capEl.style.transform=`translateX(-50%) translateY(${((1-Math.min(1,(t-(c?c.a:0))/.18))*10).toFixed(1)}px)`;}
 gsap.ticker.add(()=>capRender(tl.time()));
+
+/* PENJAGA TEPI (Hukum #5 tata letak): label/teks yang mulai keluar frame memudar lebih dulu,
+   jadi teks tidak pernah tampil terpotong tepi saat kamera zoom/geser. Deterministik: hanya
+   bergantung pada posisi kamera di detik itu. */
+function jagaTepi(){const st=document.getElementById('stage');if(!st)return;const S0=st.getBoundingClientRect(),m=10*S0.width/W,S={left:S0.left+m,top:S0.top+m,right:S0.right-m,bottom:S0.bottom-m};
+  for(const e of document.querySelectorAll('[data-jaga]')){const r=e.getBoundingClientRect();if(r.width<1||r.height<1)continue;
+    const vx=Math.max(0,Math.min(r.right,S.right)-Math.max(r.left,S.left)),vy=Math.max(0,Math.min(r.bottom,S.bottom)-Math.max(r.top,S.top));
+    const f=vx*vy/(r.width*r.height),o=Math.max(0,Math.min(1,(f-.99)/.01));e.style.opacity=o<1?o.toFixed(3):'';}}
+gsap.ticker.add(jagaTepi);

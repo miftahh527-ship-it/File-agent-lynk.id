@@ -65,13 +65,13 @@ const P4=scene('giza');{const p=P4.g,gy=880;R(-900,-900,3800,2900,'url(#desert)'
   for(let r=0;r<4;r++)for(let c=0;c<3;c++){const g=G({opacity:0,transform:`translate(${-60+c*150},${400+r*120})`},wall);const d=gl[(r+c)%4];if((r+c)%4===2||(r+c)%4===3)LN(d,C.indigo,7,g);else PA(d,C.indigo,g);P4.gly.push(g);}
   const cart=G({},p);P4.cart=cart;const cb=G({transform:`translate(600,${gy})`},cart);R(-160,-120,320,40,C.wood,8,cb);R(-120,-240,240,120,'#CFAD72',4,cb);P4.wh=[-100,100].map(x=>{const w=G({},cb),j=J(w,x,-50);CI(0,0,50,C.wood,w);CI(0,0,36,'#E3C79A',w);for(let k=0;k<4;k++)R(-4,-36,8,72,C.wood,3,w,{transform:`rotate(${k*45})`});CI(0,0,10,C.wood,w);return j;});
   P4.worker=character(p,330,gy,.85,{who:'pekerja',shirt:C.paper,pants:C.sand2,hair:'#1E1A3F',skin:'#A86B47'});
-  P4.tag=tag(p,1150,340,'Piramida Agung Giza','±2560 SM');P4.tagR=tag(p,620,560,'roda','',{s1:40,c1:C.coral});}
+  P4.tag=tag(p,1150,340,'Piramida Agung Giza','±2560 SM');P4.tagR=tag(cb,150,-310,'roda','',{s1:40,c1:C.coral});}
 {const t=T['b4-4']-.4;slide(t,P3,P4,'x',96);Object.assign(P4.cam,{x:300,y:560,z:1.4});P4.apply();spin(P4.rays,t,40);
   P4.gly.forEach((g,i)=>tl.to(g,{opacity:1,duration:.15},t+.4+i*.18));
   const c1=capT(T,'b4-4',1);cam(P4,c1-.4,1350,600,1.22,1.4,'power2.inOut');P4.pyr.forEach((L,k)=>L.forEach((r,i)=>tl.fromTo(r,{opacity:0,y:-40},{opacity:1,y:0,duration:.25,ease:'power2.out',immediateRender:false},c1+k*.5+i*.12)));pop(P4.tag,c1+1.6);sfx('pop',c1+1.6,.3);
   const c2=capT(T,'b4-4',2);cam(P4,c2-.3,800,640,1.35,1.0,'power2.inOut');idle(P4.worker,t);
   tl.fromTo(P4.cart,{x:-900},{x:300,duration:4.2,ease:'power1.out',immediateRender:false},c2-.6);P4.wh.forEach(j=>tl.fromTo(j,{r:0},{r:720,duration:4.2,ease:'power1.out',onUpdate:j.apply,immediateRender:false},c2-.6));
-  walk(P4.worker,c2-.4,3.6,560);pop(P4.tagR,c2+.6);tl.to(P4.tagR,{x:300,duration:3.6,ease:'power1.out',onUpdate:P4.tagR.apply},c2+.6);
+  walk(P4.worker,c2-.4,3.6,560);pop(P4.tagR,c2+1.6);
   tl.to(P4.cam,{x:1200,duration:3.6,ease:'power1.inOut',onUpdate:P4.apply},c2+.8);}
 
 DUR=T.end+1.4;tl.to({},{duration:.01},DUR);

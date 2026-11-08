@@ -41,7 +41,7 @@ const P2=scene('penemuan');{const p=P2.g;R(-900,-900,3800,2900,'url(#room)',0,p)
 /* ---------- P3 GRAFIK PENDUDUK DUNIA ---------- */
 const P3=scene('grafik');{const p=P3.g;R(-900,-900,3800,2900,'url(#board)',0,p);const x0=260,y0=860,w=1400,h=620;
   LN(`M ${x0} ${y0-h} L ${x0} ${y0} L ${x0+w} ${y0}`,C.paper,6,p);for(let k=1;k<=3;k++){LN(`M ${x0} ${y0-k*180} L ${x0+w} ${y0-k*180}`,C.paper,2,p,{opacity:.2});TX(x0-60,y0-k*180+14,k+' M',34,C.paper,p);}
-  TX(x0+w/2,y0+70,'tahun',32,C.paper,p,{opacity:.7});
+  
   const px=f=>x0+f*w,py=v=>y0-v*180;P3.line=route(p,`M ${px(0)} ${py(.02)} L ${px(.55)} ${py(.06)} C ${px(.66)} ${py(.2)} ${px(.72)} ${py(.6)} ${px(.76)} ${py(1)} C ${px(.82)} ${py(1.5)} ${px(.86)} ${py(2)} ${px(.9)} ${py(2)} C ${px(.94)} ${py(2.5)} ${px(.96)} ${py(3)} ${px(.98)} ${py(3)}`,C.sun,12);
   P3.pts=[[.76,1,'1800'],[.9,2,'1930'],[.98,3,'1960']].map(([f,v,y])=>{const g=G({},p),j=J(g,px(f),py(v));CI(0,0,18,C.coral,g);CI(0,0,8,C.paper,g);TX(0,-34,v+' miliar · '+y,32,C.paper,g,{'font-weight':700,'text-anchor':'end'});return j;});
   TX(px(.25),py(.25),'ratusan ribu tahun…',36,C.paper,p,{opacity:.8});P3.nara=character(p,1780,960,.8,NARA);}

@@ -13,3 +13,7 @@ Render: `naskah/render-semua.sh <bagian…>` lalu `python3 naskah/gabung.py` (ga
 Naskah VO & subtitle: `naskah/vo.py`, `naskah/caps.py`, `vo-script.md`. Audio: `audio-semua/`.
 
 Foto asli berlisensi bebas + sumbernya: `foto/SUMBER.md` (kredit tampil di bawah tiap foto di video dan di deskripsi). Foto berhak cipta penuh tidak dipakai — diganti motion grafik.
+
+Tata letak (skill motion-format 1.2, Hukum #5 "Rapi"): `python3 naskah/cek.py` menjalankan `cek_tata_letak.py` ke semua bagian + Short. Target 0 galat.
+Elemen SVG diberi peran (`data-tata="teks|subjek|gambar"`), label/kartu memakai penjaga tepi (`data-jaga`: memudar sebelum terpotong frame), kartu foto `data-boleh-tumpuk`.
+Pengecualian sah proyek ini: subtitle (#cap, berlatar blok gelap, selalu di depan) di atas tubuh tokoh/gambar.

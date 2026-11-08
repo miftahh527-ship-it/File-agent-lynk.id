@@ -30,6 +30,76 @@ html,body{margin:0;height:100%;background:#14133D;overflow:hidden}
 <script>
 /* dibuat oleh naskah/caps.py — teks subtitle + durasi tiap klip VO */
 window.VODATA={
+"s-1": {
+"dur": 26.593,
+"cap": [
+[
+0,
+1.98,
+"Lukisan gua tertua di dunia..."
+],
+[
+1.98,
+3.65,
+"ada di Indonesia!"
+],
+[
+3.65,
+5.73,
+"Di Gua Liang Metanduno, Pulau Muna,"
+],
+[
+5.73,
+6.92,
+"Sulawesi Tenggara,"
+],
+[
+6.92,
+9.1,
+"ada cap tangan merah yang berumur"
+],
+[
+9.1,
+11.54,
+"paling sedikit 67.800 tahun! Caranya?"
+],
+[
+11.54,
+14.08,
+"Tangan ditempel ke dinding,"
+],
+[
+14.08,
+15.27,
+"lalu pewarna merah"
+],
+[
+15.27,
+17.18,
+"disemburkan di sekelilingnya."
+],
+[
+17.18,
+19.01,
+"Jadi, seniman tertua di"
+],
+[
+19.01,
+20.53,
+"dunia ada di Indonesia!"
+],
+[
+20.53,
+23.59,
+"Mau tahu perjalanan 300.000 tahun manusia?"
+],
+[
+23.59,
+26.6,
+"Tonton versi lengkapnya di kanal ini!"
+]
+]
+},
 "b1-1": {
 "dur": 7.628,
 "cap": [
@@ -71,21 +141,21 @@ window.VODATA={
 ]
 },
 "b1-3": {
-"dur": 8.594,
+"dur": 8.046,
 "cap": [
 [
 0,
-1.72,
+1.71,
 "Ayo, naik mesin waktu!"
 ],
 [
-1.72,
-6.44,
-"Kita akan menempuh perjalanan 300.000 tahun hanya dalam 15 menit."
+1.71,
+6.09,
+"Kita akan menempuh perjalanan 300.000 tahun hanya dalam 11 menit."
 ],
 [
-6.44,
-8.42,
+6.09,
+8.3,
 "Siap? Kita berangkat!"
 ]
 ]
@@ -969,7 +1039,7 @@ window.VODATA={
 
 let DUR=60;   /* diisi ulang oleh adegan.js tiap bagian */
 const $=(s,r=document)=>r.querySelector(s);
-const W=1920,H=1080,NS='http://www.w3.org/2000/svg',XL='http://www.w3.org/1999/xlink';
+const W=(window.STAGE||{}).w||1920,H=(window.STAGE||{}).h||1080,NS='http://www.w3.org/2000/svg',XL='http://www.w3.org/1999/xlink';
 /* palet segar (bukan palet intro): tosca, biru listrik, kuning cerah, koral, lilac, lime, indigo malam */
 const C={ink:'#2E3448',indigo:'#3E4366',indigo2:'#4D5378',night:'#1F2233',blue:'#5B8DB8',blue2:'#4A78A0',sky:'#A9D4DE',sky2:'#EEF5F0',
   mint:'#6BAE9A',mint2:'#4F8F7C',lime:'#A3C47A',lime2:'#86AA5E',sun:'#E8C15A',coral:'#D9735E',pink:'#E2A39C',lilac:'#B3A8C8',lilac2:'#8E84A8',
@@ -984,7 +1054,7 @@ const G=(a={},p=S)=>N('g',a,p),R=(x,y,w,h,f,rx=0,p=S,a={})=>N('rect',{x,y,width:
   CI=(cx,cy,r,f,p=S,a={})=>N('circle',{cx,cy,r,fill:f,...a},p),EL=(cx,cy,rx,ry,f,p=S,a={})=>N('ellipse',{cx,cy,rx,ry,fill:f,...a},p),
   PA=(d,f,p=S,a={})=>N('path',{d,fill:f||'none',...a},p),
   LN=(d,st,w,p=S,a={})=>N('path',{d,fill:'none',stroke:st,'stroke-width':w,'stroke-linecap':'round','stroke-linejoin':'round',...a},p),
-  TX=(x,y,t,size,f,p=S,a={})=>{const n=N('text',{x,y,'font-size':size,fill:f,'font-weight':600,'text-anchor':'middle',...a},p);n.textContent=t;return n;},
+  TX=(x,y,t,size,f,p=S,a={})=>{const n=N('text',{'data-tata':'teks',x,y,'font-size':size,fill:f,'font-weight':600,'text-anchor':'middle',...a},G({'data-jaga':''},p));n.textContent=t;return n;},
   shadow=(x,y,rx,p=S)=>EL(x,y,rx,16,C.night,p,{opacity:.16}),
   sh=(hex,f)=>{const n=parseInt(hex.slice(1),16);const r=Math.min(255,Math.round(((n>>16)&255)*f)),g=Math.min(255,Math.round(((n>>8)&255)*f)),b=Math.min(255,Math.round((n&255)*f));return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);};
 function J(el,tx=0,ty=0){const j={el,tx,ty,x:0,y:0,r:0,sx:1,sy:1,apply(){el.setAttribute('transform',`translate(${j.tx+j.x},${j.ty+j.y}) rotate(${j.r}) scale(${j.sx},${j.sy})`);}};j.apply();return j;}
@@ -999,13 +1069,13 @@ rg('glowSoft',[[0,'#FFFFFF',.9],[1,'#FFFFFF',0]]);
 
 /* ---------- panggung ---------- */
 const scenes=[];
-function scene(name){const g=G({'data-name':name},S);g.style.display='none';const sc={name,g,cam:{x:960,y:540,z:1.1,ox:0,oy:0},
-  apply(){const c=sc.cam;g.setAttribute('transform',`translate(${960-(c.x+c.ox)*c.z},${540-(c.y+c.oy)*c.z}) scale(${c.z})`);}};sc.apply();scenes.push(sc);return sc;}
+function scene(name){const g=G({'data-name':name},S);g.style.display='none';const sc={name,g,cam:{x:W/2,y:H/2,z:1.1,ox:0,oy:0},
+  apply(){const c=sc.cam;g.setAttribute('transform',`translate(${W/2-(c.x+c.ox)*c.z},${H/2-(c.y+c.oy)*c.z}) scale(${c.z})`);}};sc.apply();scenes.push(sc);return sc;}
 
 /* ---------- KARAKTER: rig sendi (kaki di y=0) ---------- */
 function character(p,x,ground,scale,o={}){
   const {who='v',shirt=C.blue,pants=C.ink,shoes='#2E2C3A',hair=C.ink,skin=C.skinKid,style='short',tunic=false,sx=1,brow=false,beard=false,blush=false}=o;
-  const sd=shadow(x,ground+4,72*scale*sx,p),place=G({transform:`translate(${x},${ground}) scale(${scale*sx},${scale})`},p),rootEl=G({},place),root=J(rootEl),ref={root,place,who,scale,sd};
+  const sd=shadow(x,ground+4,72*scale*sx,p),place=G({'data-tata':'subjek',transform:`translate(${x},${ground}) scale(${scale*sx},${scale})`},p),rootEl=G({},place),root=J(rootEl),ref={root,place,who,scale,sd};
   const legC=tunic?skin:pants,footC=tunic?sh(skin,.8):shoes;
   for(const side of ['R','L']){const lx=side==='L'?-26:26,dk=side==='R'?.86:1;
     const tEl=G({},rootEl),thigh=J(tEl,lx,-214);R(-24,-10,48,118,sh(legC,dk),21,tEl);
@@ -1097,8 +1167,8 @@ function makeCapsule(p,x,ground){const k={};const place=G({transform:`translate(
   k.faces=G({opacity:0},bodyEl);[[-30,'#2A2350',C.skinKid],[32,'#1E1A3F',C.skinKid]].forEach(([fx,hc,sc])=>{CI(fx,-440,32,sc,k.faces);PA(`M ${fx-33} -446 C ${fx-34} -486 ${fx+34} -486 ${fx+33} -446 Z`,hc,k.faces);CI(fx-11,-436,4,C.ink,k.faces);CI(fx+11,-436,4,C.ink,k.faces);LN(`M ${fx-9} -420 C ${fx-3} -414 ${fx+3} -414 ${fx+9} -420`,C.ink,3,k.faces);});
   R(30,-300,140,230,C.blue2,26,bodyEl);k.door=R(30,-300,140,230,C.blue,26,bodyEl);CI(150,-190,9,C.sun,bodyEl);
   R(-262,-336,268,156,C.ink,22,bodyEl);R(-252,-326,248,136,'#1A2030',16,bodyEl);
-  k.num=TX(-128,-268,'2026',42,C.mint,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,'font-variant-numeric':'tabular-nums'});
-  k.sub=TX(-128,-218,'15 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
+  k.num=TX(-128,-274,'2026',42,C.mint,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,'font-variant-numeric':'tabular-nums'});
+  k.sub=TX(-128,-206,'11 MENIT',32,C.sun,bodyEl,{'font-family':'Space Mono, monospace','font-weight':700,opacity:0});
   k.lights=[];for(let i=0;i<7;i++){const a=Math.PI*(.12+i*.127);k.lights.push(CI(Math.cos(a)*-232,-330+Math.sin(a)*-260+520*0,11,i%2?C.sun:C.mint,bodyEl));}
   k.lights.forEach((l,i)=>{const a=Math.PI*(1.08+i*.14);l.setAttribute('cx',Math.cos(a)*236);l.setAttribute('cy',-330+Math.sin(a)*270);});
   k.place=place;return k;}
@@ -1106,7 +1176,7 @@ const fmt=v=>{const n=Math.round(Math.abs(v)).toString().replace(/\B(?=(\d{3})+(
 
 /* ---------- SUARA + SUBTITLE: say(idKlip, detik) menaruh VO dan teksnya sekaligus ---------- */
 window.AUDIO_PLAN={vo:[],sfx:[],music:null};
-const AUD='../../audio-semua/',CAPS=[];
+const AUD=window.AUDBASE||'../../audio-semua/',CAPS=[];
 function vdur(id){return VODATA[id].dur;}
 function say(id,at,vol=1){AUDIO_PLAN.vo.push({at,src:AUD+id+'.mp3',vol});VODATA[id].cap.forEach(([a,b,t])=>CAPS.push({a:at+a,b:at+b,t}));return at+vdur(id);}
 function sfx(name,at,vol=.4){AUDIO_PLAN.sfx.push({at,src:AUD+'sfx-'+name+'.mp3',vol});}
@@ -1117,6 +1187,15 @@ function capRender(t){if(!capEl)return;let c=null;for(const k of CAPS){if(t>=k.a
   if(c!==capCur){capCur=c;capTx.textContent=c?c.t:'';}
   const o=c?Math.min(1,(t-c.a)/.12,(c.b-t)/.12):0;capEl.style.opacity=o.toFixed(3);capEl.style.transform=`translateX(-50%) translateY(${((1-Math.min(1,(t-(c?c.a:0))/.18))*10).toFixed(1)}px)`;}
 gsap.ticker.add(()=>capRender(tl.time()));
+
+/* PENJAGA TEPI (Hukum #5 tata letak): label/teks yang mulai keluar frame memudar lebih dulu,
+   jadi teks tidak pernah tampil terpotong tepi saat kamera zoom/geser. Deterministik: hanya
+   bergantung pada posisi kamera di detik itu. */
+function jagaTepi(){const st=document.getElementById('stage');if(!st)return;const S0=st.getBoundingClientRect(),m=10*S0.width/W,S={left:S0.left+m,top:S0.top+m,right:S0.right-m,bottom:S0.bottom-m};
+  for(const e of document.querySelectorAll('[data-jaga]')){const r=e.getBoundingClientRect();if(r.width<1||r.height<1)continue;
+    const vx=Math.max(0,Math.min(r.right,S.right)-Math.max(r.left,S.left)),vy=Math.max(0,Math.min(r.bottom,S.bottom)-Math.max(r.top,S.top));
+    const f=vx*vy/(r.width*r.height),o=Math.max(0,Math.min(1,(f-.99)/.01));e.style.opacity=o<1?o.toFixed(3):'';}}
+gsap.ticker.add(jagaTepi);
 
 /* ============ BENDA BERSAMA (dipakai semua bab) ============ */
 lg('skyD',[[0,'#2E3550'],[1,'#56607E']]);lg('skyN',[[0,'#1F2438'],[1,'#3B4462']]);lg('sea',[[0,'#7FB2C4'],[1,'#5B8DB8']]);
@@ -1129,9 +1208,9 @@ function roundTree(p,x,gy,s=1,c1=C.mint2,c2=C.mint){R(x-14*s,gy-260*s,28*s,260*s
 function hut(p,x,gy,s=1,wall='#C9A47A',roof='#8A6A4A'){const g=G({transform:`translate(${x},${gy}) scale(${s})`},p);R(-110,-150,220,150,wall,8,g);PA('M -150 -140 L 0 -260 L 150 -140 Z',roof,g);R(-30,-90,60,90,'#5E4A3A',6,g);return g;}
 function house(p,x,gy,s=1,wall=C.paper,roof=C.coral){const g=G({transform:`translate(${x},${gy}) scale(${s})`},p);R(-120,-180,240,180,wall,6,g);PA('M -150 -170 L 0 -290 L 150 -170 Z',roof,g);R(-34,-100,68,100,C.indigo2,6,g);R(50,-140,50,44,C.sky,4,g);R(-100,-140,50,44,C.sky,4,g);return g;}
 /* label diegetik: papan nama 1–2 baris, dimunculkan dengan pop() */
-function tag(p,x,y,l1,l2='',{w=null,c1=C.ink,c2=C.mint2,bg=C.white,s1=40,s2=32}={}){const g=G({},p),j=J(g,x,y);const ww=w||Math.max(l1.length*s1*.56,l2.length*s2*.56)+60,hh=l2?s1+s2+44:s1+36;
+function tag(p,x,y,l1,l2='',{w=null,c1=C.ink,c2=C.mint2,bg=C.white,s1=40,s2=32}={}){const g0=G({},p),j=J(g0,x,y),g=G({'data-jaga':''},g0);const ww=w||Math.max(l1.length*s1*.56,l2.length*s2*.56)+60,hh=l2?s1+s2+44:s1+36;
   R(-ww/2,-hh/2,ww,hh,bg,16,g);TX(0,l2?-hh/2+s1+12:s1*.36,l1,s1,c1,g,{'font-weight':700});if(l2)TX(0,hh/2-18,l2,s2,c2,g);return j;}
-function stamp(p,x,y,txt,col=C.coral,size=44,rot=-8){const g=G({},p),j=J(g,x,y);const w=txt.length*size*.6+60;R(-w/2,-size*.9,w,size*1.8,'none',14,g,{stroke:col,'stroke-width':7,transform:`rotate(${rot})`});TX(0,size*.35,txt,size,col,g,{'font-weight':700,transform:`rotate(${rot})`});return j;}
+function stamp(p,x,y,txt,col=C.coral,size=44,rot=-8){const g0=G({},p),j=J(g0,x,y),g=G({'data-jaga':''},g0);const w=txt.length*size*.6+60;R(-w/2,-size*.9,w,size*1.8,'none',14,g,{stroke:col,'stroke-width':7,transform:`rotate(${rot})`});TX(0,size*.35,txt,size,col,g,{'font-weight':700,transform:`rotate(${rot})`});return j;}
 /* peta dunia ekuirektangular (lon,lat) → kotak w×h */
 const CONT={na:[[-165,65],[-140,70],[-95,72],[-65,62],[-55,50],[-70,43],[-80,32],[-80,25],[-90,29],[-97,24],[-97,18],[-88,15],[-80,8],[-84,10],[-105,20],[-117,32],[-125,48],[-140,60],[-165,60]],
   sa:[[-80,10],[-60,10],[-50,0],[-35,-6],[-40,-22],[-58,-38],[-68,-55],[-74,-45],[-70,-18],[-81,-5]],
@@ -1176,6 +1255,14 @@ function bumper(year,label){const sc=scene('terowongan');const p=sc.g;R(-900,-90
   tl.set(p,{display:'block'},0);Object.assign(sc.cam,{x:960,y:560,z:1.35});sc.apply();cam(sc,0,960,520,1.5,3.2,'power1.inOut');
   sfx('dial',.15,.4);sfx('luncur',2.55,.45);return sc;}
 function capStart(){/* cadangan */}
+
+/* FOTO ASLI + SUMBER: bingkai putih, foto, lalu label & kredit di bawah foto (bagian dari bingkai) */
+window.IMGWAIT=window.IMGWAIT||[];const FOTO=AUD.replace('audio-semua','foto');
+function photo(p,x,y,w,file,ar,l1,l2,{rot=-2,s1=36,s2=30}={}){const h=w/ar,g=G({'data-boleh-tumpuk':''},p),j=J(g,x,y);const inner=G({transform:`rotate(${rot})`,'data-jaga':''},g);
+  const H=h+56+s1+s2+56;R(-w/2-20+10,-h/2-20+14,w+40,H,C.night,14,inner,{opacity:.35});R(-w/2-20,-h/2-20,w+40,H,C.paper,14,inner);
+  const href=FOTO+file;const im=N('image',{'data-tata':'gambar',x:-w/2,y:-h/2,width:w,height:h,preserveAspectRatio:'xMidYMid slice'},inner);im.setAttributeNS(XL,'href',href);im.setAttribute('href',href);
+  IMGWAIT.push(new Promise(r=>{const i=new Image();i.onload=i.onerror=()=>r();i.src=href;}));
+  TX(0,h/2+30+s1,l1,s1,C.ink,inner,{'font-weight':700});TX(0,h/2+52+s1+s2,l2,s2,C.mint2,inner,{'font-weight':600});return j;}
 
 </script>
 <script>
@@ -1246,13 +1333,13 @@ const P4=scene('giza');{const p=P4.g,gy=880;R(-900,-900,3800,2900,'url(#desert)'
   for(let r=0;r<4;r++)for(let c=0;c<3;c++){const g=G({opacity:0,transform:`translate(${-60+c*150},${400+r*120})`},wall);const d=gl[(r+c)%4];if((r+c)%4===2||(r+c)%4===3)LN(d,C.indigo,7,g);else PA(d,C.indigo,g);P4.gly.push(g);}
   const cart=G({},p);P4.cart=cart;const cb=G({transform:`translate(600,${gy})`},cart);R(-160,-120,320,40,C.wood,8,cb);R(-120,-240,240,120,'#CFAD72',4,cb);P4.wh=[-100,100].map(x=>{const w=G({},cb),j=J(w,x,-50);CI(0,0,50,C.wood,w);CI(0,0,36,'#E3C79A',w);for(let k=0;k<4;k++)R(-4,-36,8,72,C.wood,3,w,{transform:`rotate(${k*45})`});CI(0,0,10,C.wood,w);return j;});
   P4.worker=character(p,330,gy,.85,{who:'pekerja',shirt:C.paper,pants:C.sand2,hair:'#1E1A3F',skin:'#A86B47'});
-  P4.tag=tag(p,1150,340,'Piramida Agung Giza','±2560 SM');P4.tagR=tag(p,620,560,'roda','',{s1:40,c1:C.coral});}
+  P4.tag=tag(p,1150,340,'Piramida Agung Giza','±2560 SM');P4.tagR=tag(cb,150,-310,'roda','',{s1:40,c1:C.coral});}
 {const t=T['b4-4']-.4;slide(t,P3,P4,'x',96);Object.assign(P4.cam,{x:300,y:560,z:1.4});P4.apply();spin(P4.rays,t,40);
   P4.gly.forEach((g,i)=>tl.to(g,{opacity:1,duration:.15},t+.4+i*.18));
   const c1=capT(T,'b4-4',1);cam(P4,c1-.4,1350,600,1.22,1.4,'power2.inOut');P4.pyr.forEach((L,k)=>L.forEach((r,i)=>tl.fromTo(r,{opacity:0,y:-40},{opacity:1,y:0,duration:.25,ease:'power2.out',immediateRender:false},c1+k*.5+i*.12)));pop(P4.tag,c1+1.6);sfx('pop',c1+1.6,.3);
   const c2=capT(T,'b4-4',2);cam(P4,c2-.3,800,640,1.35,1.0,'power2.inOut');idle(P4.worker,t);
   tl.fromTo(P4.cart,{x:-900},{x:300,duration:4.2,ease:'power1.out',immediateRender:false},c2-.6);P4.wh.forEach(j=>tl.fromTo(j,{r:0},{r:720,duration:4.2,ease:'power1.out',onUpdate:j.apply,immediateRender:false},c2-.6));
-  walk(P4.worker,c2-.4,3.6,560);pop(P4.tagR,c2+.6);tl.to(P4.tagR,{x:300,duration:3.6,ease:'power1.out',onUpdate:P4.tagR.apply},c2+.6);
+  walk(P4.worker,c2-.4,3.6,560);pop(P4.tagR,c2+1.6);
   tl.to(P4.cam,{x:1200,duration:3.6,ease:'power1.inOut',onUpdate:P4.apply},c2+.8);}
 
 DUR=T.end+1.4;tl.to({},{duration:.01},DUR);
@@ -1339,7 +1426,7 @@ var MF = (function(){
       return a.play().then(function(){ a.pause(); a.currentTime = 0; a.volume = v; on = true; }, function(e){ a.volume = v; throw e; }); }
   };
 })();
-document.fonts.ready.then(()=>{applyAll();window.OPENER.ready=true;if(q.has('clean'))return;if(!hasVO&&!MF.has){start();return;}
+Promise.all([document.fonts.ready,...(window.IMGWAIT||[])]).then(()=>{applyAll();window.OPENER.ready=true;if(q.has('clean'))return;if(!hasVO&&!MF.has){start();return;}
   (hasVO?vo.play():MF.probe()).then(()=>{audioOn=hasVO;vo.currentTime=0;tl.play(0);}).catch(()=>{const go=()=>{removeEventListener('pointerdown',go);removeEventListener('keydown',go);start();};addEventListener('pointerdown',go);addEventListener('keydown',go);});});
 
 </script>

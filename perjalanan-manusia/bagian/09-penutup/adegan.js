@@ -49,6 +49,6 @@ const P3=scene('dadah');{const p=P3.g,gy=880;bgSky(p);P3.cl=[cloud(p,400,170,.8)
   P3.cl.forEach(c=>tl.fromTo(c,{x:0},{x:120,duration:14,ease:'none',immediateRender:false},t));P3.cap.lights.forEach((l,i)=>tl.to(l,{keyframes:{opacity:[1,.25,1]},duration:1.2,repeat:-1},t+i*.17));
   const c1=capT(T,'b9-3',1);P3.st.forEach((j,i)=>{pop(j,c1+.3+i*.9);sfx('pop',c1+.3+i*.9,.3);tl.to(j,{y:-14,duration:.6,yoyo:true,repeat:-1,ease:'sine.inOut',onUpdate:j.apply},c1+.8+i*.9);});cam(P3,c1-.2,800,460,1.3,1.0,'power2.inOut');
   const c2=capT(T,'b9-3',2);wave(P3.nara,c2-.2,'L');wave(P3.bima,c2-.1,'R');face(P3.nara,'lebar',c2);face(P3.bima,'lebar',c2);cam(P3,c2-.2,960,520,1.15,.8,'power2.inOut');
-  const ea=T.end+.6;P3.st.forEach(j=>tl.to(j.el,{opacity:0,duration:.3},ea));tl.to(P3.ans,{opacity:1,duration:.4},ea+.2);sfx('pop',ea+.2,.35);}
+  const ea=T.end+.6;tl.to([P3.nara.place,P3.nara.sd,P3.bima.place,P3.bima.sd,P3.cap.place],{opacity:0,duration:.3},ea);P3.st.forEach(j=>tl.to(j.el,{opacity:0,duration:.3},ea));tl.to(P3.ans,{opacity:1,duration:.4},ea+.2);sfx('pop',ea+.2,.35);}
 
 DUR=T.end+6.2;tl.to({},{duration:.01},DUR);

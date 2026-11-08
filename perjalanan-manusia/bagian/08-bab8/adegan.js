@@ -79,7 +79,7 @@ const P5=scene('masadepan');{const p=P5.g,gy=880;bgSky(p);P5.cl=[cloud(p,400,170
   P5.trash=[[1500,gy+80,C.coral],[1700,gy+140,C.sun],[1900,gy+90,C.paper]].map(([x,y,c])=>{const g=G({},p),j=J(g,x,y);R(-18,-30,36,60,c,10,g,{opacity:.85});return j;});
   P5.net=G({},p);LN('M 1380 1000 C 1600 940 1900 960 2100 1010',C.ink,6,P5.net);
   P5.nara=character(p,1100,gy,.85,NARA);P5.bima=character(p,1300,gy,.85,BIMA);const tb=G({},P5.nara.Rhand.el);R(-36,-24,72,52,C.ink,8,tb);R(-30,-18,60,40,C.sky,4,tb);
-  P5.tagAI=tag(p,900,500,'kecerdasan buatan','',{s1:34});P5.tagC=tag(p,1700,560,'iklim & plastik','',{s1:34,c1:C.coral});P5.you=stamp(p,960,300,'KAMU!',C.coral,90,-6);}
+  P5.tagAI=tag(p,740,430,'kecerdasan buatan','',{s1:34});P5.tagC=tag(p,1700,560,'iklim & plastik','',{s1:34,c1:C.coral});P5.you=stamp(p,960,300,'KAMU!',C.coral,90,-6);}
 {const t=T['b8-5']-.4;slide(t,P4,P5,'x',96);Object.assign(P5.cam,{x:900,y:560,z:1.18});P5.apply();idle(P5.nara,t);idle(P5.bima,t);
   rot(P5.nara.Rarm,t,-25,.01);rot(P5.nara.Rfore,t,-95,.01);tl.to(P5.robot,{y:-10,duration:.5,yoyo:true,repeat:-1,ease:'sine.inOut',onUpdate:P5.robot.apply},t);tl.to(P5.ant,{keyframes:{opacity:[1,.2,1]},duration:.8,repeat:-1},t);
   pop(P5.tagAI,t+.8);P5.cl.forEach(c=>tl.fromTo(c,{x:0},{x:120,duration:14,ease:'none',immediateRender:false},t));tl.fromTo(P5.w,{x:0},{x:-360,duration:4,ease:'none',repeat:-1,immediateRender:false},t);

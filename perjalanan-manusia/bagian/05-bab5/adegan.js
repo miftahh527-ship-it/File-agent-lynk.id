@@ -101,12 +101,12 @@ const P5=scene('rempah');{const p=P5.g,gy=760;bgSky(p);P5.clouds=[cloud(p,400,16
   P5.spice=G({opacity:0},p);for(let k=0;k<6;k++){LN(`M ${120+k*40} ${gy-150} l 6 30`,'#5E3A2A',8,P5.spice);CI(126+k*40,gy-150,8,'#5E3A2A',P5.spice);}CI(330,gy-150,20,'#8A5A3A',P5.spice);CI(290,gy-140,16,'#8A5A3A',P5.spice);
   P5.glow=CI(220,gy-80,260,'url(#fireGlow)',p,{opacity:0});
   P5.tr=[[520,C.sun,'#8C5A3C',true],[700,C.blue2,'#D9A07A',false],[880,C.paper,'#B97A52',true]].map(([x,c,sk,bd],i)=>character(p,x,gy-20,.75,{who:'t'+i,shirt:c,pants:C.indigo,hair:'#1E1A3F',skin:sk,beard:bd}));
-  P5.tag=tag(p,220,gy-320,'Rempah dari Maluku','cengkih · pala',{s1:40});}
+  P5.tag=tag(p,220,250,'Rempah dari Maluku','cengkih · pala',{s1:40});}
 {const t=T['b5-5']-.4;cut(t,P4b,P5);Object.assign(P5.cam,{x:960,y:520,z:1.15});P5.apply();
   P5.ships.forEach((s,i)=>{bob(s,t,6,1.2+i*.2);tl.fromTo(s.g,{x:0},{x:-900,duration:6+i,ease:'power1.out',immediateRender:false},t);});P5.w.forEach((w,i)=>tl.fromTo(w,{x:0},{x:-360,duration:3+i,ease:'none',repeat:-1,immediateRender:false},t));
   P5.tr.forEach((c,i)=>{idle(c,t+i*.2);walk(c,t+.3,2.2,-200);});P5.clouds.forEach(c=>tl.fromTo(c,{x:0},{x:120,duration:14,ease:'none',immediateRender:false},t));
   const c1=capT(T,'b5-5',1);cam(P5,c1-.2,500,480,1.4,1.2,'power2.inOut');P5.tr.forEach((c,i)=>{rot(c.head,c1+i*.15,-8,.3);});
   const c2=capT(T,'b5-5',2);tl.to(P5.spice,{opacity:1,duration:.3},c2);tl.to(P5.glow,{opacity:1,duration:.4},c2);tl.to(P5.glow,{keyframes:{opacity:[1,.6,1]},duration:1,repeat:-1},c2+.4);pop(P5.tag,c2+.2);sfx('pop',c2+.2,.35);
-  P5.tr.forEach(c=>face(c,'lebar',c2+.2));const c3=capT(T,'b5-5',3);cam(P5,c3,240,520,1.75,2.6,'power2.inOut');}
+  P5.tr.forEach(c=>face(c,'lebar',c2+.2));const c3=capT(T,'b5-5',3);cam(P5,c3,240,470,1.7,2.6,'power2.inOut');}
 
 DUR=T.end+1.4;tl.to({},{duration:.01},DUR);

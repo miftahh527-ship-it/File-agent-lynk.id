@@ -9,7 +9,7 @@ const S1=scene('gua');{const p=S1.g;R(-800,-800,2700,3500,'url(#caveG)',0,p);for
   const m=N('mask',{id:'sBeam',maskUnits:'userSpaceOnUse',x:-800,y:-800,width:2700,height:3500},defs);R(-800,-800,2700,3500,'#fff',0,m);S1.hole=CI(540,860,80,'url(#hole)',m);
   S1.dark=R(-800,-800,2700,3500,'#0E1018',0,p,{opacity:.92,mask:'url(#sBeam)'});
   S1.st=stamp(p,540,420,'TERTUA DI DUNIA',C.sun,62,-6);S1.st.el.setAttribute('opacity',0);
-  S1.flag=G({},p);S1.flagJ=J(S1.flag,540,1110);R(-110,-40,220,40,C.red,6,S1.flag);R(-110,0,220,40,C.paper,6,S1.flag);TX(0,100,'Indonesia',64,C.paper,S1.flag,{'font-weight':700});
+  S1.flag=G({},p);S1.flagJ=J(S1.flag,540,960);R(-110,-40,220,40,C.red,6,S1.flag);R(-110,0,220,40,C.paper,6,S1.flag);TX(0,100,'Indonesia',64,C.paper,S1.flag,{'font-weight':700});
   S1.dust=[];for(let i=0;i<14;i++)S1.dust.push(CI(540+(rnd(i+3)-.5)*600,1000,4+rnd(i)*4,'#F4ECCF',p,{opacity:0}));}
 tl.set(S1.g,{display:'block'},0);Object.assign(S1.cam,{x:540,y:860,z:1.5});S1.apply();
 {const H0={r:80,d:.92};tl.to(H0,{r:900,d:.25,duration:.9,ease:'power2.out',onUpdate(){S1.hole.setAttribute('r',H0.r);S1.dark.setAttribute('opacity',H0.d);}},.1);sfx('senter',.1,.5);
