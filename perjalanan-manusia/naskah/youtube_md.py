@@ -30,12 +30,6 @@ Bersama Nara dan Bima, kita singgah di Afrika tempat Homo sapiens pertama ditemu
 - Penduduk dunia 2026 ±8,3 miliar dan harapan hidup 46 → ±73 tahun: UN WPP 2024 / StatisticsTimes
 - Tahun peristiwa lain mengikuti buku IPS/Sejarah Kurikulum Merdeka dan ensiklopedia.
 
-🖼️ Foto asli (Wikimedia Commons)
-- Lukisan perahu, Gua Liang Metanduno, Pulau Muna — Purnawibawa, CC BY-SA 4.0
-- Cap tangan Leang Pettakere, Maros — Cahyo, CC BY-SA 3.0
-- Lukisan Leang Karampuang, Maros (foto diperjelas) — Oktaviana dkk., Nature 2024, CC BY 4.0
-Lisensi: creativecommons.org/licenses/by-sa/4.0 · /by-sa/3.0 · /by/4.0
-
 #SejarahManusia #EdukasiAnak #LetGrowww #SejarahIndonesia #BelajarSejarah
 
 ## Tag
@@ -50,7 +44,6 @@ Lukisan Gua Tertua di Dunia Ada di Indonesia! #Shorts
 Cap tangan merah di Pulau Muna, Sulawesi Tenggara, berumur minimal 67.800 tahun — lukisan gua tertua di dunia yang usianya sudah dibuktikan!
 Versi lengkap: Perjalanan 300.000 Tahun: Dari Gua Sampai Smartphone — <link video long>
 #Shorts #SejarahIndonesia #FaktaUnik
-Foto: Purnawibawa (CC BY-SA 4.0), Cahyo (CC BY-SA 3.0) — Wikimedia Commons
 
 ## Komentar tersemat (jawaban kuis — jangan ditulis di deskripsi)
 Jawaban kuis: 1) Pulau Muna, Sulawesi Tenggara · 2) Huruf paku · 3) Prasasti Yupa, Kerajaan Kutai. Berapa yang kamu jawab benar? 🎉

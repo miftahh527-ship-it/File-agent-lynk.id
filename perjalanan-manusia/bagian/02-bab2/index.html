@@ -1353,11 +1353,7 @@ const P4b=scene('lab-gua');{const p=P4b.g,gy=960;R(-900,-900,3800,2900,'url(#cav
 {const t=T['b2-4']-.4;slide(t,P3,P4,'x',96);Object.assign(P4.cam,{x:960,y:540,z:1.12});P4.apply();
   pop(P4.jr,t+.5);sfx('pop',t+.5,.3);tl.to(P4.jr,{r:-4,duration:.8,yoyo:true,repeat:3,ease:'sine.inOut',onUpdate:P4.jr.apply},t+1);
   const c2=capT(T,'b2-4',2);cam(P4,c2-.3,1300,640,1.45,1.0,'power2.inOut');show(P4.muna,c2,.3);tl.to(P4.ring,{keyframes:{opacity:[0,1,0]},attr:{r:110},duration:1.2,repeat:-1},c2);pop(P4.tagM,c2+.4);
-  const c3=capT(T,'b2-4',3);
-  /* foto asli dinding Liang Metanduno */
-  const F1=scene('foto-metanduno');{const p=F1.g;R(-900,-900,3800,2900,'url(#board)',0,p);F1.card=photo(p,960,400,900,'metanduno-perahu.jpg',1.5,'Dinding Gua Liang Metanduno, Pulau Muna (lukisan perahu)','Foto: Purnawibawa · CC BY-SA 4.0 · Wikimedia Commons',{s1:34});}
-  cut(c2+1.7,P4,F1);Object.assign(F1.cam,{x:960,y:560,z:1.08});F1.apply();tl.fromTo(F1.card,{y:60,r:-4},{y:0,r:0,duration:.5,ease:'back.out(1.6)',onUpdate:F1.card.apply,immediateRender:false},c2+1.7);cam(F1,c2+1.8,960,560,1.1,3,'sine.inOut');
-  cut(c3+.3,F1,P4b);Object.assign(P4b.cam,{x:1000,y:560,z:1.2});P4b.apply();idle(P4b.r1,c3);idle(P4b.r2,c3);
+  const c3=capT(T,'b2-4',3);cut(c3-.1,P4,P4b);Object.assign(P4b.cam,{x:1000,y:560,z:1.2});P4b.apply();idle(P4b.r1,c3);idle(P4b.r2,c3);
   rot(P4b.r2.Rarm,c3,-40,.4);rot(P4b.r2.Rfore,c3,-70,.4);tl.to(P4b.scr,{keyframes:{fill:[C.mint,C.sun,C.mint]},duration:.6,repeat:-1},c3);
   const bm={k:0};tl.to(bm,{k:1,duration:2,ease:'sine.inOut',yoyo:true,repeat:-1,onUpdate(){const x=900+bm.k*220;P4b.beam.setAttribute('d',`M 1430 650 L ${x-90} ${380+bm.k*60} L ${x+90} ${480+bm.k*60} Z`);}},c3);
   rot(P4b.r1.Rarm,c3+.3,-80,.5,'power2.out');rot(P4b.r1.Rfore,c3+.3,-10,.5);cam(P4b,c3+.2,1000,520,1.5,1.4,'power2.inOut');pop(P4b.st1,c3+2.0);sfx('pop',c3+2.0,.35);
@@ -1382,15 +1378,7 @@ const P5=scene('melukis');{const p=P5.g;R(-900,-900,4800,2900,'url(#caveG)',0,p)
   show(P5.print,c1+2.2,1.4);tl.to(P5.tube,{x:400,duration:.5,ease:'power2.in',onUpdate:P5.tube.apply},c1+4.6);tl.to(P5.hand,{y:420,duration:.7,ease:'power2.in',onUpdate:P5.hand.apply},c1+4.8);
   const c2=capT(T,'b2-5',2);tl.to(P5.cam,{x:2500,y:560,z:1.25,duration:1.4,ease:'power2.inOut',onUpdate:P5.apply},c2-.4);
   P5.pig.forEach((n,i)=>drawOn(n,c2+.8+i*.5,1.0));pop(P5.tagP,c2+2.4);sfx('pop',c2+2.4,.3);
-  /* foto asli: cap tangan Leang Pettakere → lukisan Leang Karampuang (Maros) */
-  const F2=scene('foto-maros');{const p=F2.g;R(-900,-900,3800,2900,'url(#board)',0,p);
-    F2.a=photo(p,960,390,760,'pettakere.jpg',4/3,'Cap tangan asli di Leang Pettakere, Maros','Foto: Cahyo · CC BY-SA 3.0 · Wikimedia Commons',{s1:34});
-    F2.b=photo(p,960,400,1000,'karampuang-lukisan.jpg',500/278,'Lukisan Leang Karampuang, Maros · ±51.200 tahun (foto diperjelas)','Foto: Oktaviana dkk., Nature 2024 · CC BY 4.0 · Wikimedia Commons',{s1:32,rot:2});}
-  const c3b=capT(T,'b2-5',3);cut(c2-.25,P5,F2);Object.assign(F2.cam,{x:960,y:560,z:1.08});F2.apply();tl.set(F2.b.el,{opacity:0},0);
-  tl.fromTo(F2.a,{y:60,r:-4},{y:0,r:0,duration:.5,ease:'back.out(1.6)',onUpdate:F2.a.apply,immediateRender:false},c2-.25);
-  tl.to(F2.a.el,{opacity:0,duration:.25},c3b+.2);tl.set(F2.b.el,{opacity:1},c3b+.35);tl.fromTo(F2.b,{x:300,r:6},{x:0,r:0,duration:.55,ease:'back.out(1.4)',onUpdate:F2.b.apply,immediateRender:false},c3b+.35);
-  cam(F2,c2,960,560,1.1,5,'sine.inOut');
-  idle(P5.nara,t);idle(P5.bima,t);const c4=capT(T,'b2-5',VODATA['b2-5'].cap.length-1);cut(c4-.35,F2,P5);
+  idle(P5.nara,t);idle(P5.bima,t);const c4=capT(T,'b2-5',VODATA['b2-5'].cap.length-1);
   cam(P5,c4-.3,2500,540,1.15,1.0,'power2.inOut');face(P5.nara,'lebar',c4);face(P5.bima,'lebar',c4);wave(P5.nara,c4+.2,'L');wave(P5.bima,c4+.4,'R');hop(P5.bima,c4+.6);}
 
 DUR=T.end+1.4;tl.to({},{duration:.01},DUR);
