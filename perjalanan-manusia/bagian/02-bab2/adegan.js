@@ -79,7 +79,7 @@ const P3=scene('sebar');{const p=P3.g;R(-900,-900,3800,2900,'url(#skyD)',0,p);P3
 
 /* ---------- P4 LIANG METANDUNO: peta Sulawesi + jurnal, lalu gua & peneliti ---------- */
 const P4=scene('muna');{const p=P4.g;R(-900,-900,3800,2900,'url(#skyD)',0,p);P4.m=mapBox(p,160,110,1600,860,[112,132,-10,4],['bo','sl','jv','su']);const m=P4.m;
-  P4.muna=EL(...m.pt(122.6,-4.9),26,40,C.sun,p,{opacity:0});P4.ring=CI(...m.pt(122.6,-4.9),40,'none',p,{stroke:C.coral,'stroke-width':6,opacity:0});
+  P4.muna=PA(landD(PETA.nusantara,m.P,[122.2,123.2,-5.5,-4.4],(x,y,sp)=>sp<1.2&&x>122.3&&x<122.75&&y<-4.5&&y>-5.4),C.sun,m.inner,{opacity:0,stroke:C.coral,'stroke-width':3});P4.ring=CI(...m.pt(122.6,-4.9),40,'none',p,{stroke:C.coral,'stroke-width':6,opacity:0});
   P4.tagM=tag(p,m.pt(122.6,-4.9)[0]+250,m.pt(122.6,-4.9)[1],'Pulau Muna','Sulawesi Tenggara');
   const jr=G({},p);P4.jr=J(jr,560,520);R(-170,-230,340,460,C.paper,16,jr);R(-170,-230,340,90,C.ink,16,jr);TX(0,-168,'NATURE',48,C.paper,jr,{'font-weight':700,'letter-spacing':6});
   TX(0,-80,'Januari 2026',32,C.ink,jr);const hs=G({transform:'translate(0,70)'},jr);CI(0,0,110,'url(#spray)',hs);handShape(hs,'#4A5074',.8);}

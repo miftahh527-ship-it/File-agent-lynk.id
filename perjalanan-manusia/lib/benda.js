@@ -24,14 +24,20 @@ const CONT={na:[[-165,65],[-140,70],[-95,72],[-65,62],[-55,50],[-70,43],[-80,32]
   su:[[95,5],[98,4],[106,-4],[105,-6],[101,-2],[95,3]],jv:[[105,-6],[111,-6.5],[114,-7.5],[110,-8],[106,-7]],
   bo:[[109,1],[112,3],[117,7],[119,5],[118,1],[116,-3],[111,-3],[109,-1]],sl:[[119,1],[124,1.5],[121,0],[123,-1],[122,-5],[120,-5],[120,-2]],
   pp:[[131,-1],[138,-2],[146,-6],[150,-10],[141,-9],[137,-5],[132,-3]]};
+/* garis pantai asli dari data Natural Earth (lib/peta-data.js, domain publik) */
+function landD(arr,P,[a0,a1,b0,b1],keep=null){let d='';for(const r of arr){let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9,cx=0,cy=0;
+    for(let i=0;i<r.length;i+=2){const lo=r[i],la=r[i+1];cx+=lo;cy+=la;if(lo<x0)x0=lo;if(lo>x1)x1=lo;if(la<y0)y0=la;if(la>y1)y1=la;}
+    if(x1<a0||x0>a1||y1<b0||y0>b1)continue;if(keep&&!keep(cx/(r.length/2),cy/(r.length/2),x1-x0))continue;
+    for(let i=0;i<r.length;i+=2){const q=P(r[i],r[i+1]);d+=(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1);}d+='Z';}return d;}
+function landInto(g,P,box,land,sw=2){return PA(landD(PETA.dunia,P,box)+landD(PETA.nusantara,P,box),land,g,{stroke:sh(land,.82),'stroke-width':sw,'stroke-linejoin':'round'});}
 function worldMap(p,x,y,w,h,{land=C.lime,sea='url(#sea)',grid=true}={}){const g=G({transform:`translate(${x},${y})`},p);R(0,0,w,h,sea,28,g);
   if(grid)for(let i=1;i<6;i++){LN(`M ${w*i/6} 20 L ${w*i/6} ${h-20}`,C.white,2,g,{opacity:.15});LN(`M 20 ${h*i/6} L ${w-20} ${h*i/6}`,C.white,2,g,{opacity:.15});}
   const P=(lo,la)=>[((lo+180)/360)*w,((80-la)/140)*h];const m={g,P,pt:(lo,la)=>{const[a,b]=P(lo,la);return[x+a,y+b];},parts:{}};
-  for(const k in CONT){const d='M '+CONT[k].map(([a,b])=>P(a,b).map(v=>v.toFixed(1)).join(' ')).join(' L ')+' Z';m.parts[k]=PA(d,land,g,{stroke:land,'stroke-width':10,'stroke-linejoin':'round'});}return m;}
+  m.land=landInto(g,P,[-180,180,-60,80],land,2);return m;}
 function mapBox(p,x,y,w,h,[lo0,lo1,la0,la1],keys=null,{land=C.lime,sea='url(#sea)'}={}){const g=G({transform:`translate(${x},${y})`},p);R(0,0,w,h,sea,28,g);
   const cp=N('clipPath',{id:'mb'+x+'_'+y},defs);R(0,0,w,h,null,28,cp);const inner=G({'clip-path':`url(#mb${x}_${y})`},g);
   const P=(lo,la)=>[((lo-lo0)/(lo1-lo0))*w,((la1-la)/(la1-la0))*h];const m={g,inner,P,pt:(lo,la)=>{const[a,b]=P(lo,la);return[x+a,y+b];},parts:{}};
-  for(const k of (keys||Object.keys(CONT))){const d='M '+CONT[k].map(([a,b])=>P(a,b).map(v=>v.toFixed(1)).join(' ')).join(' L ')+' Z';m.parts[k]=PA(d,land,inner,{stroke:land,'stroke-width':14,'stroke-linejoin':'round'});}return m;}
+  m.land=landInto(inner,P,[lo0-2,lo1+2,la0-2,la1+2],land,3);return m;}
 const capT=(T,id,i)=>T[id]+VODATA[id].cap[i][0];
 function pin(p,x,y,col=C.coral,s=1){const g=G({},p),j=J(g,x,y);G({},g);PA(`M 0 0 C ${-30*s} ${-40*s} ${-30*s} ${-76*s} 0 ${-80*s} C ${30*s} ${-76*s} ${30*s} ${-40*s} 0 0 Z`,col,g);CI(0,-52*s,12*s,C.white,g);return j;}
 /* garis rute yang menggambar dirinya */

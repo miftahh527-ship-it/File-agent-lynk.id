@@ -18,7 +18,7 @@ tl.set(S1.g,{display:'block'},0);Object.assign(S1.cam,{x:540,y:860,z:1.5});S1.ap
 
 /* ---------- S2 PETA: Pulau Muna + umur ---------- */
 const S2=scene('peta');{const p=S2.g;R(-800,-800,2700,3500,'url(#skyD)',0,p);S2.m=mapBox(p,40,420,1000,1000,[117,127,-8,2],['sl','bo','jv']);const m=S2.m;
-  S2.muna=EL(...m.pt(122.6,-4.9),26,44,C.sun,p,{opacity:0});S2.ring=CI(...m.pt(122.6,-4.9),46,'none',p,{stroke:C.coral,'stroke-width':8,opacity:0});
+  S2.muna=PA(landD(PETA.nusantara,m.P,[122.2,123.2,-5.5,-4.4],(x,y,sp)=>sp<1.2&&x>122.3&&x<122.75&&y<-4.5&&y>-5.4),C.sun,m.inner,{opacity:0,stroke:C.coral,'stroke-width':3});S2.ring=CI(...m.pt(122.6,-4.9),46,'none',p,{stroke:C.coral,'stroke-width':8,opacity:0});
   S2.tag=tag(p,540,410,'Liang Metanduno','Pulau Muna · Sulawesi Tenggara',{s1:52,s2:36});S2.st=stamp(p,540,960,'≥ 67.800 tahun',C.coral,76,-6);S2.card=photo(p,600,880,760,'metanduno-perahu.jpg',1.5,'Gua Liang Metanduno, Pulau Muna','Purnawibawa · CC BY-SA 4.0 · Wikimedia Commons',{s1:36,s2:30});S2.card.el.setAttribute('opacity',0);}
 {const t=c(2)-.2;slide(t,S1,S2,'y',72);Object.assign(S2.cam,{x:540,y:860,z:1.12});S2.apply();pop(S2.tag,t+.3);show(S2.muna,t+.8,.3);
   tl.to(S2.ring,{keyframes:{opacity:[0,1,0]},attr:{r:140},duration:1.1,repeat:-1},t+.8);cam(S2,t+.4,600,1000,1.15,2.6,'power2.inOut');tl.to(S2.card.el,{opacity:1,duration:.01},c(3)+.2);tl.fromTo(S2.card,{y:80,r:-5},{y:0,r:0,duration:.5,ease:'back.out(1.6)',onUpdate:S2.card.apply,immediateRender:false},c(3)+.2);tl.to(S2.card.el,{opacity:0,duration:.25},c(5)-.1);pop(S2.st,c(5)+.2,.5);sfx('pop',c(5)+.2,.45);}

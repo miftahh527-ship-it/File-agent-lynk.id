@@ -18,15 +18,14 @@ const P1=scene('gua');{const p=P1.g;
   P1.hp=hp;
   /* peta Indonesia dilukis di dinding */
   const mp=G({transform:'translate(1330,520)'},p);P1.isles=[];
-  ['M -300 -60 C -260 -96 -200 -44 -146 8 C -126 30 -146 46 -176 32 C -232 2 -290 -30 -300 -60 Z',
-   'M -140 70 C -100 58 -20 68 34 80 C 40 92 12 98 -20 94 C -70 92 -122 90 -140 70 Z',
-   'M -70 -84 C -20 -124 40 -104 52 -52 C 58 -10 20 22 -20 16 C -62 10 -92 -42 -70 -84 Z',
-   'M 92 -82 C 122 -92 152 -86 164 -76 C 132 -70 116 -60 112 -46 C 128 -30 152 -30 162 -20 C 132 -14 112 -10 110 10 C 112 30 126 40 132 56 C 112 52 96 32 92 10 C 88 -20 86 -52 92 -82 Z',
-   'M 230 -30 C 282 -52 334 -30 344 2 C 332 32 282 32 252 16 C 236 6 220 -10 230 -30 Z',
-   'M 50 100 C 70 94 90 96 100 102 C 90 110 60 110 50 100 Z M 118 104 C 130 98 150 100 158 106 C 146 114 126 112 118 104 Z'
-  ].forEach(d=>{const g=G({},mp);PA(d,C.sand2,g);PA(d,'none',g,{stroke:C.sun,'stroke-width':4,opacity:.6});P1.isles.push(g);});
-  const pinG=G({},mp);P1.pin=J(pinG,138,40);PA('M 0 0 C -30 -40 -30 -76 0 -80 C 30 -76 30 -40 0 0 Z',C.coral,pinG);CI(0,-52,12,C.white,pinG);
-  P1.pinRing=EL(138,44,10,4,'none',mp,{stroke:C.coral,'stroke-width':4,opacity:0});
+  /* peta Indonesia asli (Natural Earth), dikelompokkan per pulau besar supaya muncul satu per satu */
+  const PI=(lo,la)=>[(lo-118)*14.6,(-2.5-la)*14.6];
+  const grup=[(x,y)=>x<106.2&&y>-6.2,(x,y)=>y<-5.6&&x<115.8,(x,y)=>x>=108&&x<119.3&&y>-4.6,(x,y)=>x>=118.7&&x<126&&y>-6.8&&y<3,(x,y)=>x>=130.8&&y<.5,()=>true];
+  const sudah=(x,y)=>grup.slice(0,5).some(f=>f(x,y));
+  grup.forEach((f,k)=>{const keep=(x,y,sp)=>sp<25&&!(y>5&&x>116.5)&&(k<5?f(x,y):!sudah(x,y));const d=landD(PETA.nusantara,PI,[94,142,-11.5,6.5],keep);
+    const g=G({},mp);PA(d,C.sand2,g);PA(d,'none',g,{stroke:C.sun,'stroke-width':3,opacity:.6,'stroke-linejoin':'round'});P1.isles.push(g);});
+  const pm=PI(122.6,-4.9),pinG=G({},mp);P1.pin=J(pinG,pm[0],pm[1]);PA('M 0 0 C -30 -40 -30 -76 0 -80 C 30 -76 30 -40 0 0 Z',C.coral,pinG);CI(0,-52,12,C.white,pinG);
+  P1.pinRing=EL(pm[0],pm[1]+4,10,4,'none',mp,{stroke:C.coral,'stroke-width':4,opacity:0});
   /* gelap + lubang senter */
   const m=N('mask',{id:'beamM',maskUnits:'userSpaceOnUse',x:-600,y:-600,width:3200,height:2400},defs);R(-600,-600,3200,2400,'#fff',0,m);P1.hole=CI(300,820,40,'url(#hole)',m);
   P1.dark=R(-600,-600,3200,2400,'#0E1018',0,p,{opacity:.93,mask:'url(#beamM)'});
@@ -208,11 +207,13 @@ const P5=scene('sabana');{const p=P5.g,gy=940;
   /* papan peta Afrika */
   const bd=G({transform:'translate(1050,940)'},p);R(-230,-120,26,120,C.wood,8,bd);R(204,-120,26,120,C.wood,8,bd);shadow(0,4,260,bd);
   R(-310,-640,620,540,C.wood,26,bd);R(-290,-620,580,500,C.indigo,18,bd);
-  const af=G({transform:'translate(-200,-605)'},bd);PA('M 60 40 C 120 10 200 10 250 30 C 280 50 300 80 330 100 C 370 110 400 120 390 150 C 360 190 330 230 320 280 C 300 340 260 400 220 430 C 190 440 170 420 165 380 C 160 330 140 290 120 250 C 100 230 60 230 30 200 C 0 170 0 120 20 80 C 30 60 45 50 60 40 Z',C.lime,af);
-  PA('M 345 330 C 360 320 370 340 362 370 C 354 390 340 380 342 360 Z',C.lime,af);
-  P5.dots=[[90,58],[330,175],[200,405]].map(([x,y])=>{const g=G({},af),j=J(g,x,y);CI(0,0,16,C.coral,g);CI(0,0,6,C.white,g);return j;});
-  P5.rings=[[90,58],[330,175],[200,405]].map(([x,y])=>CI(x,y,16,'none',af,{stroke:C.coral,'stroke-width':4,opacity:0}));
-  const tg=G({},af);P5.tag=J(tg,124,30);R(0,-44,250,96,C.white,14,tg);PA('M 0 -6 L -18 0 L 0 8 Z',C.white,tg);TX(125,-4,'Jebel Irhoud',36,C.ink,tg,{'font-weight':700});TX(125,36,'Maroko',30,C.mint2,tg);
+  const af=G({transform:'translate(-200,-605)'},bd);const PA5=(lo,la)=>[(lo+18)*5.8,(38-la)*5.8+10];
+  PA(landD(PETA.afrika,PA5,[-30,60,-40,40]),C.lime,af,{stroke:sh(C.lime,.8),'stroke-width':2,'stroke-linejoin':'round'});
+  /* titik: Jebel Irhoud (Maroko), Omo Kibish (Etiopia), Florisbad (Afrika Selatan) */
+  const AFP=[[-8.9,31.9],[35.9,5.4],[26.0,-28.7]].map(([a,b])=>PA5(a,b));
+  P5.dots=AFP.map(([x,y])=>{const g=G({},af),j=J(g,x,y);CI(0,0,16,C.coral,g);CI(0,0,6,C.white,g);return j;});
+  P5.rings=AFP.map(([x,y])=>CI(x,y,16,'none',af,{stroke:C.coral,'stroke-width':4,opacity:0}));
+  const tg=G({},af);P5.tag=J(tg,AFP[0][0]+34,AFP[0][1]-22);R(0,-44,250,96,C.white,14,tg);PA('M 0 -6 L -18 0 L 0 8 Z',C.white,tg);TX(125,-4,'Jebel Irhoud',36,C.ink,tg,{'font-weight':700});TX(125,36,'Maroko',30,C.mint2,tg);
   /* lubang galian + fosil */
   P5.mound=PA('M 1440 950 C 1480 880 1560 880 1600 950 Z',C.sand2,p);
   EL(1680,960,230,52,'#C79A62',p);EL(1680,968,200,40,'#A97F4E',p);

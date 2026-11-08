@@ -36,6 +36,8 @@ Bersama Nara dan Bima, kita singgah di Afrika tempat Homo sapiens pertama ditemu
 - Lukisan Leang Karampuang, Maros (foto diperjelas) — Oktaviana dkk., Nature 2024, CC BY 4.0
 Lisensi: creativecommons.org/licenses/by-sa/4.0 · /by-sa/3.0 · /by/4.0
 
+🗺️ Peta: Natural Earth (naturalearthdata.com), domain publik
+
 #SejarahManusia #EdukasiAnak #LetGrowww #SejarahIndonesia #BelajarSejarah
 
 ## Tag
