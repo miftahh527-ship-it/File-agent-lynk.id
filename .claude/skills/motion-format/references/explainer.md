@@ -222,8 +222,9 @@ sebagai titik nyasar. Garis putus-putus tidak bisa pakai dashoffset (akan
 
 **Peta**: citra satelit domain publik (NASA MODIS/Worldview) sebagai dasar +
 label `.tag` mono dengan garis kiri kuning + lingkaran merah + garis putus
-jalur, ATAU peta vektor akurat dari `scripts/peta_svg.py` (Natural Earth) untuk gaya
-flat/kartun/katalog. Jangan pernah menggambar garis pantai sendiri (`grafis-rapi.md`).
+jalur, ATAU peta vektor rapi dari `scripts/peta_svg.py` (garis pantai digambar sendiri di
+`peta_data.py`) untuk gaya flat/kartun/katalog. Jangan mencoret garis pantai baru di index.html
+(`grafis-rapi.md`).
 
 **Grafik garis**: hitung titik dari data di JS, `path` digambar dengan
 dashoffset, area gradasi fade-in setelahnya, titik data pop stagger, label

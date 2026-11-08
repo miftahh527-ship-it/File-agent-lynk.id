@@ -8,9 +8,9 @@ melayang, dan ikon dengan tebal garis berbeda-beda. Penonton langsung menangkapn
 
 ## Hukum grafis
 
-1. **Bentuk yang punya bentuk asli tidak pernah digambar tangan.** Peta, benua, negara, pulau,
-   logo, produk, gedung terkenal, hewan nyata: ambil dari data atau sumber aslinya (peta →
-   `peta_svg.py`, logo → path vektor resmi, produk/gedung/hewan → foto/cutout atau generate).
+1. **Bentuk yang punya bentuk asli tidak pernah dicoret asal dari ingatan.** Peta, benua, pulau:
+   pakai `peta_svg.py` (garis pantai yang sudah digambar rapi di `peta_data.py`). Logo → path
+   vektor resmi dari user. Produk/gedung/hewan → foto/cutout dari user atau generate.
 2. **Bentuk generik dibangun dari primitif dan sistem, bukan coretan bebas**: lingkaran, persegi
    bersudut seragam, garis bertutup bulat, di grid 8 px, simetris lewat cermin (bukan
    menggambar dua sisi terpisah).
@@ -19,34 +19,40 @@ melayang, dan ikon dengan tebal garis berbeda-beda. Penonton langsung menangkapn
 4. **Dicek dengan mata dalam ukuran asli** (PNG pratinjau / snap), bukan dianggap benar karena
    kodenya jalan.
 
-## Peta — `scripts/peta_svg.py`
+## Peta — `scripts/peta_svg.py` (digambar sendiri)
 
-Data Natural Earth 1:50m (domain publik) + d3-geo, semua ada di `assets/data/` (jalan tanpa
-internet; butuh Python 3 + Chrome). Keluaran: SVG bersih (satu `<path>` ber-id per benua/negara)
-+ JSON titik label + PNG pratinjau.
+Garis pantai benua dan pulau ditulis tangan oleh skill ini di `scripts/peta_data.py` (titik
+bujur-lintang bergaya atlas), BUKAN diunduh dari internet. `peta_svg.py` memproyeksikannya
+(rumus proyeksi ditulis sendiri), menghaluskan garis pantai dengan Catmull-Rom sentripetal (tanpa
+simpul di bagian sempit), dan menggambar batas darat antar-benua lurus dan rapat. Python 3 murni;
+Chrome hanya untuk pratinjau `--png`. Keluaran: SVG bersih (satu `<path>` ber-id per benua atau
+pulau) + JSON titik label + PNG.
 
 | Kebutuhan | Perintah |
 |---|---|
-| Dunia per benua (tanpa Antartika) | `python3 scripts/peta_svg.py assets/img/dunia.svg --png` |
-| Dunia per negara | `… dunia.svg --mode negara --png` |
-| Satu benua + dunia samar di sekitar | `… asia.svg --wilayah benua:Asia --konteks --batas --png` |
-| Satu negara disorot di kawasannya | `… ri.svg --wilayah "region:South-Eastern Asia" --mode negara --sorot IDN --konteks --png` |
-| Daftar negara | `… asean.svg --wilayah negara:IDN,MYS,SGP,THA,VNM,PHL,BRN,KHM,LAO,MMR --mode negara` |
+| Dunia per benua | `python3 scripts/peta_svg.py assets/img/dunia.svg --png` |
+| Satu benua + benua lain samar | `… asia.svg --wilayah benua:Asia --konteks --png` |
+| Benua disorot di peta dunia | `… dunia.svg --sorot Asia --png` |
+| Indonesia per pulau | `… ri.svg --wilayah indonesia --mode pulau --konteks --png` |
+| Beberapa pulau | `… jawa-bali.svg --wilayah pulau:Jawa,Madura,Bali --mode pulau --png` |
 | Bola dunia | `… bola.svg --proyeksi orthographic --pusat 118,-2 --ukuran 900x900 --garis --png` |
 
-- **Proyeksi**: dunia → `natural-earth` (bawaan, bentuk benua paling dikenali); benua/kawasan
-  → `mercator` (bawaan) atau `conic` untuk wilayah lebar di lintang tinggi; bola →
-  `orthographic`. Satu proyeksi per video.
-- **Rusia** dipotong di Pegunungan Ural (Siberia = Asia, konvensi atlas sekolah). `--rusia eropa`
-  = data asli Natural Earth.
-- **Wilayah seberang laut** (Guyana Prancis, Hawaii…) tetap digambar tetapi tidak membuat peta
-  ter-zoom-out.
-- **Nama** benua dalam bahasa Indonesia (`data-nama="Amerika Selatan"`), negara dengan nama
-  Indonesia (`Rusia`, `Prancis`); kode `--wilayah`/`--sorot` boleh ISO A3 atau nama.
-- **Label**: ambil `x,y` dari `<nama>.json` (pusat poligon terbesar, jadi label Indonesia tidak
-  jatuh di laut). Jangan menebak posisi label.
-- **Ukuran berkas**: 50m ±600–800 KB per peta, aman untuk inline. Peta kecil di layar →
-  `--detail 110m`.
+- **Isi peta**: 6 benua (Amerika Utara, Amerika Selatan, Eropa, Afrika, Asia, Oseania) dengan
+  pulau-pulau besar (Greenland, Britania, Jepang, Filipina, Madagaskar, Selandia Baru…) dan 15
+  pulau utama Indonesia (Sumatra, Jawa, Madura, Bali, Lombok, Sumbawa, Flores, Sumba, Timor,
+  Kalimantan, Sulawesi, Halmahera, Seram, Buru, Papua). Tanpa batas negara dan tanpa Antartika.
+- **Batas benua** mengikuti konvensi atlas sekolah: Eropa–Asia di Ural–Kaspia–Kaukasus, Afrika–Asia
+  di Suez, Papua (Asia, Indonesia) – Papua Nugini (Oseania) di 141° BT.
+- **Proyeksi**: dunia → `natural-earth` (bawaan, bentuk benua paling dikenali); benua/pulau →
+  `mercator`; bola → `orthographic`. Satu proyeksi per video. Peta dunia berpusat di 11° BT supaya
+  garis 180° jatuh di Selat Bering (tidak ada daratan terbelah).
+- **Kehalusan**: `--halus 0.85` (bawaan); `0` = sudut tajam bergaya poligon, `1` = sangat bulat.
+- **Label**: ambil `x,y` dari `<nama>.json` (pusat daratan terbesar tiap bentuk). Jangan menebak.
+- **Menambah/merapikan pulau**: edit `scripts/peta_data.py` (titik searah jarum jam, 8–40 titik,
+  nama Indonesia). Batas darat bersama ditulis sebagai konstanta `B_*` dan dipakai kedua sisi
+  supaya tidak ada celah. Setelah mengedit, SELALU lihat `--png` untuk bentuk itu dalam ukuran besar
+  (`--wilayah pulau:<nama> --ukuran 900x900 --png`).
+- Ukuran berkas ±35–55 KB per peta: ringan untuk ditempel inline.
 
 **Memasang & menganimasikan** (tempel isi SVG inline di dalam `#world` atau panggung):
 
@@ -64,15 +70,15 @@ internet; butuh Python 3 + Chrome). Keluaran: SVG bersih (satu `<path>` ber-id p
 </script>
 ```
 
-- Garis tepi/batas memakai `vector-effect:non-scaling-stroke` (sudah di SVG): saat kamera zoom,
-  batas tetap tipis rapi, tidak menebal.
-- Sorotan negara = lapisan `sorot-*` yang sudah terpisah; animasikan warna/skala lapisan itu,
-  jangan menggambar ulang bentuknya.
-- Penanda kota/rute: titik dan garis di ATAS peta pada koordinat yang dihitung (proyeksikan
-  lon/lat dengan proyeksi yang sama — tambahkan ke JSON lewat `peta_svg.py` bila perlu, atau
-  pakai titik dari `.json`). Garis rute = lengkung halus (quadratic) dengan tebal seragam.
-- Citra satelit (NASA, domain publik) tetap pilihan untuk gaya jurnalisme; bentuk vektor dari
-  `peta_svg.py` untuk gaya flat, kartun, katalog.
+- Garis tepi memakai `vector-effect:non-scaling-stroke` (sudah di SVG): saat kamera zoom, garis
+  tetap tipis rapi.
+- Sorotan = lapisan `#sorot` yang sudah terpisah; animasikan warna/skala lapisan itu, jangan
+  menggambar ulang bentuknya.
+- Penanda kota/rute: titik dan garis di ATAS peta pada koordinat yang dihitung dengan proyeksi
+  yang sama (pakai titik label dari `.json`, atau hitung dengan rumus di `peta_svg.py`). Garis rute
+  = lengkung halus (quadratic) dengan tebal seragam.
+- Butuh batas negara atau garis pantai sangat rinci → itu di luar peta bergaya ini; tulis sebagai
+  bentuk baru di `peta_data.py`, atau pakai foto/citra yang disediakan user.
 
 ## Tokoh/orang — `assets/tokoh-rapi.js`
 
@@ -144,8 +150,8 @@ Aturan memakai tokoh:
 
 ## Verifikasi
 
-- Peta: buka `<nama>.png` hasil `--png` dan bandingkan dengan atlas: bentuk benua dikenali?
-  pulau-pulau utama ada? label di daratannya?
+- Peta: buka `<nama>.png` hasil `--png`: bentuk benua/pulau dikenali (Sulawesi berbentuk K,
+  Italia sepatu bot)? tidak ada pulau yang bertumpuk? label di daratannya?
 - Tokoh: potret tiap pose yang dipakai (snap / `?debug=1`) dan periksa: tangan menyentuh yang
   seharusnya (pinggang, dagu, benda), tidak ada sendi yang menekuk terbalik, tidak ada anggota
   badan yang menembus kepala/badan secara janggal.

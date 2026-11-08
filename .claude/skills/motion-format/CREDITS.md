@@ -18,11 +18,8 @@ Tambahan Motion Format (lihat `CHANGELOG.md`):
 - blok "SUARA Motion Format" (`AUDIO_PLAN`) di semua starter
 - `scripts/render_mp4.py`: render MP4 bersuara tanpa Node, dengan normalisasi loudness
 
-Data & pustaka peta (di `assets/data/`, dipakai oleh `scripts/peta_svg.py`):
-- Natural Earth 1:50m & 1:110m — domain publik (<https://www.naturalearthdata.com>)
-- world-atlas 2.0.2 (TopoJSON Natural Earth) — Mike Bostock, ISC
-- d3-geo 3.1.1 & d3-array 3.2.4 — Mike Bostock, ISC
-- topojson-client 3.1.0 — Mike Bostock, ISC
-- polygon-clipping 0.15.7 — Mike Fogel, MIT
+Peta (`scripts/peta_data.py`, `scripts/peta_svg.py`): garis pantai, proyeksi, dan penghalusan
+ditulis sendiri untuk Motion Format — tanpa data atau pustaka pihak ketiga. Rumus proyeksi Natural
+Earth (Šavrič dkk., 2015) dipakai sebagai rumus matematika publik.
 
 Terima kasih kepada Bang Tutorial yang membagikan Bang Motion secara terbuka.

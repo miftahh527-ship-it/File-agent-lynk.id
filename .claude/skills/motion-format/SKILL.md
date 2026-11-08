@@ -4,14 +4,14 @@ description: Membuat motion graphic dan video lewat chat — promo, opener, intr
 license: MIT
 metadata:
   author: Motion Format
-  version: "1.3.0"
+  version: "1.4.0"
   updated: "2026-11-08"
   based_on: "Bang Motion v1.19.0 oleh Bang Tutorial (https://github.com/bangtutorial/bang-motion), lisensi MIT"
 ---
 
 # Motion Format — motion graphic lewat chat, lengkap dengan suara
 
-**v1.3.0 · Motion Format · MIT.** Dibangun di atas **Bang Motion v1.19.0** karya
+**v1.4.0 · Motion Format · MIT.** Dibangun di atas **Bang Motion v1.19.0** karya
 [Bang Tutorial](https://youtube.com/bangtutorial) (MIT) — seluruh hukum anti-PPT, starter,
 dan resep teknis berasal dari sana. Tambahan Motion Format: alur untuk pemula lewat chat,
 suara ElevenLabs (VO per adegan + efek suara), modul suara di semua starter, dan render MP4
@@ -450,9 +450,11 @@ Baca `references/tata-letak.md` sebelum rundown. Ringkasnya:
 
 Baca `references/grafis-rapi.md` sebelum menggambar peta, tokoh, ikon, atau grafik data.
 
-- **Peta/benua/negara SELALU dari data**: `python3 scripts/peta_svg.py <keluaran.svg> --png`
-  (Natural Earth, tanpa internet). Satu `<path>` ber-id per benua/negara, label dari `.json`,
-  Rusia dipotong di Ural. Path peta yang digambar tangan = ditolak.
+- **Peta/benua/pulau SELALU lewat `python3 scripts/peta_svg.py <keluaran.svg> --png`**: garis
+  pantai digambar sendiri oleh skill (`scripts/peta_data.py`, tanpa unduhan), dihaluskan rapi,
+  batas benua rapat. Satu `<path>` ber-id per benua atau pulau (15 pulau utama Indonesia), label dari
+  `.json`. Mencoret path peta baru dari ingatan di index.html = ditolak; bentuk baru ditambahkan
+  ke `peta_data.py` lalu dicek di PNG.
 - **Orang SELALU dari kit `assets/tokoh-rapi.js`** (sudah di `character()` starter panggung):
   proporsi terkunci, sendi mulus, 7 gaya rambut termasuk jilbab, 5 warna kulit, pose siap pakai.
   Satu tokoh = satu definisi yang dipakai ulang; aksesori ditambahkan ke sendi, bukan digambar ulang.
@@ -533,7 +535,7 @@ Baca `references/grafis-rapi.md` sebelum menggambar peta, tokoh, ikon, atau graf
       0 galat; tidak ada teks menimpa teks / gambar menutupi teks / teks terpotong tepi; jarak
       antar-elemen ≥ 48 px; tumpukan hanya yang sah dan dibungkus `data-boleh-tumpuk`; satu
       elemen dominan, satu sumbu penjajaran, perlakuan gambar seragam
-- [ ] Grafis (Hukum #6): peta dari `peta_svg.py` (bukan path tangan), label peta dari `.json`;
+- [ ] Grafis (Hukum #6): peta dari `peta_svg.py` (bukan coretan baru), label peta dari `.json`;
       orang dari `tokoh-rapi.js` (satu definisi per tokoh, sudut sendi wajar, tangan menyentuh
       sasarannya); ikon satu keluarga; grafik data berskala dari data; sudah dilihat di PNG/snap
 - [ ] Style brief (tema, palet dari brand, font display berkarakter, satu
@@ -697,9 +699,9 @@ dan buat layer dari belakang ke depan. Build 10 panggung ≈ 1 jam, 0 kredit.
 | `scripts/kepala-ekspresi.py` | kepala hasil generate → varian senang/cemas/kaget + kedip, dibuat lokal (deteksi pupil & mulut) |
 | `references/ae-bridge-higgsfield.md` | BRIDGE: membangun kartun panggung langsung di AE lewat MCP Higgsfield — batas bridge, jebakan (null 960,540; parent ke CAM berkeyframe; reorder rusak), arsitektur CAM per panggung, rig native, relay contact sheet, penyerahan |
 | `scripts/ae/bridge/aset-svg.py`, `svg2png.cjs`, `rig-tokoh.py` | BRIDGE: aset ilustrasi dari kode → SVG + manifest → PNG 2× (puppeteer); generator ±90 op `ae_batch` untuk satu karakter bersendi |
-| `references/grafis-rapi.md` | SETIAP peta, benua, negara, tokoh/orang, ikon, grafik data: hukum "jangan gambar dari ingatan", resep `peta_svg.py`, kit tokoh, ikon, grafik, kebersihan SVG |
-| `scripts/peta_svg.py` | PETA akurat dari Natural Earth (dunia/benua/negara/kawasan/bola, 6 proyeksi, sorotan, konteks, batas) → SVG + JSON titik label + PNG pratinjau; Python + Chrome, tanpa internet |
-| `assets/data/` | data peta (world-atlas 50m/110m, `negara.json` negara → benua + nama Indonesia) + d3-geo, topojson-client, polygon-clipping |
+| `references/grafis-rapi.md` | SETIAP peta, benua, pulau, tokoh/orang, ikon, grafik data: hukum "jangan coret dari ingatan", resep `peta_svg.py`, kit tokoh, ikon, grafik, kebersihan SVG |
+| `scripts/peta_svg.py` | PETA rapi digambar sendiri: dunia/benua/pulau/Indonesia/bola, 4 proyeksi, sorotan, konteks, garis lintang → SVG + JSON titik label + PNG pratinjau; Python murni (Chrome hanya untuk PNG) |
+| `scripts/peta_data.py` | garis pantai 6 benua + pulau besar + 15 pulau utama Indonesia (titik bujur-lintang tulisan sendiri) dan batas benua bersama; tempat menambah/merapikan pulau |
 | `assets/tokoh-rapi.js` | KIT TOKOH: `TOKOH.buat/pose/ekspresi`, sendi kompatibel dengan starter panggung |
 | `assets/tokoh-galeri.html` | galeri semua varian & pose tokoh (alat kerja, dipotret dengan `thumbnail.py`) |
 | `references/tata-letak.md` | SETIAP video & thumbnail, sebelum rundown: lajur 16:9/9:16/1:1, jarak minimum, penjajaran, perlakuan gambar, tumpukan yang sah (`data-boleh-tumpuk`), peta tata letak, jebakan |

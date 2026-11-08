@@ -1,5 +1,18 @@
 # Riwayat perubahan — Motion Format
 
+## 1.4.0 · 8 November 2026
+
+**Diubah**
+- Peta kini **digambar sendiri**, tanpa mengambil data dari internet: data Natural Earth, d3-geo,
+  topojson, dan polygon-clipping dihapus dari paket (`assets/data/`).
+- `scripts/peta_data.py` (baru): garis pantai 6 benua, pulau-pulau besar, dan 15 pulau utama
+  Indonesia sebagai titik bujur-lintang tulisan sendiri; batas benua bersama (Ural–Kaukasus, Suez,
+  Panama, 141° BT) ditulis sekali dan dipakai kedua sisi.
+- `scripts/peta_svg.py` ditulis ulang dalam Python murni: proyeksi natural-earth / mercator /
+  equirectangular / orthographic sendiri, pemotongan cakrawala bola, penghalusan Catmull-Rom
+  sentripetal (lengan sempit seperti Sulawesi tidak terjepit), mode benua & pulau, sorotan,
+  konteks, garis lintang, JSON titik label, PNG pratinjau. Peta per negara tidak lagi tersedia.
+
 ## 1.3.0 · 8 November 2026
 
 **Baru**
