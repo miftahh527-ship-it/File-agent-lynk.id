@@ -1,5 +1,23 @@
 # Riwayat perubahan — Motion Format
 
+## 1.3.0 · 8 November 2026
+
+**Baru**
+- Hukum #6 "Grafis akurat dan rapi" + `references/grafis-rapi.md`: peta/benua/negara selalu dari
+  data, orang dari kit tokoh, ikon satu keluarga, grafik data berskala, kebersihan bentuk SVG.
+- `scripts/peta_svg.py`: peta akurat dari Natural Earth 1:50m (dunia, benua, negara, kawasan,
+  bola dunia; proyeksi natural-earth/equal-earth/mercator/equirectangular/orthographic/conic;
+  sorotan, konteks samar, garis batas, garis lintang) → SVG ber-id + JSON titik label + PNG.
+  Rusia dipotong di Ural (Siberia = Asia); wilayah seberang laut tidak membuat peta ter-zoom-out;
+  nama benua & negara dalam bahasa Indonesia. Data & pustaka di `assets/data/` (tanpa internet).
+- `assets/tokoh-rapi.js` + `assets/tokoh-galeri.html`: kit tokoh flat dengan proporsi terkunci,
+  sendi mulus, 7 gaya rambut (termasuk jilbab), 5 warna kulit, kaos/kemeja/rok, anak, hadap
+  kiri/kanan, 8 pose, 4 ekspresi.
+
+**Diubah**
+- `starter-explainer-panggung.html`: `character()` memakai tokoh rapi (koreografi lama tetap
+  jalan); `face()` menggerakkan mulut + alis tokoh rapi; kepala raster tetap didukung.
+
 ## 1.2.0 · 8 November 2026
 
 **Baru**
