@@ -222,7 +222,9 @@ sebagai titik nyasar. Garis putus-putus tidak bisa pakai dashoffset (akan
 
 **Peta**: citra satelit domain publik (NASA MODIS/Worldview) sebagai dasar +
 label `.tag` mono dengan garis kiri kuning + lingkaran merah + garis putus
-jalur. Lebih jujur dan lebih cepat daripada menggambar peta sendiri.
+jalur, ATAU peta vektor rapi dari `scripts/peta_svg.py` (garis pantai digambar sendiri di
+`peta_data.py`) untuk gaya flat/kartun/katalog. Jangan mencoret garis pantai baru di index.html
+(`grafis-rapi.md`).
 
 **Grafik garis**: hitung titik dari data di JS, `path` digambar dengan
 dashoffset, area gradasi fade-in setelahnya, titik data pop stagger, label
@@ -435,7 +437,7 @@ dan foto asli — bukan hitam-putih, bukan kartun.
   digambar dengan `clip-path: inset()` dari kiri (bukan dashoffset).
 - **Objek lewat lensa** (`pass`): cutout besar terbang diagonal dengan blur
   horizontal konstan, 1.2–1.3 dtk, lalu hilang — dipakai 1–2× per adegan.
-- Peta dunia SVG opacity ~.16 + titik merah + garis putus rute.
+- Peta dunia SVG opacity ~.16 (dari `scripts/peta_svg.py --tanpa-gaya`) + titik merah + garis putus rute.
 - Jebakan: cutout tinggi (foto potret) mudah menabrak body copy — hitung
   tinggi dari rasio foto; taruh body copy DI ATAS peta/objek bila perlu.
 - **Elemen bukti** (explainer tokoh sejarah ±50 dtk, 9:16, VO): kartu foto

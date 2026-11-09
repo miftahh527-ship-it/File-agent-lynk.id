@@ -191,9 +191,11 @@ Pipeline yang terbukti (identitas boleh dari foto user, boleh anonim):
 4. Semua variasi kostum (baju, celana, gaun) lewat warna & path tubuh; kepala
    yang sama dipakai ulang. Master yang disetujui dibekukan.
 
-Tanpa akses generate: `character()` di starter punya kepala vektor sederhana
-(lingkaran kulit, siluet rambut, dua titik mata, garis mulut) — cukup untuk
-gaya ini.
+Tanpa akses generate: `character()` di starter memakai **tokoh rapi**
+(`assets/tokoh-rapi.js`): proporsi terkunci ±4,8 kepala, sendi mulus (segmen bertutup bulat),
+wajah di grid tetap, 7 gaya rambut termasuk jilbab, 5 warna kulit, kaos/kemeja/rok, anak, dan
+pose siap pakai. Lihat `assets/tokoh-galeri.html`; jangan menggambar tokoh dengan path bebas
+(`grafis-rapi.md`).
 
 ## Panggung yang terbukti untuk cerita "proses & dampak"
 

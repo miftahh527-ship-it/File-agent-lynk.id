@@ -18,4 +18,8 @@ Tambahan Motion Format (lihat `CHANGELOG.md`):
 - blok "SUARA Motion Format" (`AUDIO_PLAN`) di semua starter
 - `scripts/render_mp4.py`: render MP4 bersuara tanpa Node, dengan normalisasi loudness
 
+Peta (`scripts/peta_data.py`, `scripts/peta_svg.py`): garis pantai, proyeksi, dan penghalusan
+ditulis sendiri untuk Motion Format — tanpa data atau pustaka pihak ketiga. Rumus proyeksi Natural
+Earth (Šavrič dkk., 2015) dipakai sebagai rumus matematika publik.
+
 Terima kasih kepada Bang Tutorial yang membagikan Bang Motion secara terbuka.

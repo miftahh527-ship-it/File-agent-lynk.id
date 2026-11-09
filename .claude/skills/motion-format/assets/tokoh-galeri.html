@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Galeri Tokoh Rapi</title>
+<!-- Alat kerja (bukan deliverable): lihat semua varian & pose tokoh-rapi.js sebelum memilih.
+     Buka dengan klik dua kali, atau potret: python3 ../scripts/thumbnail.py tokoh-galeri.html --ukuran 1920x1080 -->
+<style>
+  html,body{margin:0;background:#F6EFDD}
+  svg{display:block;width:100vw;height:auto}
+</style>
+</head>
+<body>
+<svg id="s" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#F6EFDD"/>
+  <rect y="500" width="1920" height="40" fill="#E6D5AC"/>
+  <rect y="1040" width="1920" height="40" fill="#E6D5AC"/>
+</svg>
+<script src="tokoh-rapi.js"></script>
+<script>
+const s = document.getElementById('s');
+const label = (x, y, t) => { const n = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  Object.entries({x, y, 'text-anchor': 'middle', 'font-family': 'system-ui,sans-serif', 'font-size': 20, 'font-weight': 600, fill: '#263746'})
+    .forEach(([k, v]) => n.setAttribute(k, v)); n.textContent = t; s.appendChild(n); };
+const baris1 = [
+  ['pendek · kaos', {rambut: 'pendek', kulit: 'sawo', baju: '#237C80'}, 'berdiri', 'senang'],
+  ['jilbab · rok', {rambut: 'jilbab', kulit: 'kuning', baju: '#F4BC52', bawahan: 'rok', celana: '#345867', jilbab: '#E0714F'}, 'melambai', 'senang'],
+  ['cepak · kemeja', {rambut: 'cepak', kulit: 'cokelat', atasan: 'kemeja', baju: '#5AABB8', celana: '#263746'}, 'menunjuk', 'netral'],
+  ['panjang · kaos', {rambut: 'panjang', kulit: 'terang', baju: '#C86545', celana: '#FFF3DC', warnaRambut: '#4A2E22'}, 'pinggang', 'senang'],
+  ['keriting · kemeja', {rambut: 'keriting', kulit: 'gelap', atasan: 'kemeja', baju: '#8DD3C3', celana: '#345867'}, 'berpikir', 'cemas'],
+  ['bob · rok', {rambut: 'bob', kulit: 'sawo', baju: '#E0714F', bawahan: 'rok', celana: '#F4BC52', warnaRambut: '#263746'}, 'angkat-tangan', 'kaget'],
+];
+baris1.forEach(([nama, o, p, e], i) => {
+  const x = 170 + i * 316, t = TOKOH.buat(s, x, 500, .78, o); TOKOH.pose(t, p); TOKOH.ekspresi(t, e);
+  label(x, 528, nama + ' · ' + p);
+});
+const baris2 = [
+  ['anak', {rambut: 'pendek', kulit: 'sawo', baju: '#F4BC52', anak: true}, 'senang', 'senang'],
+  ['anak jilbab', {rambut: 'jilbab', kulit: 'kuning', baju: '#5AABB8', anak: true, jilbab: '#8DD3C3', bawahan: 'rok', celana: '#345867'}, 'berdiri', 'senang'],
+  ['botak · hadap kiri', {rambut: 'botak', kulit: 'cokelat', atasan: 'kemeja', baju: '#FFF3DC', celana: '#345867', hadap: -1}, 'menunjuk', 'netral'],
+  ['melangkah', {rambut: 'pendek', kulit: 'terang', baju: '#345867'}, 'berdiri', 'senang'],
+  ['bingung', {rambut: 'panjang', kulit: 'gelap', baju: '#237C80', warnaRambut: '#172E3C', bawahan: 'rok', celana: '#C86545'}, 'bingung', 'cemas'],
+  ['skala 0,6', {rambut: 'cepak', kulit: 'sawo', baju: '#C86545'}, 'melambai', 'senang'],
+];
+baris2.forEach(([nama, o, p, e], i) => {
+  const x = 170 + i * 316, t = TOKOH.buat(s, x, 1040, i === 5 ? .6 : .78, o); TOKOH.pose(t, p); TOKOH.ekspresi(t, e);
+  if (nama === 'melangkah') { // contoh pose jalan: satu fase siklus
+    Object.entries({Lthigh: -18, Rthigh: 16, Lshin: 6, Rshin: 22, Larm: -14, Rarm: 14, Lfore: -10, Rfore: -6})
+      .forEach(([k, v]) => { t[k].r = v; t[k].apply(); });
+  }
+  label(x, 1068, nama);
+});
+</script>
+</body>
+</html>

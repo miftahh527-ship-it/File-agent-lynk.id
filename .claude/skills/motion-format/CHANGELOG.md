@@ -1,5 +1,36 @@
 # Riwayat perubahan — Motion Format
 
+## 1.4.0 · 8 November 2026
+
+**Diubah**
+- Peta kini **digambar sendiri**, tanpa mengambil data dari internet: data Natural Earth, d3-geo,
+  topojson, dan polygon-clipping dihapus dari paket (`assets/data/`).
+- `scripts/peta_data.py` (baru): garis pantai 6 benua, pulau-pulau besar, dan 15 pulau utama
+  Indonesia sebagai titik bujur-lintang tulisan sendiri; batas benua bersama (Ural–Kaukasus, Suez,
+  Panama, 141° BT) ditulis sekali dan dipakai kedua sisi.
+- `scripts/peta_svg.py` ditulis ulang dalam Python murni: proyeksi natural-earth / mercator /
+  equirectangular / orthographic sendiri, pemotongan cakrawala bola, penghalusan Catmull-Rom
+  sentripetal (lengan sempit seperti Sulawesi tidak terjepit), mode benua & pulau, sorotan,
+  konteks, garis lintang, JSON titik label, PNG pratinjau. Peta per negara tidak lagi tersedia.
+
+## 1.3.0 · 8 November 2026
+
+**Baru**
+- Hukum #6 "Grafis akurat dan rapi" + `references/grafis-rapi.md`: peta/benua/negara selalu dari
+  data, orang dari kit tokoh, ikon satu keluarga, grafik data berskala, kebersihan bentuk SVG.
+- `scripts/peta_svg.py`: peta akurat dari Natural Earth 1:50m (dunia, benua, negara, kawasan,
+  bola dunia; proyeksi natural-earth/equal-earth/mercator/equirectangular/orthographic/conic;
+  sorotan, konteks samar, garis batas, garis lintang) → SVG ber-id + JSON titik label + PNG.
+  Rusia dipotong di Ural (Siberia = Asia); wilayah seberang laut tidak membuat peta ter-zoom-out;
+  nama benua & negara dalam bahasa Indonesia. Data & pustaka di `assets/data/` (tanpa internet).
+- `assets/tokoh-rapi.js` + `assets/tokoh-galeri.html`: kit tokoh flat dengan proporsi terkunci,
+  sendi mulus, 7 gaya rambut (termasuk jilbab), 5 warna kulit, kaos/kemeja/rok, anak, hadap
+  kiri/kanan, 8 pose, 4 ekspresi.
+
+**Diubah**
+- `starter-explainer-panggung.html`: `character()` memakai tokoh rapi (koreografi lama tetap
+  jalan); `face()` menggerakkan mulut + alis tokoh rapi; kepala raster tetap didukung.
+
 ## 1.2.0 · 8 November 2026
 
 **Baru**
