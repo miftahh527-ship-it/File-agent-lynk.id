@@ -18,7 +18,7 @@ const P1=scene('gua');{const p=P1.g;
   P1.hp=hp;
   /* peta Indonesia dilukis di dinding */
   const mp=G({transform:'translate(1330,520)'},p);P1.isles=[];
-  /* peta Indonesia asli (Natural Earth), dikelompokkan per pulau besar supaya muncul satu per satu */
+  /* peta Indonesia buatan sendiri (data skill), dikelompokkan per pulau besar supaya muncul satu per satu */
   const PI=(lo,la)=>[(lo-118)*14.6,(-2.5-la)*14.6];
   const grup=[(x,y)=>x<106.2&&y>-6.2,(x,y)=>y<-5.6&&x<115.8,(x,y)=>x>=108&&x<119.3&&y>-4.6,(x,y)=>x>=118.7&&x<126&&y>-6.8&&y<3,(x,y)=>x>=130.8&&y<.5,()=>true];
   const sudah=(x,y)=>grup.slice(0,5).some(f=>f(x,y));
@@ -227,7 +227,7 @@ const P5=scene('sabana');{const p=P5.g,gy=940;
   P5.dust=[];for(let i=0;i<9;i++)P5.dust.push(CI(420+(rnd(i+60)-.5)*420,gy,26+rnd(i)*26,C.sand2,p,{opacity:0}));
   P5.nara=character(p,515,gy,.8,NARA);P5.bima=character(p,515,gy,.8,BIMA);
   P5.purba=character(p,2520,gy,1.0,{...PURBA,who:'sapiens'});
-  const cpG=G({},P5.purba.head.el);P5.topi=J(cpG,0,0);PA('M -80 -126 C -76 -196 76 -196 80 -126 Z',C.coral,cpG);R(30,-140,96,20,sh(C.coral,.8),10,cpG);CI(0,-192,10,C.sun,cpG);
+  const cpG=G({},P5.purba.headAcc);P5.topi=J(cpG,0,0);PA('M -80 -126 C -76 -196 76 -196 80 -126 Z',C.coral,cpG);R(30,-140,96,20,sh(C.coral,.8),10,cpG);CI(0,-192,10,C.sun,cpG);
 }
 slide(31.1,P4,P5,'y',72);Object.assign(P5.cam,{x:700,y:620,z:1.16});P5.apply();
 tl.set(P5.cap.body,{y:-1300,onUpdate:P5.cap.body.apply},0);tl.set(P5.cap.sd,{opacity:0},0);
@@ -278,7 +278,7 @@ const P6=scene('jalan');{const p=P6.g,gy=900;
   P6.cars=[[C.sun,0],[C.coral,1]].map(([col,i])=>{const g=G({},p),b=G({transform:`translate(0,${gy+200-i*40})`},g);R(-150,-90,300,90,col,26,b);R(-90,-140,170,60,col,22,b);R(-76,-128,66,44,C.sky,8,b);R(0,-128,66,44,C.sky,8,b);
     const wh=[-90,90].map(x=>{const w=G({},b),j=J(w,x,0);CI(0,0,32,C.night,w);CI(0,0,12,C.paper,w);R(-3,-30,6,20,C.paper,3,w);return j;});return {g,wh};});
   P6.purba=character(p,300,gy,1.0,{...PURBA,who:'sapiens'});
-  const cpG=G({},P6.purba.head.el);PA('M -80 -126 C -76 -196 76 -196 80 -126 Z',C.coral,cpG);R(30,-140,96,20,sh(C.coral,.8),10,cpG);CI(0,-192,10,C.sun,cpG);
+  const cpG=G({},P6.purba.headAcc);PA('M -80 -126 C -76 -196 76 -196 80 -126 Z',C.coral,cpG);R(30,-140,96,20,sh(C.coral,.8),10,cpG);CI(0,-192,10,C.sun,cpG);
   P6.warga=character(p,1900,gy,.95,{who:'warga',shirt:C.mint,pants:C.indigo,hair:'#3A2F5C',skin:'#D49A72'});
   P6.nara=character(p,1680,gy,.8,NARA);const ph=G({},P6.nara.Rhand.el);R(-22,-30,44,76,C.ink,9,ph);R(-17,-24,34,60,C.sky,6,ph);
 }

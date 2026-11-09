@@ -33,39 +33,22 @@ const scenes=[];
 function scene(name){const g=G({'data-name':name},S);g.style.display='none';const sc={name,g,cam:{x:W/2,y:H/2,z:1.1,ox:0,oy:0},
   apply(){const c=sc.cam;g.setAttribute('transform',`translate(${W/2-(c.x+c.ox)*c.z},${H/2-(c.y+c.oy)*c.z}) scale(${c.z})`);}};sc.apply();scenes.push(sc);return sc;}
 
-/* ---------- KARAKTER: rig sendi (kaki di y=0) ---------- */
+/* ---------- KARAKTER: kit resmi skill (assets/tokoh-rapi.js, TOKOH.buat) — proporsi & sendi terkunci ----------
+   Pembungkus agar adegan lama tetap jalan: opsi lama (shirt/pants/hair/style/tunic/beard/brow/sx) dipetakan ke kit.
+   ch.headAcc = lapisan aksesori kepala (topi, mahkota, peci, helm) dalam koordinat kepala lama (diskalakan .72). */
+const KID=new Set(['nara','bima','anak','anakapi']);
 function character(p,x,ground,scale,o={}){
-  const {who='v',shirt=C.blue,pants=C.ink,shoes='#2E2C3A',hair=C.ink,skin=C.skinKid,style='short',tunic=false,sx=1,brow=false,beard=false,blush=false}=o;
-  const sd=shadow(x,ground+4,72*scale*sx,p),place=G({'data-tata':'subjek',transform:`translate(${x},${ground}) scale(${scale*sx},${scale})`},p),rootEl=G({},place),root=J(rootEl),ref={root,place,who,scale,sd};
-  const legC=tunic?skin:pants,footC=tunic?sh(skin,.8):shoes;
-  for(const side of ['R','L']){const lx=side==='L'?-26:26,dk=side==='R'?.86:1;
-    const tEl=G({},rootEl),thigh=J(tEl,lx,-214);R(-24,-10,48,118,sh(legC,dk),21,tEl);
-    const sEl=G({},tEl),shin=J(sEl,0,102);R(-21,-8,42,108,sh(legC,dk),18,sEl);
-    const fEl=G({},sEl),foot=J(fEl,0,96);PA('M -24 -10 L 16 -10 C 24 4 46 4 50 16 L 50 26 L -26 26 Z',sh(footC,dk),fEl);
-    ref[side+'thigh']=thigh;ref[side+'shin']=shin;ref[side+'foot']=foot;}
-  const tEl=G({},rootEl),torso=J(tEl,0,-214);ref.torso=torso;
-  const arm=(side,front)=>{const s=side==='L'?-1:1,aEl=G({},tEl),a=J(aEl,50*s,-126);R(-17,-16,34,98,tunic?(front?skin:sh(skin,.88)):(front?shirt:sh(shirt,.86)),16,aEl);
-    const fEl=G({},aEl),f=J(fEl,0,78);R(-15,-12,30,90,front?skin:sh(skin,.9),14,fEl);const hEl=G({},fEl),h=J(hEl,0,74);EL(0,4,17,21,front?skin:sh(skin,.9),hEl);
-    ref[side+'arm']=a;ref[side+'fore']=f;ref[side+'hand']=h;};
-  arm('R',false);
-  PA('M -48 -152 C -64 -144 -70 -112 -66 -76 L -58 8 C -28 22 32 22 60 8 L 67 -76 C 71 -112 60 -144 45 -152 Z',shirt,tEl);
-  PA('M 46 -146 C 64 -130 68 -100 64 -62 L 57 8 L 36 12 L 40 -140 Z',sh(shirt,.88),tEl);
-  if(tunic){PA('M -60 0 L -44 34 L -24 8 L -4 38 L 16 8 L 38 34 L 60 0 Z',shirt,tEl);LN('M -40 -150 L 46 -20',sh(shirt,.72),9,tEl);}
-  else R(-58,-2,117,22,sh(shirt,.82),9,tEl);
-  R(-15,-178,30,40,skin,12,tEl);
-  arm('L',true);
-  const hEl=G({},tEl),head=J(hEl,0,-160);ref.head=head;ref.faces={};
-  if(style==='pony'){EL(84,-118,22,46,hair,hEl,{transform:'rotate(-18 84 -118)'});CI(70,-150,14,C.coral,hEl);}
-  if(style==='wild')PA('M -92 -86 C -112 -150 -70 -205 -10 -196 C 40 -214 104 -176 96 -112 C 104 -86 92 -62 80 -60 L -80 -60 C -96 -62 -100 -74 -92 -86 Z',hair,hEl);
-  EL(-72,-70,13,20,skin,hEl);EL(72,-70,13,20,skin,hEl);PA('M -74 -120 C -74 -180 74 -180 74 -120 L 74 -60 C 74 -6 -74 -6 -74 -60 Z',skin,hEl);
-  if(style==='wild')PA('M -76 -112 C -70 -170 70 -170 76 -112 L 58 -122 L 40 -106 L 18 -126 L -4 -108 L -26 -126 L -46 -106 L -62 -120 Z',hair,hEl);
-  else PA('M -76 -110 C -80 -175 80 -175 76 -110 L 62 -104 C 20 -130 -10 -120 -50 -108 Z',hair,hEl);
-  if(beard)PA('M -66 -76 C -64 -6 64 -6 66 -76 C 50 -44 30 -40 0 -40 C -30 -40 -50 -44 -66 -76 Z',hair,hEl);
-  if(blush){EL(-44,-62,13,8,C.pink,hEl,{opacity:.75});EL(44,-62,13,8,C.pink,hEl,{opacity:.75});}
-  const eyes=G({},hEl),ej=J(eyes,0,-86);ref.eyes=ej;CI(-28,0,7.5,C.ink,eyes);CI(28,0,7.5,C.ink,eyes);CI(-25,-3,2.4,C.white,eyes);CI(31,-3,2.4,C.white,eyes);
-  if(brow)LN('M -50 -102 C -20 -112 20 -112 50 -102',sh(skin,.62),12,hEl);
-  else{LN('M -40 -104 C -33 -110 -22 -110 -16 -106',C.ink,4,hEl);LN('M 16 -106 C 22 -110 33 -110 40 -104',C.ink,4,hEl);}
-  ref.mouth=LN('M -16 -46 C -6 -36 6 -36 16 -46',beard?C.night:C.ink,5,hEl);
+  const {who='v',shirt=C.blue,pants=C.ink,shoes='#2E2C3A',hair=C.ink,skin=C.skinKid,style='short',tunic=false,sx=1,brow=false,beard=false}=o;
+  const anak=KID.has(who),rambut={short:'pendek',pony:'panjang',wild:'keriting'}[style]||'pendek';
+  const ref=TOKOH.buat(p,x,ground,anak?scale/.72:scale,{who,kulit:skin,baju:shirt,celana:tunic?skin:pants,sepatu:tunic?sh(skin,.8):shoes,warnaRambut:hair,rambut,anak,hadap:sx<0?-1:1});
+  const s=ref.scale;ref.place.setAttribute('data-tata','subjek');
+  if(Math.abs(sx)!==1){ref.place.setAttribute('transform',`translate(${x},${ground}) scale(${s*sx},${s})`);ref.sd.setAttribute('rx',66*s*Math.abs(sx));}
+  if(tunic){const t=ref.torso.el,hem=N('g',{},t);t.insertBefore(hem,ref.Larm.el);
+    PA('M -55 -16 L -44 34 L -26 12 L -8 40 L 10 12 L 30 36 L 55 -16 Z',shirt,hem);LN('M -50 -200 L 50 -40',sh(shirt,.72),8,hem);}
+  const hd=ref.head.el,old=N('g',{transform:'translate(0,-3) scale(.72)'},hd);hd.insertBefore(old,ref.mouth);
+  if(beard){PA('M -66 -76 C -64 -6 64 -6 66 -76 C 50 -44 30 -40 0 -40 C -30 -40 -50 -44 -66 -76 Z',hair,old);ref.mouth.setAttribute('stroke','#F1E3C8');}
+  if(brow)LN('M -50 -102 C -20 -112 20 -112 50 -102',sh(skin,.62),12,old);
+  ref.headAcc=G({transform:'translate(0,-3) scale(.72)'},hd);
   return ref;}
 /* kostum siap pakai */
 const NARA={who:'nara',shirt:C.coral,pants:C.indigo,hair:'#2A2350',style:'pony',blush:true};
@@ -95,8 +78,9 @@ function slide(at,from,to,axis='x',dist=96){const o=axis==='x'?'ox':'oy';
 function idle(ch,from,to=DUR){sway(ch.torso,from,1.1,1.7);sway(ch.head,from+.3,-1.7,2.3);
   const kf=[{duration:3.1+ch.who.length*.17},{duration:.01},{duration:.13},{duration:.01}];
   tl.to(ch.eyes,{keyframes:kf.map((k,i)=>({sy:i===1||i===2?.08:1,...k})),repeat:-1,ease:'none',onUpdate:ch.eyes.apply},from);}
-const MOUTH={senang:'M -16 -46 C -6 -36 6 -36 16 -46',lebar:'M -22 -50 C -12 -26 12 -26 22 -50 Z',cemas:'M -16 -38 C -6 -46 6 -46 16 -38',kaget:'M -9 -48 C -9 -30 9 -30 9 -48 Z'};
-const face=(ch,e,at)=>tl.to(ch.mouth,{attr:{d:MOUTH[e]},duration:.1},at);
+const MOUTH={senang:'M -14 -31 C -6 -22 6 -22 14 -31',netral:'M -10 -27 L 10 -27',cemas:'M -12 -24 C -4 -31 4 -31 12 -24',kaget:'M -7 -31 C -7 -18 7 -18 7 -31 Z',lebar:'M -16 -34 C -10 -12 10 -12 16 -34 Z'};
+const face=(ch,e,at)=>{const isi=e==='lebar'||e==='kaget';tl.set(ch.mouth,{attr:{d:MOUTH[e],fill:isi?'#263746':'none'}},at);
+  const up=e==='kaget'?-6:0,tilt=e==='cemas'?12:0;tl.to(ch.Lbrow,{y:up,r:tilt,duration:.12,onUpdate:ch.Lbrow.apply},at);tl.to(ch.Rbrow,{y:up,r:-tilt,duration:.12,onUpdate:ch.Rbrow.apply},at);};
 function walk(ch,at,dur,dx){const n=Math.max(1,Math.round(dur/.39));
   tl.to(ch.root,{x:'+='+dx,duration:dur,ease:'none',onUpdate:ch.root.apply},at);tl.to(ch.sd,{x:'+='+dx*ch.scale,duration:dur,ease:'none'},at);
   const leg=(j,a,b)=>tl.fromTo(j,{r:a},{r:b,duration:.39,ease:'sine.inOut',yoyo:true,repeat:n-1,onUpdate:j.apply,immediateRender:false},at);

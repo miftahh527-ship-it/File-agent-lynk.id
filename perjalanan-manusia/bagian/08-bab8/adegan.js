@@ -24,7 +24,7 @@ const P2=scene('proklamasi');{const p=P2.g,gy=900;bgSky(p);P2.cl=[cloud(p,400,17
   LN('M 1560 900 L 1560 180',C.ink,10,p);const fg=G({},p);P2.flag=J(fg,1560,820);R(0,0,200,64,C.red,0,fg);R(0,64,200,64,C.paper,0,fg);
   P2.flagW=fg;
   P2.sk=character(p,860,gy-160,.85,{who:'soekarno',shirt:C.paper,pants:C.paper,hair:'#1E1A3F',skin:'#B97A52'});P2.ht=character(p,1060,gy-160,.85,{who:'hatta',shirt:C.paper,pants:C.paper,hair:'#1E1A3F',skin:'#C98A62'});
-  [P2.sk,P2.ht].forEach(c=>{const pc=G({},c.head.el);R(-70,-200,140,60,C.ink,8,pc);});const pp=G({},P2.sk.Rhand.el);R(-40,-10,80,100,C.paper,6,pp);
+  [P2.sk,P2.ht].forEach(c=>{const pc=G({},c.headAcc);R(-70,-200,140,60,C.ink,8,pc);});const pp=G({},P2.sk.Rhand.el);R(-40,-10,80,100,C.paper,6,pp);
   P2.crowd=[];for(let i=0;i<7;i++){P2.crowd.push(character(p,240+i*240,gy+170,.6,{who:'rakyat'+i,shirt:[C.coral,C.paper,C.blue2,C.sun,C.mint,C.paper,C.lilac2][i],pants:C.indigo,hair:'#1E1A3F',skin:['#B97A52','#C98A62','#A86B47','#D9A07A'][i%4]}));}
   P2.tag=tag(p,960,170,'17 Agustus 1945','Proklamasi Kemerdekaan',{s1:50,c1:C.red});P2.conf=[];for(let i=0;i<24;i++)P2.conf.push(R(200+rnd(i)*1500,-60,14,24,i%2?C.red:C.paper,3,p,{opacity:0}));}
 {const t=T['b8-2']-.4;cut(t,P1,P2);Object.assign(P2.cam,{x:960,y:520,z:1.15});P2.apply();pop(P2.tag,t+.5);sfx('pop',t+.5,.35);
@@ -38,7 +38,7 @@ const P2=scene('proklamasi');{const p=P2.g,gy=900;bgSky(p);P2.cl=[cloud(p,400,17
 const P3=scene('bulan');{const p=P3.g;R(-900,-900,3800,2900,'url(#skyN)',0,p);P3.st=stars(p,70,1300);CI(300,220,90,C.blue,p);PA('M 240 190 C 270 170 300 200 280 230 Z M 320 240 C 340 220 360 250 340 270 Z',C.lime,p);
   PA('M -900 760 C -200 700 600 740 1200 720 C 1800 700 2400 740 2900 730 L 2900 1700 L -900 1700 Z','#C9C6D6',p);[[400,880,60],[1100,820,40],[1600,900,70]].forEach(([x,y,r])=>EL(x,y,r,r*.3,'#ADA8BC',p));
   const rk=G({},p);P3.rocket=rk;const rb=G({transform:'translate(1500,760)'},rk);PA('M -50 0 L -50 -260 C -50 -340 50 -340 50 -260 L 50 0 Z',C.paper,rb);CI(0,-220,24,C.sky,rb);PA('M -50 -60 L -100 10 L -50 0 Z M 50 -60 L 100 10 L 50 0 Z',C.coral,rb);P3.rf=PA('M -30 0 C -30 50 0 90 0 120 C 0 90 30 50 30 0 Z',C.sun,rb);
-  P3.astro=character(p,800,800,.85,{who:'astronot',shirt:C.paper,pants:C.paper,shoes:'#C9C6D6',hair:C.paper,skin:'#E3A57B'});const hm=G({},P3.astro.head.el);CI(0,-92,98,'none',hm,{stroke:C.paper,'stroke-width':14});CI(0,-92,98,C.sky,hm,{opacity:.25});
+  P3.astro=character(p,800,800,.85,{who:'astronot',shirt:C.paper,pants:C.paper,shoes:'#C9C6D6',hair:C.paper,skin:'#E3A57B'});const hm=G({},P3.astro.headAcc);CI(0,-92,98,'none',hm,{stroke:C.paper,'stroke-width':14});CI(0,-92,98,C.sky,hm,{opacity:.25});
   LN('M 1000 800 L 1000 560',C.paper,8,p);P3.fl=J(G({},p),1000,560);R(0,0,120,70,C.sun,4,P3.fl.el);P3.prints=[0,1,2,3].map(i=>EL(560+i*60,810+(i%2)*14,18,7,'#ADA8BC',p,{opacity:0}));
   P3.tag=tag(p,960,180,'1969 · Apollo 11','manusia berjalan di Bulan',{s1:42});}
 const P3b=scene('komputer');{const p=P3b.g;R(-900,-900,3800,2900,'url(#room)',0,p);R(-900,860,3800,900,'#8E84A8',0,p);R(260,820,1400,40,C.wood,10,p);

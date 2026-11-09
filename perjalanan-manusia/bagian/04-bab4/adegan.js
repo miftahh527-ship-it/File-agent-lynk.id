@@ -13,7 +13,7 @@ const P1=scene('sungai');{const p=P1.g,gy=860;R(-900,-900,3800,2900,'url(#desert
   P1.wall=R(100,gy,1720,0,MUD2,6,p);P1.wallTop=G({},p);for(let i=0;i<22;i++)R(100+i*80,gy,40,0,MUD2,4,P1.wallTop);
   const roles=[['raja',C.sun,620],['juru tulis',C.paper,860],['petani',C.lime2,1100],['tukang',C.coral,1340]];
   P1.roles=roles.map(([n,col,x],i)=>{const ch=character(p,x,gy+80,.62,{who:'r'+i,shirt:[C.lilac2,C.blue,'#C98B5E',C.mint][i],pants:C.indigo,hair:'#2A2350',skin:['#B97A52','#C98A62','#A86B47','#D9A07A'][i]});return {ch,tg:tag(p,x,gy-370,n,'',{s1:32,c1:C.ink,bg:col})};});
-  const crown=G({},P1.roles[0].ch.head.el);PA('M -60 -150 L -60 -190 L -30 -165 L 0 -200 L 30 -165 L 60 -190 L 60 -150 Z',C.sun,crown);}
+  const crown=G({},P1.roles[0].ch.headAcc);PA('M -60 -150 L -60 -190 L -30 -165 L 0 -200 L 30 -165 L 60 -190 L 60 -150 Z',C.sun,crown);}
 slide(3.0,B0,P1,'x',96);Object.assign(P1.cam,{x:960,y:640,z:1.15});P1.apply();
 {const t=T['b4-1'];P1.reeds.forEach((j,i)=>sway(j,3,8,1+rnd(i)*.4));tl.fromTo(P1.rip,{x:0},{x:-360,duration:4,ease:'none',repeat:-1,immediateRender:false},3);
   P1.clouds.forEach(c=>tl.fromTo(c,{x:0},{x:120,duration:20,ease:'none',immediateRender:false},3));

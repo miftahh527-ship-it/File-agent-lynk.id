@@ -24,23 +24,39 @@ const CONT={na:[[-165,65],[-140,70],[-95,72],[-65,62],[-55,50],[-70,43],[-80,32]
   su:[[95,5],[98,4],[106,-4],[105,-6],[101,-2],[95,3]],jv:[[105,-6],[111,-6.5],[114,-7.5],[110,-8],[106,-7]],
   bo:[[109,1],[112,3],[117,7],[119,5],[118,1],[116,-3],[111,-3],[109,-1]],sl:[[119,1],[124,1.5],[121,0],[123,-1],[122,-5],[120,-5],[120,-2]],
   pp:[[131,-1],[138,-2],[146,-6],[150,-10],[141,-9],[137,-5],[132,-3]]};
-/* garis pantai buatan sendiri (lib/peta-data.js), dihaluskan dengan kurva Catmull-Rom tertutup */
-function landD(arr,P,[a0,a1,b0,b1],keep=null){let d='';for(const r of arr){let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9,cx=0,cy=0;const n=r.length/2;
+/* garis pantai buatan sendiri (lib/peta-data.js, dari peta_data.py skill), dihaluskan Catmull-Rom SENTRIPETAL
+   (tegangan .85, tanpa simpul di bagian sempit); segmen di antara dua titik batas darat (r.h) digambar lurus */
+function landD(arr,P,[a0,a1,b0,b1],keep=null){let d='';const F=v=>v.toFixed(1),T=.85;for(const r of arr){let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9,cx=0,cy=0;const n=r.length/2,h=r.h||new Set();
     for(let i=0;i<r.length;i+=2){const lo=r[i],la=r[i+1];cx+=lo;cy+=la;if(lo<x0)x0=lo;if(lo>x1)x1=lo;if(la<y0)y0=la;if(la>y1)y1=la;}
     if(x1<a0||x0>a1||y1<b0||y0>b1)continue;if(keep&&!keep(cx/n,cy/n,x1-x0))continue;
-    const q=[];for(let i=0;i<r.length;i+=2)q.push(P(r[i],r[i+1]));const k=i=>q[(i+n)%n],t=.9/6,F=v=>v.toFixed(1);
+    const q=P.ring?P.ring(r):(()=>{const o=[];for(let i=0;i<r.length;i+=2)o.push(P(r[i],r[i+1]));return o;})();const k=i=>q[(i+n)%n],ds=(p,u)=>Math.sqrt(Math.hypot(u[0]-p[0],u[1]-p[1]))||1e-6;
     d+='M'+F(q[0][0])+' '+F(q[0][1]);for(let i=0;i<n;i++){const p0=k(i-1),p1=k(i),p2=k(i+1),p3=k(i+2);
-      d+='C'+F(p1[0]+(p2[0]-p0[0])*t)+' '+F(p1[1]+(p2[1]-p0[1])*t)+' '+F(p2[0]-(p3[0]-p1[0])*t)+' '+F(p2[1]-(p3[1]-p1[1])*t)+' '+F(p2[0])+' '+F(p2[1]);}d+='Z';}return d;}
-function landInto(g,P,box,land,sw=2){const el=PA(landD(PETA.dunia,P,box)+landD(PETA.nusantara,P,box),land,g,{stroke:sh(land,.82),'stroke-width':sw,'stroke-linejoin':'round'});
-  const sea=landD(PETA.laut,P,box);if(sea)PA(sea,'#7FB2C4',g,{stroke:sh(land,.82),'stroke-width':sw});return el;}
+      if(h.has(i)&&h.has((i+1)%n)){d+='L'+F(p2[0])+' '+F(p2[1]);continue;}
+      const d1=ds(p0,p1),d2=ds(p1,p2),d3=ds(p2,p3),c1=[0,1].map(j=>{const v=(d1*d1*p2[j]-d2*d2*p0[j]+(2*d1*d1+3*d1*d2+d2*d2)*p1[j])/(3*d1*(d1+d2));return p1[j]+(v-p1[j])*T;}),
+        c2=[0,1].map(j=>{const v=(d3*d3*p1[j]-d2*d2*p3[j]+(2*d3*d3+3*d3*d2+d2*d2)*p2[j])/(3*d3*(d3+d2));return p2[j]+(v-p2[j])*T;});
+      d+='C'+F(c1[0])+' '+F(c1[1])+' '+F(c2[0])+' '+F(c2[1])+' '+F(p2[0])+' '+F(p2[1]);}d+='Z';}return d;}
+function landInto(g,P,box,land,sw=2){return PA(landD(PETA.dunia,P,box)+landD(PETA.nusantara,P,box),land,g,{stroke:sh(land,.82),'stroke-width':sw,'stroke-linejoin':'round'});}
+/* proyeksi ditulis sendiri: natural-earth (dunia, pusat 11° BT → garis 180° jatuh di Selat Bering) & mercator (wilayah) */
+const RAD=Math.PI/180;
+function pNE(l,p){l*=RAD;p*=RAD;const p2=p*p,p4=p2*p2;return[l*(.8707-.131979*p2+p4*(-.013791+p4*(.003971*p2-.001529*p4))),p*(1.007226+p2*(.015085+p4*(-.044475+.028874*p2-.005916*p4)))];}
+function pMerc(l,p){p=Math.max(-85,Math.min(85,p));return[l*RAD,Math.log(Math.tan(Math.PI/4+p*RAD/2))];}
+const relLon=(lo,l0)=>((lo-l0+540)%360)-180;
+/* kotak proyeksi → layar, skala seragam "contain" agar bentuk tidak gepeng */
+function fitProj(f,l0,[lo0,lo1,la0,la1],w,h,pad=0){const sm=[];for(let i=0;i<=20;i++)for(let j=0;j<=20;j++)sm.push(f(relLon(lo0+(lo1-lo0)*i/20,l0),la0+(la1-la0)*j/20));
+  const xs=sm.map(v=>v[0]),ys=sm.map(v=>v[1]),X0=Math.min(...xs),X1=Math.max(...xs),Y0=Math.min(...ys),Y1=Math.max(...ys),k=Math.min((w-2*pad)/(X1-X0),(h-2*pad)/(Y1-Y0)),cx=(X0+X1)/2,cy=(Y0+Y1)/2;
+  const S=([a,b])=>[w/2+(a-cx)*k,h/2-(b-cy)*k];const P=(lo,la)=>S(f(relLon(lo,l0),la));
+  P.ring=r=>{const o=[];let prev=null;for(let i=0;i<r.length;i+=2){let v=relLon(r[i],l0);if(prev!==null){while(v-prev>180)v-=360;while(v-prev<-180)v+=360;}o.push([v,r[i+1]]);prev=v;}
+    const mid=(Math.max(...o.map(q=>q[0]))+Math.min(...o.map(q=>q[0])))/2,sft=mid>180?-360:mid<-180?360:0;return o.map(([a,b])=>S(f(Math.max(-180,Math.min(180,a+sft)),b)));};return P;}
 function worldMap(p,x,y,w,h,{land=C.lime,sea='url(#sea)',grid=true}={}){const g=G({transform:`translate(${x},${y})`},p);R(0,0,w,h,sea,28,g);
-  if(grid)for(let i=1;i<6;i++){LN(`M ${w*i/6} 20 L ${w*i/6} ${h-20}`,C.white,2,g,{opacity:.15});LN(`M 20 ${h*i/6} L ${w-20} ${h*i/6}`,C.white,2,g,{opacity:.15});}
-  const P=(lo,la)=>[((lo+180)/360)*w,((80-la)/140)*h];const m={g,P,pt:(lo,la)=>{const[a,b]=P(lo,la);return[x+a,y+b];},parts:{}};
+  const P=fitProj(pNE,11,[-169,191,-58,80],w,h,14);
+  if(grid){for(let lo=-150;lo<=180;lo+=30){const d=[];for(let la=-58;la<=80;la+=4)d.push(P(lo,la).map(v=>v.toFixed(1)).join(' '));LN('M '+d.join(' L '),C.white,2,g,{opacity:.13});}
+    for(let la=-30;la<=60;la+=30){const d=[];for(let lo=-168;lo<=190;lo+=6)d.push(P(lo,la).map(v=>v.toFixed(1)).join(' '));LN('M '+d.join(' L '),C.white,2,g,{opacity:.13});}}
+  const m={g,P,pt:(lo,la)=>{const[a,b]=P(lo,la);return[x+a,y+b];},parts:{}};
   m.land=landInto(g,P,[-180,180,-60,80],land,2);return m;}
 function mapBox(p,x,y,w,h,[lo0,lo1,la0,la1],keys=null,{land=C.lime,sea='url(#sea)'}={}){const g=G({transform:`translate(${x},${y})`},p);R(0,0,w,h,sea,28,g);
   const cp=N('clipPath',{id:'mb'+x+'_'+y},defs);R(0,0,w,h,null,28,cp);const inner=G({'clip-path':`url(#mb${x}_${y})`},g);
-  const P=(lo,la)=>[((lo-lo0)/(lo1-lo0))*w,((la1-la)/(la1-la0))*h];const m={g,inner,P,pt:(lo,la)=>{const[a,b]=P(lo,la);return[x+a,y+b];},parts:{}};
-  m.land=landInto(inner,P,[lo0-2,lo1+2,la0-2,la1+2],land,3);return m;}
+  const P=fitProj(pMerc,(lo0+lo1)/2,[lo0,lo1,la0,la1],w,h);const m={g,inner,P,pt:(lo,la)=>{const[a,b]=P(lo,la);return[x+a,y+b];},parts:{}};
+  m.land=landInto(inner,P,[lo0-25,lo1+25,la0-20,la1+20],land,3);return m;}
 const capT=(T,id,i)=>T[id]+VODATA[id].cap[i][0];
 function pin(p,x,y,col=C.coral,s=1){const g=G({},p),j=J(g,x,y);G({},g);PA(`M 0 0 C ${-30*s} ${-40*s} ${-30*s} ${-76*s} 0 ${-80*s} C ${30*s} ${-76*s} ${30*s} ${-40*s} 0 0 Z`,col,g);CI(0,-52*s,12*s,C.white,g);return j;}
 /* garis rute yang menggambar dirinya */

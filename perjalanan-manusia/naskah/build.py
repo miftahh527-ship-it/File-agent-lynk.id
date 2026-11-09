@@ -4,7 +4,7 @@ R = pathlib.Path(__file__).resolve().parent.parent
 TITLES = {'01-pembuka-bab1':'Pembuka + Bab 1','02-bab2':'Bab 2 — Hidup berpindah','03-bab3':'Bab 3 — Revolusi Pertanian','04-bab4':'Bab 4 — Kota & tulisan',
  '05-bab5':'Bab 5 — Kerajaan besar & Nusantara','06-bab6':'Bab 6 — Mesin cetak & penjelajahan','07-bab7':'Bab 7 — Revolusi Industri','08-bab8':'Bab 8 — Abad ke-20 sampai hari ini','09-penutup':'Penutup & kuis'}
 head = (R/'lib/_head.html').read_text()
-libs = [(R/'lib'/n).read_text() for n in ['captions.js','peta-data.js','inti.js','benda.js']]
+libs = [((R.parent/'.claude/skills/motion-format/assets/tokoh-rapi.js') if n=='tokoh-rapi.js' else (R/'lib'/n)).read_text() for n in ['captions.js','peta-data.js','tokoh-rapi.js','inti.js','benda.js']]
 kontrol = (R/'lib/kontrol.js').read_text()
 for d in sorted((R/'bagian').iterdir()):
     a = d/'adegan.js'

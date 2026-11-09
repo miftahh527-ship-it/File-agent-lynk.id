@@ -87,7 +87,7 @@ const P4b=scene('lab-gua');{const p=P4b.g,gy=960;R(-900,-900,3800,2900,'url(#cav
   PA('M -900 930 C 0 900 900 960 2800 920 L 2800 1900 L -900 1900 Z','#262A3E',p);
   const hp=G({transform:'translate(1000,430) rotate(-6)'},p);P4b.halo=CI(0,0,210,'url(#spray)',hp);handShape(hp,'#494F73',1.3);
   P4b.r1=character(p,520,gy,.9,{who:'peneliti1',shirt:C.mint,pants:C.indigo,hair:'#2A2350',skin:'#D9A07A'});P4b.r2=character(p,1500,gy,.9,{who:'peneliti2',shirt:C.sun,pants:C.ink,hair:'#3A2A44',skin:'#B97A52',style:'pony'});
-  [P4b.r1,P4b.r2].forEach(r=>{const hg=G({},r.head.el);PA('M -82 -116 C -80 -196 80 -196 82 -116 Z',C.sun,hg);R(-90,-124,180,16,sh(C.sun,.8),8,hg);CI(0,-176,14,C.paper,hg);});
+  [P4b.r1,P4b.r2].forEach(r=>{const hg=G({},r.headAcc);PA('M -82 -116 C -80 -196 80 -196 82 -116 Z',C.sun,hg);R(-90,-124,180,16,sh(C.sun,.8),8,hg);CI(0,-176,14,C.paper,hg);});
   P4b.beam=PA('',C.paper,p,{opacity:.12});const dv=G({},P4b.r2.Rhand.el);R(-26,-20,52,70,C.ink,8,dv);P4b.scr=R(-18,-12,36,30,C.mint,4,dv);
   P4b.st1=stamp(p,1000,690,'≥ 67.800 tahun',C.coral,54);P4b.st2=stamp(p,1000,190,'Tertua di dunia!',C.sun,48,6);
   P4b.dust=[];for(let i=0;i<8;i++)P4b.dust.push(CI(1000+(rnd(i+20)-.5)*400,500,4,C.paper,p,{opacity:0}));}

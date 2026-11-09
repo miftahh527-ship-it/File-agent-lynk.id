@@ -22,7 +22,7 @@ slide(3.0,B0,P1,'x',96);Object.assign(P1.cam,{x:960,y:560,z:1.15});P1.apply();
 const P1b=scene('romawi');{const p=P1b.g,gy=700;bgSky(p);bgHills(p,700,C.mint,.6);R(-900,gy,3800,900,C.lime2,0,p);
   PA(`M 860 ${gy} L 1060 ${gy} L 1700 1300 L 220 1300 Z`,STONE,p);P1b.lines=G({},p);for(let i=0;i<10;i++){const y=gy+20+i*i*7;LN(`M ${960-(100+i*i*7*.8)} ${y} L ${960+(100+i*i*7*.8)} ${y}`,STONE2,4,P1b.lines);}
   R(1500,gy-140,60,160,C.paper,8,p);TX(1530,gy-60,'X',44,C.ink,p,{'font-weight':700});
-  P1b.sold=[0,1,2].map(i=>{const ch=character(p,700+i*170,1040,.8,{who:'s'+i,shirt:C.coral,pants:'#C9A47A',hair:'#2A2350',skin:'#C98A62'});const hg=G({},ch.head.el);PA('M -84 -110 C -84 -200 84 -200 84 -110 Z','#B9A06A',hg);R(-12,-226,24,40,C.coral,8,hg);return ch;});
+  P1b.sold=[0,1,2].map(i=>{const ch=character(p,700+i*170,1040,.8,{who:'s'+i,shirt:C.coral,pants:'#C9A47A',hair:'#2A2350',skin:'#C98A62'});const hg=G({},ch.headAcc);PA('M -84 -110 C -84 -200 84 -200 84 -110 Z','#B9A06A',hg);R(-12,-226,24,40,C.coral,8,hg);return ch;});
   P1b.law=G({},p);P1b.lawJ=J(P1b.law,1500,380);R(-150,-120,300,240,C.paper,16,P1b.law);TX(0,-60,'HUKUM',40,C.ink,P1b.law,{'font-weight':700});for(let k=0;k<4;k++)LN(`M -100 ${-10+k*36} L 100 ${-10+k*36}`,C.lilac2,5,P1b.law);
   P1b.tag=tag(p,560,260,'Romawi','jalan & hukum');}
 {const t=capT(T,'b5-1',2)-.2;cut(t,P1,P1b);Object.assign(P1b.cam,{x:960,y:640,z:1.2});P1b.apply();P1b.sold.forEach((s,i)=>{walk(s,t,3.8,-40);idle(s,t);});
@@ -45,7 +45,7 @@ const P1d=scene('baghdad');{const p=P1d.g,gy=900;R(-900,-900,3800,2900,'url(#roo
   for(let s=0;s<4;s++){R(240,360+s*130,320,12,C.wood,4,p);books(p,250,360+s*130,7,44);R(1360,360+s*130,320,12,C.wood,4,p);books(p,1370,360+s*130,7,44);}
   R(720,300,520,340,'#2F3A36',16,p);R(708,288,544,364,'none',20,p,{stroke:C.wood,'stroke-width':14});
   P1d.eq=route(p,'M 780 470 l 30 40 m 0 -40 l -30 40 M 860 490 l 50 0 m -25 -25 l 0 50 M 960 470 c 30 -10 40 30 0 40 c 40 0 30 50 -10 40 M 1050 480 l 50 0 m -50 20 l 50 0 M 1150 468 l -30 0 l -6 20 c 30 -6 40 40 0 40',C.paper,7);
-  P1d.sch=character(p,1000,gy,.9,{who:'khawarizmi',shirt:C.mint2,pants:C.paper,hair:'#2E2140',skin:'#B97A52',beard:true});const tb=G({},P1d.sch.head.el);EL(0,-172,92,38,C.paper,tb);
+  P1d.sch=character(p,1000,gy,.9,{who:'khawarizmi',shirt:C.mint2,pants:C.paper,hair:'#2E2140',skin:'#B97A52',beard:true});const tb=G({},P1d.sch.headAcc);EL(0,-172,92,38,C.paper,tb);
   P1d.tag=tag(p,960,190,'Baghdad · abad ke-9','Al-Khawarizmi · aljabar',{s1:36,s2:30});}
 {const t=capT(T,'b5-1',4)-.2;cut(t,P1c,P1d);Object.assign(P1d.cam,{x:960,y:520,z:1.2});P1d.apply();idle(P1d.sch,t);pop(P1d.tag,t+.4);sfx('pop',t+.4,.3);
   const c5=capT(T,'b5-1',5);rot(P1d.sch.Rarm,c5-.4,-130,.4);drawOn(P1d.eq,c5,2.4,'none');tl.to(P1d.sch.Rfore,{r:-30,duration:.2,yoyo:true,repeat:11,onUpdate:P1d.sch.Rfore.apply},c5);cam(P1d,c5-.2,980,480,1.45,1.4,'power2.inOut');}
@@ -82,7 +82,7 @@ const P3b=scene('borobudur');{const p=P3b.g,gy=880;bgSky(p);bgHills(p,760,C.mint
 /* ---------- P4 MAJAPAHIT: gapura + Sumpah Palapa → peta kerajaan Islam ---------- */
 const P4=scene('majapahit');{const p=P4.g,gy=900;bgSky(p);bgHills(p,780,C.mint,.5);bgGround(p,gy,C.lime2,'#C9A47A');
   [[-1,700],[1,1220]].forEach(([s,x])=>{const g=G({},p);for(let k=0;k<6;k++){const w=220-k*26;R(x-w/2,gy-(k+1)*90,w,92,k%2?BRICK:sh(BRICK,.88),4,g);}});
-  P4.gm=character(p,960,gy,1.0,{who:'gajahmada',shirt:C.coral,pants:'#3E4366',hair:'#1E1A3F',skin:'#A86B47',beard:false});const hg=G({},P4.gm.head.el);R(-80,-150,160,40,C.sun,10,hg);
+  P4.gm=character(p,960,gy,1.0,{who:'gajahmada',shirt:C.coral,pants:'#3E4366',hair:'#1E1A3F',skin:'#A86B47',beard:false});const hg=G({},P4.gm.headAcc);R(-80,-150,160,40,C.sun,10,hg);
   P4.scroll=G({},p);P4.scJ=J(P4.scroll,1440,420);R(-130,-150,260,300,C.paper,14,P4.scroll);TX(0,-90,'Sumpah',34,C.ink,P4.scroll,{'font-weight':700});TX(0,-46,'Palapa',34,C.ink,P4.scroll,{'font-weight':700});for(let k=0;k<4;k++)LN(`M -90 ${0+k*34} L 90 ${0+k*34}`,C.lilac2,4,P4.scroll);
   P4.tag=tag(p,520,250,'Majapahit','berdiri 1293');}
 const P4b=scene('islam');{const p=P4b.g;R(-900,-900,3800,2900,'url(#skyD)',0,p);P4b.m=mapBox(p,110,110,1700,860,[94,142,-11,8],['su','jv','bo','sl','pp']);const m=P4b.m;

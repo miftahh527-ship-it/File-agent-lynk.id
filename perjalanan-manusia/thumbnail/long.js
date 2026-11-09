@@ -6,9 +6,9 @@ const P=scene('thumb');{const p=P.g;R(-200,-200,2400,1500,'url(#caveG)',0,p);for
   const hp=G({transform:'translate(560,700) rotate(-12)'},p);CI(0,0,330,'url(#spray)',hp);handShape(hp,'#33374F',2.2);
   for(let i=0;i<24;i++){const a=i*2.4,r=280+rnd(i)*120;CI(Math.cos(a)*r,Math.sin(a)*r,8+rnd(i+5)*10,C.coral,hp,{opacity:.9});}
   /* Nara terkejut menunjuk */
-  const k=character(p,1500,1330,1.75,NARA);k.mouth.setAttribute('d','M -18 -60 C -20 -20 20 -20 18 -60 C 16 -76 -16 -76 -18 -60 Z');k.mouth.setAttribute('fill',C.night);k.eyes.sx=1.35;k.eyes.sy=1.35;k.eyes.apply();k.head.r=-8;k.head.apply();
+  const k=character(p,1500,1330,1.75,NARA);k.mouth.setAttribute('d','M -12 -36 C -13 -12 13 -12 12 -36 C 11 -46 -11 -46 -12 -36 Z');k.mouth.setAttribute('fill',C.night);k.Lbrow.y=k.Rbrow.y=-9;k.Lbrow.r=-10;k.Rbrow.r=10;k.Lbrow.apply();k.Rbrow.apply();k.eyes.sx=1.35;k.eyes.sy=1.35;k.eyes.apply();k.head.r=-8;k.head.apply();
   k.Larm.r=105;k.Larm.apply();k.Lfore.r=-8;k.Lfore.apply();k.Rarm.r=-150;k.Rarm.apply();k.Rfore.r=-30;k.Rfore.apply();
-  const sw=G({},k.head.el);LN('M -52 -118 C -40 -134 -22 -134 -12 -124',C.ink,7,sw);LN('M 12 -124 C 22 -134 40 -134 52 -118',C.ink,7,sw);R(-60,-112,120,10,C.skinKid,0,sw);PA('M 70 -150 C 60 -130 64 -112 78 -112 C 92 -112 94 -130 70 -150 Z',C.sky,sw);
+  const sw=G({},k.headAcc);PA('M 70 -150 C 60 -130 64 -112 78 -112 C 92 -112 94 -130 70 -150 Z',C.sky,sw);
   /* teks pertanyaan */
   const tx=(x,y,s,txt,f,a={})=>{const t=N('text',{x,y,'font-size':s,'font-weight':700,fill:f,stroke:C.night,'stroke-width':s*.17,'paint-order':'stroke','stroke-linejoin':'round','font-family':'Fredoka, sans-serif',...a},p);t.textContent=txt;return t;};
   tx(70,205,170,'SIAPA',C.paper);tx(70,370,170,'PELUKISNYA',C.sun);
