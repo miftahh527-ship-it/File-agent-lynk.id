@@ -4,6 +4,7 @@
 |---|---|
 | Video long + intro kanal (11:12, subtitle, backsound) | `perjalanan-manusia-youtube.mp4` |
 | Short 9:16 (27 dtk) | `short/perjalanan-manusia-short.mp4` |
+| 5 potongan 9:16 untuk Shorts/Reels + caption | `potongan/*.mp4`, `potongan/CAPTION.md` |
 | Deskripsi, judul, chapter, tag | `youtube.md` |
 | Thumbnail long 1280×720 | `thumbnail-long.png` |
 | Thumbnail Short 1080×1920 | `short/thumbnail-short.png` |
