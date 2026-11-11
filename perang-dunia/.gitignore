@@ -1,3 +1,6 @@
 alat/node_modules/
 */long/*.mp4.part
 _seg/
+# video long melebihi batas 100 MB GitHub; versi kompres disimpan terpisah
+*/long/perang-dunia-bagian-1-2*.mp4
+*-draf.mp4
