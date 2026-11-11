@@ -35,7 +35,7 @@ function timeline(kind) {
       const o = { ...b, t0, t1 }; delete o.v;
       for (const f of ['it', 'mk', 'ar']) if (o[f]) o[f] = o[f].map(x => { const y = { ...x, at: key(x.k) }; delete y.k; return y; });
       if (o.num) o.num = { ...o.num, at: key(o.num.k) };
-      if (i === 0) { if (card) o.card = card; o.tag = opts.tag ?? sec.tag; o.keep = 0; o.tagEnd = opts.tagEnd === null ? undefined : at + A.D + .45; }
+      if (i === 0) { if (card) o.card = card; o.tag = 'tag' in opts ? opts.tag : sec.tag; o.keep = 0; o.tagEnd = opts.tagEnd === null ? undefined : at + A.D + .45; }
       beats.push(o); });
     T = at + A.D + .55;
   };
