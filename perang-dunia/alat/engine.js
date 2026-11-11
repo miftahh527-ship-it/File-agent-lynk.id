@@ -90,6 +90,7 @@ tl.fromTo('#world', { opacity: 0 }, { opacity: 1, duration: 1.1, ease: 'power2.o
 let group = null;                                  // benda yang bertahan lintas beat (keep)
 B.forEach((b, bi) => {
   const t0 = b.t0, t1 = b.t1, nxt = B[bi + 1], keepNext = nxt && nxt.keep && !nxt.card;
+  const cl = (at, pad) => keepNext ? at : Math.max(t0 + .2, Math.min(at, t1 - (pad || 1.3)));   // jangan masuk setelah waktu keluar
   /* kartu babak */
   if (b.card) {
     const c = card.cloneNode(true); c.innerHTML = `<i>${b.card.n}</i><b>${b.card.t}</b>`; ov.appendChild(c);
@@ -124,13 +125,13 @@ B.forEach((b, bi) => {
     if (!b.keep || !group) group = { nodes: [], side: b.side, end: t1 };
     const fresh = b.it.map(it => { const e = el('div', 'it' + (it.big ? ' big' : ''), (it.big ? `<span class="bg">${it.big}</span>` : ICON(it.ic)) + (it.t ? `<span class="lb">${it.t}</span>` : '')); e._at = it.at; return e; });
     group.nodes.push(...fresh); group.fresh = fresh; group.end = t1; b._g = group;
-    fresh.forEach((e, i) => inn(e, e._at != null ? e._at : t0 + .4 + i * .45));
+    fresh.forEach((e, i) => inn(e, cl(e._at != null ? e._at : t0 + .4 + i * .45)));
     if (!keepNext) { const g = group; layoutItems(g.nodes, g.side); g.nodes.forEach((e, i) => out(e, t1 - .32 + i * .02)); group = null; }
   } else if (!keepNext && group) { layoutItems(group.nodes, group.side); group.nodes.forEach(e => out(e, t1 - .32)); group = null; }
   /* angka besar */
   if (b.num) { const n = b.num, e = el('div', 'num', `<b>${n.pre || ''}<span>0</span>${n.suf || ''}</b><i>${n.label || ''}</i>`); e.style.top = L.numY + 'px';
     const sp = $('span', e), o = { v: n.from != null ? n.from : 0 }, f = n.plain ? (v => Math.round(v)) : fmtN; sp.textContent = f(o.v);
-    const at = n.at != null ? n.at : t0 + .5; inn(e, at - .25); tl.to(o, { v: n.to, duration: 1.4, ease: 'power2.out', onUpdate() { sp.textContent = f(o.v); } }, at); out(e, t1 - .3); }
+    const at = Math.max(t0 + .3, Math.min(n.at != null ? n.at : t0 + .5, t1 - 2.2)); inn(e, at - .25); tl.to(o, { v: n.to, duration: 1.4, ease: 'power2.out', onUpdate() { sp.textContent = f(o.v); } }, at); out(e, t1 - .3); }
   /* batang banding */
   if (b.bars) { const max = Math.max(...b.bars.map(x => x.v)), e = el('div', 'bars'); e.style.top = (L.numY + 20) + 'px';
     b.bars.forEach((x, i) => { const r = el('div', 'bar', `<i>${x.t}</i><u><s></s></u><b>${x.lab}</b>`, e); tl.fromTo($('s', r), { scaleX: 0 }, { scaleX: x.v / max, duration: 1.3, ease: 'power3.out', immediateRender: false }, t0 + 1 + i * 1.4);
@@ -139,14 +140,14 @@ B.forEach((b, bi) => {
   /* penanda peta */
   const endMk = keepNext ? null : t1 - .3;
   (b.mk || []).forEach((m, i) => { const [x, y] = proj(m.p), e = el('div', 'mk', `<u></u><span>${m.t}</span>`, mkL); e.style.left = x + 'px'; e.style.top = y + 'px';
-    const at = m.at != null ? m.at : t0 + .5 + i * .35;
+    const at = cl(m.at != null ? m.at : t0 + .5 + i * .35);
     tl.fromTo(e, { opacity: 0 }, { opacity: 1, duration: .35, immediateRender: false }, at);
     tl.fromTo($('u', e), { scale: 0 }, { scale: 1, duration: .5, ease: 'back.out(2.4)', immediateRender: false }, at);
     b._mk = (b._mk || []).concat(e); });
   (b.ar || []).forEach((a, i) => { const [x1, y1] = proj(a.f), [x2, y2] = proj(a.t), mx = (x1 + x2) / 2, my = (y1 + y2) / 2, dx = x2 - x1, dy = y2 - y1, k = a.c === 'parit' ? 0 : .18;
     const p = document.createElementNS(NS, 'path'); p.setAttribute('d', `M${x1} ${y1}Q${mx - dy * k} ${my + dx * k} ${x2} ${y2}`); p.setAttribute('class', 'ar ' + (a.c || '')); p.setAttribute('pathLength', '1');
     gA.appendChild(p);
-    const at = a.at != null ? a.at : t0 + .6 + i * .4;
+    const at = cl(a.at != null ? a.at : t0 + .6 + i * .4, 2);
     if (a.c !== 'parit') { const ang = Math.atan2(y2 - (my + dx * k), x2 - (mx - dy * k)) * 180 / Math.PI, h = el('div', 'ah', '<u></u>', mkL); h.style.left = x2 + 'px'; h.style.top = y2 + 'px'; $('u', h).style.transform = `rotate(${ang}deg)`;
       tl.fromTo(h, { opacity: 0 }, { opacity: 1, duration: .25, immediateRender: false }, at + .7); b._mk = (b._mk || []).concat(h); }
     tl.fromTo(p, { strokeDasharray: 1, strokeDashoffset: 1, opacity: 0 }, { strokeDashoffset: 0, opacity: 1, duration: .9, ease: 'power2.inOut', immediateRender: false }, at);
