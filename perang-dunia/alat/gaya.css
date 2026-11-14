@@ -102,3 +102,113 @@ html,body{margin:0;height:100%;background:#0a0a0a;overflow:hidden}
 .tegak .num{left:60px;right:140px} .tegak .num b{font-size:170px} .tegak.gb .num b{font-size:150px}
 .tegak .bars{width:860px;margin-left:-470px} .tegak .bar{grid-template-columns:1fr;row-gap:8px} .tegak .bar i{grid-row:auto;text-align:left} .tegak .bar b{grid-column:1}
 .tegak.ga .card b{font-size:120px} .tegak.gb .card b{font-size:100px}
+
+/* ================= Adegan layar penuh (foto & grafik) ================= */
+#sc{position:absolute;inset:0;pointer-events:none}
+.scn{position:absolute;inset:0;opacity:0;overflow:hidden;background:var(--sea);will-change:opacity,clip-path}
+.ga .scn:not(.foto){background:radial-gradient(90% 80% at 50% 40%,#17171B 0,#0B0B0C 75%),#0B0B0C}
+.ga .scn:not(.foto)::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(245,242,234,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(245,242,234,.035) 1px,transparent 1px);background-size:80px 80px}
+.scn.bingkai,.scn.orang{background:rgba(11,11,12,.72)!important}.scn.bingkai::before,.scn.orang::before{display:none}
+/* foto */
+.fbox{position:absolute;inset:0;overflow:hidden}
+.fbox img{width:100%;height:100%;object-fit:cover;transform-origin:50% 50%;will-change:transform}
+.ga .fbox img,.ga .org img{filter:grayscale(1) contrast(1.15) brightness(.82)}
+.gb .fbox img,.gb .org img{filter:sepia(.55) contrast(1.05) brightness(.95)}
+.scn.foto:not(.bingkai)::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.6) 0,transparent 22%,transparent 52%,rgba(11,11,12,.92) 86%)}
+.scn.foto.sisi:not(.bingkai)::after{background:linear-gradient(180deg,rgba(11,11,12,.6) 0,transparent 22%,transparent 52%,rgba(11,11,12,.92) 86%),linear-gradient(270deg,rgba(11,11,12,.75) 0,transparent 40%)}
+.bingkai .fbox{left:96px;top:150px;width:1060px;height:620px;inset:auto;border:2px solid rgba(245,242,234,.5);border-top:6px solid #FFD400;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.bingkai:not(.sisi) .fbox{left:330px;width:1260px}
+.tegak .bingkai .fbox{left:70px;top:430px;width:940px;height:760px}
+.flab{position:absolute;left:0;top:0;padding:10px 16px;font:500 26px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;background:#FFD400;color:#111}
+.kr{position:absolute;right:40px;bottom:30px;font:500 20px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;color:rgba(245,242,234,.62);z-index:2;text-transform:uppercase}
+.tegak .kr{right:30px;bottom:auto;top:1270px;font-size:18px}
+/* tokoh */
+.org{position:absolute;opacity:0}
+.org .pf{height:560px;overflow:hidden;border:2px solid rgba(245,242,234,.5);border-top:6px solid #FFD400;background:#111}
+.tegak .org .pf{height:640px}
+.org img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.org b{display:block;margin-top:22px;font:800 64px/1 "Barlow Condensed",sans-serif;color:#F5F2EA}
+.org i{display:block;margin-top:12px;font:500 26px/1.3 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:#FFD400}
+/* domino */
+.dlist{position:absolute;inset:0}
+.drow{position:absolute;left:300px;right:200px;height:124px;display:flex;align-items:center;gap:30px;opacity:0;border-bottom:1.5px solid rgba(245,242,234,.16)}
+.tegak .drow{left:150px;right:50px;height:160px;flex-wrap:wrap;gap:6px 22px;align-content:center}
+.drow .dp{width:44px;height:104px;flex:none;position:relative}.drow .dp u{position:absolute;inset:0;background:#FFD400;transform-origin:0 100%;border-radius:4px}
+.drow .dp u::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px;border-radius:50%;background:#111}
+.drow time{font:500 32px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;color:#FFD400;width:240px;flex:none;text-transform:uppercase}
+.drow b{font:800 66px/1 "Barlow Condensed",sans-serif;color:#F5F2EA}
+.drow em{font:500 26px/1 "IBM Plex Mono",monospace;font-style:normal;letter-spacing:.06em;color:#9A9486;text-transform:uppercase}
+.tegak .drow time{width:auto}.tegak .drow b{font-size:58px}.tegak .drow em{font-size:22px}
+/* grafik garis */
+.gsvg{position:absolute;left:0;top:0;overflow:visible}
+.gj{position:absolute;font:500 34px/1.2 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#D8D3C7;border-left:6px solid #FFD400;padding:8px 0 8px 18px}
+.gg{stroke:rgba(245,242,234,.12);stroke-width:1.5}.gax{stroke:rgba(245,242,234,.55);stroke-width:2}
+.gyl,.gxl{font:500 26px "IBM Plex Mono",monospace;fill:#9A9486}
+.gln{fill:none;stroke:#FFD400;stroke-width:7;stroke-linejoin:round;stroke-linecap:round}
+.garea{fill:rgba(255,212,0,.10)}
+.gdot{fill:#E8402F;stroke:#0B0B0C;stroke-width:4}
+.glab{position:absolute;transform:translateX(-100%);white-space:nowrap;font:700 40px/1 "Barlow Condensed",sans-serif;color:#F5F2EA;background:rgba(11,11,12,.85);padding:8px 12px;border-right:5px solid #E8402F;opacity:0}
+.glab.kn{transform:none;border-right:0;border-left:5px solid #E8402F}
+.gs{position:absolute;right:96px;top:780px;font:500 20px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;color:rgba(245,242,234,.5)}
+.tegak .gs{top:auto;bottom:520px;right:auto;left:70px}
+/* garis waktu */
+.wax{stroke:#F5F2EA;stroke-width:4;fill:none}.wtk{stroke:rgba(245,242,234,.5);stroke-width:2}
+.wyl{position:absolute;transform:translateX(-50%);font:500 24px/1 "IBM Plex Mono",monospace;color:#9A9486}
+.whead{position:absolute;width:0;height:0}.whead u{position:absolute;left:-16px;top:-16px;width:32px;height:32px;border-radius:50%;background:#FFD400;box-shadow:0 0 0 10px rgba(255,212,0,.22)}
+.wev{position:absolute;width:0;height:0;opacity:0}
+.wev u{position:absolute;left:-1.5px;width:3px;background:#FFD400}
+.wev.up u{bottom:0;height:120px}.wev.dn u{top:0;height:120px}
+.wev b,.wev span{position:absolute;left:-180px;width:360px;text-align:center;white-space:normal}
+.wev b{font:800 60px/1 "Barlow Condensed",sans-serif;color:#FFD400}
+.wev span{font:600 34px/1.1 "Barlow Condensed",sans-serif;color:#F5F2EA}
+.wev.up b{bottom:190px}.wev.up span{bottom:128px}.wev.dn b{top:128px}.wev.dn span{top:194px}
+.wev.r b{color:#E8402F}
+.tegak .wev b,.tegak .wev span{left:-130px;width:260px}.tegak .wev b{font-size:50px}.tegak .wev span{font-size:28px}
+.wspan{position:absolute;height:70px;border:3px solid #FFD400;border-bottom:0;display:flex;justify-content:center;opacity:0}
+.wspan span{position:relative;top:-58px;font:800 54px/1 "Barlow Condensed",sans-serif;color:#FFD400;white-space:nowrap;background:#0B0B0C;padding:0 14px;height:60px}
+/* jam kiamat */
+.jface{fill:rgba(245,242,234,.05);stroke:rgba(245,242,234,.3);stroke-width:2}
+.jt{stroke:rgba(245,242,234,.35);stroke-width:3}.jt5{stroke:#F5F2EA;stroke-width:8}
+.jh{stroke:#FFD400;stroke-width:16;stroke-linecap:round}.jc{fill:#F5F2EA}
+.jinfo{position:absolute}
+.jinfo i,.jinfo em{display:block;font:500 30px/1.2 "IBM Plex Mono",monospace;letter-spacing:.16em;font-style:normal;color:#9A9486;text-transform:uppercase}
+.jinfo b{display:block;font:800 150px/1 "Barlow Condensed",sans-serif;color:#F5F2EA;margin-top:18px;font-variant-numeric:tabular-nums}
+.jinfo span{display:inline-block;margin:10px 0 10px;font:800 76px/1 "Barlow Condensed",sans-serif;color:#111;background:#FFD400;padding:6px 16px}
+/* aliansi */
+.akol{position:absolute;opacity:0}
+.akol h4{margin:0 0 26px;font:500 30px/1.2 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#E8402F;border-bottom:3px solid #E8402F;padding-bottom:14px}
+.akol.kn h4{color:#FFD400;border-color:#FFD400;text-align:right}
+.anode{display:block;margin:0 0 16px;padding:16px 26px;font:800 58px/1 "Barlow Condensed",sans-serif;color:#F5F2EA;background:rgba(232,64,47,.14);border-left:8px solid #E8402F;opacity:0}
+.akol.kn .anode{background:rgba(255,212,0,.1);border-left:0;border-right:8px solid #FFD400;text-align:right}
+.tegak .anode{display:inline-block;margin:0 14px 14px 0;font-size:48px}.tegak .akol.kn{text-align:right}.tegak .akol.kn .anode{margin:0 0 14px 14px}
+.avs{position:absolute;text-align:center;font:800 150px/1 "Barlow Condensed",sans-serif;color:#F5F2EA;opacity:0}
+/* checklist */
+.cj{position:absolute;font:800 64px/1 "Barlow Condensed",sans-serif;color:#F5F2EA;opacity:0;border-bottom:6px solid #FFD400;padding-bottom:10px}
+.crow{position:absolute;display:flex;align-items:center;gap:24px;height:80px;font:700 46px/1.05 "Barlow Condensed",sans-serif;color:#F5F2EA;opacity:0}
+.tegak .crow{font-size:38px;height:58px}.tegak .cb{width:46px;height:46px}
+.cb{width:56px;height:56px;flex:none;border:4px solid #FFD400;border-radius:6px}
+.cb svg{width:100%;height:100%}.cb path{fill:none;stroke:#111;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+/* grafik ikon */
+.wket{position:absolute;font:500 28px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#9A9486}
+.wlab{position:absolute;opacity:0}
+.wlab b{display:block;font:800 60px/1 "Barlow Condensed",sans-serif;color:#F5F2EA}
+.wlab span{display:block;margin-top:10px;font:800 80px/1 "Barlow Condensed",sans-serif}
+.wlab.a span{color:#FFD400}.wlab.b span{color:#E8402F}
+.tegak .wlab b{display:inline;font-size:50px;margin-right:16px}.tegak .wlab span{display:inline;font-size:56px}
+.wic{position:absolute;opacity:0}.wic svg{width:100%;height:100%}
+.wic.a svg{fill:#FFD400}.wic.b svg{fill:#E8402F}
+/* kutipan */
+.qt{position:absolute;left:220px;right:220px;top:200px}
+.tegak .qt{left:70px;right:70px;top:420px}
+.qt u{display:block;text-decoration:none;font:800 260px/.7 "Barlow Condensed",sans-serif;color:#FFD400;height:150px}
+.qt p{margin:0;font:800 108px/1.04 "Barlow Condensed",sans-serif;color:#F5F2EA;text-wrap:balance}
+.tegak .qt p{font-size:96px}
+.qt i{display:block;margin-top:34px;font:500 28px/1.3 "IBM Plex Mono",monospace;letter-spacing:.1em;font-style:normal;color:#9A9486;text-transform:uppercase}
+/* tipografi besar */
+.kt{position:absolute;left:0;right:0;top:150px;text-align:center}
+.tegak .kt{top:420px}
+.kl{font:800 185px/.95 "Barlow Condensed",sans-serif;color:#F5F2EA;letter-spacing:-.01em;opacity:0}
+.tegak .kl{font-size:170px}
+.kl.y{color:#FFD400}.kl.r{color:#E8402F}.kl.s{font-size:120px;color:#9A9486}.tegak .kl.s{font-size:96px}
+.bingkai.portret .fbox{left:300px;top:110px;width:520px;height:680px}
+.tegak .bingkai.portret .fbox{left:250px;top:420px;width:580px;height:780px}

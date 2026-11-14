@@ -84,6 +84,7 @@ function setHi(at, hi) {
 }
 let dimNow = 0, fxNow = .5;
 const B = CFG.beats;
+/*ADEGAN*/
 tl.set(C, { x: proj(B[0].cam)[0], y: proj(B[0].cam)[1], z: B[0].cam[2] * ZK * .82, onUpdate: applyCam }, 0);
 tl.fromTo('#world', { opacity: 0 }, { opacity: 1, duration: 1.1, ease: 'power2.out' }, 0);
 
@@ -91,6 +92,7 @@ let group = null;                                  // benda yang bertahan lintas
 B.forEach((b, bi) => {
   const t0 = b.t0, t1 = b.t1, nxt = B[bi + 1], keepNext = nxt && nxt.keep && !nxt.card;
   const cl = (at, pad) => keepNext ? at : Math.max(t0 + .2, Math.min(at, t1 - (pad || 1.3)));   // jangan masuk setelah waktu keluar
+  SCENE(b, bi);
   /* kartu babak */
   if (b.card) {
     const c = card.cloneNode(true); c.innerHTML = `<i>${b.card.n}</i><b>${b.card.t}</b>`; ov.appendChild(c);

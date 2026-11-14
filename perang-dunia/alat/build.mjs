@@ -1,11 +1,18 @@
 // Merakit index.html per video & gaya. Pakai: node build.mjs long|s1..s8|semua [a|b]
 import fs from 'fs'; import path from 'path'; import { spawnSync } from 'child_process';
 import { SECTIONS, SHORTS, EXTRA } from './naskah.mjs';
+import { ADEGAN } from './adegan-data.mjs';
+// revisi visual (gaya A): pasang adegan foto/grafik ke beat
+const pakai = new Set();
+for (const s of SECTIONS) s.beats.forEach((b, i) => { const a = ADEGAN[`${s.id}:${i}`]; if (!a) return; pakai.add(`${s.id}:${i}`);
+  for (const f of a.hapus || []) delete b[f]; if (a.side) b.side = 1; b.sc = a.sc; });
+for (const k of Object.keys(ADEGAN)) if (!pakai.has(k)) throw new Error('kunci adegan tidak dikenal: ' + k);
 const ROOT = path.resolve('..'), AUD = path.join(ROOT, 'audio');
 const SKILL = path.resolve(ROOT, '../.claude/skills/motion-format');
 const starter = fs.readFileSync(path.join(SKILL, 'assets/starter-explainer-jurnalisme.html'), 'utf8');
-const TAIL = starter.slice(starter.indexOf('/* ---------- kontrol:'), starter.indexOf('</script>\n</body>'));
-const MAP = fs.readFileSync('map.json', 'utf8'), ENGINE = fs.readFileSync('engine.js', 'utf8');
+const TAIL = starter.slice(starter.indexOf('/* ---------- kontrol:'), starter.indexOf('</script>\n</body>'))
+  .replace('document.fonts.ready.then(()=>{', 'Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => 0))]).then(()=>{');
+const MAP = fs.readFileSync('map.json', 'utf8'), ENGINE = fs.readFileSync('engine.js', 'utf8').replace('/*ADEGAN*/', () => fs.readFileSync('adegan.js', 'utf8'));
 const ALL = [...SECTIONS, ...EXTRA], byId = Object.fromEntries(ALL.map(s => [s.id, s]));
 const has = id => fs.existsSync(path.join(AUD, id + '.mp3'));
 const dur = id => +spawnSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', path.join(AUD, id + '.mp3')]).stdout.toString();
@@ -35,6 +42,9 @@ function timeline(kind) {
       const o = { ...b, t0, t1 }; delete o.v;
       for (const f of ['it', 'mk', 'ar']) if (o[f]) o[f] = o[f].map(x => { const y = { ...x, at: key(x.k) }; delete y.k; return y; });
       if (o.num) o.num = { ...o.num, at: key(o.num.k) };
+      if (o.sc) { const sc = o.sc = JSON.parse(JSON.stringify(o.sc)); const fix = x => { if (x && typeof x === 'object' && 'k' in x) { x.at = key(x.k); delete x.k; } };
+        fix(sc); for (const f of ['ev', 'n', 'org', 'lang', 'g']) if (Array.isArray(sc[f])) sc[f].forEach(fix); fix(sc.kiri); fix(sc.kanan);
+        if (sc.ka) { sc.at = sc.ka.map(key); delete sc.ka; } }
       if (i === 0) { if (card) o.card = card; o.tag = 'tag' in opts ? opts.tag : sec.tag; o.keep = 0; o.tagEnd = opts.tagEnd === null ? undefined : at + A.D + .45; }
       beats.push(o); });
     T = at + A.D + .55;
@@ -77,6 +87,7 @@ function build(kind, mode) {
   <div id="world" data-tata="dekor"><svg id="peta" data-tata="dekor" viewBox="0 0 4000 2300" width="4000" height="2300"></svg><div id="mk"></div></div>
   <div id="vig" data-tata="dekor"></div><div id="sweep" data-tata="dekor"></div>
   <div id="dim" data-tata="dekor"></div>
+  <div id="sc" data-tata="dekor"></div>
   <div class="grain" data-tata="dekor"></div>
   <div id="ov"></div>
   <div id="dbg"><button id="dPlay">Pause</button><input id="dScrub" type="range" min="0" max="1000" value="0"><span id="dClock">0.00s</span></div>
