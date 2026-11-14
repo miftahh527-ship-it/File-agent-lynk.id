@@ -12,14 +12,14 @@ Flow ElevenLabs: `MNw0TdpNRS06tcOK42VD`. Efek suara dan musik: belum ada.
 | 1.1 – 1.4 | Bagian 1: Perang Dunia I | 3.113 | jadi |
 | 2.1 – 2.4 | Bagian 2 (sampai titik balik & akhir perang) | 3.826 | jadi |
 | 4.1 | Siap tanpa panik | 317 | jadi |
-| 2.5 | Delapan puluh tahun tanpa perang dunia | 735 | GAGAL: kuota habis |
-| 3.1 – 3.4 | Bagian 3: Dunia hari ini | 3.886 | GAGAL: kuota habis |
-| 4.2 – 4.5 | Tas siaga, keluarga, keterampilan, konflik dekat | 2.443 | GAGAL: kuota habis |
-| p9 | Penutup | 965 | GAGAL: kuota habis |
-| s6x | Naskah padat Short 6 | 414 | GAGAL: kuota habis |
-| s1..s8 -hook / -tutup | 16 kalimat pembuka & penutup Short | 1.071 | GAGAL: kuota habis |
+| 2.5 | Delapan puluh tahun tanpa perang dunia | 735 | jadi |
+| 3.1 – 3.4 | Bagian 3: Dunia hari ini | 3.886 | jadi |
+| 4.2 – 4.5 | Tas siaga, keluarga, keterampilan, konflik dekat | 2.443 | jadi |
+| p9 | Penutup | 965 | jadi |
+| s6x | Naskah padat Short 6 | 414 | jadi |
+| s1..s8 -hook / -tutup | 16 kalimat pembuka & penutup Short | 1.071 | jadi |
 
-Sisa yang dibutuhkan: ± 9.500 kredit karakter.
+Semua klip sudah jadi (total ± 26.300 kredit karakter).
 
 ## Perubahan dari naskah PDF
 
