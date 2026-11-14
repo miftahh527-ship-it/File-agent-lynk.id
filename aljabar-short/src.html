@@ -110,18 +110,26 @@ html,body{margin:0;height:100%;background:#0a0a0a;overflow:hidden}
 </script>
 <script>
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-const W=1080,H=1920,DUR=56.6;
+const W=1080,H=1920,DUR=56.6;          /* DUR = waktu animasi (skala lama) */
+/* PEMETAAN WAKTU: waktu video (suara Edot) → waktu animasi. Titik = momen kunci kalimat. */
+const MAP=[[0,0],[0.4,0.4],[3.96,4.17],[4.8,5.0],[7.21,6.9],[12.55,9.6],[14.63,11.86],[15.6,12.9],[18.9,15.95],[21.63,18.44],
+  [24.67,20.0],[29.06,23.5],[32.75,26.66],[33.7,27.6],[38.74,31.85],[40.36,33.56],[44.21,35.57],[45.7,37.15],[47.11,38.49],
+  [49.3,39.82],[51.48,41.62],[53.8,43.38],[54.65,43.82],[55.2,44.8],[57.56,47.06],[60.37,49.37],[62.5,50.95],[63.55,52.12],
+  [64.5,53.0],[67.18,55.1],[68.6,56.6]];
+const VDUR=68.6;
+const lerpMap=(t,a,b)=>{for(let i=1;i<MAP.length;i++){const p=MAP[i-1],q=MAP[i];if(t<=q[a]||i===MAP.length-1){const k=(t-p[a])/((q[a]-p[a])||1);return p[b]+Math.max(0,Math.min(1,k))*(q[b]-p[b]);}}return t;};
+const Wt=t=>lerpMap(t,0,1), Winv=u=>lerpMap(u,1,0);
 function fit(){const s=Math.min(innerWidth/W,innerHeight/H);$('#stage').style.transform=`translate(-50%,-50%) scale(${s})`;}
 addEventListener('resize',fit);fit();
 
 /* ================= SUARA (ElevenLabs) ================= */
 window.AUDIO_PLAN = {
   vo: [ {at:0.4, src:'assets/audio/vo1.mp3', vol:1},
-        {at:5.0, src:'assets/audio/vo2.mp3', vol:1},
-        {at:12.9,src:'assets/audio/vo3.mp3', vol:1},
-        {at:27.6,src:'assets/audio/vo4.mp3', vol:1},
-        {at:44.8,src:'assets/audio/vo5.mp3', vol:1},
-        {at:53.0,src:'assets/audio/vo6.mp3', vol:1} ],
+        {at:4.8, src:'assets/audio/vo2.mp3', vol:1},
+        {at:15.6,src:'assets/audio/vo3.mp3', vol:1},
+        {at:33.7,src:'assets/audio/vo4.mp3', vol:1},
+        {at:55.2,src:'assets/audio/vo5.mp3', vol:1},
+        {at:64.5,src:'assets/audio/vo6.mp3', vol:1} ],
   sfx: [ {at:3.0, src:'assets/audio/sfx-api.mp3', vol:.4},
          {at:4.85,src:'assets/audio/sfx-api.mp3', vol:.55},
          {at:5.6, src:'assets/audio/sfx-pena.mp3', vol:.4},
@@ -141,6 +149,8 @@ window.AUDIO_PLAN = {
          {at:52.55,src:'assets/audio/sfx-whoosh.mp3', vol:.35} ],
   music: null
 };
+/* efek suara ditulis dalam waktu animasi → dipindah ke waktu video */
+AUDIO_PLAN.sfx.forEach(s=>s.at=+Winv(s.at).toFixed(2));
 
 /* ---------- pembantu SVG ---------- */
 const NS='http://www.w3.org/2000/svg';
@@ -532,18 +542,19 @@ function live(t){
 
 /* ================= kontrol: autoplay + loop tanpa player · ?debug=1 · ?clean=1 ================= */
 const q=new URLSearchParams(location.search);
-function start(){tl.play(0);}
-tl.eventCallback('onComplete',()=>start());
-gsap.ticker.add(()=>live(tl.time()));
-window.OPENER={W,H,DURATION:DUR,tl,ready:false,seek(t){tl.pause(t,false);live(t);},play:start};
-addEventListener('keydown',e=>{if(/^[rR]$/.test(e.key))start();if(e.code==='Space'){e.preventDefault();tl.paused()?tl.play():tl.pause();}});
+/* jam utama = waktu video; animasi (tl) mengikuti lewat pemetaan Wt() */
+const MC={t:0};const master=gsap.to(MC,{t:VDUR,duration:VDUR,ease:'none',paused:true,onUpdate(){const u=Wt(MC.t);tl.time(u,false);live(u);}});
+function start(){master.play(0);}
+master.eventCallback('onComplete',()=>start());
+window.OPENER={W,H,DURATION:VDUR,tl:master,ready:false,seek(t){master.pause(t,false);const u=Wt(t);tl.time(u,false);live(u);},play:start};
+addEventListener('keydown',e=>{if(/^[rR]$/.test(e.key))start();if(e.code==='Space'){e.preventDefault();master.paused()?master.play():master.pause();}});
 if(q.has('debug')){const dbg=$('#dbg');dbg.style.display='flex';const sc=$('#dScrub'),ck=$('#dClock');let drag=false;
-  gsap.ticker.add(()=>{if(!drag)sc.value=String(tl.time()/DUR*1000);ck.textContent=tl.time().toFixed(2)+'s';$('#dPlay').textContent=tl.paused()?'Play':'Pause';});
-  sc.addEventListener('pointerdown',()=>{drag=true;tl.pause();});addEventListener('pointerup',()=>drag=false);
-  sc.addEventListener('input',()=>{tl.pause();tl.time(sc.value/1000*DUR);});$('#dPlay').onclick=()=>tl.paused()?tl.play():tl.pause();}
+  gsap.ticker.add(()=>{if(!drag)sc.value=String(master.time()/VDUR*1000);ck.textContent=master.time().toFixed(2)+'s';$('#dPlay').textContent=master.paused()?'Play':'Pause';});
+  sc.addEventListener('pointerdown',()=>{drag=true;master.pause();});addEventListener('pointerup',()=>drag=false);
+  sc.addEventListener('input',()=>{master.pause();master.time(sc.value/1000*VDUR);});$('#dPlay').onclick=()=>master.paused()?master.play():master.pause();}
 /* SUARA Motion Format — terikat timeline (ikut scrub, pause, loop); dibaca render_mp4.py */
 var MF = (function(){
-  var P = window.AUDIO_PLAN, Tl = tl, on = false, last = 0, noop = function(){};
+  var P = window.AUDIO_PLAN, Tl = master, on = false, last = 0, noop = function(){};
   function mk(s, music){ var a = new Audio(s.src); a.preload = 'auto'; a.volume = s.vol == null ? (music ? .15 : 1) : s.vol;
     return { at: s.at || 0, el: a, music: !!music }; }
   var LONG = (P.vo || []).map(function(s){ return mk(s); }).concat(P.music ? [mk(P.music, true)] : []);
@@ -569,8 +580,8 @@ var MF = (function(){
     probe: function(){ var a = ALL[0].el, v = a.volume; a.volume = 0;
       return a.play().then(function(){ a.pause(); a.currentTime = 0; a.volume = v; on = true; }, function(e){ a.volume = v; throw e; }); } };
 })();
-document.fonts.ready.then(()=>{build();tl.pause(0);live(0);window.OPENER.ready=true;if(q.has('clean'))return;
-  MF.probe().then(()=>{tl.play(0);}).catch(()=>{const go=()=>{removeEventListener('pointerdown',go);removeEventListener('keydown',go);start();};addEventListener('pointerdown',go);addEventListener('keydown',go);});});
+document.fonts.ready.then(()=>{build();tl.pause(0);master.pause(0);live(0);window.OPENER.ready=true;if(q.has('clean'))return;
+  MF.probe().then(()=>{master.play(0);}).catch(()=>{const go=()=>{removeEventListener('pointerdown',go);removeEventListener('keydown',go);start();};addEventListener('pointerdown',go);addEventListener('keydown',go);});});
 </script>
 </body>
 </html>
