@@ -2,7 +2,7 @@
 
 Suara: Adi - Calm, Smooth, Deep Narrative Tone (`nLQvrSbE39AWDklI866Y`), model `eleven_multilingual_v2`, bahasa Indonesia.
 Satu bagian = satu klip (`audio/<id>.mp3`). Naskah lengkap per potongan kalimat + arahan visual: `alat/naskah.mjs`.
-Flow ElevenLabs: `MNw0TdpNRS06tcOK42VD`. Efek suara dan musik: belum ada.
+Flow ElevenLabs: `MNw0TdpNRS06tcOK42VD`. Musik latar (2 lagu instrumental) dan 6 efek suara ada di `audio/latar/`, dicampur dengan `alat/campur.mjs` (musik turun otomatis saat narasi).
 
 ## Status klip
 
