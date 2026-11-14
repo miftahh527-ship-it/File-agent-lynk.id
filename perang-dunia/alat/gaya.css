@@ -116,16 +116,19 @@ html,body{margin:0;height:100%;background:#0a0a0a;overflow:hidden}
 .gb .fbox img,.gb .org img{filter:sepia(.55) contrast(1.05) brightness(.95)}
 .scn.foto:not(.bingkai)::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.6) 0,transparent 22%,transparent 52%,rgba(11,11,12,.92) 86%)}
 .scn.foto.sisi:not(.bingkai)::after{background:linear-gradient(180deg,rgba(11,11,12,.6) 0,transparent 22%,transparent 52%,rgba(11,11,12,.92) 86%),linear-gradient(270deg,rgba(11,11,12,.75) 0,transparent 40%)}
-.bingkai .fbox{left:96px;top:150px;width:1060px;height:620px;inset:auto;border:2px solid rgba(245,242,234,.5);border-top:6px solid #FFD400;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.bingkai .fbox{inset:auto;left:96px;top:150px;width:1060px;height:620px;border:2px solid rgba(245,242,234,.5);border-top:6px solid #FFD400;box-shadow:0 30px 80px rgba(0,0,0,.6)}
 .bingkai:not(.sisi) .fbox{left:330px;width:1260px}
-.tegak .bingkai .fbox{left:70px;top:430px;width:940px;height:760px}
+/* format tegak: foto berbingkai jadi layar penuh agar tidak bertabrakan dengan ubin & tahun */
+.tegak .bingkai .fbox,.tegak .bingkai.portret .fbox{inset:0;left:0;top:0;width:auto;height:auto;border:0;box-shadow:none}
+.tegak .scn.foto.bingkai .fbox::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.6) 0,transparent 22%,transparent 52%,rgba(11,11,12,.92) 86%)}
+.tegak .bingkai .flab{top:auto;left:70px;bottom:700px;z-index:2}
 .flab{position:absolute;left:0;top:0;padding:10px 16px;font:500 26px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;background:#FFD400;color:#111}
 .kr{position:absolute;right:40px;bottom:30px;font:500 20px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;color:rgba(245,242,234,.62);z-index:2;text-transform:uppercase}
 .tegak .kr{right:30px;bottom:auto;top:1270px;font-size:18px}
 /* tokoh */
 .org{position:absolute;opacity:0}
 .org .pf{height:560px;overflow:hidden;border:2px solid rgba(245,242,234,.5);border-top:6px solid #FFD400;background:#111}
-.tegak .org .pf{height:640px}
+.tegak .org .pf{height:600px}
 .org img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
 .org b{display:block;margin-top:22px;font:800 64px/1 "Barlow Condensed",sans-serif;color:#F5F2EA}
 .org i{display:block;margin-top:12px;font:500 26px/1.3 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:#FFD400}
@@ -211,4 +214,4 @@ html,body{margin:0;height:100%;background:#0a0a0a;overflow:hidden}
 .tegak .kl{font-size:170px}
 .kl.y{color:#FFD400}.kl.r{color:#E8402F}.kl.s{font-size:120px;color:#9A9486}.tegak .kl.s{font-size:96px}
 .bingkai.portret .fbox{left:300px;top:110px;width:520px;height:680px}
-.tegak .bingkai.portret .fbox{left:250px;top:420px;width:580px;height:780px}
+

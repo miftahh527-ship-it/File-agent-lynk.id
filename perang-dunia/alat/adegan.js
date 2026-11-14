@@ -34,7 +34,7 @@ const BUILD = {
     const from = z === 'in' ? { scale: 1.02, xPercent: -1 } : z === 'out' ? { scale: 1.14, xPercent: 1 } : z === 'kiri' ? { scale: 1.1, xPercent: 3 } : { scale: 1.1, xPercent: -3 };
     const to = z === 'in' ? { scale: 1.13, xPercent: 1 } : z === 'out' ? { scale: 1.02, xPercent: -1 } : z === 'kiri' ? { scale: 1.1, xPercent: -3 } : { scale: 1.1, xPercent: 3 };
     tl.fromTo(img, from, { ...to, duration: dur, ease: 'none', immediateRender: false }, b.t0 - .2);
-    if (s.bingkai) tl.fromTo(box, { y: 40, rotate: -1.2 }, { y: 0, rotate: 0, duration: .8, ease: 'power3.out', immediateRender: false }, b.t0 - .1);
+    if (s.bingkai && !TEGAK) tl.fromTo(box, { y: 40, rotate: -1.2 }, { y: 0, rotate: 0, duration: .8, ease: 'power3.out', immediateRender: false }, b.t0 - .1);
   },
 
   /* kartu tokoh: potret + nama + keterangan */
@@ -42,8 +42,8 @@ const BUILD = {
     const n = s.org.length;
     s.org.forEach((o, i) => {
       const c = div('org', `<div class="pf"><img src="../../foto/${o.src}" alt=""${o.pos ? ` style="object-position:${o.pos}"` : ''}></div><b>${o.nama}</b><i>${o.ket}</i>`, d);
-      const cw = TEGAK ? 600 : 470, gap = 60, x0 = b.side && !TEGAK ? 150 + i * (cw + gap) : (W - (n * cw + (n - 1) * gap)) / 2 + i * (cw + gap);
-      c.style.cssText = `left:${x0}px;top:${TEGAK ? 300 + i * 40 : 120}px;width:${cw}px`;
+      const cw = TEGAK ? (n > 1 ? 450 : 600) : 470, gap = TEGAK ? 40 : 60, x0 = b.side && !TEGAK ? 150 + i * (cw + gap) : (W - (n * cw + (n - 1) * gap)) / 2 + i * (cw + gap);
+      c.style.cssText = `left:${x0}px;top:${TEGAK ? 480 + i * 50 : 120}px;width:${cw}px`;
       const at = o.at != null ? o.at : b.t0 + .2 + i * .6;
       tl.fromTo(c, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: .6, ease: 'power3.out', immediateRender: false }, at);
       tl.fromTo($('img', c), { scale: 1.18 }, { scale: 1.02, duration: (b.t1 - at) + .5, ease: 'none', immediateRender: false }, at);

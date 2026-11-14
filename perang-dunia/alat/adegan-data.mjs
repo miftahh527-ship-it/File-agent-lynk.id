@@ -12,7 +12,7 @@ export const ADEGAN = {
   '1.1:4': { sc: { t: 'foto', src: 'kitchener.jpg', bingkai: 1, portret: 1, label: 'Poster rekrutmen · 1914', kr: 'Alfred Leete, 1914 · Library of Congress' }, side: 1 },
 
   // ---------- 1.2 Sarajevo ----------
-  '1.2:0': { sc: { t: 'orang', org: [{ src: 'franz-ferdinand.jpg', nama: 'Franz Ferdinand', ket: 'Putra mahkota Austria-Hongaria' }] }, hapus: ['it'], side: 1 },
+  '1.2:0': { sc: { t: 'orang', org: [{ src: 'franz-ferdinand.jpg', nama: 'Franz Ferdinand', ket: 'Pewaris takhta Austria' }] }, hapus: ['it'], side: 1 },
   '1.2:1': { sc: { t: 'orang', org: [{ src: 'franz-ferdinand.jpg', nama: 'Franz Ferdinand', ket: '1863–1914' }, { src: 'princip.jpg', nama: 'Gavrilo Princip', ket: 'Penembak · 19 tahun', k: 'Gavrilo' }] }, hapus: ['it'] },
   '1.2:2': { sc: { t: 'domino', id: 'dom', ev: [{ d: '28 Juli', a: 'Austria-Hongaria', b: 'Serbia', k: 'menyatakan perang' }] } },
   '1.2:3': { sc: { t: 'domino', id: 'dom', ev: [{ d: '1 Agustus', a: 'Jerman', b: 'Rusia', k: 'kepada Rusia' }, { d: '3 Agustus', a: 'Jerman', b: 'Prancis', k: 'dan Prancis' }] } },
@@ -44,11 +44,12 @@ export const ADEGAN = {
 
   // ---------- 2.3 Indonesia ----------
   '2.3:3': { sc: { t: 'foto', src: 'romusha.jpg', bingkai: 1, portret: 1, label: 'Soekarno di depan romusha · 1944', kr: 'Arsip 1944 · domain publik' }, side: 1 },
-  '2.3:5': { sc: { t: 'foto', src: 'proklamasi.jpg', bingkai: 1, label: 'Jakarta · 17 Agustus 1945', kr: 'Frans Mendur, 1945 · domain publik' }, hapus: ['mk'], side: 1 },
+  // foto Proklamasi belum bisa diunduh (Wikimedia membatasi) → kutipan teks Proklamasi
+  '2.3:5': { sc: { t: 'kutip', teks: 'Kami bangsa Indonesia dengan ini menjatakan kemerdekaan Indonesia.', oleh: 'Teks Proklamasi · Jakarta, 17 Agustus 1945' }, hapus: ['mk'], side: 1 },
 
   // ---------- 2.4 Titik balik ----------
   '2.4:2': { sc: { t: 'foto', src: 'dday.jpg', kr: 'Kapal pendarat Sekutu, Normandia 1944 · Library of Congress', z: 'in' } },
-  '2.4:5': { sc: { t: 'foto', src: 'nagasaki.jpg', kr: 'Nagasaki, 9 Agustus 1945 · Library of Congress', z: 'out', pos: '50% 35%' }, hapus: ['mk'], side: 1 },
+  '2.4:5': { sc: { t: 'foto', src: 'nagasaki.jpg', bingkai: 1, portret: 1, label: 'Nagasaki · 9 Agustus 1945', kr: 'Angkatan Udara AD AS · Library of Congress' }, hapus: ['mk'], side: 1 },
   '2.4:6': { sc: { t: 'wafel', ket: '1 ikon = 1 juta jiwa', g: [{ t: 'Perang Dunia I', lab: '15–20 juta', c: 'a', min: 15, max: 20 }, { t: 'Perang Dunia II', lab: '70–85 juta', c: 'b', min: 70, max: 85, k: 'tujuh puluh' }] }, hapus: ['bars'] },
 
   // ---------- 2.5 Delapan puluh tahun ----------

@@ -49,6 +49,11 @@ Selat Taiwan: Crisis Group CrisisWatch
 Jam Kiamat 85 detik: Bulletin of the Atomic Scientists, Al Jazeera
 Pernyataan Presiden Prabowo, 2 Februari 2026: ANTARA
 Tas Siaga Bencana: Buku Saku BNPB, Indonesia Baik
+Hiperinflasi Jerman 1914–1923: data kurs mark per dolar AS (perkiraan historis)
+Jumlah hulu ledak nuklir 1945–2025: Federation of American Scientists (perkiraan)
+
+📷 Foto arsip
+Library of Congress, Prints & Photographs Division (Bain News Service, American National Red Cross, Keystone View Co., foto militer AS), dan Wikimedia Commons (Walter Tausch, 1914; foto Gavrilo Princip). Semua berstatus domain publik atau tanpa batasan hak cipta yang diketahui. Rincian per foto ada di foto/SUMBER.md.
 
 #PerangDunia #Sejarah #PerangDunia3 #BelajarSejarah #SiagaBencana
 
