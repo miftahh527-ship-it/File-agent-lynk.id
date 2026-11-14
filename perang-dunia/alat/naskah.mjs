@@ -202,7 +202,7 @@ export const SECTIONS = [
     hi: { c: ['China'], a: ['Taiwan'] }, mk: [{ p: P.taipei, t: 'Taiwan', k: 'Taiwan' }, { p: [112, 31], t: 'Tiongkok', k: 'Tiongkok' }], it: [{ ic: 'ship', t: 'Unjuk kekuatan', k: 'unjuk' }, { ic: 'alert-triangle', t: 'Tegang, belum perang', k: 'Belum' }], side: 1 },
   { v: 'Kawasan ini dekat dengan kita, begitu juga Laut Tiongkok Selatan.', cap: 'Dekat dengan *kita*', cam: [115, 8, 2], hi: { c: ['China'], a: ['Taiwan'], b: ['Indonesia'] }, mk: [{ p: P.lcs, t: 'Laut Tiongkok Selatan', k: 'Laut' }, { p: [113, -1], t: 'Indonesia', k: 'kita' }] },
   { v: 'Para ilmuwan di Bulletin of the Atomic Scientists punya simbol bernama Jam Kiamat. Januari dua ribu dua puluh enam, jarumnya dipasang di delapan puluh lima detik menuju tengah malam, posisi terdekat sejak jam itu dibuat tahun sembilan belas empat puluh tujuh.',
-    cap: 'Jam *Kiamat*', cam: DUNIA, hi: null, num: { from: 600, to: 85, suf: ' detik', label: 'menuju tengah malam', k: 'delapan puluh lima' }, it: [{ ic: 'clock-hour-11', t: 'Sejak 1947', k: 'Jam Kiamat' }], side: 1 },
+    cap: 'Jam *Kiamat*', cam: DUNIA, hi: null, num: { from: 600, to: 85, suf: ' detik', label: 'menuju tengah malam · terdekat sejak 1947', k: 'delapan puluh lima' } },
   { v: 'Jam itu tidak meramal apa pun. Ia berfungsi sebagai alarm.', cap: 'Bukan ramalan, *alarm*', cam: [150, 15, .56], it: [{ ic: 'crystal-ball', t: 'Bukan ramalan', k: 'meramal' }, { ic: 'bell', t: 'Alarm', k: 'alarm' }] },
 ] },
 
