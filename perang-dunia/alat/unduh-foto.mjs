@@ -23,14 +23,16 @@ const FOTO = {
 const UA = { 'User-Agent': 'ClaudeCode-media-research/1.0 (https://claude.ai/code; educational video)' };
 const tidur = ms => new Promise(r => setTimeout(r, ms));
 async function get(u, bin) {
-  for (let k = 0; k < 8; k++) { const r = await fetch(u, { headers: UA });
+  for (let k = 0; k < 30; k++) { const r = await fetch(u, { headers: UA });
     if (r.status === 429) { const w = Math.min(900, +(r.headers.get('retry-after') || 120)) + 20; console.log(`429, tunggu ${w} dtk`); await tidur(w * 1000); continue; }
     if (!r.ok) throw new Error(r.status + ' ' + u); const out = bin ? Buffer.from(await r.arrayBuffer()) : await r.json(); await tidur(bin ? 45000 : 4000); return out; }
   throw new Error('429 terus: ' + u); }
 const dir = path.resolve('../foto'); fs.mkdirSync(dir, { recursive: true });
 const catat = path.join(dir, 'SUMBER.md'), lama = fs.existsSync(catat) ? fs.readFileSync(catat, 'utf8') : '# Sumber foto\n\nSemua foto dari Wikimedia Commons, berstatus domain publik atau CC0 (dicek lewat metadata lisensi saat diunduh).\n\n| Berkas | Judul di Commons | Lisensi | Pembuat |\n|---|---|---|---|\n';
 let baris = lama;
+const HANYA = process.env.FOTO_HANYA ? process.env.FOTO_HANYA.split(',') : null;
 for (const [nama, judul] of Object.entries(FOTO)) {
+  if (HANYA && !HANYA.includes(nama)) continue;
   if (fs.existsSync(path.join(dir, nama))) { console.log('ada', nama); continue; }
   const u = 'https://commons.wikimedia.org/w/api.php?' + new URLSearchParams({ action: 'query', format: 'json', titles: judul, prop: 'imageinfo', iiprop: 'url|extmetadata', iiurlwidth: '1920', iiextmetadatafilter: 'LicenseShortName|Artist' });
   const j = await get(u), p = Object.values(j.query.pages)[0], ii = p.imageinfo?.[0];

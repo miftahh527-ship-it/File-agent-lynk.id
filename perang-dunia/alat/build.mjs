@@ -4,7 +4,10 @@ import { SECTIONS, SHORTS, EXTRA } from './naskah.mjs';
 import { ADEGAN } from './adegan-data.mjs';
 // revisi visual (gaya A): pasang adegan foto/grafik ke beat
 const pakai = new Set();
+const adaFoto = f => fs.existsSync(path.resolve('../foto', f));
 for (const s of SECTIONS) s.beats.forEach((b, i) => { const a = ADEGAN[`${s.id}:${i}`]; if (!a) return; pakai.add(`${s.id}:${i}`);
+  if (a.sc.t === 'foto' && !adaFoto(a.sc.src)) { console.warn('foto belum ada, beat tetap peta:', a.sc.src); return; }
+  if (a.sc.org) { a.sc.org = a.sc.org.filter(o => adaFoto(o.src) || (console.warn('foto belum ada:', o.src), 0)); if (!a.sc.org.length) return; }
   for (const f of a.hapus || []) delete b[f]; if (a.side) b.side = 1; b.sc = a.sc; });
 for (const k of Object.keys(ADEGAN)) if (!pakai.has(k)) throw new Error('kunci adegan tidak dikenal: ' + k);
 const ROOT = path.resolve('..'), AUD = path.join(ROOT, 'audio');
