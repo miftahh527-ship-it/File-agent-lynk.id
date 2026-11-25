@@ -77,3 +77,14 @@ Deskripsi semua Short: 1–2 kalimat + `Versi lengkap: <judul video long>` + `#S
 | 6 | Perang Dunia III: alasan khawatir dan alasan tenang | 3.2 + 3.3 | jadi |
 | 7 | Isi tas siaga tiga hari versi BNPB | 4.2 | jadi |
 | 8 | Tiga hal yang wajib dibahas keluargamu malam ini | 4.3 | jadi |
+
+## Deskripsi siap tempel per Short
+
+1. Militerisme, Aliansi, Imperialisme, Nasionalisme. Empat bahan bakar ini menumpuk di Eropa bertahun-tahun sebelum 1914, tinggal menunggu percikan. Versi lengkap: Perang Dunia 1 & 2 dalam 17 Menit, dan Mungkinkah Perang Dunia 3 Terjadi? #Shorts #Sejarah #PerangDunia
+2. 28 Juni 1914, dua peluru di Sarajevo. Lewat jaringan aliansi, dalam lima minggu seluruh kekuatan besar Eropa sudah saling menyatakan perang. Versi lengkap: Perang Dunia 1 & 2 dalam 17 Menit, dan Mungkinkah Perang Dunia 3 Terjadi? #Shorts #Sejarah #PerangDunia
+3. Satu hari, hampir 20.000 tentara tewas. Parit ratusan kilometer, lumpur, senapan mesin, gas beracun: cara berperang lama bertemu senjata modern. Versi lengkap: Perang Dunia 1 & 2 dalam 17 Menit, dan Mungkinkah Perang Dunia 3 Terjadi? #Shorts #Sejarah #PerangDunia
+4. Tahun 1923 harga uang di Jerman jatuh sampai orang membakarnya untuk pemanas. Krisis ini membuka jalan bagi diktator. Versi lengkap: Perang Dunia 1 & 2 dalam 17 Menit, dan Mungkinkah Perang Dunia 3 Terjadi? #Shorts #Sejarah #PerangDunia
+5. Jepang menyerah 15 Agustus 1945, Indonesia memproklamasikan kemerdekaan 17 Agustus. Apa yang terjadi di dua hari itu? Versi lengkap: Perang Dunia 1 & 2 dalam 17 Menit, dan Mungkinkah Perang Dunia 3 Terjadi? #Shorts #Sejarah #PerangDunia
+6. Ada alasan nyata untuk khawatir soal Perang Dunia III, tapi ada juga alasan kuat untuk tetap tenang. Ini keduanya, tanpa menakut-nakuti. Versi lengkap: Perang Dunia 1 & 2 dalam 17 Menit, dan Mungkinkah Perang Dunia 3 Terjadi? #Shorts #Sejarah #PerangDunia
+7. Dokumen penting, uang tunai, air, obat, senter, radio kecil. Isi Tas Siaga Bencana tiga hari anjuran BNPB, berguna untuk bencana apa pun. Versi lengkap: Perang Dunia 1 & 2 dalam 17 Menit, dan Mungkinkah Perang Dunia 3 Terjadi? #Shorts #SiagaBencana #PerangDunia
+8. Titik kumpul, nomor penting di atas kertas, dan pembagian tugas. Tiga hal yang perlu dibahas keluargamu malam ini, cukup lima menit. Versi lengkap: Perang Dunia 1 & 2 dalam 17 Menit, dan Mungkinkah Perang Dunia 3 Terjadi? #Shorts #SiagaBencana #PerangDunia
