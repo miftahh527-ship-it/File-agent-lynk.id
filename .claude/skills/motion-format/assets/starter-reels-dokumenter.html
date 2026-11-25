@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="id">
+<!-- Motion Format — starter Reels Dokumenter (9:16). MIT. -->
+<head>
+<meta charset="utf-8">
+<title>Starter Reels Dokumenter — 9:16</title>
+<!--
+  REELS DOKUMENTER: explainer edukasi tegak 30–60 dtk (sejarah, misteri, geografi, sains) bergaya film dokumenter.
+  Panduan lengkap: references/reels-dokumenter.md. Lapisan (dari belakang ke depan):
+    1. DUNIA (#world, kamera x/y/z): satu objek utama per adegan + latar ber-DOF (lapis jauh diburamkan).
+    2. ATMOSFER: debu bercahaya (canvas, deterministik), sapuan cahaya, vinyet, grain.
+    3. JUDUL ATAS (#judul): angka berjalan (hook) → nama topik + ornamen; pertanyaan penutup bertumpuk.
+    4. CALLOUT (#callout): label kecil + nilai + sumber, garis tipis ke titik bercincin di objek (mengikuti kamera).
+    5. CAPTION KARAOKE (#caption): frasa 1–2 baris, kata terucap terang, belum redup, kata kunci berwarna.
+  Kulit: <body data-gaya="arsip|sulam|sablon|sinema"> atau ?gaya=… (pratinjau). Warna/font DITURUNKAN dari topik
+  (Hukum #3) — empat gaya ini titik awal, bukan kulit yang dikunci.
+  Ganti: NASKAH (caption = naskah VO), isi adegan, KOREOGRAFI, AUDIO_PLAN. autoplay + loop; ?debug=1; ?clean=1.
+-->
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,700;1,8..60,500&family=Playfair+Display:wght@700;800&family=Nunito:wght@700;800;900&family=Alfa+Slab+One&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ---------- token per gaya (ganti dari topik) ---------- */
+:root,[data-gaya="arsip"]{--latar:#120d0a;--latar2:#2a1a10;--tinta:#f6ead2;--redup:rgba(246,234,210,.34);--emas:#f0b65a;--kunci:#f0b65a;
+  --f-judul:"UnifrakturMaguntia",serif;--f-angka:"UnifrakturMaguntia",serif;--f-teks:"Source Serif 4",Georgia,serif;--f-label:"Source Serif 4",serif;
+  --cahaya:rgba(255,170,80,.42);--obj1:#e9c48f;--obj2:#b8834c;--obj3:#6b4426;--garis:#f6ead2;--debu:255,196,120}
+[data-gaya="sulam"]{--latar:#3a2414;--latar2:#5a3a22;--tinta:#fff4dc;--redup:rgba(255,244,220,.45);--emas:#f3c766;--kunci:#ffd77a;
+  --f-judul:"Playfair Display",serif;--f-angka:"Playfair Display",serif;--f-teks:"Nunito",sans-serif;--f-label:"Nunito",sans-serif;
+  --cahaya:rgba(255,200,90,.35);--obj1:#2c4f8c;--obj2:#a3262f;--obj3:#f3c766;--garis:#fff4dc;--debu:255,214,120}
+[data-gaya="sablon"]{--latar:#e9dcc0;--latar2:#d8c59e;--tinta:#fff8ea;--redup:rgba(255,248,234,.5);--emas:#f2b134;--kunci:#ffcf4a;
+  --f-judul:"Alfa Slab One",serif;--f-angka:"Alfa Slab One",serif;--f-teks:"Nunito",sans-serif;--f-label:"Nunito",sans-serif;
+  --cahaya:rgba(255,230,170,.0);--obj1:#4f8fb0;--obj2:#d96c3b;--obj3:#3b5f3a;--garis:#2a2433;--debu:255,255,255}
+[data-gaya="sinema"]{--latar:#1d1a17;--latar2:#5d4a38;--tinta:#ffffff;--redup:rgba(255,255,255,.4);--emas:#ffd9a0;--kunci:#ffa64d;
+  --f-judul:"Cormorant Garamond",serif;--f-angka:"Cormorant Garamond",serif;--f-teks:"Inter",sans-serif;--f-label:"Inter",sans-serif;
+  --cahaya:rgba(255,190,120,.5);--obj1:#9b8a78;--obj2:#6e6052;--obj3:#3a332c;--garis:#ffffff;--debu:255,220,180}
+
+html,body{margin:0;height:100%;background:#000;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1080px;height:1920px;overflow:hidden;background:var(--latar);color:var(--tinta);font-family:var(--f-teks)}
+#world{position:absolute;inset:0;transform-origin:0 0;will-change:transform}
+.adegan{position:absolute;inset:0}
+.jauh{position:absolute;inset:-900px;filter:blur(10px)}          /* lapis jauh: kedalaman ruang (DOF) */
+
+/* ---------- permukaan per gaya ---------- */
+.latar{position:absolute;inset:-1400px;background:radial-gradient(60% 40% at 50% 46%,var(--latar2),var(--latar) 70%)}
+[data-gaya="sulam"] .latar{background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 2px,transparent 2px 6px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.06) 0 3px,transparent 3px 7px),
+  radial-gradient(60% 45% at 50% 45%,var(--latar2),var(--latar) 72%)}
+[data-gaya="sablon"] .latar{background:linear-gradient(#f4ead6,#e2d2b0)}
+.tekstur{position:absolute;inset:-1400px;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .22 0 0 0 0 .14 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E")}
+[data-gaya="sinema"] .tekstur{opacity:.25}
+
+/* ---------- objek demo (ganti) — semua dibangun dari primitif ---------- */
+.buku{position:absolute;left:190px;top:700px;width:700px;height:470px}
+.halaman{position:absolute;top:0;width:340px;height:450px;background:linear-gradient(160deg,var(--obj1),var(--obj2));border-radius:10px 10px 14px 14px;
+  box-shadow:0 40px 60px rgba(0,0,0,.45),inset 0 0 40px rgba(0,0,0,.18)}
+.halaman.ki{left:0;transform:skewY(2deg)}.halaman.ka{right:0;transform:skewY(-2deg)}
+.baris{position:absolute;left:36px;right:36px;height:7px;border-radius:4px;background:var(--obj3);opacity:.45}
+.tanaman{position:absolute;left:110px;top:250px;width:120px;height:170px}
+[data-gaya="sulam"] .halaman{outline:4px dashed var(--obj3);outline-offset:-16px}
+[data-gaya="sablon"] .halaman{box-shadow:10px 12px 0 rgba(42,36,51,.85)}
+.peta{position:absolute;left:40px;top:600px;width:1000px;height:560px}
+.peta .pulau{fill:var(--obj1);stroke:var(--latar);stroke-width:2;vector-effect:non-scaling-stroke}
+.peta #pulau-sumatra{fill:var(--emas)}
+#rute{fill:none;stroke:var(--garis);stroke-width:5;stroke-linecap:round;stroke-dasharray:14 12}
+
+/* ---------- atmosfer ---------- */
+#debu{position:absolute;inset:0;pointer-events:none}
+.sapu{position:absolute;left:-200px;right:-200px;height:46px;top:0;opacity:0;pointer-events:none;mix-blend-mode:screen;
+  background:linear-gradient(transparent,rgba(255,255,255,.9),transparent);filter:blur(6px)}
+.vinyet{position:absolute;inset:0;pointer-events:none;background:radial-gradient(75% 60% at 50% 48%,transparent 50%,rgba(0,0,0,.62) 100%)}
+[data-gaya="sablon"] .vinyet{background:radial-gradient(80% 65% at 50% 48%,transparent 60%,rgba(60,40,20,.28) 100%)}
+.cahaya{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(42% 26% at 52% 44%,var(--cahaya),transparent 70%)}
+#iris{position:absolute;inset:0;pointer-events:none;opacity:0;--r:0px;border-radius:50%}
+.cincin{position:absolute;left:50%;top:50%;width:0;height:0;border-radius:50%;opacity:0;pointer-events:none;transform:translate(-50%,-50%);
+  border:10px solid var(--emas);box-shadow:0 0 40px 10px var(--cahaya),inset 0 0 30px 6px var(--cahaya)}
+
+/* ---------- judul atas ---------- */
+#judul{position:absolute;left:60px;right:140px;top:236px;text-align:center;pointer-events:none}
+.j-angka{font-family:var(--f-angka);font-size:132px;line-height:1;color:var(--emas);font-variant-numeric:tabular-nums;white-space:nowrap;
+  text-shadow:0 4px 24px rgba(0,0,0,.55);opacity:0}
+.j-angka small{font-size:.5em;margin-left:.12em}
+.j-sub{font-family:var(--f-teks);font-style:italic;font-size:44px;margin-top:26px;opacity:0}
+.j-nama{position:absolute;left:0;right:0;top:0;font-family:var(--f-judul);font-size:84px;line-height:1.05;color:var(--emas);opacity:0;text-shadow:0 4px 24px rgba(0,0,0,.55)}
+.ornamen{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px}
+.ornamen i{display:block;height:2px;width:190px;background:linear-gradient(90deg,transparent,var(--emas));transform-origin:right}
+.ornamen i:last-child{background:linear-gradient(90deg,var(--emas),transparent);transform-origin:left}
+.ornamen b{width:14px;height:14px;border:2px solid var(--emas);transform:rotate(45deg)}
+[data-gaya="sablon"] .j-angka,[data-gaya="sablon"] .j-nama{color:#fff8ea;text-shadow:6px 7px 0 #b5462a,10px 12px 0 rgba(42,36,51,.9)}
+[data-gaya="sablon"] .j-sub{display:inline-block;font-style:normal;font-weight:800;letter-spacing:.3em;font-size:30px;padding:8px 20px;background:#2a2433;color:#fff8ea}
+[data-gaya="sinema"] .j-angka,[data-gaya="sinema"] .j-nama{color:#fff;font-weight:500;letter-spacing:.02em}
+.tanya{position:absolute;font-family:var(--f-judul);font-size:76px;color:var(--emas);opacity:0;white-space:nowrap;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+
+/* ---------- callout ---------- */
+#callout{position:absolute;inset:0;pointer-events:none}
+#callout svg{position:absolute;inset:0;overflow:visible}
+.c-garis{fill:none;stroke:var(--garis);stroke-width:2.2;opacity:.85}
+.c-titik{fill:var(--garis)}.c-cincin{fill:none;stroke:var(--garis);stroke-width:2.2}
+.c-label{position:absolute;opacity:0;white-space:nowrap}
+.c-alis{font-family:var(--f-label);font-size:25px;letter-spacing:.22em;text-transform:uppercase;opacity:.8}
+.c-nilai{font-family:var(--f-teks);font-weight:700;font-size:48px;color:var(--emas);font-variant-numeric:tabular-nums;border-bottom:2px solid var(--garis);padding-bottom:6px}
+.c-sumber{font-family:var(--f-teks);font-style:italic;font-size:26px;opacity:.75;margin-top:6px}
+[data-gaya="sablon"] .c-label{color:#2a2433}[data-gaya="sablon"] .c-nilai{color:#b5462a}
+
+/* ---------- caption karaoke ---------- */
+#caption{position:absolute;left:60px;right:140px;top:1310px;height:230px;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.frasa{position:absolute;max-width:860px;text-align:center;text-wrap:balance;font-family:var(--f-teks);font-weight:700;font-size:56px;line-height:1.34;opacity:0;
+  text-shadow:0 3px 14px rgba(0,0,0,.75)}
+.frasa .k{display:inline-block;margin:0 .13em;color:var(--redup)}
+[data-gaya="sulam"] .frasa{padding:14px 34px;background:linear-gradient(#8c1f2a,#6a1520);border-radius:6px;font-size:50px;
+  outline:3px dashed rgba(243,199,102,.85);outline-offset:-10px;box-shadow:0 10px 30px rgba(0,0,0,.45);text-shadow:none}
+[data-gaya="sablon"] .frasa{padding:16px 38px;background:#2a2c4a;border-radius:4px 22px 6px 18px;font-size:50px;text-shadow:none;box-shadow:6px 7px 0 rgba(0,0,0,.25)}
+[data-gaya="sinema"] .frasa{font-size:50px;font-weight:700}
+
+#dbg{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);display:none;gap:12px;align-items:center;padding:10px 16px;border-radius:14px;background:rgba(14,16,22,.9);color:#cfd5e3;font:13px system-ui;z-index:50}
+#dbg input{width:360px}#dbg span{font-variant-numeric:tabular-nums;min-width:6ch}
+</style>
+</head>
+<body data-gaya="arsip">
+<div id="stage">
+  <div id="world">
+    <div class="latar" data-tata="latar"></div>
+    <div class="jauh" data-tata="latar"></div>
+    <!-- ADEGAN 1: satu objek utama (buku demo dari primitif — ganti dengan cutout/ilustrasi/footage) -->
+    <div class="adegan" id="a1">
+      <div class="buku" id="buku" data-tata="subjek">
+        <div class="halaman ki" data-tata="abaikan"><div class="baris" style="top:60px"></div><div class="baris" style="top:90px;right:90px"></div><div class="baris" style="top:120px"></div><div class="baris" style="top:150px;right:120px"></div>
+          <svg class="tanaman" viewBox="0 0 120 170"><path d="M60 165 C60 120 58 90 60 40" stroke="#3d5a2a" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M60 110 C30 100 18 80 22 64 C42 70 56 86 60 110Z M60 92 C88 84 100 66 98 50 C78 56 64 72 60 92Z" fill="#4f7a34"/><circle cx="60" cy="34" r="22" fill="#b5462a"/><circle cx="60" cy="34" r="9" fill="#f0b65a"/></svg></div>
+        <div class="halaman ka" data-tata="abaikan"><div class="baris" style="top:60px"></div><div class="baris" style="top:90px"></div><div class="baris" style="top:120px;right:70px"></div><div class="baris" style="top:150px"></div><div class="baris" style="top:180px;right:110px"></div><div class="baris" style="top:210px"></div><div class="baris" style="top:240px;right:60px"></div></div>
+      </div>
+    </div>
+    <!-- ADEGAN 2: peta buatan sendiri (scripts/peta_svg.py --tanpa-gaya), dibuka lewat iris -->
+    <div class="adegan" id="a2" style="opacity:0">
+      <div class="latar" data-tata="latar"></div>
+      <div class="peta" data-tata="subjek"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="1000" height="560" style="position:absolute;inset:0;width:100%;height:100%">
+<g class="peta-isi">
+<g class="pulau-semua">
+<path id="pulau-sumatra" class="pulau benua-asia" data-nama="Sumatra" d="M10 122.8C13.8 119.1 46.7 125.2 57.2 131.5C66.9 137.3 74.6 154.9 82.9 163.7C92 173.3 109.7 189.7 119.4 195.9C126.4 200.5 135.5 202.8 143 206.7C153 211.9 175.7 221.3 183.7 230.2C190.8 238.2 195 256.2 198.7 264.6C201.5 270.8 203.2 278.7 207.3 283.9C212.5 290.5 230.9 299.7 235.2 305.3C237.6 308.5 238.7 311.8 239.5 316.1C241 325.1 243.1 362.2 237.3 367.7C233.8 371.1 222.3 366.9 218 367.7C215 368.2 212.6 371.6 209.4 370.9C200.8 369.2 172.7 339.4 160.1 324.7C147.1 309.4 130.2 281.6 119.4 264.6C109 248.2 96 221.1 85.1 206.7C75.1 193.5 57.3 176.3 46.5 165.9C36.7 156.4 16.3 143.2 12.1 135.8C9.9 131.8 8 124.8 10 122.8Z"/>
+<path id="pulau-jawa" class="pulau benua-asia" data-nama="Jawa" d="M222.3 389.3C221.7 386.8 234.1 373.9 239.5 372C244 370.5 251 373.4 256.6 374.2C264.3 375.2 279 376.4 288.8 378.5C300.5 381 325.8 393.5 333.8 391.4C338.4 390.2 340.6 381.4 344.5 380.6C349.7 379.7 362.2 388.8 368.1 391.4C372.8 393.5 378.3 396.1 383.1 397.9C389.4 400.3 403.5 402.9 408.9 406.6C413.1 409.5 417.4 415.9 419.6 419.6C421.4 422.6 425.1 429 423.9 430.4C421.7 432.9 399.9 423.3 389.6 421.7C378.2 420 358.7 421.4 346.7 419.6C334.4 417.7 313.9 409.5 303.8 408.7C296.7 408.2 288.8 412.2 282.3 410.9C273.9 409.2 258.6 396.2 250.2 393.6C243.7 391.6 233 392.4 228.7 391.4C226.3 390.9 222.6 390.6 222.3 389.3Z"/>
+<path id="pulau-madura" class="pulau benua-asia" data-nama="Madura" d="M383.1 391.4C385 388.8 411.9 389 413.2 391.4C413.8 392.7 411 396.8 408.9 397.9C405.1 400 388.3 400.1 385.3 397.9C383.6 396.7 382.2 392.7 383.1 391.4Z"/>
+<path id="pulau-bali" class="pulau benua-asia" data-nama="Bali" d="M419.6 417.4C420.5 415.8 432.6 416.2 436.7 417.4C440.3 418.4 447.2 421.7 447.5 423.9C447.7 426.3 440 433.5 436.7 433.7C433.3 433.8 426.4 426.6 423.9 423.9C422.1 422 419 418.5 419.6 417.4Z"/>
+<path id="pulau-lombok" class="pulau benua-asia" data-nama="Lombok" d="M453.9 419.6C456.3 418.3 465.2 419.6 466.8 421.7C468.3 423.9 466.7 433 464.6 434.7C462.8 436.3 456.1 435.9 453.9 434.7C452 433.7 449.7 430.2 449.6 428.2C449.5 426 451.8 420.6 453.9 419.6Z"/>
+<path id="pulau-sumbawa" class="pulau benua-asia" data-nama="Sumbawa" d="M471.1 426.1C472.6 422.5 486 418.1 492.5 417.4C499.4 416.6 514.2 418.8 518.2 421.7C520.7 423.5 523.4 428.6 522.5 430.4C521 433.4 503.8 433.8 496.8 434.7C490.4 435.6 478.9 439.1 475.3 436.9C472.7 435.3 470 428.6 471.1 426.1Z"/>
+<path id="pulau-flores" class="pulau benua-asia" data-nama="Flores" d="M535.4 426.1C536.9 423.5 549.7 422.6 556.8 421.7C566.9 420.5 595 416.1 599.7 419.6C601.9 421.2 603.2 426.3 601.9 428.2C599.1 432.4 571.1 434.4 561.1 434.7C553.5 435 540.6 435 537.5 432.6C535.9 431.3 534.6 427.5 535.4 426.1Z"/>
+<path id="pulau-sumba" class="pulau benua-asia" data-nama="Sumba" d="M518.2 447.8C518.8 445.7 538.4 443.1 544 445.6C549.1 447.9 558 461.2 556.8 463C555.5 465 537 459.1 531.1 456.5C526.6 454.5 517.8 449.4 518.2 447.8Z"/>
+<path id="pulau-timor" class="pulau benua-asia" data-nama="Timor" d="M616.9 465.2C616.4 462.5 630.4 450.8 636.2 445.6C641.9 440.4 650.1 431.4 657.6 428.2C666.5 424.5 695.3 421.6 696.2 423.9C696.9 425.6 684.9 433.1 679.1 436.9C671.1 442.1 653.7 451.9 644.7 456.5C637.5 460.2 625.1 467.4 621.2 467.4C619.4 467.3 617.1 466.3 616.9 465.2Z"/>
+<path id="pulau-kalimantan" class="pulau benua-asia" data-nama="Kalimantan" d="M316.7 200.2C320.4 199.3 327.3 209.5 331.7 208.8C337.6 207.9 345.4 190 353.1 185.2C361.5 179.9 381.1 180.2 389.6 174.5C398.1 168.7 405.8 149.9 413.2 144.4C418.8 140.1 428.9 139.5 434.6 135.8C441.1 131.4 450.2 120.4 456 114.2C461.7 108.2 470.1 93 475.3 92.6C479.7 92.3 485.6 102.3 490.4 105.6C495.3 109.1 504.7 112.9 509.6 116.4C514.4 119.7 524.8 125.1 524.7 129.3C524.5 135.1 498.9 145.1 494.6 153C491.1 159.5 490.8 170.8 492.5 178.8C494.8 189.7 518.7 214.6 516.1 221.7C514.2 226.7 496.7 225.6 492.5 230.2C488.3 234.8 489.2 248 486.1 253.8C483 259.5 474.1 264.7 471.1 271C467.2 279 467.1 298.6 464.6 307.5C462.6 314.5 460.7 327 456 329C450.3 331.4 433.3 318.5 423.9 316.1C414.5 313.6 398.6 311.6 389.6 311.8C381.7 311.9 371.6 316.6 363.8 316.1C354.7 315.4 334.7 311.2 329.5 305.3C325.3 300.5 327.3 289.1 325.2 281.7C322.5 272 313.4 252.5 310.2 243.1C307.8 236.2 303 227.6 303.8 221.7C304.6 215.4 312.2 201.4 316.7 200.2Z"/>
+<path id="pulau-sulawesi" class="pulau benua-asia" data-nama="Sulawesi" d="M651.2 212C650.7 210.4 646.4 208.7 643.7 208.8C638.4 209 623.5 220.6 616.9 222.7C612.2 224.3 606.1 225 601.9 224.9C597.6 224.7 591.1 222.4 586.8 221.7C582.6 220.9 576.1 220 571.8 219.5C567.6 219.1 560.7 218 556.8 218.5C553.5 218.8 548.6 220.3 546.1 221.7C543.9 222.8 541.3 225.1 539.7 227C537.8 229.2 535 233.6 534.3 236.7C533.6 240 535.1 246.2 535.4 249.5C535.7 252.5 537.2 256.6 536.5 259.2C535.6 262.1 530.6 265.9 528.9 268.8C527.3 271.7 526 276.1 524.7 279.6C522.8 284.2 518.5 293.9 517.2 298.9C516.1 302.8 514.6 308.7 515 311.8C515.3 314.2 516.6 317.3 518.2 319.3C520.4 322 528.7 324.7 530 327.9C531.3 331.1 528.3 338.1 527.9 341.9C527.5 345.4 526.8 350.5 526.8 353.7C526.8 356.6 526.3 361.8 527.9 363.4C529.6 365.1 536.5 364.7 539.7 364.5C542.6 364.3 548.4 364 549.3 362.3C550.3 360.6 546.3 355.6 546.1 352.6C545.8 349.3 547.4 343.3 548.2 339.7C549.2 336 552.6 330.6 552.5 326.8C552.5 322.7 548.7 314.9 547.2 311.8C546.3 309.8 543.7 307.9 544 306.4C544.4 304.3 550.7 299.7 553.6 298.9C556.2 298.2 561.2 298.3 563.3 300C566 302.2 567.1 311.7 568.6 316.1C570.1 320.2 572.7 326.2 574 330C575.1 333.5 576 338.8 577.2 341.9C578.2 344.6 579.6 349.1 581.5 350.5C583.1 351.7 587.2 352.4 589 351.5C591.3 350.5 594.4 345 595.4 341.9C596.6 338.6 597.4 332.3 596.5 329C595.6 325.6 590.7 321.4 589 318.2C587.4 315.3 586.1 310.4 584.7 307.5C583.3 304.6 579.5 300.9 579.3 297.8C579.2 293.9 584 285.3 586.8 281.7C589.3 278.6 594.7 275.5 597.6 273.1C600.2 271 603.8 267.4 606.1 265.6C608.1 264.2 612.7 262.2 612.6 261.3C612.4 260.4 606.7 259.4 604 259.2C600.7 258.9 595 259.9 591.1 260.3C586.6 260.7 578.4 260.4 574 261.8C569.9 263 563.9 267 561.1 268.8C559.2 270.1 557.5 273 555.8 273.1C553.9 273.3 549.9 270.6 548.2 268.8C546.5 267 544.7 263 544 260.3C543.1 257.1 542.6 250.9 542.9 247.4C543.2 244 543.7 237.7 546.1 235.6C548.9 233.2 558.2 233.9 563.3 233.5C568.6 233 576.9 232.6 582.6 232.4C588.7 232.2 599.2 232 605.1 232.4C610 232.7 616.9 234.4 621.2 234.5C625 234.6 631 235 634 233.5C637.1 231.9 640.2 226.7 642.6 223.8C645.1 220.7 651.8 214.1 651.2 212Z"/>
+<path id="pulau-halmahera" class="pulau benua-asia" data-nama="Halmahera" d="M702.6 202.4C704.7 199.7 713.9 194.7 715.5 195.9C717.5 197.4 709.1 213.8 711.2 217.4C713.1 220.4 725.7 219.5 726.2 221.7C726.8 223.8 716.4 228.4 715.5 232.4C714.4 237.5 725.9 254.2 724.1 256C722.6 257.4 712.6 252.7 709.1 249.5C705 245.9 699.4 235.7 698.4 230.2C697.4 225.4 699.8 217.4 700.5 213.1C701.1 209.7 700.8 204.7 702.6 202.4Z"/>
+<path id="pulau-seram" class="pulau benua-asia" data-nama="Seram" d="M711.2 307.5C713.8 303.4 744.8 302.4 754.1 305.3C761.2 307.6 774.1 318.6 773.4 320.4C772.6 322.3 751.8 316.3 743.4 316.1C735.4 315.8 719.8 320.9 715.5 318.2C712.8 316.5 709.9 309.6 711.2 307.5Z"/>
+<path id="pulau-buru" class="pulau benua-asia" data-nama="Buru" d="M668.3 311.8C670.6 309.2 692.3 310.9 694.1 313.9C695.4 316.2 690.7 325.4 687.6 326.8C684.3 328.4 673.1 325.2 670.5 322.5C668.5 320.4 666.8 313.5 668.3 311.8Z"/>
+<path id="pulau-papua" class="pulau benua-asia" data-nama="Papua" d="M773.4 260.3C776.2 255.9 794.5 251.9 803.4 251.7C813.2 251.5 833.8 253.8 839.9 260.3C845.9 266.7 842.5 288.7 846.3 296.7C849.3 303 857 311.4 861.3 313.9C864.3 315.7 868.6 317.1 872.1 316.1C878.9 314 895.1 291.7 902.1 286C906.3 282.6 910.3 278.3 914.9 277.4C921.5 276.2 936 281.4 945 283.9C955.3 286.7 977.2 294.6 983.6 296.7C986.2 297.6 988.5 296.8 990 298.9L990 439.1C987.3 440.2 982.2 428.4 977.1 426.1C970.1 422.9 950.3 429.6 942.8 423.9C932.4 416 928.9 373.4 921.4 361.2C916.5 353.4 909.1 345.3 902.1 341.9C893.9 337.9 874.4 340.2 865.6 337.6C858.5 335.4 849.3 329.1 844.2 326.8C840.7 325.2 837 322.6 833.5 322.5C828.8 322.4 818.3 330.8 814.2 329C809.5 326.9 807.8 312.2 803.4 305.3C797.8 296.5 779.1 280.6 775.6 273.1C773.6 269 771.6 263.1 773.4 260.3Z"/>
+</g>
+</g>
+</svg>
+        <svg viewBox="0 0 1000 560" style="position:absolute;inset:0;overflow:visible" data-tata="abaikan"><defs><mask id="mRute"><path id="rutePenyingkap" d="M60 80 C120 150 170 230 230 300 C300 380 360 400 420 410" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round"/></mask></defs>
+          <path id="rute" d="M60 80 C120 150 170 230 230 300 C300 380 360 400 420 410" mask="url(#mRute)"/></svg></div>
+    </div>
+    <div class="tekstur" data-tata="latar"></div>
+  </div>
+  <canvas id="debu" width="1080" height="1920" data-tata="dekor"></canvas>
+  <div class="sapu" id="sapu" data-tata="dekor"></div>
+  <div class="cahaya" data-tata="dekor"></div>
+  <div class="vinyet" data-tata="dekor"></div>
+  <div class="cincin" id="cincin" data-tata="dekor"></div>
+
+  <div id="judul">
+    <div class="j-angka" id="jAngka"><span id="jAngkaNilai">±0</span><small id="jAngkaSatuan"></small></div>
+    <div class="j-sub" id="jSub">dan belum terbaca</div>
+    <div class="j-nama" id="jNama">Nama Topik<div class="ornamen" id="orn"><i></i><b></b><i></i></div></div>
+  </div>
+  <div class="tanya" id="t1" style="left:80px;top:250px">rahasia?</div>
+  <div class="tanya" id="t2" style="right:150px;top:356px">sandi?</div>
+  <div class="tanya" id="t3" style="left:320px;top:462px">tipuan?</div>
+
+  <div id="callout"><svg width="1080" height="1920" data-tata="dekor"></svg></div>
+  <div id="caption"></div>
+  <div id="dbg"><button id="dPlay">Pause</button><input id="dScrub" type="range" min="0" max="1000" value="0"><span id="dClock">0.00s</span></div>
+</div>
+<audio id="vo" preload="auto"></audio>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const q0=new URLSearchParams(location.search);if(q0.get('gaya'))document.body.dataset.gaya=q0.get('gaya');
+const W=1080,H=1920,DUR=17;
+function fit(){const s=Math.min(innerWidth/W,innerHeight/H);$('#stage').style.transform=`translate(-50%,-50%) scale(${s})`;}
+addEventListener('resize',fit);fit();
+const tl=gsap.timeline({paused:true}),rig=$('#world');
+const css=v=>getComputedStyle(document.body).getPropertyValue(v).trim();
+
+/* ================= KAMERA: titik fokus (x,y) dunia + zoom z; DOF lapis jauh mengikuti ================= */
+const C={x:540,y:960,z:1};
+function applyCam(){rig.style.transform=`translate(${540-C.x*C.z}px,${960-C.y*C.z}px) scale(${C.z})`;drawCallouts();debu(tl.time());}
+const cam=(at,x,y,z,dur=1.6,ease='sine.inOut')=>tl.to(C,{x,y,z,duration:dur,ease,onUpdate:applyCam},at);
+const napas=(a,b,z)=>tl.to(C,{z,duration:b-a,ease:'sine.inOut',onUpdate:applyCam},a);    // dorong pelan saat "diam"
+const toScreen=(x,y)=>[540+(x-C.x)*C.z,960+(y-C.y)*C.z];
+
+/* ================= CAPTION KARAOKE =================
+   NASKAH = naskah VO, dipecah per frasa (1–2 baris, ≤ 6 kata). at/sampai = detik frasa diucapkan (dari VO:
+   vo-pauses.html / silencedetect, atau stempel waktu per kata dari transkripsi ElevenLabs bila ada → isi kata:[detik…]).
+   Tanpa stempel per kata, waktu tiap kata dibagi menurut jumlah suku katanya. kunci = kata yang diwarnai. */
+const NASKAH=[
+  {at:.3, sampai:1.9, teks:'Buku ini umurnya sekitar 600 tahun,', kunci:['600','tahun,']},
+  {at:2.0,sampai:3.6, teks:'dan sampai hari ini', kunci:['sampai']},
+  {at:3.7,sampai:5.4, teks:'belum ada yang bisa membacanya.', kunci:['membacanya.']},
+  {at:5.6,sampai:7.4, teks:'Uji karbon menunjukkan', kunci:['karbon']},
+  {at:7.5,sampai:9.0, teks:'perkamennya dibuat tahun 1404.', kunci:['1404.']},
+  {at:9.6,sampai:11.6,teks:'Jejaknya bermula di Sumatra,', kunci:['Sumatra,']},
+  {at:11.7,sampai:13.4,teks:'menyusuri pesisir ke Jawa.', kunci:['Jawa.']},
+  {at:13.7,sampai:16.6,teks:'Bahasa rahasia, sandi, atau tipuan?', kunci:['rahasia,','sandi,','tipuan?']}];
+const suku=w=>Math.max(1,(w.toLowerCase().match(/[aiueo]+/g)||[]).length+(/\d/.test(w)?w.replace(/\D/g,'').length*.6:0));
+function caption(){const box=$('#caption');
+  NASKAH.forEach(f=>{const el=document.createElement('div');el.className='frasa';const ws=f.teks.split(/\s+/);
+    ws.forEach(w=>{const s=document.createElement('span');s.className='k'+((f.kunci||[]).includes(w)?' kunci':'');s.textContent=w;el.appendChild(s);});
+    box.appendChild(el);const spans=$$('.k',el),bicara=(f.sampai-f.at)*.85,tot=ws.reduce((a,w)=>a+suku(w),0);
+    let t=f.at;tl.fromTo(el,{opacity:0,y:18},{opacity:1,y:0,duration:.22,ease:'power2.out',immediateRender:false},f.at-.12);
+    const nyala=css('--tinta'),kunci=css('--kunci');
+    spans.forEach((s,i)=>{const w=f.kata?f.kata[i]:t;tl.set(s,{color:s.classList.contains('kunci')?kunci:nyala},w);if(!f.kata)t+=bicara*suku(ws[i])/tot;});
+    tl.to(el,{opacity:0,y:-10,duration:.18,ease:'power2.in'},f.sampai);});}
+
+/* ================= JUDUL: angka berjalan (hook), nama + ornamen, pertanyaan bertumpuk ================= */
+const fmt=(v,dec=0)=>v.toLocaleString('id-ID',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+function angka(at,{dari=0,ke,awal='±',satuan='',dur=1.2,dec=0}){const o={v:dari},n=$('#jAngkaNilai');$('#jAngkaSatuan').textContent=satuan;
+  tl.set('#jAngka',{opacity:1},at);tl.fromTo('#jAngka',{y:24,scale:.92},{y:0,scale:1,duration:.5,ease:'back.out(1.6)',immediateRender:false},at);
+  tl.fromTo(o,{v:dari},{v:ke,duration:dur,ease:'power3.out',immediateRender:false,onUpdate(){n.textContent=awal+fmt(o.v,dec);}},at);}
+function namaJudul(at){tl.to(['#jAngka','#jSub'],{opacity:0,y:-20,duration:.35,ease:'power2.in'},at);
+  tl.fromTo('#jNama',{opacity:0,y:20,letterSpacing:'.12em'},{opacity:1,y:0,letterSpacing:'0em',duration:.7,ease:'power3.out',immediateRender:false},at+.25);
+  tl.fromTo('#orn i',{scaleX:0},{scaleX:1,duration:.6,ease:'power2.out',immediateRender:false},at+.5);
+  tl.fromTo('#orn b',{scale:0,rotate:0},{scale:1,rotate:45,duration:.4,ease:'back.out(2)',immediateRender:false},at+.6);}
+
+/* ================= ACAK ANGKA: digit berputar acak lalu mengunci satu per satu (deterministik) ================= */
+const rnd=(a,b)=>{const x=Math.sin(a*12.9898+b*78.233)*43758.5453;return x-Math.floor(x);};
+function acak(el,at,akhir,dur=1.6){const o={p:0};tl.fromTo(o,{p:0},{p:1,duration:dur,ease:'none',immediateRender:false,onUpdate(){
+  const f=Math.floor(o.p*dur*24);el.textContent=[...akhir].map((ch,i)=>/\d/.test(ch)&&o.p<(i+1)/akhir.length?String(Math.floor(rnd(f,i)*10)):ch).join('');}},at);}
+
+/* ================= CALLOUT: alis + nilai + sumber, garis ke titik bercincin (koordinat DUNIA, ikut kamera) ================= */
+const CALL=[];const NS='http://www.w3.org/2000/svg',csvg=$('#callout svg');
+function callout(at,{x,y,lx,ly,alis,nilai,sumber,sampai}){
+  const lab=document.createElement('div');lab.className='c-label';lab.style.left=lx+'px';lab.style.top=ly+'px';
+  lab.innerHTML=`<div class="c-alis">${alis}</div><div class="c-nilai">${nilai}</div>${sumber?`<div class="c-sumber">${sumber}</div>`:''}`;$('#callout').appendChild(lab);
+  const g=document.createElementNS(NS,'g');g.style.opacity=0;const ln=document.createElementNS(NS,'path');ln.setAttribute('class','c-garis');
+  const dot=document.createElementNS(NS,'circle');dot.setAttribute('class','c-titik');dot.setAttribute('r',6);
+  const ring=document.createElementNS(NS,'circle');ring.setAttribute('class','c-cincin');g.append(ln,ring,dot);csvg.appendChild(g);
+  const c={x,y,lab,g,ln,dot,ring,p:{d:0,r:0}};CALL.push(c);
+  tl.set(g,{opacity:1},at);tl.fromTo(c.p,{r:0},{r:1,duration:.45,ease:'back.out(2)',immediateRender:false,onUpdate:drawCallouts},at);
+  tl.fromTo(c.p,{d:0},{d:1,duration:.55,ease:'power2.inOut',immediateRender:false,onUpdate:drawCallouts},at+.15);
+  tl.fromTo(lab,{opacity:0,clipPath:'inset(0 100% 0 0)'},{opacity:1,clipPath:'inset(0 0% 0 0)',duration:.5,ease:'power3.out',immediateRender:false},at+.55);
+  const keluar=sampai||at+3;tl.to([lab,g],{opacity:0,duration:.25},keluar);return c;}
+function drawCallouts(){const s=$('#stage').getBoundingClientRect(),k=s.width/W;
+  for(const c of CALL){const [tx,ty]=toScreen(c.x,c.y),r=c.lab.querySelector('.c-nilai').getBoundingClientRect();
+    const L=(r.left-s.left)/k,R=(r.right-s.left)/k,ay=(r.bottom-s.top)/k-1,ax=Math.abs(tx-L)<Math.abs(tx-R)?L:R;   // pangkal = ujung garis bawah nilai
+  const ex=ax+(tx-ax)*c.p.d,ey=ay+(ty-ay)*c.p.d;c.ln.setAttribute('d',`M${ax} ${ay}L${ex} ${ey}`);
+  c.dot.setAttribute('cx',tx);c.dot.setAttribute('cy',ty);c.dot.setAttribute('r',6*c.p.r);c.ring.setAttribute('cx',tx);c.ring.setAttribute('cy',ty);c.ring.setAttribute('r',16*c.p.r);}}
+
+/* ================= ATMOSFER: debu (canvas, fungsi murni waktu), sapuan cahaya, iris bercincin ================= */
+const cv=$('#debu'),cx=cv.getContext('2d'),N=70,DB=[...Array(N)].map((_,i)=>({x:rnd(i,1)*W,y:rnd(i,2)*H,s:1.5+rnd(i,3)*3.5,v:12+rnd(i,4)*30,f:rnd(i,5)*6.28}));
+function debu(t){cx.clearRect(0,0,W,H);if(document.body.dataset.gaya==='sablon')return;const rgb=css('--debu');
+  for(const d of DB){const y=((d.y-t*d.v)%H+H)%H,x=d.x+Math.sin(t*.6+d.f)*24,a=.25+.45*(.5+.5*Math.sin(t*1.7+d.f));
+    const g=cx.createRadialGradient(x,y,0,x,y,d.s*3);g.addColorStop(0,`rgba(${rgb},${a})`);g.addColorStop(1,`rgba(${rgb},0)`);cx.fillStyle=g;cx.beginPath();cx.arc(x,y,d.s*3,0,6.283);cx.fill();}}
+tl.eventCallback('onUpdate',()=>debu(tl.time()));
+function sapu(at,dari=760,ke=1180,dur=1.1){tl.fromTo('#sapu',{top:dari,opacity:0},{top:ke,duration:dur,ease:'power1.inOut',immediateRender:false},at);
+  tl.to('#sapu',{keyframes:{opacity:[0,.9,.9,0],easeEach:'none'},duration:dur,ease:'none'},at);}
+function iris(at,dari,ke,dur=1.2){   // cincin bercahaya membesar, adegan baru tersingkap dari dalamnya
+  tl.set(ke,{opacity:1},at);tl.fromTo(ke,{clipPath:'circle(0px at 540px 960px)'},{clipPath:'circle(1200px at 540px 960px)',duration:dur,ease:'power2.in',immediateRender:false},at);
+  tl.fromTo('#cincin',{width:0,height:0,opacity:1},{width:2400,height:2400,duration:dur,ease:'power2.in',immediateRender:false},at);
+  tl.to('#cincin',{opacity:0,duration:.2},at+dur-.2);tl.set(dari,{opacity:0},at+dur);tl.set(ke,{clipPath:'none'},at+dur);}
+function jahit(sel,at,dur=1.6){const p=$(sel),L=p.getTotalLength();p.style.strokeDasharray=L;     // garis/jahitan tergambar
+  tl.fromTo(p,{strokeDashoffset:L},{strokeDashoffset:0,duration:dur,ease:'power1.inOut',immediateRender:false},at);}
+function tanya(at){['#t1','#t2','#t3'].forEach((s,i)=>tl.fromTo(s,{opacity:0,y:20,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.5,ease:'power3.out',immediateRender:false},at+i*.55));}
+
+/* ================= KOREOGRAFI DEMO (17 dtk) — ganti, kunci ke jeda VO ================= */
+caption();
+tl.set(C,{x:540,y:940,z:1.25,onUpdate:applyCam},0);
+angka(.1,{dari:0,ke:600,satuan:' tahun'});tl.fromTo('#jSub',{opacity:0},{opacity:1,duration:.6,immediateRender:false},.9);
+napas(0,3.4,1.12);                                                              // hook: dorong pelan ke objek
+namaJudul(3.4);
+cam(3.6,560,930,1.32,1.8,'power2.inOut');                                        // dekat ke halaman kanan — sisakan ruang callout di atas objek
+callout(5.6,{x:720,y:880,lx:96,ly:470,alis:'Uji karbon perkamen',nilai:'0000–0000',sumber:'Laboratorium, 2009',sampai:9.3});
+acak(document.querySelectorAll('.c-nilai')[0],6.2,'1404–1438',1.8);
+sapu(6.4,600,1250,1.2);
+iris(9.3,'#a1','#a2',1.1);tl.to('#jNama',{opacity:0,duration:.3},9.3);
+tl.set(C,{x:540,y:900,z:1.0,onUpdate:applyCam},10.4);cam(10.4,520,920,1.12,3.0);
+callout(10.0,{x:188,y:856,lx:96,ly:470,alis:'Titik awal',nilai:'Sumatra',sampai:13.4});
+jahit('#rutePenyingkap',11.4,1.8);
+callout(12.4,{x:500,y:1010,lx:560,ly:470,alis:'Tujuan',nilai:'Jawa',sampai:13.5});
+cam(13.4,540,940,1.0,1.4);tanya(13.7);
+tl.to(['#t1','#t2','#t3'],{opacity:0,duration:.4},16.5);
+tl.to({},{duration:.01},DUR);
+
+/* ---------- kontrol: autoplay + loop tanpa player; ?debug=1 panel; ?clean=1 export ---------- */
+const q=new URLSearchParams(location.search),vo=$('#vo'),hasVO=!!vo.getAttribute('src');let audioOn=false;
+function start(){tl.play(0);if(hasVO){vo.currentTime=0;vo.play().then(()=>audioOn=true).catch(()=>{});}}
+tl.eventCallback('onComplete',()=>start());
+gsap.ticker.add(()=>{if(!audioOn||tl.paused())return;if(Math.abs(vo.currentTime-tl.time())>.12)vo.currentTime=tl.time();});
+window.OPENER={W,H,DURATION:DUR,tl,ready:false,seek(t){tl.pause(t,false);applyCam();if(gsap.ticker.tick)gsap.ticker.tick();}   /* pause(t,false): callback onUpdate ikut jalan saat scrub/snapshot */,play:start};
+/* ================= FOOTAGE — layer video yang terikat timeline (seperti footage di After Effects) =================
+   Markup : <div class="clipbox"><video class="clip" src="assets/klip.mp4" muted playsinline preload="auto"></video></div>
+   Pasang : const k = clip($('#v1'), {at:4, in:1.5, out:6, rate:1, hold:false});
+            at = detik timeline klip mulai · in/out = potongan sumber (dtk) · rate = kecepatan · hold = tahan frame akhir
+   Animasi: tween PEMBUNGKUSNYA dengan tl (posisi, skala, mask, opacity, filter). Isi video mengikuti jam timeline,
+            bukan jamnya sendiri — scrub ?debug=1, snap.mjs, dan export-frames.mjs (OPENER.seekFrame) tetap presisi.
+   Format : MP4 H.264 (yuv420p, +faststart) atau WebM VP9, tanpa suara, 720p–1080p, 3–8 dtk per klip. */
+var CLIPS = CLIPS || [];
+function clip(el, o){ o = o || {}; el.muted = true; el.playsInline = true; el.preload = 'auto'; el.loop = false;
+  try { el.pause(); } catch(e) {}
+  var c = { el: el, at: o.at || 0, inT: o.in || 0, out: (o.out == null ? null : o.out), rate: o.rate || 1, hold: !!o.hold };
+  (CLIPS = CLIPS || []).push(c); return c; }
+function clipTime(c, t){ var end = c.out != null ? c.out : (isFinite(c.el.duration) ? c.el.duration : 1e9);
+  var lt = (t - c.at) * c.rate; if (lt < 0) return null; var vt = c.inT + lt;
+  if (vt > end - 1/120) { if (!c.hold) return null; vt = end - 1/60; } return vt; }
+function syncClips(t, playing){ for (var i = 0; i < CLIPS.length; i++){ var c = CLIPS[i], v = c.el, vt = clipTime(c, t);
+  if (vt === null) { if (!v.paused) v.pause(); continue; }
+  if (playing) { if (v.playbackRate !== c.rate) v.playbackRate = c.rate; if (v.paused) v.play().catch(function(){});
+    if (Math.abs(v.currentTime - vt) > .2) v.currentTime = vt; }
+  else { if (!v.paused) v.pause(); if (Math.abs(v.currentTime - vt) > 1/90) v.currentTime = vt; } } }
+function seekClips(t){ return Promise.all(CLIPS.map(function(c){ return new Promise(function(res){
+  var v = c.el, vt = clipTime(c, t); try { v.pause(); } catch(e) {}
+  if (vt === null) return res();
+  var fin = function(){ requestAnimationFrame(function(){ requestAnimationFrame(res); }); };
+  if (Math.abs(v.currentTime - vt) < 1/240 && v.readyState >= 2) return fin();
+  var to = setTimeout(res, 4000);
+  v.addEventListener('seeked', function h(){ v.removeEventListener('seeked', h); clearTimeout(to); fin(); });
+  v.currentTime = vt; }); })); }
+gsap.ticker.add(function(){ if (CLIPS.length) syncClips(window.OPENER.tl.time(), !window.OPENER.tl.paused()); });
+window.OPENER.clipsReady = function(){ return CLIPS.every(function(c){ return c.el.readyState >= 2; }); };
+window.OPENER.seekFrame = function(t){ window.OPENER.seek(t); return seekClips(t); };   // ekspor/snap: tunggu frame klip
+addEventListener('keydown',e=>{if(/^[rR]$/.test(e.key))start();if(e.code==='Space'){e.preventDefault();tl.paused()?tl.play():tl.pause();}});
+if(q.has('debug')){const dbg=$('#dbg');dbg.style.display='flex';const sc=$('#dScrub'),ck=$('#dClock');let drag=false;
+  gsap.ticker.add(()=>{if(!drag)sc.value=String(tl.time()/DUR*1000);ck.textContent=tl.time().toFixed(2)+'s';$('#dPlay').textContent=tl.paused()?'Play':'Pause';});
+  sc.addEventListener('pointerdown',()=>{drag=true;tl.pause();});addEventListener('pointerup',()=>drag=false);
+  sc.addEventListener('input',()=>{tl.pause();tl.time(sc.value/1000*DUR);});$('#dPlay').onclick=()=>tl.paused()?tl.play():tl.pause();}
+/* ================= SUARA Motion Format — VO per adegan + efek suara (ElevenLabs), terikat timeline =================
+   Isi AUDIO_PLAN saja; sisanya otomatis: ikut scrub ?debug=1, pause, loop, dan dibaca scripts/render_mp4.py untuk mix MP4.
+   vo   : satu klip per adegan  {at: detik mulai bicara, src:'assets/audio/vo1.mp3', vol:1}
+   sfx  : efek suara pendek     {at: detik bunyi,        src:'assets/audio/sfx-pop.mp3', vol:.5}
+   music: format Reels dokumenter memakai musik latar tipis terus-menerus → {src:'assets/audio/music.mp3', vol:.12}
+   Panduan lengkap: references/suara-elevenlabs.md */
+window.AUDIO_PLAN = window.AUDIO_PLAN || { vo: [], sfx: [], music: null };
+var MF = (function(){
+  var P = window.AUDIO_PLAN, T = window.OPENER.tl, on = false, last = 0, noop = function(){};
+  function mk(s, music){ var a = new Audio(s.src); a.preload = 'auto'; a.volume = s.vol == null ? (music ? .15 : 1) : s.vol;
+    return { at: s.at || 0, el: a, music: !!music }; }
+  var LONG = (P.vo || []).map(function(s){ return mk(s); }).concat(P.music ? [mk(P.music, true)] : []);
+  var SFX = (P.sfx || []).map(function(s){ return mk(s); });
+  var ALL = LONG.concat(SFX);
+  function unlock(){ on = true; }
+  addEventListener('pointerdown', unlock, { once: true }); addEventListener('keydown', unlock, { once: true });
+  gsap.ticker.add(function(){
+    var t = T.time(), playing = !T.paused();
+    if (!on) { last = t; return; }
+    for (var i = 0; i < LONG.length; i++){ var c = LONG[i], d = c.el.duration, rel = t - c.at;
+      var inside = rel >= 0 && (c.music || !d || !isFinite(d) || rel < d);
+      if (playing && inside){ var want = c.music && d && isFinite(d) ? rel % d : rel;
+        if (Math.abs(c.el.currentTime - want) > .25) c.el.currentTime = want;
+        if (c.el.paused) c.el.play().catch(noop); }
+      else if (!c.el.paused) c.el.pause(); }
+    if (playing){ if (t < last) last = -.001;                       // loop: mulai lagi dari awal
+      if (t - last < .5) for (var j = 0; j < SFX.length; j++){ var s = SFX[j];
+        if (s.at > last && s.at <= t){ s.el.currentTime = 0; s.el.play().catch(noop); } } }
+    last = t;
+  });
+  return {
+    has: ALL.length > 0,
+    /* uji autoplay bersuara: resolve bila browser mengizinkan, reject bila harus menunggu klik/tombol pertama */
+    probe: function(){ var a = ALL[0].el, v = a.volume; a.volume = 0;
+      return a.play().then(function(){ a.pause(); a.currentTime = 0; a.volume = v; on = true; }, function(e){ a.volume = v; throw e; }); }
+  };
+})();
+document.fonts.ready.then(()=>{applyCam();window.OPENER.ready=true;if(q.has('clean'))return;
+  if(!hasVO&&!MF.has){start();return;}
+  (hasVO?vo.play():MF.probe()).then(()=>{audioOn=hasVO;vo.currentTime=0;tl.play(0);}).catch(()=>{const go=()=>{removeEventListener('pointerdown',go);removeEventListener('keydown',go);start();};addEventListener('pointerdown',go);addEventListener('keydown',go);});});
+</script>
+</body>
+</html>

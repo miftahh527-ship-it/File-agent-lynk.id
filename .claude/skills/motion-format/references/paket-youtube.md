@@ -122,7 +122,11 @@ Tema yang butuh konteks panjang dari adegan lain → bukan kandidat.
 | Payoff + ajakan | 5 dtk terakhir | jawaban/hasil + "versi lengkap di kanal" (tanpa menyebut "link di deskripsi" — Short tidak menampilkannya) |
 | Loop | frame akhir | sebisa mungkin menyambung mulus ke frame pertama (Short diputar ulang otomatis) |
 
-**Membangun:**
+**Membangun:** untuk topik edukasi (sejarah, misteri, alam, tempat), format Short terbaik adalah
+**Reels dokumenter** (`references/reels-dokumenter.md`, `assets/starter-reels-dokumenter.html`):
+hook angka, callout, caption karaoke — tetap mewarisi palet & font video long.
+
+
 
 - Salin `index.html` long ke `short/index.html`, ubah panggung ke 1080×1920
   (`OPENER.W/H`), lalu **tata ulang** komposisi: subjek di tengah vertikal, teks lebih

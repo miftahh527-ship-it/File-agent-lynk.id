@@ -1,5 +1,21 @@
 # Riwayat perubahan — Motion Format
 
+## 1.5.0 · 25 November 2026
+
+**Baru**
+- Format **Reels dokumenter** dari analisis empat video edukasi Reels: `references/reels-dokumenter.md`
+  (anatomi 6 lapis, ritme 45 dtk, 4 kulit arsip/sulam/sablon/sinema, aturan caption karaoke, tata
+  letak 9:16, audio dengan musik latar, checklist) dan `assets/starter-reels-dokumenter.html`
+  (angka hook berjalan, judul + ornamen, callout yang mengikuti kamera, digit acak, sapuan cahaya,
+  iris bercincin, jahit garis, debu bercahaya deterministik, caption karaoke kata per kata,
+  pertanyaan penutup bertumpuk; demo memakai peta buatan sendiri).
+
+**Diubah**
+- `cek_tata_letak.py`: kotak teks diukur dari tinggi tinta huruf (±1,15 em per baris), bukan area
+  isi font — caption dua baris dengan font berascender tinggi tidak lagi dianggap bertumpuk.
+- SKILL.md: jenis pekerjaan baru; caption wajib untuk Reels dokumenter; Short edukasi disarankan
+  memakai format ini.
+
 ## 1.4.0 · 8 November 2026
 
 **Diubah**

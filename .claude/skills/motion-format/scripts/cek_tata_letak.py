@@ -82,7 +82,17 @@ for (const el of document.querySelectorAll('body *')) {
   const o = op(el);
   if (o < 0.5) continue;
   let r;
-  if (r0 === 'teks') { const g = document.createRange(); g.selectNodeContents(el); r = g.getBoundingClientRect(); }
+  if (r0 === 'teks') {
+    // kotak = tinta huruf, bukan "area isi" font: font dengan ruang atas/bawah besar (Nunito, Playfair…)
+    // membuat dua baris berjarak wajar tampak bertumpuk. Tiap baris dipangkas ke ±1,15 em di sekitar tengahnya.
+    const g = document.createRange(); g.selectNodeContents(el);
+    const fs = parseFloat(getComputedStyle(el).fontSize) || 16, lines = [...g.getClientRects()].filter(q => q.width > 1);
+    if (!lines.length) continue;
+    let L = 1e9, T = 1e9, R2 = -1e9, B = -1e9;
+    for (const q of lines) { const cy = q.top + q.height / 2, hh = Math.min(q.height, fs * 1.15) / 2;
+      L = Math.min(L, q.left); R2 = Math.max(R2, q.right); T = Math.min(T, cy - hh); B = Math.max(B, cy + hh); }
+    r = {left: L, top: T, width: R2 - L, height: B - T};
+  }
   else if (el.tagName.toLowerCase() === 'svg') {
     // kotak = garis/bentuk yang benar-benar digambar, bukan kanvas viewBox yang kosong
     let L = 1e9, T = 1e9, R = -1e9, B = -1e9;

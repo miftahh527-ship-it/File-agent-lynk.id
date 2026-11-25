@@ -1,17 +1,17 @@
 ---
 name: motion-format
-description: Membuat motion graphic dan video lewat chat — promo, opener, intro kanal, bumper, kinetic typography, demo produk/SaaS, dan explainer (kartun, jurnalisme visual, katalog, sketsa, aksi kontinu) 16:9, 9:16, atau 1:1 — memakai HTML + CSS + GSAP, lengkap dengan voiceover dan efek suara dari ElevenLabs, lalu dirender jadi MP4 bersuara. Gunakan skill ini setiap kali user meminta "video", "video promo", "iklan", "opener", "intro", "motion graphic", "animasi", "bumper", "kinetic typography", "explainer", "video penjelasan", "konten Reels/TikTok/Shorts animasi", ingin menambahkan voiceover atau efek suara, ingin merender animasi web jadi MP4, meminta video untuk YouTube (long + Short + deskripsi + thumbnail, dengan intro kanal tetap), atau mengeluh hasil animasi "seperti PPT" — bahkan bila mereka tidak menyebut kata "motion graphic". Juga untuk explainer kartun yang dibangun langsung di After Effects lewat bridge/MCP Higgsfield.
+description: Membuat motion graphic dan video lewat chat — promo, opener, intro kanal, bumper, kinetic typography, demo produk/SaaS, dan explainer (kartun, jurnalisme visual, katalog, sketsa, aksi kontinu) 16:9, 9:16, atau 1:1 — memakai HTML + CSS + GSAP, lengkap dengan voiceover dan efek suara dari ElevenLabs, lalu dirender jadi MP4 bersuara. Gunakan skill ini setiap kali user meminta "video", "video promo", "iklan", "opener", "intro", "motion graphic", "animasi", "bumper", "kinetic typography", "explainer", "video penjelasan", "konten Reels/TikTok/Shorts animasi", ingin menambahkan voiceover atau efek suara, ingin merender animasi web jadi MP4, meminta video untuk YouTube (long + Short + deskripsi + thumbnail, dengan intro kanal tetap), meminta video edukasi Reels/TikTok/Shorts bergaya dokumenter (angka hook, callout, caption karaoke kata per kata), atau mengeluh hasil animasi "seperti PPT" — bahkan bila mereka tidak menyebut kata "motion graphic". Juga untuk explainer kartun yang dibangun langsung di After Effects lewat bridge/MCP Higgsfield.
 license: MIT
 metadata:
   author: Motion Format
-  version: "1.4.0"
-  updated: "2026-11-08"
+  version: "1.5.0"
+  updated: "2026-11-25"
   based_on: "Bang Motion v1.19.0 oleh Bang Tutorial (https://github.com/bangtutorial/bang-motion), lisensi MIT"
 ---
 
 # Motion Format — motion graphic lewat chat, lengkap dengan suara
 
-**v1.4.0 · Motion Format · MIT.** Dibangun di atas **Bang Motion v1.19.0** karya
+**v1.5.0 · Motion Format · MIT.** Dibangun di atas **Bang Motion v1.19.0** karya
 [Bang Tutorial](https://youtube.com/bangtutorial) (MIT) — seluruh hukum anti-PPT, starter,
 dan resep teknis berasal dari sana. Tambahan Motion Format: alur untuk pemula lewat chat,
 suara ElevenLabs (VO per adegan + efek suara), modul suara di semua starter, dan render MP4
@@ -236,6 +236,7 @@ VO, yang berbeda hanya cara produksinya.
 | Intro / outro kanal | 5–12 dtk | nama kanal + tanda tangan gerak yang sama tiap episode | alur kerja di bawah |
 | Kinetic typography / lirik | 15–60 dtk | teks adalah subjek; split per kata/huruf; ritme mengikuti audio | `techniques.md` (split + blur berarah, pan 3D per kata) |
 | Title / lower third / bumper segmen | 2–6 dtk | elemen kecil di atas footage, masuk-keluar bersih, latar transparan | `techniques.md` |
+| Reels dokumenter (edukasi tegak) | 30–60 dtk, 9:16 | hook angka, judul + ornamen, callout bersumber, caption karaoke, atmosfer, penutup pertanyaan/loop; 4 kulit (arsip, sulam, sablon, sinema) | `references/reels-dokumenter.md` + `assets/starter-reels-dokumenter.html` |
 | Explainer / video penjelasan | 30–90 dtk | fakta bersumber, entitas tampil, sudut pandang berganti, lima gaya | `references/explainer.md` + starter per gaya |
 
 ## Explainer dan karakter: baca sebelum menentukan shot
@@ -640,7 +641,7 @@ Baca `references/grafis-rapi.md` sebelum menggambar peta, tokoh, ikon, atau graf
       pertanyaan (kecuali yang sudah disebut user) sebelum menulis kode;
       durasi mengikuti brief/VO; jumlah adegan mengikuti konteks, bukan durasi ÷ 6
 - [ ] Rasio default 16:9 / mengikuti layar; 9:16 hanya bila diminta. Tanpa
-      subtitle/caption kecuali diminta. Tata letak referensi (panel, subtitle)
+      subtitle/caption kecuali diminta — KECUALI Reels dokumenter: caption karaoke wajib. Tata letak referensi (panel, subtitle)
       tidak disalin — hanya prinsipnya
 - [ ] Explainer topik aksi/kecepatan: satu subjek hadir dari awal sampai
       akhir, latar terus mengalir, angka hidup di dalam dunia (subjek
@@ -704,6 +705,8 @@ dan buat layer dari belakang ke depan. Build 10 panggung ≈ 1 jam, 0 kredit.
 | `scripts/peta_data.py` | garis pantai 6 benua + pulau besar + 15 pulau utama Indonesia (titik bujur-lintang tulisan sendiri) dan batas benua bersama; tempat menambah/merapikan pulau |
 | `assets/tokoh-rapi.js` | KIT TOKOH: `TOKOH.buat/pose/ekspresi`, sendi kompatibel dengan starter panggung |
 | `assets/tokoh-galeri.html` | galeri semua varian & pose tokoh (alat kerja, dipotret dengan `thumbnail.py`) |
+| `references/reels-dokumenter.md` | REELS DOKUMENTER: anatomi 6 lapis, ritme 45 dtk, 4 kulit (arsip/sulam/sablon/sinema), komponen starter, aturan caption karaoke, tata letak 9:16, audio, checklist |
+| `assets/starter-reels-dokumenter.html` | starter 9:16: kamera + DOF, debu bercahaya, judul angka berjalan + ornamen, callout ikut kamera, digit acak, sapuan cahaya, iris bercincin, jahit, caption karaoke, pertanyaan bertumpuk; `?gaya=` untuk pratinjau kulit |
 | `references/tata-letak.md` | SETIAP video & thumbnail, sebelum rundown: lajur 16:9/9:16/1:1, jarak minimum, penjajaran, perlakuan gambar, tumpukan yang sah (`data-boleh-tumpuk`), peta tata letak, jebakan |
 | `scripts/cek_tata_letak.py` | VERIFIKASI tata letak tiap 0,25 dtk: teks menimpa teks, gambar menutupi teks, teks terpotong tepi, jarak < 24 px; `--gambar` memotret tiap masalah (butuh Python + Chrome, tanpa Node) |
 | `references/anti-ppt.md` | sebelum mendesain adegan |
