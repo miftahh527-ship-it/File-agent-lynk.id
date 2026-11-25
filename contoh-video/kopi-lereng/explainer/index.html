@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="id">
+<!-- Dibuat dengan skill Motion Format (berbasis Bang Motion oleh Bang Tutorial, MIT) — starter: starter-explainer-kartun.html -->
+<head>
+<meta charset="utf-8">
+<title>Kopi Lereng — Explainer Sangrai</title>
+<!--
+  EXPLAINER — gaya 1: kartun kolase (kertas krem + cutout ilustrasi flat bertepi kertas putih)
+  Topik   : Kenapa biji kopi berubah cokelat saat disangrai?  · 16:9 · ±61 dtk · VO + efek suara ElevenLabs (Serena)
+  Palet   : kertas krem #F3E7D3 · terakota #B5532E · hijau #2E5A3C · espresso #2A1A12 · crema #D9A55B (brand Kopi Lereng)
+  Font    : Bricolage Grotesque 800 (kalimat) + Caveat (catatan tangan) — dari starter gaya kolase
+  Kamera  : per adegan close-up aset pertama → meluncur ke aset kedua → zoom out → teks muncul SETELAH kamera diam;
+            antar adegan bergantian: push-through, tilt turun, meluncur ke samping, tilt naik, push-through.
+  Fakta   : biji mentah hijau · suhu sangrai ±200 °C · reaksi Maillard (gula + asam amino/protein, seperti roti panggang) ·
+            karamelisasi gula · ratusan senyawa aroma · first crack = uap air mendesak keluar · tingkat sangrai terang/sedang/gelap.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#0b0907;overflow:hidden}
+#stage{position:fixed;left:50%;top:50%;width:1920px;height:1080px;overflow:hidden;transform:translate(-50%,-50%)}
+#filters{position:fixed;width:0;height:0;opacity:0;pointer-events:none}
+#dbg{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:12px;align-items:center;padding:10px 16px;border-radius:14px;background:rgba(14,16,22,.9);color:#cfd5e3;font:13px system-ui;z-index:99}
+#dbg input{width:360px}#dbg span{font-variant-numeric:tabular-nums;min-width:6ch}
+#dbg button{background:#262A34;color:#fff;border:none;padding:6px 14px;border-radius:8px;font:inherit;cursor:pointer}
+.wd,.ch{display:inline-block;white-space:pre}
+
+:root{--paper:#F3E7D3;--ink:#2A1A12;--terra:#B5532E;--hijau:#2E5A3C;--crema:#D9A55B;--esp:#2A1A12}
+#stage{background:var(--paper);font-family:"Bricolage Grotesque",system-ui,sans-serif;color:var(--ink)}
+#world{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.paper{position:absolute;left:-1400px;top:-1400px;width:12600px;height:5200px;background:var(--paper)}
+.grain{position:absolute;left:-1400px;top:-1400px;width:12600px;height:5200px;opacity:.26;mix-blend-mode:multiply;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .2 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+.stain{position:absolute;left:-1400px;top:-1400px;width:12600px;height:5200px;pointer-events:none;
+  background:radial-gradient(900px 600px at 1500px 1600px,rgba(181,83,46,.10),transparent 70%),radial-gradient(900px 700px at 4600px 2100px,rgba(46,90,60,.10),transparent 70%),
+  radial-gradient(1000px 700px at 7400px 1500px,rgba(217,165,91,.16),transparent 70%),radial-gradient(1000px 700px at 9800px 1900px,rgba(181,83,46,.10),transparent 70%),
+  radial-gradient(900px 700px at 6400px 3000px,rgba(181,83,46,.08),transparent 70%)}
+.cut{position:absolute;opacity:0;will-change:transform,filter;filter:drop-shadow(0 26px 34px rgba(42,26,18,.26))}
+.cut .fl{width:100%;height:100%}
+.cut svg{display:block;width:100%;height:100%;overflow:visible}
+.edge{filter:url(#paperEdge)}
+.line{position:absolute;left:120px;width:1680px;text-align:center;font-weight:800;font-size:92px;line-height:1.02;letter-spacing:-.02em;color:var(--ink);opacity:0}
+.w{display:inline-block;white-space:nowrap;margin:0 .1em;opacity:0;will-change:transform,opacity}
+.hl{position:relative;display:inline-block;padding:.02em .18em;border-radius:.18em;color:#fff}
+.hl i{position:absolute;inset:0;border-radius:inherit;transform:scaleX(0);transform-origin:0 50%;z-index:-1;background:var(--terra)}
+.hl.hj i{background:var(--hijau)}
+.name{position:absolute;font-weight:700;font-size:36px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:0;white-space:nowrap}
+.hand{position:absolute;font-family:"Caveat",cursive;font-weight:700;font-size:62px;color:var(--hijau);opacity:0;white-space:nowrap}
+.stamp{position:absolute;font-weight:800;font-size:96px;color:var(--terra);border:10px solid var(--terra);border-radius:18px;padding:0 28px;line-height:1.15;opacity:0;transform:rotate(-12deg);white-space:nowrap}
+.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 62% at 50% 50%,transparent 55%,rgba(42,26,18,.2) 100%)}
+#fade{position:absolute;inset:0;background:var(--paper);opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<svg id="filters"><defs>
+  <!-- tepi kertas putih di sekeliling cutout -->
+  <filter id="paperEdge" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="8" result="d"/><feFlood flood-color="#FFFDF7"/><feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs></svg>
+<div id="stage">
+<div id="world">
+  <div class="paper" data-tata="latar"></div><div class="grain" data-tata="latar"></div><div class="stain" data-tata="latar"></div>
+
+  <!-- ===== ADEGAN 1 · biji mentah (asal 0,0) — lajur gambar y 140–680 · catatan 712 · kalimat 840 ===== -->
+  <div class="cut" id="a1bean" style="left:250px;top:150px;width:380px;height:480px"><div class="fl"><svg viewBox="0 0 380 480" class="edge">
+    <ellipse cx="190" cy="240" rx="150" ry="205" fill="#A9B98A"/><ellipse cx="128" cy="170" rx="38" ry="72" fill="#C3D0A6" opacity=".7"/>
+    <path d="M182 50 C262 160 110 300 200 430" stroke="#7E8F60" stroke-width="18" fill="none" stroke-linecap="round"/></svg></div></div>
+  <div id="a1grid" style="position:absolute;left:760px;top:190px;width:420px;height:420px" data-tata="gambar"></div>
+  <div class="cut" id="a1nut" style="left:1330px;top:250px;width:400px;height:316px"><div class="fl"><svg viewBox="0 0 380 300" class="edge">
+    <path d="M60 150 C60 70 150 50 190 100 C230 50 320 70 320 150 C320 230 230 250 190 200 C150 250 60 230 60 150Z" fill="#CFAE7E"/>
+    <path d="M100 120 L120 180 M140 105 L150 190 M235 105 L225 190 M270 118 L255 182 M300 135 L285 170" stroke="#B08F5F" stroke-width="8" stroke-linecap="round"/></svg></div></div>
+  <div class="hand" id="a1hand" style="left:1290px;top:640px">≈ kacang rebus</div>
+  <div class="line" id="a1line" style="top:840px">Warnanya <span class="hl hj"><i></i>hijau pucat</span></div>
+
+  <!-- ===== ADEGAN 2 · mesin sangrai (asal 2200,0) ===== -->
+  <div class="cut" id="a2drum" style="left:2580px;top:140px;width:560px;height:560px"><div class="fl"><svg viewBox="0 0 560 560" class="edge">
+    <path d="M200 40 L360 40 L330 120 L230 120 Z" fill="#B89B7E"/><rect x="250" y="116" width="60" height="44" fill="#8C6A4F"/>
+    <circle cx="280" cy="330" r="190" fill="#2A1A12"/><circle cx="280" cy="330" r="190" fill="none" stroke="#B5532E" stroke-width="22"/>
+    <circle cx="280" cy="330" r="92" fill="#D9CBB5"/><circle cx="280" cy="330" r="74" fill="#3a2418"/>
+    <g id="a2win"><ellipse cx="250" cy="310" rx="14" ry="19" fill="#9FB37F"/><ellipse cx="300" cy="320" rx="14" ry="19" fill="#9FB37F"/><ellipse cx="270" cy="356" rx="14" ry="19" fill="#9FB37F"/><ellipse cx="312" cy="352" rx="14" ry="19" fill="#9FB37F"/></g>
+    <rect x="110" y="500" width="36" height="56" rx="8" fill="#3a2418"/><rect x="414" y="500" width="36" height="56" rx="8" fill="#3a2418"/></svg></div></div>
+  <div id="a2flame" style="position:absolute;left:2760px;top:590px;width:200px;height:110px;transform-origin:50% 100%" data-tata="dekor"><svg viewBox="0 0 200 110" width="200" height="110">
+    <path d="M30 110 C20 70 50 60 45 20 C70 50 75 70 80 110 Z" fill="#D9A55B"/><path d="M80 110 C70 60 105 40 100 0 C130 45 130 75 125 110 Z" fill="#B5532E"/><path d="M125 110 C120 70 150 60 150 25 C175 60 175 80 170 110 Z" fill="#D9A55B"/></svg></div>
+  <div id="a2pour" style="position:absolute;left:2760px;top:-200px;width:200px;height:340px" data-tata="dekor"></div>
+  <div class="cut" id="a2therm" style="left:3380px;top:120px;width:170px;height:580px"><div class="fl"><svg viewBox="0 0 160 560" class="edge">
+    <rect x="58" y="20" width="44" height="450" rx="22" fill="#FFFDF7" stroke="#2A1A12" stroke-width="6"/>
+    <rect id="merc" x="70" y="440" width="20" height="50" rx="10" fill="#B5532E"/>
+    <circle cx="80" cy="490" r="54" fill="#B5532E" stroke="#2A1A12" stroke-width="6"/>
+    <path d="M102 100 H124 M102 170 H118 M102 240 H124 M102 310 H118 M102 380 H124" stroke="#2A1A12" stroke-width="5" stroke-linecap="round"/></svg></div></div>
+  <div class="name" id="a2name" style="left:2650px;top:735px">Mesin sangrai</div>
+  <div class="line" id="a2line" style="left:2320px;top:840px">Naik sampai <span class="hl"><i></i><span id="a2num">±25</span> °C</span></div>
+
+  <!-- ===== ADEGAN 3 · di dalam biji (asal 4400,0) ===== -->
+  <div class="cut" id="a3sec" style="left:4680px;top:120px;width:560px;height:580px"><div class="fl"><svg viewBox="0 0 560 580" class="edge">
+    <ellipse cx="280" cy="290" rx="240" ry="270" fill="#C9A36A"/><ellipse cx="280" cy="290" rx="198" ry="228" fill="#EBD7AE"/>
+    <g id="a3mix">
+      <g class="sug"><rect x="-26" y="-26" width="52" height="52" rx="10" fill="#FFFFFF" stroke="#D9CBB5" stroke-width="5"/></g>
+      <g class="sug"><rect x="-26" y="-26" width="52" height="52" rx="10" fill="#FFFFFF" stroke="#D9CBB5" stroke-width="5"/></g>
+      <g class="sug"><rect x="-26" y="-26" width="52" height="52" rx="10" fill="#FFFFFF" stroke="#D9CBB5" stroke-width="5"/></g>
+      <g class="pro"><circle cx="-36" r="15" fill="#3F7350"/><circle cx="-12" r="15" fill="#2E5A3C"/><circle cx="12" r="15" fill="#3F7350"/><circle cx="36" r="15" fill="#2E5A3C"/></g>
+      <g class="pro"><circle cx="-36" r="15" fill="#3F7350"/><circle cx="-12" r="15" fill="#2E5A3C"/><circle cx="12" r="15" fill="#3F7350"/><circle cx="36" r="15" fill="#2E5A3C"/></g>
+      <g class="pro"><circle cx="-36" r="15" fill="#3F7350"/><circle cx="-12" r="15" fill="#2E5A3C"/><circle cx="12" r="15" fill="#3F7350"/><circle cx="36" r="15" fill="#2E5A3C"/></g>
+      <g id="a3spk" fill="#B5532E"><path class="spk" d="M0 -30 L8 -8 L30 0 L8 8 L0 30 L-8 8 L-30 0 L-8 -8Z" transform="translate(200 200)"/><path class="spk" d="M0 -30 L8 -8 L30 0 L8 8 L0 30 L-8 8 L-30 0 L-8 -8Z" transform="translate(360 250)"/><path class="spk" d="M0 -30 L8 -8 L30 0 L8 8 L0 30 L-8 8 L-30 0 L-8 -8Z" transform="translate(250 390)"/></g>
+    </g></svg></div></div>
+  <div class="cut" id="a3toast" style="left:5640px;top:200px;width:420px;height:420px"><div class="fl"><svg viewBox="0 0 420 420" class="edge">
+    <path d="M60 400 L60 150 C20 120 30 30 120 40 C160 10 260 10 300 40 C390 30 400 120 360 150 L360 400 Z" fill="#9C5A2C"/>
+    <path d="M90 375 L90 160 C60 140 70 72 132 76 C170 50 250 50 288 76 C350 72 360 140 330 160 L330 375 Z" fill="#D9A55B"/>
+    <path d="M140 170 L280 310 M130 250 L220 340 M200 150 L300 250" stroke="#B5532E" stroke-width="14" stroke-linecap="round" opacity=".55"/></svg></div></div>
+  <div class="name" id="a3name" style="left:4760px;top:735px">Gula + protein</div>
+  <div class="hand" id="a3hand" style="left:5660px;top:668px">= roti panggang</div>
+  <div class="line" id="a3line" style="left:4520px;top:840px">Namanya reaksi <span class="hl"><i></i>Maillard</span></div>
+
+  <!-- ===== ADEGAN 4 · aroma + karamel (asal 4400,1300) ===== -->
+  <div id="a4mol" style="position:absolute;left:4880px;top:1420px;width:820px;height:300px" data-tata="dekor"></div>
+  <div class="cut" id="a4bean" style="left:5110px;top:1740px;width:270px;height:290px"><div class="fl"><svg viewBox="0 0 300 330" class="edge">
+    <ellipse cx="150" cy="165" rx="120" ry="150" fill="#7A4A2C"/><path d="M145 30 C200 110 95 200 155 300" stroke="#4A2C1B" stroke-width="14" fill="none" stroke-linecap="round"/></svg></div></div>
+  <svg id="a4aroma" style="position:absolute;left:4980px;top:1430px;width:560px;height:340px;overflow:visible" viewBox="0 0 560 340" data-tata="dekor">
+    <g fill="none" stroke="#2A1A12" stroke-width="10" stroke-linecap="round" opacity=".55">
+      <path d="M200 330 C160 260 250 220 210 140 C180 80 240 50 220 0"/><path d="M280 330 C320 250 230 210 280 130 C320 70 260 40 290 -10"/><path d="M360 330 C330 260 410 220 370 150 C340 90 400 60 380 10"/></g></svg>
+  <div class="cut" id="a4car" style="left:5760px;top:1430px;width:330px;height:380px"><div class="fl"><svg viewBox="0 0 330 380" class="edge">
+    <path d="M165 20 C200 110 290 170 290 250 C290 320 235 365 165 365 C95 365 40 320 40 250 C40 170 130 110 165 20Z" fill="#C4782E"/>
+    <path d="M110 230 C110 190 140 160 160 150" stroke="#EBB36B" stroke-width="18" fill="none" stroke-linecap="round"/></svg></div></div>
+  <div class="hand" id="a4hand" style="left:5730px;top:1940px">manis–pahit</div>
+  <div class="line" id="a4line" style="left:4520px;top:2140px">Ratusan senyawa <span class="hl"><i></i>aroma</span></div>
+
+  <!-- ===== ADEGAN 5 · first crack (asal 6600,1300) ===== -->
+  <div class="cut" id="a5bean" style="left:7300px;top:1430px;width:520px;height:580px"><div class="fl"><svg viewBox="0 0 520 580" class="edge">
+    <g id="a5L"><path d="M260 20 C120 20 30 150 30 290 C30 440 130 560 260 560 Z" fill="#8A552F"/></g>
+    <g id="a5R"><path d="M260 20 C400 20 490 150 490 290 C490 440 390 560 260 560 Z" fill="#7A4A2C"/></g>
+    <g id="a5drops" fill="#8FB8C9"><circle cx="200" cy="220" r="18"/><circle cx="320" cy="200" r="16"/><circle cx="170" cy="360" r="17"/><circle cx="350" cy="340" r="19"/><circle cx="260" cy="440" r="16"/><circle cx="260" cy="290" r="18"/></g>
+    <g id="a5arrows" stroke="#FFFDF7" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M220 240 L130 170 M130 170 L170 170 M130 170 L136 208"/><path d="M300 220 L390 150 M390 150 L352 152 M390 150 L386 188"/>
+      <path d="M190 380 L100 450 M100 450 L106 412 M100 450 L138 450"/><path d="M330 360 L420 430 M420 430 L382 430 M420 430 L414 392"/></g>
+    <path id="a5crack" d="M262 30 L236 120 L280 190 L232 280 L284 370 L240 460 L262 552" stroke="#F3E7D3" stroke-width="16" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg></div></div>
+  <div class="stamp" id="a5stamp" style="left:7960px;top:1520px">Tak!</div>
+  <div class="hand" id="a5hand" style="left:7940px;top:1940px">tanda mulai matang</div>
+  <div class="line" id="a5line" style="left:6720px;top:2140px">Inilah <span class="hl"><i></i>first crack</span></div>
+
+  <!-- ===== ADEGAN 6 · tingkat sangrai (asal 6600,0) ===== -->
+  <div class="cut" id="a6b1" style="left:6980px;top:170px;width:250px;height:310px"><div class="fl"><svg viewBox="0 0 250 310" class="edge"><ellipse class="rb" cx="125" cy="155" rx="105" ry="140" fill="#9FB37F"/><path d="M120 30 C165 100 85 180 130 285" stroke="#00000033" stroke-width="12" fill="none" stroke-linecap="round"/></svg></div></div>
+  <div class="cut" id="a6b2" style="left:7440px;top:170px;width:250px;height:310px"><div class="fl"><svg viewBox="0 0 250 310" class="edge"><ellipse class="rb" cx="125" cy="155" rx="105" ry="140" fill="#9FB37F"/><path d="M120 30 C165 100 85 180 130 285" stroke="#00000033" stroke-width="12" fill="none" stroke-linecap="round"/></svg></div></div>
+  <div class="cut" id="a6b3" style="left:7900px;top:170px;width:250px;height:310px"><div class="fl"><svg viewBox="0 0 250 310" class="edge"><ellipse class="rb" cx="125" cy="155" rx="105" ry="140" fill="#9FB37F"/><path d="M120 30 C165 100 85 180 130 285" stroke="#00000033" stroke-width="12" fill="none" stroke-linecap="round"/></svg></div></div>
+  <div id="a6bar" style="position:absolute;left:6980px;top:560px;width:1170px;height:26px;border-radius:13px;background:linear-gradient(90deg,#9FB37F,#C9A36A 35%,#8A552F 68%,#3E2416);transform-origin:0 50%" data-tata="gambar"></div>
+  <div class="hand" id="a6h1" style="left:7030px;top:610px">terang</div>
+  <div class="hand" id="a6h2" style="left:7490px;top:610px">sedang</div>
+  <div class="hand" id="a6h3" style="left:7960px;top:610px">gelap</div>
+  <div class="line" id="a6line" style="left:6720px;top:840px">Semuanya <span class="hl hj"><i></i>soal selera</span></div>
+
+  <!-- ===== ADEGAN 7 · cangkir (asal 8800,0) ===== -->
+  <div class="cut" id="a7cup" style="left:9300px;top:150px;width:640px;height:540px"><div class="fl"><svg viewBox="0 0 640 560" class="edge">
+    <ellipse cx="320" cy="500" rx="290" ry="50" fill="#EADBC2"/>
+    <path d="M470 220 C590 220 590 380 450 370" fill="none" stroke="#FFFBF4" stroke-width="34"/>
+    <path d="M140 170 L500 170 L470 430 Q464 470 424 470 L216 470 Q176 470 170 430 Z" fill="#FFFBF4"/>
+    <rect x="152" y="300" width="336" height="30" fill="#B5532E"/>
+    <ellipse cx="320" cy="170" rx="180" ry="36" fill="#3a2418"/><ellipse cx="320" cy="172" rx="150" ry="26" fill="#C98F4E"/></svg></div></div>
+  <svg id="a7steam" style="position:absolute;left:9480px;top:70px;width:280px;height:220px;overflow:visible" viewBox="0 0 280 220" data-tata="dekor">
+    <g fill="none" stroke="#2A1A12" stroke-width="10" stroke-linecap="round" opacity=".45"><path d="M70 210 C40 150 100 120 70 40"/><path d="M140 210 C170 150 110 110 145 20"/><path d="M210 210 C180 150 240 120 210 50"/></g></svg>
+  <div class="cut" id="a7stk" style="left:10000px;top:170px;width:240px;height:240px"><div class="fl"><svg viewBox="0 0 200 200" class="edge">
+    <circle cx="100" cy="100" r="96" fill="#F3E7D3"/><circle cx="100" cy="100" r="80" fill="none" stroke="#B5532E" stroke-width="10"/>
+    <path d="M40 128 L84 86 L102 100 L134 70 L160 128" fill="none" stroke="#2A1A12" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M134 62 C123 51 145 44 136 30" fill="none" stroke="#2A1A12" stroke-width="8" stroke-linecap="round"/></svg></div></div>
+  <div class="line" id="a7line" style="left:8920px;top:840px">Cokelat = <span class="hl"><i></i>jejak panas</span></div>
+</div>
+<div class="vig" data-tata="latar"></div>
+<div id="fade" data-tata="latar"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const W=1920,H=1080,DUR=61;
+/* T(n+1) = T(n) + durasi VO + 0,7 dtk · durasi: 8,54 · 5,80 · 9,09 · 8,36 · 7,13 · 10,53 · 5,09 */
+const T=[.6,9.84,16.34,26.13,35.19,43.02,54.25];
+window.AUDIO_PLAN={
+  vo:T.map((t,i)=>({at:t,src:`assets/audio/vo${i+1}.mp3`,vol:1})),
+  sfx:[{at:.35,src:'assets/audio/sfx-kertas.mp3',vol:.4},{at:7.25,src:'assets/audio/sfx-kertas.mp3',vol:.35},
+       {at:9.1,src:'assets/audio/sfx-whoosh.mp3',vol:.35},{at:15.2,src:'assets/audio/sfx-denting.mp3',vol:.4},
+       {at:15.6,src:'assets/audio/sfx-whoosh.mp3',vol:.35},{at:22.7,src:'assets/audio/sfx-kertas.mp3',vol:.35},
+       {at:25.2,src:'assets/audio/sfx-whoosh.mp3',vol:.3},{at:30.2,src:'assets/audio/sfx-biji.mp3',vol:.35},
+       {at:34.2,src:'assets/audio/sfx-whoosh.mp3',vol:.3},{at:38.5,src:'assets/audio/sfx-retak.mp3',vol:.55},
+       {at:42.2,src:'assets/audio/sfx-whoosh.mp3',vol:.3},{at:53.5,src:'assets/audio/sfx-whoosh.mp3',vol:.35},
+       {at:55.6,src:'assets/audio/sfx-kertas.mp3',vol:.4},{at:58.4,src:'assets/audio/sfx-denting.mp3',vol:.45}],
+  music:null};
+/* ===== INTI Motion Format (dari starter skill motion-format; dipasang ke tiap video oleh _src/build.py) =====
+   Butuh: W, H, DUR, window.AUDIO_PLAN didefinisikan sebelum blok ini, GSAP sudah dimuat.
+   Menyediakan: $, $$, tl, makeBlur/blurTween, VERT/HORZ, splitChars, splitWords, everyFrame(fn), finish().
+   Hukum #2: semua visual adalah fungsi dari tl.time() — tidak ada Date.now()/Math.random(). */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const Q=new URLSearchParams(location.search);
+const stageEl=$('#stage');
+const fit=()=>{const s=Math.min(innerWidth/W,innerHeight/H);stageEl.style.transform=`translate(-50%,-50%) scale(${s})`;};
+addEventListener('resize',fit);fit();
+
+/* motion blur berarah: feGaussianBlur dengan stdDeviation x/y terpisah */
+const defs=$('#filters defs');let fc=0;
+function makeBlur(){const id='mb'+(fc++),NS='http://www.w3.org/2000/svg';const f=document.createElementNS(NS,'filter');f.id=id;
+  f.setAttribute('x','-70%');f.setAttribute('y','-70%');f.setAttribute('width','240%');f.setAttribute('height','240%');
+  const g=document.createElementNS(NS,'feGaussianBlur');g.setAttribute('stdDeviation','0 0');f.appendChild(g);defs.appendChild(f);
+  return {url:`url(#${id})`,node:g};}
+function blurTween(tl,targets,at,from,to,dur,{ease='power3.out',ax=1,ay=.08}={}){const b=makeBlur(),o={v:from};
+  tl.set(targets,{filter:b.url},at);
+  tl.to(o,{v:to,duration:dur,ease,onUpdate(){b.node.setAttribute('stdDeviation',`${(o.v*ax).toFixed(2)} ${(o.v*ay).toFixed(2)}`);}},at);
+  tl.set(targets,{filter:'none'},at+dur);}
+const VERT={ax:.1,ay:1},HORZ={ax:1,ay:.1};
+
+/* pecah teks per huruf (.ch) dan per kata (.wd) */
+function splitChars(el){const words=(el.textContent||'').trim().split(/\s+/);el.textContent='';const out=[];
+  words.forEach((w,i)=>{const wr=document.createElement('span');wr.className='wd';
+    for(const c of w){const s=document.createElement('span');s.className='ch';s.textContent=c;wr.appendChild(s);out.push(s);}
+    el.appendChild(wr);if(i<words.length-1)el.appendChild(document.createTextNode(' '));});
+  return out;}
+function splitWords(el){const words=(el.textContent||'').trim().split(/\s+/);el.textContent='';
+  return words.map((w,i)=>{const s=document.createElement('span');s.className='wd';s.textContent=w;el.appendChild(s);
+    if(i<words.length-1)el.appendChild(document.createTextNode(' '));return s;});}
+
+const tl=gsap.timeline({paused:true});
+/* gerak per frame yang deterministik (ayunan, partikel, putaran): fungsi murni dari t */
+const FRAME=[];const everyFrame=fn=>FRAME.push(fn);const runFrame=t=>{for(const f of FRAME)f(t);};
+gsap.ticker.add(()=>runFrame(tl.time()));
+/* angka seed tetap (pengganti Math.random) */
+const seeded=i=>{const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x);};
+
+function finish(){
+  tl.set({},{},DUR);
+  const start=()=>tl.play(0);
+  tl.eventCallback('onComplete',start);                                   // default: loop
+  const seek=t=>{tl.pause();tl.time(t,false);if(gsap.ticker.tick)gsap.ticker.tick();runFrame(t);};
+  window.OPENER={W,H,DURATION:DUR,tl,seek,ready:false,seekFrame:t=>{seek(t);return Promise.resolve();}};
+  addEventListener('keydown',e=>{if(/^[rR]$/.test(e.key))start();if(e.code==='Space'){e.preventDefault();tl.paused()?tl.play():tl.pause();}});
+  if(Q.has('debug')){const d=document.createElement('div');d.id='dbg';
+    d.innerHTML='<button id="dPlay">Pause</button><input id="dScrub" type="range" min="0" max="1000" value="0"><span id="dClock">0.00s</span>';
+    document.body.appendChild(d);const sc=$('#dScrub'),ck=$('#dClock');let drag=false;
+    gsap.ticker.add(()=>{if(!drag)sc.value=String(tl.time()/DUR*1000);ck.textContent=tl.time().toFixed(2)+'s';$('#dPlay').textContent=tl.paused()?'Play':'Pause';});
+    sc.addEventListener('pointerdown',()=>{drag=true;tl.pause();});addEventListener('pointerup',()=>drag=false);
+    sc.addEventListener('input',()=>{tl.pause();tl.time(sc.value/1000*DUR);runFrame(tl.time());});$('#dPlay').onclick=()=>tl.paused()?tl.play():tl.pause();}
+  /* SUARA Motion Format — VO + efek suara terikat timeline (ikut scrub, pause, loop; dibaca render_mp4.py) */
+  const P=window.AUDIO_PLAN||{vo:[],sfx:[],music:null};let on=false,last=0;const noop=()=>{};
+  const mk=(s,music)=>{const a=new Audio(s.src);a.preload='auto';a.volume=s.vol==null?(music?.15:1):s.vol;return {at:s.at||0,el:a,music:!!music};};
+  const LONG=(P.vo||[]).map(s=>mk(s)).concat(P.music?[mk(P.music,true)]:[]),SFX=(P.sfx||[]).map(s=>mk(s)),ALL=LONG.concat(SFX);
+  const unlock=()=>{on=true;};addEventListener('pointerdown',unlock,{once:true});addEventListener('keydown',unlock,{once:true});
+  gsap.ticker.add(()=>{const t=tl.time(),playing=!tl.paused();if(!on){last=t;return;}
+    for(const c of LONG){const d=c.el.duration,rel=t-c.at,inside=rel>=0&&(c.music||!d||!isFinite(d)||rel<d);
+      if(playing&&inside){const want=c.music&&d&&isFinite(d)?rel%d:rel;if(Math.abs(c.el.currentTime-want)>.25)c.el.currentTime=want;if(c.el.paused)c.el.play().catch(noop);}
+      else if(!c.el.paused)c.el.pause();}
+    if(playing){if(t<last)last=-.001;if(t-last<.5)for(const s of SFX)if(s.at>last&&s.at<=t){s.el.currentTime=0;s.el.play().catch(noop);}}
+    last=t;});
+  const probe=()=>{const a=ALL[0].el,v=a.volume;a.volume=0;return a.play().then(()=>{a.pause();a.currentTime=0;a.volume=v;on=true;},e=>{a.volume=v;throw e;});};
+  document.fonts.ready.then(()=>{seek(0);window.OPENER.ready=true;if(Q.has('clean'))return;
+    if(!ALL.length){start();return;}
+    probe().then(start).catch(()=>{tl.pause(0);const go=()=>{removeEventListener('pointerdown',go);removeEventListener('keydown',go);start();};
+      addEventListener('pointerdown',go);addEventListener('keydown',go);});});
+}
+
+const NS='http://www.w3.org/2000/svg';
+/* ---------- aset berulang (grid biji, molekul, biji tuang) ---------- */
+const beanSVG=(fill,crease)=>`<svg viewBox="0 0 80 100" width="80" height="100" style="overflow:visible"><ellipse cx="40" cy="50" rx="30" ry="42" fill="${fill}"/><path d="M38 12 C56 36 22 62 42 90" stroke="${crease}" stroke-width="6" fill="none" stroke-linecap="round"/></svg>`;
+{const g=$('#a1grid');for(let i=0;i<12;i++){const d=document.createElement('div');d.className='gb';d.style.cssText=`position:absolute;left:${(i%4)*105+12}px;top:${Math.floor(i/4)*135+8}px;transform:rotate(${(seeded(i)-.5)*50}deg);opacity:0;filter:drop-shadow(0 8px 10px rgba(42,26,18,.22))`;d.innerHTML=beanSVG('#A9B98A','#7E8F60');g.appendChild(d);}}
+{const g=$('#a2pour');for(let i=0;i<7;i++){const d=document.createElement('div');d.className='pb';d.style.cssText=`position:absolute;left:${60+(seeded(i+5)-.5)*60}px;top:0;transform:scale(.55)`;d.innerHTML=beanSVG('#A9B98A','#7E8F60');g.appendChild(d);}}
+{const g=$('#a4mol');for(let i=0;i<30;i++){const d=document.createElement('div');const c=['#B5532E','#2E5A3C','#D9A55B'][i%3];
+  d.className='mol';d.style.cssText=`position:absolute;left:${seeded(i+20)*760}px;top:${seeded(i+60)*250}px;opacity:0`;
+  d.innerHTML=`<svg viewBox="-24 -24 48 48" width="44" height="44"><path d="M0 -20 L17 -10 L17 10 L0 20 L-17 10 L-17 -10Z" fill="none" stroke="${c}" stroke-width="5"/><circle r="5" fill="${c}"/></svg>`;g.appendChild(d);}}
+
+/* ---------- pecah kalimat per kata (sorotan tetap satu span) ---------- */
+$$('.line').forEach(el=>{const out=[];el.childNodes.forEach(n=>{if(n.nodeType===3){n.textContent.split(/\s+/).filter(Boolean).forEach(w=>{const s=document.createElement('span');s.className='w';s.textContent=w;out.push(s);});}
+  else{const s=document.createElement('span');s.className='w';s.appendChild(n.cloneNode(true));out.push(s);}});el.textContent='';out.forEach(s=>el.appendChild(s));});
+
+/* ---------- perkakas gaya kolase (dari starter) ---------- */
+const words=el=>$$('.w',el);
+const say=(sel,at,{dur=.55,st=.08}={})=>{const el=$(sel),ws=words(el);tl.set(el,{opacity:1},at);
+  tl.fromTo(ws,{opacity:0,yPercent:60,scaleY:1.25},{opacity:1,yPercent:0,scaleY:1,duration:dur,ease:'power4.out',stagger:st,immediateRender:false},at);
+  blurTween(tl,el,at,22,0,dur+st*ws.length,VERT);
+  $$('.hl i',el).forEach((h,i)=>tl.fromTo(h,{scaleX:0},{scaleX:1,duration:.4,ease:'power3.out',immediateRender:false},at+st*ws.length+.15+i*.2));};
+const unsay=(sel,at,{dur=.3}={})=>{const el=$(sel),ws=words(el);tl.to(ws,{opacity:0,yPercent:-50,duration:dur,ease:'power2.in',stagger:.02},at);
+  blurTween(tl,el,at,0,30,dur+.1,{ease:'power2.in',...VERT});tl.set(el,{opacity:0},at+dur+.15);};
+const fly=(sel,at,{from={x:0,y:500,rotate:10,scale:.9},dur=.9,ease='power4.out'}={})=>{const el=$(sel);
+  tl.fromTo(el,{opacity:0,...from},{opacity:1,x:0,y:0,rotate:0,scale:1,duration:dur,ease,immediateRender:false},at);
+  blurTween(tl,el,at,34,0,dur*.7,Math.abs(from.x||0)>Math.abs(from.y||0)?HORZ:VERT);};
+const flyOut=(sel,at,{to={x:0,y:-700,rotate:-8,scale:1.1},dur=.45}={})=>{const el=$(sel);tl.to(el,{opacity:0,...to,duration:dur,ease:'power2.in'},at);
+  blurTween(tl,el,at,0,50,dur+.1,{ease:'power2.in',...VERT});};
+const label=(sel,at)=>tl.fromTo($(sel),{opacity:0,y:14},{opacity:1,y:0,duration:.45,ease:'power3.out',immediateRender:false},at);
+const unlabel=(sel,at)=>tl.to($(sel),{opacity:0,duration:.25},at);
+const slam=(sel,at)=>{tl.fromTo(sel,{opacity:0,scale:2.4,rotate:-24},{opacity:1,scale:1,rotate:-12,duration:.32,ease:'power4.in',immediateRender:false},at);
+  tl.to(sel,{scale:1.06,duration:.1,yoyo:true,repeat:1},at+.32);};
+const prep=el=>{const L=el.getTotalLength();el.style.strokeDasharray=L;el.style.strokeDashoffset=L;return L;};
+const drawPath=(el,at,dur,ease='power2.inOut')=>{prep(el);tl.to(el,{strokeDashoffset:0,duration:dur,ease},at);};
+/* keluarkan semua isi adegan dengan cepat (keluar asimetris: 0,35–0,5 dtk) */
+const clearScene=(at,cuts,txt)=>{cuts.forEach((c,i)=>flyOut(c,at+i*.05,{to:{x:0,y:-620,rotate:-6,scale:1.08}}));txt.forEach(s=>$(s).classList.contains('line')?unsay(s,at):unlabel(s,at));};
+
+/* ---------- kamera (rig #world): titik fokus dunia + zoom ---------- */
+const rig=$('#world'),C={x:960,y:540,z:1};
+const applyCam=()=>{rig.style.transform=`translate(${960-C.x*C.z}px,${540-C.y*C.z}px) scale(${C.z})`;};
+const look=(at,x,y,z,dur=1.4,ease='sine.inOut')=>tl.to(C,{x,y,z,duration:dur,ease,onUpdate:applyCam},at);
+const home=(at,x,y,dur=1.0)=>look(at,x,y,1,dur,'power2.inOut');
+const into=(cutAt,x,y,z)=>tl.to(C,{x,y,z,duration:.9,ease:'power2.in',onUpdate:applyCam},cutAt-.9);
+const settle=(cutAt,x,y,z)=>{tl.set(C,{x,y,z,onUpdate:applyCam},cutAt);tl.to(C,{z:z*.93,duration:1.1,ease:'power3.out',onUpdate:applyCam},cutAt);};
+const breath=(a,b,z)=>tl.to(C,{z,duration:b-a,ease:'sine.inOut',onUpdate:applyCam},a);
+
+/* ================= ADEGAN 1 — biji mentah (VO1 0,6–9,1) ================= */
+tl.set(C,{x:440,y:390,z:1.5,onUpdate:applyCam},0);
+tl.set(['#a6bar','#a3mix .sug','#a3mix .pro','#a3spk .spk','#a2flame'],{opacity:0},0);   // keadaan awal: tersembunyi sampai gilirannya
+fly('#a1bean',.3);
+look(1.5,970,410,1.32,1.3);                                        // meluncur ke tumpukan biji (skala)
+tl.fromTo('#a1grid .gb',{opacity:0,scale:.3},{opacity:1,scale:1,duration:.5,ease:'back.out(2)',stagger:.06,immediateRender:false},1.7);
+home(2.9,960,540);                                                 // zoom out selesai 3,9 → baru teks
+say('#a1line',4.0);
+fly('#a1nut',7.2,{from:{x:600,y:0,rotate:14,scale:.9}});           // "lebih mirip kacang rebus"
+label('#a1hand',7.75);
+breath(3.9,8.9,1.04);
+clearScene(8.9,['#a1bean','#a1grid','#a1nut'],['#a1line','#a1hand']);
+into(9.84,560,360,1.9);                                            // push-through ke adegan 2
+
+/* ================= ADEGAN 2 — mesin sangrai (VO2 9,84–15,6) ================= */
+settle(9.84,2860,400,1.55);
+fly('#a2drum',9.84,{from:{x:0,y:420,rotate:6,scale:.92},dur:.8});
+tl.fromTo('#a2flame',{opacity:0,scaleY:.2},{opacity:1,scaleY:1,duration:.6,ease:'back.out(2)',immediateRender:false},10.5);
+look(11.5,3465,400,1.35,1.3);                                      // "suhunya naik pelan" → termometer
+fly('#a2therm',11.6,{from:{x:500,y:0,rotate:-10,scale:.9},dur:.8});
+tl.fromTo('#merc',{attr:{y:440,height:50}},{attr:{y:60,height:430},duration:3.3,ease:'sine.inOut',immediateRender:false},12.0);
+home(12.85,3160,540);
+{const o={v:25};tl.fromTo(o,{v:25},{v:200,duration:1.4,ease:'power2.out',immediateRender:false,onUpdate(){$('#a2num').textContent='±'+Math.round(o.v);}},13.9);}
+say('#a2line',13.9);label('#a2name',14.4);
+breath(13.85,15.5,1.035);
+clearScene(15.45,['#a2drum','#a2therm','#a2flame'],['#a2line','#a2name']);
+into(16.34,2860,430,2.3);
+
+/* ================= ADEGAN 3 — di dalam biji (VO3 16,34–25,4) ================= */
+settle(16.34,4960,410,1.5);
+fly('#a3sec',16.34,{from:{x:0,y:0,rotate:0,scale:.55},dur:.8,ease:'expo.out'});
+tl.fromTo('#a3mix .sug,#a3mix .pro',{opacity:0},{opacity:1,duration:.3,stagger:.1,immediateRender:false},17.6);
+tl.fromTo('#a3spk .spk',{opacity:0},{opacity:1,duration:.15,stagger:.25,immediateRender:false},18.6);
+look(18.2,5160,450,1.22,1.4);
+home(19.4,5360,540);                                                // diam 20,4 → teks
+label('#a3name',20.45);say('#a3line',20.6);
+fly('#a3toast',22.65,{from:{x:620,y:-80,rotate:18,scale:.9}});
+label('#a3hand',23.3);
+breath(20.4,24.9,1.035);
+clearScene(24.85,['#a3sec','#a3toast'],['#a3line','#a3name','#a3hand']);
+
+/* ================= ADEGAN 4 — aroma + karamel (VO4 26,13–34,5) — tilt turun ================= */
+look(25.2,5250,1820,1.32,1.0,'power2.inOut');
+fly('#a4bean',25.45,{from:{x:0,y:400,rotate:8,scale:.9},dur:.8});
+$$('#a4aroma path').forEach((p,i)=>{drawPath(p,26.4+i*.2,1.1,'sine.out');});
+tl.fromTo('#a4mol .mol',{opacity:0,scale:.2},{opacity:1,scale:1,duration:.4,ease:'back.out(2.4)',stagger:{each:.035,from:'center'},immediateRender:false},28.0);
+home(28.4,5360,1840);
+say('#a4line',29.45);
+fly('#a4car',30.16,{from:{x:0,y:-500,rotate:-10,scale:.9},dur:.75,ease:'bounce.out'});
+label('#a4hand',32.45);
+breath(29.4,34.0,1.035);
+clearScene(33.95,['#a4bean','#a4car','#a4mol'],['#a4line','#a4hand']);
+tl.to('#a4aroma',{opacity:0,duration:.3},33.95);
+
+/* ================= ADEGAN 5 — first crack (VO5 35,19–42,3) — meluncur ke kanan ================= */
+look(34.3,7560,1720,1.4,1.1,'power2.inOut');
+fly('#a5bean',34.9,{from:{x:500,y:0,rotate:12,scale:.9},dur:.75});
+tl.set('#a5arrows path',{opacity:0},0);tl.set('#a5crack',{opacity:0},0);
+tl.to('#a5drops circle',{scale:1.5,opacity:0,duration:.6,stagger:.18,transformOrigin:'50% 50%'},35.6);
+tl.fromTo('#a5arrows path',{opacity:0,scale:.4},{opacity:1,scale:1,duration:.4,ease:'back.out(2)',stagger:.2,transformOrigin:'50% 50%',immediateRender:false},36.1);
+home(37.3,7560,1840);
+tl.set('#a5crack',{opacity:1},38.5);drawPath($('#a5crack'),38.5,.18,'power4.out');
+tl.to('#a5L',{x:-18,rotation:-4,duration:.12,ease:'power3.out',svgOrigin:'260 560'},38.55);tl.to('#a5R',{x:18,rotation:4,duration:.12,ease:'power3.out',svgOrigin:'260 560'},38.55);
+slam('#a5stamp',38.4);
+say('#a5line',39.3);label('#a5hand',40.65);
+breath(38.3,42.0,1.035);
+clearScene(41.95,['#a5bean'],['#a5line','#a5hand']);tl.to('#a5stamp',{opacity:0,y:-200,duration:.35,ease:'power2.in'},41.95);
+
+/* ================= ADEGAN 6 — tingkat sangrai (VO6 43,02–53,55) — tilt naik ================= */
+look(42.2,7560,470,1.18,1.2,'power2.inOut');
+fly('#a6b1',42.8,{from:{x:0,y:500,rotate:8,scale:.9}});fly('#a6b2',42.95,{from:{x:0,y:500,rotate:-6,scale:.9}});fly('#a6b3',43.1,{from:{x:0,y:500,rotate:10,scale:.9}});
+tl.fromTo('#a6bar',{opacity:0,scaleX:0},{opacity:1,scaleX:1,duration:2.8,ease:'sine.inOut',immediateRender:false},43.4);
+home(46.0,7560,540);
+label('#a6h1',47.18);label('#a6h2',48.24);label('#a6h3',49.5);
+say('#a6line',51.15);
+breath(47.0,53.0,1.035);
+clearScene(53.0,['#a6b1','#a6b2','#a6b3','#a6bar'],['#a6line','#a6h1','#a6h2','#a6h3']);
+into(54.25,8020,330,2.0);
+
+/* ================= ADEGAN 7 — cangkir (VO7 54,25–59,3) ================= */
+settle(54.25,9620,400,1.45);
+fly('#a7cup',54.25,{from:{x:0,y:0,rotate:0,scale:.6},dur:.8,ease:'expo.out'});
+$$('#a7steam path').forEach((p,i)=>drawPath(p,54.9+i*.2,1.2,'sine.out'));
+tl.fromTo('#a7stk',{opacity:0,scale:2.2,rotate:-30},{opacity:1,scale:1,rotate:8,duration:.35,ease:'power4.in',immediateRender:false},55.6);
+home(56.1,9760,540);
+say('#a7line',57.25);
+breath(57.1,61,1.04);
+tl.to('#fade',{opacity:1,duration:.5,ease:'power2.in'},60.45);
+
+/* ---------- gerak per frame (fungsi murni dari t) ---------- */
+const ROAST=['#9FB37F','#C9A36A','#8A552F','#3E2416'];
+const hx=s=>[1,3,5].map(i=>parseInt(s.slice(i,i+2),16));
+const mix=(a,b,k)=>'#'+hx(a).map((v,i)=>Math.round(v+(hx(b)[i]-v)*k).toString(16).padStart(2,'0')).join('');
+const roast=p=>{p=Math.max(0,Math.min(1,p))*3;const i=Math.min(2,Math.floor(p));return mix(ROAST[i],ROAST[i+1],p-i);};
+const FL=$$('.cut .fl'),SUG=$$('#a3mix .sug'),PRO=$$('#a3mix .pro'),PB=$$('#a2pour .pb'),RB=$$('#a6b1 .rb,#a6b2 .rb,#a6b3 .rb');
+everyFrame(t=>{
+  /* aset terasa hidup: ayunan ±24 px, putaran ±1,5°, fase berbeda per objek */
+  FL.forEach((f,i)=>{const ph=i*1.37,sp=1/(1.4+(i%4)*.12);f.style.transform=`translate(${Math.sin(t*sp*1.3+ph)*10}px,${Math.sin(t*sp*Math.PI+ph)*24}px) rotate(${Math.sin(t*sp*2+ph)*1.5}deg)`;});
+  /* api di bawah drum berkedip */
+  $('#a2flame').style.transform=`scaleY(${1+Math.sin(t*13)*.08+Math.sin(t*7.3)*.06})`;
+  /* biji hijau dituang ke corong drum (10,0–11,6) */
+  PB.forEach((b,i)=>{const ph=(t-10.0)*1.4-i*.14;b.style.opacity=(ph>0&&ph<1&&t<11.7)?1:0;b.style.top=(Math.max(0,Math.min(1,ph))*330)+'px';});
+  /* gula dan protein bergerak di dalam biji, saling menabrak */
+  SUG.forEach((g,i)=>g.setAttribute('transform',`translate(${280+Math.sin(t*1.9+i*2.1)*110} ${290+Math.cos(t*1.5+i*1.7)*140}) rotate(${t*40+i*30})`));
+  PRO.forEach((g,i)=>g.setAttribute('transform',`translate(${280+Math.cos(t*1.6+i*2.4)*100} ${290+Math.sin(t*1.8+i*1.3)*150}) rotate(${Math.sin(t+i)*40})`));
+  /* biji adegan 6: warnanya menyangrai bertahap (kiri berhenti di terang, tengah di sedang, kanan di gelap) */
+  const pr=(t-43.3)/3.0;RB.forEach((e,i)=>e.setAttribute('fill',roast(Math.min(pr,[1/3,2/3,1][i]))));
+});
+finish();
+</script>
+</body>
+</html>

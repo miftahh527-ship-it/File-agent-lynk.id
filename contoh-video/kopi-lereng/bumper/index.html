@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="id">
+<!-- Dibuat dengan skill Motion Format (berbasis Bang Motion oleh Bang Tutorial, MIT) -->
+<head>
+<meta charset="utf-8">
+<title>Kopi Lereng — Bumper</title>
+<!--
+  STYLE BRIEF — Bumper / logo sting 6 dtk
+  Tema           : Kopi Lereng · hangat, mewah, tenang
+  Arah gaya      : Mewah gelap (espresso + kilau crema)
+  Palet          : latar espresso #2A1A12 (brand) · utama crema #D9A55B (turunan: busa espresso) · aksen terakota #B5532E (brand)
+  Font           : Fraunces 400 berspasi lebar (wordmark brand)
+  Tanda tangan   : uap naik lalu menggambar garis lereng, yang ternyata logo
+  Gerak latar    : sapuan cahaya SEKALI (§7c #5) + grain hidup + kamera mundur pelan
+  Permukaan      : glow horizon hangat (§7d a) + grain
+  Momen istimewa : garis uap menjadi garis lereng di dalam cincin cangkir
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#0b0907;overflow:hidden}
+#stage{position:fixed;left:50%;top:50%;width:1920px;height:1080px;overflow:hidden;transform:translate(-50%,-50%)}
+#filters{position:fixed;width:0;height:0;opacity:0;pointer-events:none}
+#dbg{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:12px;align-items:center;padding:10px 16px;border-radius:14px;background:rgba(14,16,22,.9);color:#cfd5e3;font:13px system-ui;z-index:99}
+#dbg input{width:360px}#dbg span{font-variant-numeric:tabular-nums;min-width:6ch}
+#dbg button{background:#262A34;color:#fff;border:none;padding:6px 14px;border-radius:8px;font:inherit;cursor:pointer}
+.wd,.ch{display:inline-block;white-space:pre}
+
+:root{--esp:#2A1A12;--crema:#D9A55B;--terra:#B5532E;--krem:#F3E7D3}
+#stage{background:var(--esp);font-family:"Fraunces",serif;color:var(--krem)}
+#bg{position:absolute;inset:0;background:
+  radial-gradient(62% 46% at 50% 112%,color-mix(in srgb,var(--terra) 55%,transparent),color-mix(in srgb,var(--crema) 14%,transparent) 46%,transparent 72%),
+  radial-gradient(40% 30% at 50% 40%,rgba(217,165,91,.10),transparent 70%),
+  linear-gradient(180deg,#120a06 0%,var(--esp) 58%,#3a2216 100%)}
+#grain{position:absolute;inset:-60px;opacity:.16;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E")}
+#sweep{position:absolute;inset:-200px;pointer-events:none;opacity:0;mix-blend-mode:screen;
+  background:linear-gradient(105deg,transparent 38%,rgba(217,165,91,.26) 47%,rgba(255,236,200,.38) 50%,rgba(217,165,91,.22) 53%,transparent 62%)}
+#world{position:absolute;inset:0;transform-origin:50% 45%;will-change:transform}
+#steam{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible}
+#steam path{fill:none;stroke:var(--crema);stroke-width:6;stroke-linecap:round;opacity:0;filter:drop-shadow(0 0 14px rgba(217,165,91,.55))}
+#logo{position:absolute;left:760px;top:190px;width:400px;height:400px;overflow:visible}
+#logo .ln{opacity:0;fill:none;stroke:var(--crema);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 10px rgba(217,165,91,.45))}
+#logo .ring{stroke:var(--terra);stroke-width:8}
+#word{position:absolute;left:0;right:0;top:700px;text-align:center;font-weight:400;font-size:92px;letter-spacing:0;
+  font-variation-settings:"opsz" 144;color:var(--krem);text-shadow:0 4px 24px rgba(0,0,0,.5);padding-left:.2em}
+#word .ch{opacity:0;margin-right:.2em}#word .wd{margin-right:.35em}
+#fade{position:absolute;inset:0;background:#0b0705;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<svg id="filters"><defs></defs></svg>
+<div id="stage">
+  <div id="bg" data-tata="latar"></div>
+  <div id="sweep" data-tata="latar"></div>
+  <div id="world">
+    <svg id="steam" viewBox="0 0 1920 1080" data-tata="dekor">
+      <path id="s1" d="M880 1120 C850 1000 930 930 890 840 C860 770 900 700 880 640"/>
+      <path id="s2" d="M960 1120 C995 1000 905 905 945 790 C975 700 880 560 828 454"/>
+      <path id="s3" d="M1040 1120 C1070 1000 990 930 1030 850 C1060 780 1020 710 1040 650"/>
+    </svg>
+    <svg id="logo" viewBox="0 0 200 200" data-tata="gambar">
+      <circle class="ln ring" id="ring" cx="100" cy="100" r="86" transform="rotate(-90 100 100)"/>
+      <path class="ln" id="slope" d="M34 132 L84 84 L104 100 L138 66 L166 132"/>
+      <path class="ln" id="curl" d="M138 58 C126 46 150 38 140 22"/>
+    </svg>
+    <div id="word">Kopi Lereng</div>
+  </div>
+  <div id="grain" data-tata="latar"></div>
+  <div id="fade" data-tata="latar"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const W=1920,H=1080,DUR=6.5;
+window.AUDIO_PLAN={
+  vo:[{at:3.25,src:'assets/audio/vo1.mp3',vol:1}],
+  sfx:[{at:.15,src:'assets/audio/sfx-tuang.mp3',vol:.3},{at:2.95,src:'assets/audio/sfx-denting.mp3',vol:.5}],
+  music:null};
+/* ===== INTI Motion Format (dari starter skill motion-format; dipasang ke tiap video oleh _src/build.py) =====
+   Butuh: W, H, DUR, window.AUDIO_PLAN didefinisikan sebelum blok ini, GSAP sudah dimuat.
+   Menyediakan: $, $$, tl, makeBlur/blurTween, VERT/HORZ, splitChars, splitWords, everyFrame(fn), finish().
+   Hukum #2: semua visual adalah fungsi dari tl.time() — tidak ada Date.now()/Math.random(). */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const Q=new URLSearchParams(location.search);
+const stageEl=$('#stage');
+const fit=()=>{const s=Math.min(innerWidth/W,innerHeight/H);stageEl.style.transform=`translate(-50%,-50%) scale(${s})`;};
+addEventListener('resize',fit);fit();
+
+/* motion blur berarah: feGaussianBlur dengan stdDeviation x/y terpisah */
+const defs=$('#filters defs');let fc=0;
+function makeBlur(){const id='mb'+(fc++),NS='http://www.w3.org/2000/svg';const f=document.createElementNS(NS,'filter');f.id=id;
+  f.setAttribute('x','-70%');f.setAttribute('y','-70%');f.setAttribute('width','240%');f.setAttribute('height','240%');
+  const g=document.createElementNS(NS,'feGaussianBlur');g.setAttribute('stdDeviation','0 0');f.appendChild(g);defs.appendChild(f);
+  return {url:`url(#${id})`,node:g};}
+function blurTween(tl,targets,at,from,to,dur,{ease='power3.out',ax=1,ay=.08}={}){const b=makeBlur(),o={v:from};
+  tl.set(targets,{filter:b.url},at);
+  tl.to(o,{v:to,duration:dur,ease,onUpdate(){b.node.setAttribute('stdDeviation',`${(o.v*ax).toFixed(2)} ${(o.v*ay).toFixed(2)}`);}},at);
+  tl.set(targets,{filter:'none'},at+dur);}
+const VERT={ax:.1,ay:1},HORZ={ax:1,ay:.1};
+
+/* pecah teks per huruf (.ch) dan per kata (.wd) */
+function splitChars(el){const words=(el.textContent||'').trim().split(/\s+/);el.textContent='';const out=[];
+  words.forEach((w,i)=>{const wr=document.createElement('span');wr.className='wd';
+    for(const c of w){const s=document.createElement('span');s.className='ch';s.textContent=c;wr.appendChild(s);out.push(s);}
+    el.appendChild(wr);if(i<words.length-1)el.appendChild(document.createTextNode(' '));});
+  return out;}
+function splitWords(el){const words=(el.textContent||'').trim().split(/\s+/);el.textContent='';
+  return words.map((w,i)=>{const s=document.createElement('span');s.className='wd';s.textContent=w;el.appendChild(s);
+    if(i<words.length-1)el.appendChild(document.createTextNode(' '));return s;});}
+
+const tl=gsap.timeline({paused:true});
+/* gerak per frame yang deterministik (ayunan, partikel, putaran): fungsi murni dari t */
+const FRAME=[];const everyFrame=fn=>FRAME.push(fn);const runFrame=t=>{for(const f of FRAME)f(t);};
+gsap.ticker.add(()=>runFrame(tl.time()));
+/* angka seed tetap (pengganti Math.random) */
+const seeded=i=>{const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x);};
+
+function finish(){
+  tl.set({},{},DUR);
+  const start=()=>tl.play(0);
+  tl.eventCallback('onComplete',start);                                   // default: loop
+  const seek=t=>{tl.pause();tl.time(t,false);if(gsap.ticker.tick)gsap.ticker.tick();runFrame(t);};
+  window.OPENER={W,H,DURATION:DUR,tl,seek,ready:false,seekFrame:t=>{seek(t);return Promise.resolve();}};
+  addEventListener('keydown',e=>{if(/^[rR]$/.test(e.key))start();if(e.code==='Space'){e.preventDefault();tl.paused()?tl.play():tl.pause();}});
+  if(Q.has('debug')){const d=document.createElement('div');d.id='dbg';
+    d.innerHTML='<button id="dPlay">Pause</button><input id="dScrub" type="range" min="0" max="1000" value="0"><span id="dClock">0.00s</span>';
+    document.body.appendChild(d);const sc=$('#dScrub'),ck=$('#dClock');let drag=false;
+    gsap.ticker.add(()=>{if(!drag)sc.value=String(tl.time()/DUR*1000);ck.textContent=tl.time().toFixed(2)+'s';$('#dPlay').textContent=tl.paused()?'Play':'Pause';});
+    sc.addEventListener('pointerdown',()=>{drag=true;tl.pause();});addEventListener('pointerup',()=>drag=false);
+    sc.addEventListener('input',()=>{tl.pause();tl.time(sc.value/1000*DUR);runFrame(tl.time());});$('#dPlay').onclick=()=>tl.paused()?tl.play():tl.pause();}
+  /* SUARA Motion Format — VO + efek suara terikat timeline (ikut scrub, pause, loop; dibaca render_mp4.py) */
+  const P=window.AUDIO_PLAN||{vo:[],sfx:[],music:null};let on=false,last=0;const noop=()=>{};
+  const mk=(s,music)=>{const a=new Audio(s.src);a.preload='auto';a.volume=s.vol==null?(music?.15:1):s.vol;return {at:s.at||0,el:a,music:!!music};};
+  const LONG=(P.vo||[]).map(s=>mk(s)).concat(P.music?[mk(P.music,true)]:[]),SFX=(P.sfx||[]).map(s=>mk(s)),ALL=LONG.concat(SFX);
+  const unlock=()=>{on=true;};addEventListener('pointerdown',unlock,{once:true});addEventListener('keydown',unlock,{once:true});
+  gsap.ticker.add(()=>{const t=tl.time(),playing=!tl.paused();if(!on){last=t;return;}
+    for(const c of LONG){const d=c.el.duration,rel=t-c.at,inside=rel>=0&&(c.music||!d||!isFinite(d)||rel<d);
+      if(playing&&inside){const want=c.music&&d&&isFinite(d)?rel%d:rel;if(Math.abs(c.el.currentTime-want)>.25)c.el.currentTime=want;if(c.el.paused)c.el.play().catch(noop);}
+      else if(!c.el.paused)c.el.pause();}
+    if(playing){if(t<last)last=-.001;if(t-last<.5)for(const s of SFX)if(s.at>last&&s.at<=t){s.el.currentTime=0;s.el.play().catch(noop);}}
+    last=t;});
+  const probe=()=>{const a=ALL[0].el,v=a.volume;a.volume=0;return a.play().then(()=>{a.pause();a.currentTime=0;a.volume=v;on=true;},e=>{a.volume=v;throw e;});};
+  document.fonts.ready.then(()=>{seek(0);window.OPENER.ready=true;if(Q.has('clean'))return;
+    if(!ALL.length){start();return;}
+    probe().then(start).catch(()=>{tl.pause(0);const go=()=>{removeEventListener('pointerdown',go);removeEventListener('keydown',go);start();};
+      addEventListener('pointerdown',go);addEventListener('keydown',go);});});
+}
+
+/* garis yang menggambar diri: dasharray = panjang path */
+const prep=el=>{const L=el.getTotalLength();el.style.strokeDasharray=L;el.style.strokeDashoffset=L;return L;};
+const draw=(el,at,dur,ease='power2.inOut')=>{prep(el);tl.set(el,{opacity:1},at);tl.to(el,{strokeDashoffset:0,duration:dur,ease},at);};
+
+/* kamera: mundur pelan sepanjang video (push out), bukan diam */
+tl.fromTo('#world',{scale:1.07},{scale:1,duration:DUR,ease:'sine.out'},0);
+
+/* uap naik: tiga garis menggambar dari bawah, melayang, lalu memudar — yang tengah menuju logo */
+[['#s1',.1,1.5],['#s3',.35,1.4]].forEach(([s,at,d])=>{
+  draw($(s),at,d,'power1.out');
+  tl.to(s,{y:-90,duration:2.2,ease:'sine.out'},at);});
+draw($('#s2'),.2,1.5,'power1.inOut');            // uap tengah naik tepat ke titik awal garis lereng
+tl.to(['#s1','#s3'],{opacity:0,duration:.7,ease:'power2.in'},1.6);
+tl.to('#s2',{opacity:0,duration:.55,ease:'power2.in'},2.15);
+
+/* garis uap tengah "menjadi" garis lereng, cincin cangkir menutup, lalu ikal uap */
+draw($('#slope'),1.65,1.05,'power3.inOut');
+draw($('#ring'),2.05,.95,'power2.inOut');
+draw($('#curl'),2.75,.45,'power2.out');
+tl.fromTo('#logo',{scale:.92},{scale:1,duration:1.6,ease:'power3.out'},1.65);
+
+/* sapuan cahaya sekali, melewati logo tepat setelah cincin tertutup */
+tl.fromTo('#sweep',{x:-900,opacity:0},{x:900,opacity:1,duration:1.1,ease:'sine.inOut',immediateRender:false},3.05);
+tl.to('#sweep',{opacity:0,duration:.35},3.85);
+
+/* wordmark: huruf naik dari bawah dengan blur vertikal, spasi merapat — sinkron VO "Kopi Lereng" */
+const ch=splitChars($('#word'));
+tl.fromTo(ch,{opacity:0,yPercent:70},{opacity:1,yPercent:0,duration:.9,ease:'power4.out',stagger:.045,immediateRender:false},3.2);
+blurTween(tl,'#word',3.2,26,0,1.3,VERT);
+tl.fromTo(ch,{marginRight:'.42em'},{marginRight:'.2em',duration:1.8,ease:'power3.out',immediateRender:false},3.2);
+
+/* penutup: semua memudar ke gelap supaya loop bersih */
+tl.to('#fade',{opacity:1,duration:.5,ease:'power2.in'},6.0);
+
+/* grain hidup: offset dari t (bukan acak) */
+everyFrame(t=>{const k=Math.floor(t*12);$('#grain').style.transform=`translate(${(seeded(k)*60-30)|0}px,${(seeded(k+99)*60-30)|0}px)`;});
+finish();
+</script>
+</body>
+</html>

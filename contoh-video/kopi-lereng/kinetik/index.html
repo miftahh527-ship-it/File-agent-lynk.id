@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="id">
+<!-- Dibuat dengan skill Motion Format (berbasis Bang Motion oleh Bang Tutorial, MIT) -->
+<head>
+<meta charset="utf-8">
+<title>Kopi Lereng — Kinetic Typography</title>
+<!--
+  STYLE BRIEF — Kinetic typography ±20 dtk
+  Tema           : Kopi Lereng · pelan, hangat, tegas
+  Konsep         : tipografi murni — kata adalah subjek; di akhir huruf menyusun wordmark
+  Arah gaya      : Poster color-block (medan warna brand bergantian di ketukan VO)
+  Palet          : terakota #B5532E · hijau #2E5A3C · krem #F3E7D3 · espresso #2A1A12 (brand) · crema #D9A55B (turunan)
+  Font           : Fraunces Black Italic (display, raksasa terpotong tepi) + Space Mono (kata sambung kecil)
+  Penekanan      : satu kata per layar; ukuran bergantian; "jeda" berwarna terakota (satu bentuk: warna)
+  Tanda tangan   : kata menabrak tepi frame lalu memantul pelan
+  Gerak latar    : medan warna bergantian dipicu ketukan (§7c #12) + cincin hantu berputar + grain hidup
+  Permukaan      : medan dua nada (gradien halus satu warna) + grain (§7d f)
+  Momen istimewa : "Pelan saja" — semua melambat, satu kata kecil di tengah, lalu huruf menyusun wordmark
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,700..900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#0b0907;overflow:hidden}
+#stage{position:fixed;left:50%;top:50%;width:1920px;height:1080px;overflow:hidden;transform:translate(-50%,-50%)}
+#filters{position:fixed;width:0;height:0;opacity:0;pointer-events:none}
+#dbg{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:12px;align-items:center;padding:10px 16px;border-radius:14px;background:rgba(14,16,22,.9);color:#cfd5e3;font:13px system-ui;z-index:99}
+#dbg input{width:360px}#dbg span{font-variant-numeric:tabular-nums;min-width:6ch}
+#dbg button{background:#262A34;color:#fff;border:none;padding:6px 14px;border-radius:8px;font:inherit;cursor:pointer}
+.wd,.ch{display:inline-block;white-space:pre}
+
+:root{--esp:#2A1A12;--crema:#D9A55B;--terra:#B5532E;--krem:#F3E7D3;--hijau:#2E5A3C}
+#stage{background:var(--krem);font-family:"Fraunces",serif}
+.field{position:absolute;inset:0;overflow:hidden}
+.f-krem{background:linear-gradient(165deg,#F7EEDF 0%,var(--krem) 55%,#EADBC2 100%);color:var(--esp)}
+.f-terra{background:linear-gradient(165deg,#C0603A 0%,var(--terra) 55%,#9C4524 100%);color:var(--krem)}
+.f-hijau{background:linear-gradient(165deg,#366845 0%,var(--hijau) 55%,#244A31 100%);color:var(--crema)}
+.f-esp{background:linear-gradient(165deg,#3A2519 0%,var(--esp) 60%,#1C110B 100%);color:var(--terra)}
+.big{position:absolute;font-style:italic;font-weight:900;line-height:.86;letter-spacing:-.035em;white-space:nowrap;
+  font-variation-settings:"opsz" 144;will-change:transform}
+.mono{position:absolute;font-family:"Space Mono",monospace;font-weight:700;font-size:52px;letter-spacing:.06em;white-space:nowrap}
+.f-esp .mono{color:var(--krem)}.f-terra .mono{color:#F7E3D0}.f-hijau .mono{color:var(--krem)}.f-krem .mono{color:var(--terra)}
+.accent{color:var(--terra)}
+#steam{position:absolute;left:0;top:0;width:1920px;height:1080px}
+#steam path{fill:none;stroke:var(--krem);stroke-width:10;stroke-linecap:round;opacity:.0}
+#logo{position:absolute;left:810px;top:150px;width:300px;height:300px;overflow:visible}
+#logo .ln{fill:none;stroke:var(--krem);stroke-width:9;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+#wm{position:absolute;left:0;right:0;top:560px;text-align:center;font-style:normal;font-weight:600;font-size:170px;letter-spacing:-.02em;color:var(--krem);line-height:1}
+#wm .ch{opacity:0}
+#ghost{position:absolute;left:1180px;top:-260px;width:1200px;height:1200px;mix-blend-mode:soft-light;opacity:.5;pointer-events:none}
+#ghost circle{fill:none;stroke:#fff;stroke-width:46;stroke-dasharray:60 34}
+#grain{position:absolute;inset:-60px;opacity:.22;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E")}
+</style>
+</head>
+<body>
+<svg id="filters"><defs></defs></svg>
+<div id="stage">
+  <!-- tiap medan warna membawa kata-katanya sendiri; medan berikut menutupi yang lama (tidak ada sisa) -->
+  <div class="field f-krem" id="f1" data-boleh-keluar>
+    <div class="big" id="w-bangun" style="left:150px;top:640px;font-size:460px">Bangun</div>
+  </div>
+  <div class="field f-terra" id="f2" data-boleh-keluar>
+    <div class="big" id="w-seduh" style="right:-70px;top:250px;font-size:440px">Seduh</div>
+  </div>
+  <div class="field f-hijau" id="f3">
+    <svg id="steam" viewBox="0 0 1920 1080" data-tata="dekor">
+      <path d="M860 900 C830 820 900 770 870 690"/><path d="M960 920 C990 830 920 780 960 690"/><path d="M1060 900 C1090 820 1020 770 1050 690"/>
+    </svg>
+    <div class="big" id="w-hirup" style="left:0;right:0;text-align:center;top:300px;font-size:330px">Hirup</div>
+  </div>
+  <div class="field f-krem" id="f4">
+    <div class="big" id="w-kp" style="left:140px;top:150px;font-size:230px"><span class="k">Kopi</span> <span class="k">pertama</span></div>
+    <div class="mono" id="w-adalah" style="left:150px;top:470px">adalah</div>
+    <div class="big" id="w-jp" style="left:140px;top:600px;font-size:230px"><span class="k accent">jeda</span> <span class="k">pertama</span></div>
+  </div>
+  <div class="field f-esp" id="f5" data-boleh-keluar>
+    <div class="mono" id="m5" style="left:140px;top:280px">sebelum</div>
+    <div class="big" id="w-notif" style="left:120px;top:470px;font-size:300px">notifikasi,</div>
+  </div>
+  <div class="field f-terra" id="f6" data-boleh-keluar>
+    <div class="mono" id="m6" style="right:150px;top:280px">sebelum</div>
+    <div class="big" id="w-macet" style="left:-60px;top:450px;font-size:420px">macet,</div>
+  </div>
+  <div class="field f-hijau" id="f7">
+    <div class="mono" id="m7" style="left:140px;top:120px">sebelum</div>
+    <div class="big" id="w-so" style="left:130px;top:270px;font-size:250px"><span class="k">semua</span> <span class="k">orang</span></div>
+    <div class="big" id="w-bk" style="left:130px;top:640px;font-size:250px"><span class="k">butuh</span> <span class="k accent2" style="color:var(--krem)">kamu</span></div>
+  </div>
+  <div class="field f-krem" id="f8">
+    <div class="big" data-boleh-tumpuk id="w-pelan" style="left:0;right:0;text-align:center;top:470px;font-size:120px;font-weight:700">Pelan saja</div>
+  </div>
+  <div class="field f-terra" id="f9">
+    <svg id="logo" viewBox="0 0 200 200" data-tata="gambar">
+      <circle class="ln" id="ring" cx="100" cy="100" r="86" transform="rotate(-90 100 100)"/>
+      <path class="ln" id="slope" d="M34 132 L84 84 L104 100 L138 66 L166 132"/>
+      <path class="ln" id="curl" d="M138 58 C126 46 150 38 140 22"/>
+    </svg>
+    <div class="big" data-boleh-tumpuk id="wm">Kopi Lereng</div>
+  </div>
+  <svg id="ghost" viewBox="0 0 1200 1200" data-tata="latar"><circle cx="600" cy="600" r="520"/></svg>
+  <div id="grain" data-tata="latar"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const W=1920,H=1080,DUR=19.5;
+/* VO mulai 1,0 dtk; batas kalimat dari silencedetect (vo1.mp3) */
+window.AUDIO_PLAN={
+  vo:[{at:1.0,src:'assets/audio/vo1.mp3',vol:1}],
+  sfx:[{at:1.02,src:'assets/audio/sfx-biji.mp3',vol:.55},
+       {at:2.72,src:'assets/audio/sfx-whoosh.mp3',vol:.4},
+       {at:4.70,src:'assets/audio/sfx-whoosh.mp3',vol:.3},
+       {at:5.82,src:'assets/audio/sfx-kertas.mp3',vol:.4},
+       {at:8.76,src:'assets/audio/sfx-biji.mp3',vol:.35},
+       {at:9.96,src:'assets/audio/sfx-biji.mp3',vol:.35},
+       {at:11.26,src:'assets/audio/sfx-biji.mp3',vol:.35},
+       {at:15.45,src:'assets/audio/sfx-denting.mp3',vol:.5}],
+  music:null};
+/* ===== INTI Motion Format (dari starter skill motion-format; dipasang ke tiap video oleh _src/build.py) =====
+   Butuh: W, H, DUR, window.AUDIO_PLAN didefinisikan sebelum blok ini, GSAP sudah dimuat.
+   Menyediakan: $, $$, tl, makeBlur/blurTween, VERT/HORZ, splitChars, splitWords, everyFrame(fn), finish().
+   Hukum #2: semua visual adalah fungsi dari tl.time() — tidak ada Date.now()/Math.random(). */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const Q=new URLSearchParams(location.search);
+const stageEl=$('#stage');
+const fit=()=>{const s=Math.min(innerWidth/W,innerHeight/H);stageEl.style.transform=`translate(-50%,-50%) scale(${s})`;};
+addEventListener('resize',fit);fit();
+
+/* motion blur berarah: feGaussianBlur dengan stdDeviation x/y terpisah */
+const defs=$('#filters defs');let fc=0;
+function makeBlur(){const id='mb'+(fc++),NS='http://www.w3.org/2000/svg';const f=document.createElementNS(NS,'filter');f.id=id;
+  f.setAttribute('x','-70%');f.setAttribute('y','-70%');f.setAttribute('width','240%');f.setAttribute('height','240%');
+  const g=document.createElementNS(NS,'feGaussianBlur');g.setAttribute('stdDeviation','0 0');f.appendChild(g);defs.appendChild(f);
+  return {url:`url(#${id})`,node:g};}
+function blurTween(tl,targets,at,from,to,dur,{ease='power3.out',ax=1,ay=.08}={}){const b=makeBlur(),o={v:from};
+  tl.set(targets,{filter:b.url},at);
+  tl.to(o,{v:to,duration:dur,ease,onUpdate(){b.node.setAttribute('stdDeviation',`${(o.v*ax).toFixed(2)} ${(o.v*ay).toFixed(2)}`);}},at);
+  tl.set(targets,{filter:'none'},at+dur);}
+const VERT={ax:.1,ay:1},HORZ={ax:1,ay:.1};
+
+/* pecah teks per huruf (.ch) dan per kata (.wd) */
+function splitChars(el){const words=(el.textContent||'').trim().split(/\s+/);el.textContent='';const out=[];
+  words.forEach((w,i)=>{const wr=document.createElement('span');wr.className='wd';
+    for(const c of w){const s=document.createElement('span');s.className='ch';s.textContent=c;wr.appendChild(s);out.push(s);}
+    el.appendChild(wr);if(i<words.length-1)el.appendChild(document.createTextNode(' '));});
+  return out;}
+function splitWords(el){const words=(el.textContent||'').trim().split(/\s+/);el.textContent='';
+  return words.map((w,i)=>{const s=document.createElement('span');s.className='wd';s.textContent=w;el.appendChild(s);
+    if(i<words.length-1)el.appendChild(document.createTextNode(' '));return s;});}
+
+const tl=gsap.timeline({paused:true});
+/* gerak per frame yang deterministik (ayunan, partikel, putaran): fungsi murni dari t */
+const FRAME=[];const everyFrame=fn=>FRAME.push(fn);const runFrame=t=>{for(const f of FRAME)f(t);};
+gsap.ticker.add(()=>runFrame(tl.time()));
+/* angka seed tetap (pengganti Math.random) */
+const seeded=i=>{const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x);};
+
+function finish(){
+  tl.set({},{},DUR);
+  const start=()=>tl.play(0);
+  tl.eventCallback('onComplete',start);                                   // default: loop
+  const seek=t=>{tl.pause();tl.time(t,false);if(gsap.ticker.tick)gsap.ticker.tick();runFrame(t);};
+  window.OPENER={W,H,DURATION:DUR,tl,seek,ready:false,seekFrame:t=>{seek(t);return Promise.resolve();}};
+  addEventListener('keydown',e=>{if(/^[rR]$/.test(e.key))start();if(e.code==='Space'){e.preventDefault();tl.paused()?tl.play():tl.pause();}});
+  if(Q.has('debug')){const d=document.createElement('div');d.id='dbg';
+    d.innerHTML='<button id="dPlay">Pause</button><input id="dScrub" type="range" min="0" max="1000" value="0"><span id="dClock">0.00s</span>';
+    document.body.appendChild(d);const sc=$('#dScrub'),ck=$('#dClock');let drag=false;
+    gsap.ticker.add(()=>{if(!drag)sc.value=String(tl.time()/DUR*1000);ck.textContent=tl.time().toFixed(2)+'s';$('#dPlay').textContent=tl.paused()?'Play':'Pause';});
+    sc.addEventListener('pointerdown',()=>{drag=true;tl.pause();});addEventListener('pointerup',()=>drag=false);
+    sc.addEventListener('input',()=>{tl.pause();tl.time(sc.value/1000*DUR);runFrame(tl.time());});$('#dPlay').onclick=()=>tl.paused()?tl.play():tl.pause();}
+  /* SUARA Motion Format — VO + efek suara terikat timeline (ikut scrub, pause, loop; dibaca render_mp4.py) */
+  const P=window.AUDIO_PLAN||{vo:[],sfx:[],music:null};let on=false,last=0;const noop=()=>{};
+  const mk=(s,music)=>{const a=new Audio(s.src);a.preload='auto';a.volume=s.vol==null?(music?.15:1):s.vol;return {at:s.at||0,el:a,music:!!music};};
+  const LONG=(P.vo||[]).map(s=>mk(s)).concat(P.music?[mk(P.music,true)]:[]),SFX=(P.sfx||[]).map(s=>mk(s)),ALL=LONG.concat(SFX);
+  const unlock=()=>{on=true;};addEventListener('pointerdown',unlock,{once:true});addEventListener('keydown',unlock,{once:true});
+  gsap.ticker.add(()=>{const t=tl.time(),playing=!tl.paused();if(!on){last=t;return;}
+    for(const c of LONG){const d=c.el.duration,rel=t-c.at,inside=rel>=0&&(c.music||!d||!isFinite(d)||rel<d);
+      if(playing&&inside){const want=c.music&&d&&isFinite(d)?rel%d:rel;if(Math.abs(c.el.currentTime-want)>.25)c.el.currentTime=want;if(c.el.paused)c.el.play().catch(noop);}
+      else if(!c.el.paused)c.el.pause();}
+    if(playing){if(t<last)last=-.001;if(t-last<.5)for(const s of SFX)if(s.at>last&&s.at<=t){s.el.currentTime=0;s.el.play().catch(noop);}}
+    last=t;});
+  const probe=()=>{const a=ALL[0].el,v=a.volume;a.volume=0;return a.play().then(()=>{a.pause();a.currentTime=0;a.volume=v;on=true;},e=>{a.volume=v;throw e;});};
+  document.fonts.ready.then(()=>{seek(0);window.OPENER.ready=true;if(Q.has('clean'))return;
+    if(!ALL.length){start();return;}
+    probe().then(start).catch(()=>{tl.pause(0);const go=()=>{removeEventListener('pointerdown',go);removeEventListener('keydown',go);start();};
+      addEventListener('pointerdown',go);addEventListener('keydown',go);});});
+}
+
+/* ---- medan warna: masuk menutupi medan sebelumnya ---- */
+const CLIP={right:'inset(0% 0% 0% 100%)',left:'inset(0% 100% 0% 0%)',bottom:'inset(100% 0% 0% 0%)',top:'inset(0% 0% 100% 0%)'};
+const FIELDS=$$('.field');
+const fieldIn=(id,at,from,dur=.24,ease='power3.inOut')=>{
+  tl.set(id,{visibility:'visible'},at);
+  const prev=FIELDS.slice(0,FIELDS.indexOf($(id)));              // medan lama benar-benar keluar setelah tertutup
+  tl.set(prev,{visibility:'hidden'},at+(from==='cut'?0:dur)+.02);
+  if(from==='cut'){tl.set(id,{clipPath:'inset(0% 0% 0% 0%)'},at);return;}
+  if(from==='circle'){tl.fromTo(id,{clipPath:'circle(0% at 50% 52%)'},{clipPath:'circle(75% at 50% 52%)',duration:dur,ease,immediateRender:false},at);return;}
+  tl.fromTo(id,{clipPath:CLIP[from]},{clipPath:'inset(0% 0% 0% 0%)',duration:dur,ease,immediateRender:false},at);};
+$$('.field').forEach((f,i)=>{if(i)tl.set(f,{visibility:'hidden'},0);});
+
+/* ---- tanda tangan gerak: kata menabrak tepi lalu memantul pelan ---- */
+const crashX=(el,at,fromX,{dur=.36,bounce=34}={})=>{const s=Math.sign(fromX);
+  tl.fromTo(el,{x:fromX,opacity:1},{x:0,duration:dur,ease:'power4.in',immediateRender:false},at);
+  blurTween(tl,el,at,46,0,dur,{ease:'power4.in',...HORZ});
+  tl.to(el,{x:s*bounce,duration:.16,ease:'power2.out'},at+dur);
+  tl.to(el,{x:0,duration:.7,ease:'elastic.out(1,.55)'},at+dur+.16);};
+const crashY=(el,at,fromY,{dur=.34,bounce=30}={})=>{const s=Math.sign(fromY);
+  tl.fromTo(el,{y:fromY,opacity:1},{y:0,duration:dur,ease:'power4.in',immediateRender:false},at);
+  blurTween(tl,el,at,46,0,dur,{ease:'power4.in',...VERT});
+  tl.to(el,{y:s*bounce,duration:.16,ease:'power2.out'},at+dur);
+  tl.to(el,{y:0,duration:.7,ease:'elastic.out(1,.55)'},at+dur+.16);};
+const wordIn=(el,at,{dx=260,dur=.42}={})=>{tl.fromTo(el,{opacity:0,x:dx},{opacity:1,x:0,duration:dur,ease:'power4.out',immediateRender:false},at);
+  blurTween(tl,el,at,36,0,dur,HORZ);};
+const monoIn=(el,at)=>tl.fromTo(el,{opacity:0,y:-24},{opacity:1,y:0,duration:.35,ease:'power3.out',immediateRender:false},at);
+$$('.big,.mono').forEach(e=>{if(e.id!=='wm')tl.set(e,{opacity:0},0);});
+$$('.k').forEach(e=>tl.set(e,{opacity:0},0));
+
+/* B1 Bangun (1,00–1,91) — kata jatuh dari atas, menghantam tepi bawah */
+crashY('#w-bangun',.68,-1100,{dur:.34});
+tl.to('#w-bangun',{scale:1.04,duration:1.8,ease:'sine.out',transformOrigin:'30% 100%'},1.2);
+
+/* B2 Seduh (2,87) — medan terakota menyapu dari kanan; kata menabrak tepi kanan */
+fieldIn('#f2',2.72,'right',.22);
+crashX('#w-seduh',2.62,-1500,{dur:.3});
+tl.to('#w-seduh',{rotate:-2,duration:1.6,ease:'sine.inOut'},3.4);
+
+/* B3 Hirup (4,87) — medan hijau naik; kata mekar dari kedalaman, spasi melebar seperti tarikan napas */
+fieldIn('#f3',4.70,'bottom',.26);
+tl.fromTo('#w-hirup',{opacity:0,scale:1.8},{opacity:1,scale:1,duration:.9,ease:'expo.out',immediateRender:false},4.85);
+blurTween(tl,'#w-hirup',4.85,24,0,.9,{ease:'expo.out',ax:1,ay:1});
+tl.fromTo('#w-hirup',{letterSpacing:'-.035em'},{letterSpacing:'.06em',duration:1.1,ease:'sine.inOut',immediateRender:false},5.0);
+$$('#steam path').forEach((p,i)=>{tl.fromTo(p,{opacity:0,y:60},{opacity:.4,y:-40,duration:1.1,ease:'sine.out',immediateRender:false},4.95+i*.12);});
+
+/* B4 Kopi pertama adalah jeda pertama (5,95–8,00) — per kata, masuk dari kanan */
+fieldIn('#f4',5.82,'top',.26);
+{const k1=$$('#w-kp .k'),k2=$$('#w-jp .k');
+ tl.set(['#w-kp','#w-jp'],{opacity:1},5.9);
+ wordIn(k1[0],5.95);wordIn(k1[1],6.25);monoIn('#w-adalah',6.75);wordIn(k2[0],7.02,{dx:-260});wordIn(k2[1],7.42);
+ tl.fromTo('#w-jp .accent',{scale:1},{scale:1.08,duration:.35,ease:'back.out(3)',yoyo:true,repeat:1,transformOrigin:'50% 80%'},7.4);}
+
+/* B5–B7 daftar "sebelum …" — potongan keras di ketukan, warna bergantian, tensi naik */
+fieldIn('#f5',8.76,'cut');monoIn('#m5',8.8);crashX('#w-notif',8.8,1700,{dur:.3});
+fieldIn('#f6',9.96,'left',.14,'power2.out');monoIn('#m6',10.0);crashX('#w-macet',10.0,1700,{dur:.28});
+fieldIn('#f7',11.26,'bottom',.14,'power2.out');monoIn('#m7',11.3);
+{const a=$$('#w-so .k'),b=$$('#w-bk .k');tl.set(['#w-so','#w-bk'],{opacity:1},11.3);
+ wordIn(a[0],11.62);wordIn(a[1],11.95);wordIn(b[0],12.38,{dx:-260});wordIn(b[1],12.72);}
+tl.to('#f7 .big',{x:-30,duration:1.5,ease:'sine.inOut'},12.0);
+tl.to(['#f7 .big','#m7'],{opacity:0,y:-50,duration:.26,ease:'power2.in'},13.5);   // keluar cepat sebelum "Pelan saja" masuk
+blurTween(tl,'#f7 .big',13.5,0,30,.3,{ease:'power2.in',...VERT});
+
+/* B8 Pelan saja (13,88) — momen istimewa: semuanya melambat; satu kata kecil di tengah */
+fieldIn('#f8',13.62,'circle',.8,'power2.inOut');
+{const ch=splitChars($('#w-pelan'));tl.set('#w-pelan',{opacity:1},13.8);
+ tl.fromTo(ch,{opacity:0,y:20},{opacity:1,y:0,duration:.9,ease:'sine.out',stagger:.06,immediateRender:false},13.85);
+ tl.fromTo('#w-pelan',{letterSpacing:'0em'},{letterSpacing:'.14em',duration:1.6,ease:'sine.out',immediateRender:false},13.85);}
+
+/* B9 Kopi Lereng (15,58) — medan terakota naik; logo menggambar; huruf berkumpul menyusun wordmark */
+fieldIn('#f9',15.35,'bottom',.32);
+{const prep=el=>{const L=el.getTotalLength();el.style.strokeDasharray=L;el.style.strokeDashoffset=L;};
+ [['#ring',15.55,.9],['#slope',15.75,.8],['#curl',16.4,.4]].forEach(([s,at,d])=>{const el=$(s);prep(el);
+   tl.set(el,{opacity:1},at);tl.to(el,{strokeDashoffset:0,duration:d,ease:'power2.inOut'},at);});
+ const ch=splitChars($('#wm'));
+ ch.forEach((c,i)=>{const a=seeded(i+3)*Math.PI*2,r=700+seeded(i+40)*400;
+   tl.fromTo(c,{opacity:0,x:Math.cos(a)*r,y:Math.sin(a)*r*.6,rotate:(seeded(i+9)-.5)*80},
+     {opacity:1,x:0,y:0,rotate:0,duration:.85,ease:'power4.out',immediateRender:false},15.55+i*.03);});
+ blurTween(tl,'#wm',15.55,30,0,1.0,{ax:1,ay:1});
+ tl.to(['#wm','#logo'],{scale:1.04,duration:3.2,ease:'sine.inOut',transformOrigin:'50% 50%'},16.4);}
+
+/* gerak latar: cincin hantu berputar + grain hidup (fungsi murni dari t) */
+everyFrame(t=>{$('#ghost').style.transform=`rotate(${t*9}deg)`;
+  const k=Math.floor(t*12);$('#grain').style.transform=`translate(${(seeded(k)*60-30)|0}px,${(seeded(k+99)*60-30)|0}px)`;});
+finish();
+</script>
+</body>
+</html>
