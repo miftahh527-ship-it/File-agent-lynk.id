@@ -1,5 +1,17 @@
 # Riwayat perubahan — Motion Format
 
+## 1.6.0 · 25 November 2026
+
+**Baru**
+- Gaya **satelit & teknik modern** dari tiga video referensi berikutnya: `assets/starter-reels-satelit.html`
+  (zoom bersarang pada skala log dengan kamera = viewBox, medan relief bergaya satelit yang dihitung
+  sendiri dalam 4 tingkat kerincian, garis tepi menyala, label titik yang ikut kamera, caption
+  berposisi bebas dengan warna bermakna air/darat/bahaya, lensa "dulu" + gradasi era, awan lewat,
+  angka tengah, label tempat, silang, morf bentuk, tembus pandang) + bagian baru di
+  `references/reels-dokumenter.md`.
+- `peta_data.py`: `PERAIRAN` — Danau Toba, Samosir, Danau Sidihoni (bersarang).
+- `peta_svg.py`: menggambar danau & pulau bersarang; JSON memuat parameter proyeksi (`skala`, `tengah`).
+
 ## 1.5.0 · 25 November 2026
 
 **Baru**

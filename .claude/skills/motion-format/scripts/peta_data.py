@@ -296,3 +296,18 @@ BENUA = {
 # pulau-pulau Indonesia (untuk --wilayah indonesia); Kalimantan & Papua berbagi pulau dengan negara tetangga
 INDONESIA = ['Sumatra', 'Jawa', 'Madura', 'Bali', 'Lombok', 'Sumbawa', 'Flores', 'Sumba', 'Timor', 'Kalimantan',
              'Sulawesi', 'Halmahera', 'Seram', 'Buru', 'Papua']
+
+# ---------- perairan darat & pulau di dalamnya (digambar SETELAH daratan, bersarang) ----------
+# 'di' = bentuk yang memuatnya; ikut tergambar bila bentuk itu ada di peta. Urutan = urutan gambar.
+PERAIRAN = {
+    'Danau Toba': {'di': 'Sumatra', 'jenis': 'danau', 'pts': [
+        (98.50, 2.92), (98.62, 2.90), (98.78, 2.83), (98.88, 2.75), (98.96, 2.68), (99.03, 2.56), (99.12, 2.43),
+        (99.08, 2.33), (98.98, 2.29), (98.86, 2.34), (98.78, 2.45), (98.66, 2.53), (98.62, 2.64), (98.55, 2.76),
+        (98.48, 2.86)]},
+    'Samosir': {'di': 'Danau Toba', 'jenis': 'pulau', 'pts': [
+        (98.70, 2.76), (98.80, 2.73), (98.86, 2.66), (98.92, 2.56), (98.95, 2.48), (98.88, 2.43), (98.78, 2.48),
+        (98.70, 2.56), (98.645, 2.62), (98.66, 2.70)]},
+    'Danau Sidihoni': {'di': 'Samosir', 'jenis': 'danau', 'pts': [
+        (98.745, 2.592), (98.751, 2.589), (98.753, 2.583), (98.749, 2.578), (98.742, 2.578), (98.738, 2.584),
+        (98.740, 2.590)]},
+}

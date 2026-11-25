@@ -48,6 +48,10 @@ pulau) + JSON titik label + PNG.
   garis 180° jatuh di Selat Bering (tidak ada daratan terbelah).
 - **Kehalusan**: `--halus 0.85` (bawaan); `0` = sudut tajam bergaya poligon, `1` = sangat bulat.
 - **Label**: ambil `x,y` dari `<nama>.json` (pusat daratan terbesar tiap bentuk). Jangan menebak.
+- **Danau & pulau bersarang**: `PERAIRAN` di `peta_data.py` (Danau Toba → Samosir → Danau
+  Sidihoni) ikut tergambar bila wadahnya ada di peta (`danau-…`, `pulau-…`).
+- **Titik bujur/lintang lain** (kota, kanal, rute): `.json` berisi `pusat`, `skala`, `tengah` →
+  `titikPeta()` di `starter-reels-satelit.html` menghitung posisinya di SVG yang sama.
 - **Menambah/merapikan pulau**: edit `scripts/peta_data.py` (titik searah jarum jam, 8–40 titik,
   nama Indonesia). Batas darat bersama ditulis sebagai konstanta `B_*` dan dipakai kedua sisi
   supaya tidak ada celah. Setelah mengedit, SELALU lihat `--png` untuk bentuk itu dalam ukuran besar

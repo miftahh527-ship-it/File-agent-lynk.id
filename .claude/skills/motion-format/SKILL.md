@@ -4,14 +4,14 @@ description: Membuat motion graphic dan video lewat chat — promo, opener, intr
 license: MIT
 metadata:
   author: Motion Format
-  version: "1.5.0"
+  version: "1.6.0"
   updated: "2026-11-25"
   based_on: "Bang Motion v1.19.0 oleh Bang Tutorial (https://github.com/bangtutorial/bang-motion), lisensi MIT"
 ---
 
 # Motion Format — motion graphic lewat chat, lengkap dengan suara
 
-**v1.5.0 · Motion Format · MIT.** Dibangun di atas **Bang Motion v1.19.0** karya
+**v1.6.0 · Motion Format · MIT.** Dibangun di atas **Bang Motion v1.19.0** karya
 [Bang Tutorial](https://youtube.com/bangtutorial) (MIT) — seluruh hukum anti-PPT, starter,
 dan resep teknis berasal dari sana. Tambahan Motion Format: alur untuk pemula lewat chat,
 suara ElevenLabs (VO per adegan + efek suara), modul suara di semua starter, dan render MP4
@@ -236,7 +236,7 @@ VO, yang berbeda hanya cara produksinya.
 | Intro / outro kanal | 5–12 dtk | nama kanal + tanda tangan gerak yang sama tiap episode | alur kerja di bawah |
 | Kinetic typography / lirik | 15–60 dtk | teks adalah subjek; split per kata/huruf; ritme mengikuti audio | `techniques.md` (split + blur berarah, pan 3D per kata) |
 | Title / lower third / bumper segmen | 2–6 dtk | elemen kecil di atas footage, masuk-keluar bersih, latar transparan | `techniques.md` |
-| Reels dokumenter (edukasi tegak) | 30–60 dtk, 9:16 | hook angka, judul + ornamen, callout bersumber, caption karaoke, atmosfer, penutup pertanyaan/loop; 4 kulit (arsip, sulam, sablon, sinema) | `references/reels-dokumenter.md` + `assets/starter-reels-dokumenter.html` |
+| Reels dokumenter (edukasi tegak) | 30–60 dtk, 9:16 | hook angka, judul + ornamen, callout bersumber, caption karaoke, atmosfer, penutup pertanyaan/loop; 4 kulit (arsip, sulam, sablon, sinema) + gaya satelit (zoom bersarang, garis tepi, warna bermakna, lensa waktu, tembus pandang, morf) | `references/reels-dokumenter.md` + `assets/starter-reels-dokumenter.html` / `assets/starter-reels-satelit.html` |
 | Explainer / video penjelasan | 30–90 dtk | fakta bersumber, entitas tampil, sudut pandang berganti, lima gaya | `references/explainer.md` + starter per gaya |
 
 ## Explainer dan karakter: baca sebelum menentukan shot
@@ -707,6 +707,7 @@ dan buat layer dari belakang ke depan. Build 10 panggung ≈ 1 jam, 0 kredit.
 | `assets/tokoh-galeri.html` | galeri semua varian & pose tokoh (alat kerja, dipotret dengan `thumbnail.py`) |
 | `references/reels-dokumenter.md` | REELS DOKUMENTER: anatomi 6 lapis, ritme 45 dtk, 4 kulit (arsip/sulam/sablon/sinema), komponen starter, aturan caption karaoke, tata letak 9:16, audio, checklist |
 | `assets/starter-reels-dokumenter.html` | starter 9:16: kamera + DOF, debu bercahaya, judul angka berjalan + ornamen, callout ikut kamera, digit acak, sapuan cahaya, iris bercincin, jahit, caption karaoke, pertanyaan bertumpuk; `?gaya=` untuk pratinjau kulit |
+| `assets/starter-reels-satelit.html` | starter 9:16 pandangan udara: medan relief buatan sendiri (4 tingkat), kamera = viewBox sampai ±300×, zoom log, garis tepi menyala, label titik, caption berposisi bebas + warna bermakna, lensa "dulu", gradasi era, awan, angka tengah, silang, morf, tembus |
 | `references/tata-letak.md` | SETIAP video & thumbnail, sebelum rundown: lajur 16:9/9:16/1:1, jarak minimum, penjajaran, perlakuan gambar, tumpukan yang sah (`data-boleh-tumpuk`), peta tata letak, jebakan |
 | `scripts/cek_tata_letak.py` | VERIFIKASI tata letak tiap 0,25 dtk: teks menimpa teks, gambar menutupi teks, teks terpotong tepi, jarak < 24 px; `--gambar` memotret tiap masalah (butuh Python + Chrome, tanpa Node) |
 | `references/anti-ppt.md` | sebelum mendesain adegan |

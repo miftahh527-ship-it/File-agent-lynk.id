@@ -125,3 +125,59 @@ fokus supaya objek tidak naik ke zona label (`cek_tata_letak.py` menangkapnya).
 - [ ] Musik latar + VO + SFX; master ±−14/−15 LUFS
 - [ ] Peta dari `peta_svg.py`, tokoh dari `tokoh-rapi.js` / generate satu gaya (Hukum #6)
 - [ ] `cek_tata_letak.py` 0 galat (peringatan saat iris/transisi boleh)
+
+## Gaya satelit & teknik modern (gelombang referensi ke-2)
+
+Dari tiga video berikutnya (pulau bersarang Danau Toba–Samosir, kapal pinisi, suku penyelam):
+lebih "modern-dokumenter" — pandangan udara/3D, caption yang menjadi label, warna kata yang
+bermakna, dan visual sains (tembus pandang, USG, DNA). Starter: `assets/starter-reels-satelit.html`
+(demo 25 dtk: Sumatra → Danau Toba → Samosir → Danau Sidihoni → rangkuman → "dulu" tersambung
+tanah sempit → kanal Tano Ponggol → "74 ribu tahun lalu").
+
+### Teknik
+
+| Teknik | Cara di starter | Aturan |
+|---|---|---|
+| **Zoom bersarang** ("di dalam … ada …") | `zoom(at,x,y,z,dur)` — tween pada skala LOG, kamera = `viewBox` SVG (selalu tajam sampai ±300×) | tiap tingkat: tiba → garis tepi → label → lanjut; lalu MUNDUR untuk rangkuman dengan label bertingkat |
+| **Garis tepi menyala** | `garisTepi(d,at,{warna:'air'|'darat'|'bahaya'})` | warna sama dengan kata kuncinya di caption; hilang sebelum tingkat berikutnya |
+| **Warna bermakna** | `NASKAH[].kunci={kata:'air'}`; CSS `--air` biru, `--darat` kuning, `--bahaya` oranye | air/sungai/laut = biru; pulau/tempat/negeri = kuning; peristiwa/bahaya/manusia/waktu = oranye. Konsisten satu video |
+| **Caption sebagai label** | `NASKAH[].pos={x,y,rata:'kiri'}` + `labelTitik()` | caption boleh pindah ke dekat subjek (atas/tengah, rata kiri) — tetap di zona aman dan tidak menutup subjek |
+| **Label titik** | `labelTitik(at,{x,y,teks,panjang,arah:-1|1})` — garis tegak + titik, ikut kamera | teks label ≤ 3 kata, boleh 2 warna (`<span class="air">`) |
+| **Lensa waktu** | `lensa(at,{r,isi:gDulu})` — lingkaran bercincin, isi = lapisan "dulu" (`<clipPath>` satuan peta) | sebelum mengubah seluruh layar ke "dulu", tunjukkan dulu di dalam lensa |
+| **Gradasi era** | `gradasi(at,{sepia,saturasi,terang})` | dulu = sepia/kusam; kembali normal saat cerita kembali ke "kini" |
+| **Awan lewat** | `awanLewat(at)` saat zoom menembus ketinggian | hanya di zoom besar, ≤ 1,6 dtk |
+| **Angka tengah** | `#tengah` (alis berspasi + angka besar + satuan) `angkaTengah(at,sampai)` | satu kali per video untuk angka puncak ("74 ribu / tahun lalu", "UNESCO / 2017") |
+| **Label tempat** | `#tempat` kecil berspasi lebar + garis bawah, kiri atas | menandai lokasi adegan ("BULUKUMBA") |
+| **Silang** | `silang(at,{x,y})` | negasi visual ("tanpa tabung oksigen"): objek + silang merah tergambar |
+| **Morf** | `morf(path,dTujuan,at,dur)` (96 titik merata, titik awal diselaraskan) | metafora bentuk (limpa → tabung oksigen); bentuk tujuan sederhana & seukuran |
+| **Tembus pandang** | `tembus(at,luar,[dalam…])` | kulit luar memudar & berpendar, organ/struktur dalam muncul bergiliran |
+| **Instrumen** | bangun dari primitif: kerucut USG (path kipas + grain + garis busur), penggaris tick di tepi, panel A/B bertumpuk dengan label kecil | perbandingan = dua panel identik bentuknya, beda satu hal |
+| **Garis bantu** | `jahit()`/`garisTepi` pada kurva bentuk (lambung kapal) | 2–4 garis, putih tipis, menyusur bentuk lalu hilang |
+| **Jumlah + bagian** | `labelTitik` dengan teks "2 tiang", angka besar + kata kecil | garis menuju ujung bagian yang dihitung |
+
+### Medan bergaya satelit (DIBUAT SENDIRI)
+
+- Garis pantai: `peta_svg.py --wilayah pulau:<nama> --ukuran 4320x7680 --tepi 160 --tanpa-gaya`;
+  hasil SVG ditempel ke `#sumber`, isi `.json` ke `PETA` (proyeksi → `titikPeta(bujur,lintang)`).
+- Danau dan pulau di dalamnya ada di `peta_data.py` → `PERAIRAN` (Danau Toba, Samosir, Danau
+  Sidihoni). Tambah danau/pulau bersarang lain di sana (titik searah jarum jam + `di` = wadahnya).
+- Relief = `ubin()` (noise berperiode + bayangan bukit) + `UB_MAKRO` (bercak warna besar,
+  multiply) dalam 4 tingkat kerincian (`Z=[1,5,25,125]`) yang muncul mengikuti zoom; ubin diputar
+  agar grid noise tidak tampak. Laut = ubin riak + halo laut dangkal.
+- Lapisan sejarah (tanah sempit, garis pantai lama) = bentuk dari `poli([[bujur,lintang],…])`
+  (dihaluskan Chaikin) di grup terpisah yang dibuka dengan `lensa`.
+
+### Yang tidak dibuat dengan kode
+
+Render 3D realistis (kapal, penyelam, rangka tubuh, DNA) → gambar/video generate dengan satu
+prompt gaya (MCP Higgsfield/ElevenLabs) atau footage user, dipasang lewat `clip()`; semua
+tipografi, label, garis, silang, dan caption tetap dari starter. Bila tidak ada akses generate,
+pilih kulit ilustrasi (arsip/sulam/sablon) atau satelit, jangan memalsukan 3D dengan gradasi.
+
+### Checklist tambahan
+
+- [ ] Warna bermakna konsisten (air/darat/bahaya) antara caption, garis tepi, dan label
+- [ ] Zoom bersarang: tiap tingkat ditandai garis tepi + label; ada rangkuman mundur
+- [ ] Caption yang dipindah ke dekat subjek tetap di zona aman dan tidak menutup subjeknya
+- [ ] "Dulu vs kini" lewat lensa + gradasi, bukan potongan mendadak
+- [ ] Ujung garis bulat yang belum tergambar disembunyikan (tidak ada titik nyasar)

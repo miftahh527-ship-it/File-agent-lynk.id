@@ -212,6 +212,12 @@ def main():
         nama = sorted({s['bnama'] for s in shapes}) + sorted(s['nama'] for s in shapes)
         sys.exit('Tidak ada benua/pulau yang cocok. Pilihan: ' + ', '.join(nama))
     mode = a.mode or ('pulau' if tipe in ('pulau', 'indonesia') else 'benua')
+    # danau & pulau di dalamnya: ikut bila wadahnya tergambar (Sumatra → Danau Toba → Samosir → Danau Sidihoni)
+    air, ada = [], {s['nama'] for s in sel}
+    for nama, w in getattr(D, 'PERAIRAN', {}).items():
+        if w['di'] in ada:
+            air.append({'bid': w['jenis'], 'bnama': w['jenis'], 'nama': nama, 'pts': w['pts'], 'jenis': w['jenis']})
+            ada.add(nama)
     rest = [s for s in shapes if s not in sel] if a.konteks else []
     sorot = split(a.sorot)
     is_sorot = lambda s: any(eq(v, s['bnama']) or eq(v, s['nama']) or eq(v, s['bid']) for v in sorot)
@@ -247,7 +253,7 @@ def main():
             sys.exit('Proyeksi tidak dikenal: ' + proj)
         return [f(l, p) for l, p in rel_ring(s['pts'], l0)], hard
 
-    for s in sel + rest:
+    for s in sel + rest + air:
         s['xy'], s['hard'] = project_shape(s)
     sel = [s for s in sel if len(s['xy']) >= 3]
     rest = [s for s in rest if len(s['xy']) >= 3]
@@ -261,7 +267,8 @@ def main():
     k = min((W - 2 * pad) / ((x1 - x0) or 1), (H - 2 * pad) / ((y1 - y0) or 1))
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     to_screen = lambda q: (W / 2 + (q[0] - cx) * k, H / 2 - (q[1] - cy) * k)
-    for s in sel + rest:
+    air = [s for s in air if len(s['xy']) >= 3]
+    for s in sel + rest + air:
         s['sc'] = [to_screen(q) for q in s['xy']]
         s['d'] = catmull(s['sc'], s['hard'], a.halus)
 
@@ -331,6 +338,14 @@ def main():
             out.append(f'<path id="{id_}" class="pulau benua-{s["bid"]}" data-nama="{s["nama"]}" d="{s["d"]}"/>')
             anchor(id_, s['nama'], [s])
         out.append('</g>')
+    if air:
+        out.append('<g class="perairan">')
+        for s in air:
+            pre = 'danau' if s['jenis'] == 'danau' else 'pulau'
+            id_ = pre + '-' + slug(s['nama'].replace('Danau ', ''))
+            out.append(f'<path id="{id_}" class="{"danau" if pre == "danau" else "pulau-danau"}" data-nama="{s["nama"]}" d="{s["d"]}"/>')
+            anchor(id_, s['nama'], [s])
+        out.append('</g>')
     sor = [s for s in sel if is_sorot(s)]
     if sor:
         out.append('<path id="sorot" class="sorot" d="' + ''.join(s['d'] for s in sor) + '"/>')
@@ -342,6 +357,7 @@ def main():
            '.benua,.pulau{fill:#d8cdb8;stroke:#fff;stroke-width:1.5;stroke-linejoin:round;vector-effect:non-scaling-stroke}'
            '.benua-asia{fill:#e9b44c}.benua-eropa{fill:#6fa8a0}.benua-afrika{fill:#e07a5f}'
            '.benua-amerika-utara{fill:#8fa6cf}.benua-amerika-selatan{fill:#9cbf7f}.benua-oseania{fill:#c79acb}'
+           '.danau{fill:#eef3f6;stroke:#fff;stroke-width:1;vector-effect:non-scaling-stroke}.pulau-danau{fill:#d8cdb8}'
            '.sorot{fill:#d1495b;stroke:#fff;stroke-width:2;stroke-linejoin:round;vector-effect:non-scaling-stroke}')
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" class="peta">'
            + (f'<style>{css}</style>' if not a.tanpa_gaya else '') + '\n' + '\n'.join(out) + '\n</svg>\n')
@@ -349,7 +365,9 @@ def main():
     outp = pathlib.Path(a.keluaran).resolve()
     outp.parent.mkdir(parents=True, exist_ok=True)
     outp.write_text(svg)
+    # parameter proyeksi: titik (bujur, lintang) lain → koordinat SVG yang sama (lihat titikPeta() di starter)
     outp.with_suffix('.json').write_text(json.dumps({'ukuran': [W, H], 'proyeksi': proj, 'pusat': [l0, p0],
+                                                     'skala': k, 'tengah': [cx, cy],
                                                      'bentuk': anchors}, ensure_ascii=False, indent=1))
     print(f'Peta: {outp} ({W}×{H}, proyeksi {proj}, {len(sel)} bentuk, {outp.stat().st_size / 1024:.0f} KB)')
     print(f'Titik label & kotak: {outp.with_suffix(".json")}')
