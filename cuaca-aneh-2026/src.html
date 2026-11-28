@@ -1,59 +1,51 @@
 <!doctype html>
 <html lang="id">
-<!-- Motion Format — "Cuaca Aneh Akhir 2026" · video long 16:9 · Adegan 1 (hook). Gaya satelit. -->
+<!-- Motion Format — "Cuaca Aneh Akhir 2026" · video long 16:9 · Adegan 1 (hook). Gaya satelit (mengikuti video referensi). -->
 <head>
 <meta charset="utf-8">
 <title>Cuaca Aneh 2026 — Adegan 1</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--tinta:#ffffff;--redup:rgba(255,255,255,.38);--air:#7fd6ff;--darat:#ffd46b;--bahaya:#ff8a5b;--emas:#f6d49a;
+:root{--tinta:#ffffff;--redup:rgba(255,255,255,.4);--air:#7fd6ff;--darat:#ffd46b;--bahaya:#ff8a5b;
   --f-teks:"Plus Jakarta Sans",system-ui,sans-serif}
 html,body{margin:0;height:100%;background:#000;overflow:hidden}
-#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;overflow:hidden;background:#123d5c;color:var(--tinta);font-family:var(--f-teks)}
-#peta{position:absolute;inset:0;width:1920px;height:1080px}
-#awan{position:absolute;inset:0;pointer-events:none}
-.awan{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,rgba(255,255,255,0));filter:blur(6px);opacity:0}
-.vinyet{position:absolute;inset:0;pointer-events:none;background:radial-gradient(78% 70% at 50% 48%,transparent 55%,rgba(0,10,20,.55) 100%)}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;overflow:hidden;background:#0e3556;color:var(--tinta);font-family:var(--f-teks)}
+#kam3d{position:absolute;inset:0;transform-origin:50% 62%}
+#peta{position:absolute;inset:0;width:1920px;height:1080px;overflow:visible}
+#kabut{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(170,205,225,.55),rgba(170,205,225,0) 38%);opacity:0}
+#awanDekat{position:absolute;inset:0;pointer-events:none}
+.awd{position:absolute;opacity:0;background-size:contain;background-repeat:no-repeat;filter:blur(10px)}
 #hujan{position:absolute;inset:0;pointer-events:none;opacity:0}
-.split{position:absolute;top:0;bottom:0;width:50%;opacity:0;pointer-events:none}
-#kiri{left:0;backdrop-filter:sepia(.9) saturate(.75) brightness(1.08);background:rgba(170,110,40,.16)}
-#kanan{right:0;backdrop-filter:saturate(.8) hue-rotate(-12deg) brightness(.92);background:rgba(30,110,190,.22)}
-#garisTengah{position:absolute;left:959px;top:0;width:2px;height:1080px;background:rgba(255,255,255,.85);transform-origin:50% 0;transform:scaleY(0);box-shadow:0 0 12px rgba(255,255,255,.6)}
-.sisi{position:absolute;top:150px;font-weight:800;font-size:64px;letter-spacing:.18em;opacity:0;text-shadow:0 3px 18px rgba(0,0,0,.6)}
-#tKering{left:300px;color:var(--darat)}#tBanjir{left:1290px;color:var(--air)}
-#tanya{position:absolute;left:960px;top:470px;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:4px solid #fff;
-  background:rgba(8,24,38,.55);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:96px;opacity:0;box-shadow:0 0 34px rgba(255,255,255,.35)}
+.vinyet{position:absolute;inset:0;pointer-events:none;background:radial-gradient(80% 72% at 50% 50%,transparent 58%,rgba(0,12,24,.5) 100%)}
 #lapisLabel{position:absolute;inset:0;pointer-events:none}
 #lapisLabel svg{position:absolute;inset:0;overflow:visible}
-.lt-garis{stroke:#fff;stroke-width:2.2;opacity:.9}.lt-titik{fill:#fff}
-.denyut{fill:none;stroke:var(--air);stroke-width:3}
-.lt{position:absolute;font-weight:800;font-size:44px;line-height:1.15;white-space:nowrap;opacity:0;transform:translateX(-50%);text-align:center;text-shadow:0 2px 12px rgba(0,0,0,.65)}
+.lt-garis{stroke:#fff;stroke-width:2;opacity:.9}.lt-titik{fill:#fff}
+.denyut{fill:none;stroke-width:3}
+.lt{position:absolute;font-weight:800;font-size:40px;line-height:1.15;white-space:nowrap;opacity:0;transform:translateX(-50%);text-align:center;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+.lt small{display:block;font-size:28px;font-weight:700;opacity:.9}
 .air{color:var(--air)}.darat{color:var(--darat)}.bahaya{color:var(--bahaya)}
 #caption{position:absolute;inset:0;pointer-events:none}
-.frasa{position:absolute;max-width:1500px;font-weight:800;font-size:56px;line-height:1.28;opacity:0;text-wrap:balance;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.frasa{position:absolute;max-width:1300px;font-weight:800;font-size:52px;line-height:1.26;opacity:0;text-wrap:balance;text-shadow:0 2px 16px rgba(0,0,0,.75)}
 .frasa .k{display:inline-block;margin:0 .12em;color:var(--redup)}
-#tempat,#tempat2{position:absolute;left:96px;top:84px;font-weight:800;font-size:32px;letter-spacing:.32em;opacity:0;border-bottom:2px solid rgba(255,255,255,.7);padding-bottom:8px;text-shadow:0 2px 10px rgba(0,0,0,.5)}
-#tengah{position:absolute;left:1180px;width:620px;top:250px;text-align:center;opacity:0;pointer-events:none}
-#tengah .alis{font-weight:800;font-size:32px;letter-spacing:.4em;margin-bottom:22px;text-shadow:0 2px 10px rgba(0,0,0,.6)}
-#tengah .besar{font-weight:800;font-size:170px;line-height:1;color:var(--air);text-shadow:0 6px 30px rgba(0,0,0,.55);font-variant-numeric:tabular-nums}
-#tengah .besar small{font-size:72px;margin-left:12px}
-#tengah .bawah{font-weight:800;font-size:56px;margin-top:20px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+#tengah{position:absolute;left:1180px;width:620px;top:300px;text-align:center;opacity:0;pointer-events:none}
+#tengah .besar{font-weight:800;font-size:190px;line-height:1;color:var(--bahaya);text-shadow:0 6px 30px rgba(0,0,0,.55);font-variant-numeric:tabular-nums}
+#tengah .besar small{font-size:76px;margin-left:12px}
+#tengah .bawah{font-weight:800;font-size:52px;margin-top:14px;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+#tanya{position:absolute;left:960px;top:330px;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;border:4px solid #fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:76px;opacity:0;text-shadow:0 2px 12px rgba(0,0,0,.6);box-shadow:0 0 30px rgba(255,255,255,.35),inset 0 0 24px rgba(255,255,255,.2)}
 #dbg{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);display:none;gap:12px;align-items:center;padding:10px 16px;border-radius:14px;background:rgba(14,16,22,.9);color:#cfd5e3;font:13px system-ui;z-index:50}
 #dbg input{width:360px}#dbg span{font-variant-numeric:tabular-nums;min-width:6ch}
 </style>
 </head>
 <body>
 <div id="stage">
-  <svg id="peta" data-tata="latar" viewBox="0 0 7680 4320"></svg>
+  <div id="kam3d" data-tata="latar"><svg id="peta" data-tata="latar" viewBox="0 0 7680 4320"></svg></div>
+  <div id="kabut" data-tata="dekor"></div>
   <canvas id="hujan" width="1920" height="1080" data-tata="dekor"></canvas>
-  <div id="awan" data-tata="dekor"></div>
-  <div class="split" id="kiri" data-tata="dekor"></div><div class="split" id="kanan" data-tata="dekor"></div>
-  <div id="garisTengah" data-tata="dekor"></div>
+  <div id="awanDekat" data-tata="dekor"></div>
   <div class="vinyet" data-tata="dekor"></div>
-  <div class="sisi" id="tKering">KERING</div><div class="sisi" id="tBanjir">BANJIR</div>
   <div id="tanya">?</div>
-  <div id="tempat">SAMUDRA PASIFIK · 2026</div><div id="tempat2">INDONESIA · NOVEMBER 2026</div>
-  <div id="tengah"><div class="alis">JAWA TIMUR</div><div class="besar"><span id="angka">0</span><small>mm</small></div><div class="bawah">dalam sehari</div></div>
+  <div id="tengah"><div class="besar"><span id="angka">0</span><small>mm</small></div><div class="bawah">dalam <span class="bahaya">sehari</span></div></div>
   <div id="lapisLabel"><svg width="1920" height="1080" data-tata="dekor"></svg></div>
   <div id="caption"></div>
   <div id="dbg"><button id="dPlay">Pause</button><input id="dScrub" type="range" min="0" max="1000" value="0"><span id="dClock">0.00s</span></div>
@@ -70,69 +62,96 @@ const rnd=(a,b)=>{const x=Math.sin(a*12.9898+b*78.233)*43758.5453;return x-Math.
 const el=(tag,a={},p)=>{const n=document.createElementNS(NS,tag);for(const k in a)n.setAttribute(k,a[k]);if(p)p.appendChild(n);return n;};
 const css=v=>getComputedStyle(document.body).getPropertyValue(v).trim();
 
-/* ===== proyeksi peta (dari dunia.json, peta_svg.py mercator pusat 160°) ===== */
+/* ===== proyeksi (dunia.json: mercator, pusat 160°) — garis pantai asli Natural Earth 1:10m ===== */
 function titikPeta(lon,lat){const R=Math.PI/180,x=(((lon-PETA.pusat[0]+540)%360)-180)*R,y=Math.log(Math.tan(Math.PI/4+Math.max(-85,Math.min(85,lat))*R/2));
   return [PETA.ukuran[0]/2+(x-PETA.tengah[0])*PETA.skala,PETA.ukuran[1]/2-(y-PETA.tengah[1])*PETA.skala];}
 const SW=PETA.ukuran[0],SH=PETA.ukuran[1];
 
-/* ===== ubin medan satelit (noise berperiode + bayangan bukit) ===== */
-function ubin(n,{rendah,tinggi,bayang=1,seed=1,air=false}){
-  const cv=document.createElement('canvas');cv.width=cv.height=n;const cx=cv.getContext('2d'),img=cx.createImageData(n,n),h=new Float32Array(n*n);
-  const okt=[[3,.42],[6,.26],[12,.16],[24,.1],[48,.06]];
+/* ===== tekstur satelit: noise berperiode (ridged) + bayangan bukit kuat ===== */
+function medan(n,{seed=1,air=false,okt=[[3,.36],[6,.24],[12,.16],[24,.11],[48,.08],[96,.05]]}){const h=new Float32Array(n*n);
   for(const [L,amp] of okt){const g=[...Array(L*L)].map((_,i)=>rnd(seed*31+L,i));
     for(let y=0;y<n;y++)for(let x=0;x<n;x++){const fx=x*L/n,fy=y*L/n,x0=Math.floor(fx),y0=Math.floor(fy),tx=fx-x0,ty=fy-y0,
       sx=tx*tx*(3-2*tx),sy=ty*ty*(3-2*ty),G=(i,j)=>g[((j%L)*L)+(i%L)],
       v=(G(x0,y0)*(1-sx)+G(x0+1,y0)*sx)*(1-sy)+(G(x0,y0+1)*(1-sx)+G(x0+1,y0+1)*sx)*sy;
-      h[y*n+x]+=amp*(air?v:1-Math.abs(2*v-1));}}
-  for(let y=0;y<n;y++)for(let x=0;x<n;x++){const i=y*n+x,H_=h[i],dx=h[y*n+(x+1)%n]-h[y*n+(x+n-1)%n],dy=h[((y+1)%n)*n+x]-h[((y+n-1)%n)*n+x];
-    const s=Math.max(.6,Math.min(1.25,1+(-dx-dy)*3.2*bayang)),t=Math.min(1,Math.max(0,H_*1.15-.1));
+      h[y*n+x]+=amp*(air?v:Math.pow(1-Math.abs(2*v-1),1.6));}}
+  return h;}
+function warnai(n,h,{rendah,tinggi,bayang=1,kontras=1.2}){const cv=document.createElement('canvas');cv.width=cv.height=n;const cx=cv.getContext('2d'),img=cx.createImageData(n,n);
+  for(let y=0;y<n;y++)for(let x=0;x<n;x++){const i=y*n+x,dx=h[y*n+(x+1)%n]-h[y*n+(x+n-1)%n],dy=h[((y+1)%n)*n+x]-h[((y+n-1)%n)*n+x];
+    const s=Math.max(.45,Math.min(1.4,1+(-dx*1.1-dy)*6*bayang)),t=Math.min(1,Math.max(0,(h[i]-.18)*kontras));
     for(let c=0;c<3;c++)img.data[i*4+c]=Math.min(255,(rendah[c]+(tinggi[c]-rendah[c])*t)*s);img.data[i*4+3]=255;}
   cx.putImageData(img,0,0);return cv.toDataURL('image/jpeg',.9);}
-const UB_DARAT=ubin(512,{rendah:[40,82,44],tinggi:[120,148,88],seed:3}),UB_AIR=ubin(256,{rendah:[18,70,112],tinggi:[36,108,150],bayang:.3,seed:7,air:true});
-const UB_MAKRO=ubin(256,{rendah:[150,170,120],tinggi:[255,250,225],bayang:0,seed:11,air:true});
+const HD=medan(512,{seed:3}),HA=medan(256,{seed:7,air:true,okt:[[4,.4],[8,.3],[16,.18],[32,.12]]}),HM=medan(256,{seed:11,air:true,okt:[[3,.5],[6,.3],[12,.2]]});
+const UB_DARAT=warnai(512,HD,{rendah:[22,58,30],tinggi:[132,150,92],bayang:1.4,kontras:1.5});
+const UB_KERING=warnai(512,HD,{rendah:[96,70,40],tinggi:[214,182,130],bayang:1.4,kontras:1.5});
+const UB_AIR=warnai(256,HA,{rendah:[10,48,86],tinggi:[22,80,124],bayang:.25,kontras:1.2});
+const UB_MAKRO=warnai(256,HM,{rendah:[120,150,96],tinggi:[255,248,222],bayang:0,kontras:1.6});
+
+/* ===== awan: tekstur fbm berambang (bervolume, tepi berserat) ===== */
+function teksturAwan(n,seed){const h=medan(n,{seed,air:true,okt:[[3,.45],[6,.25],[12,.15],[24,.09],[48,.06]]}),cv=document.createElement('canvas');cv.width=cv.height=n;
+  const cx=cv.getContext('2d'),img=cx.createImageData(n,n);
+  for(let y=0;y<n;y++)for(let x=0;x<n;x++){const i=y*n+x,dx=(x-n/2)/(n/2),dy=(y-n/2)/(n/2),fall=Math.max(0,1-Math.sqrt(dx*dx+dy*dy));
+    const v=h[i]*Math.pow(fall,.7)*1.7,a=Math.min(.95,Math.max(0,(v-.36)/.5)),sh=Math.max(.72,Math.min(1,1-(h[y*n+(x+1)%n]-h[i])*14));
+    img.data[i*4]=img.data[i*4+1]=255*sh;img.data[i*4+2]=Math.min(255,262*sh);img.data[i*4+3]=255*a;}
+  cx.putImageData(img,0,0);return cv.toDataURL('image/png');}
+const AWT=[1,2,3,4].map(s=>teksturAwan(384,40+s*7));
 
 /* ===== bangun peta ===== */
-const svg=$('#peta'),defs=el('defs',{},svg),Z=[1,5,25];
+const svg=$('#peta'),defs=el('defs',{},svg),Z=[1,6,30];
 function pola(id,href,size,rot=0){const p=el('pattern',{id,patternUnits:'userSpaceOnUse',width:size,height:size,patternTransform:`rotate(${rot})`},defs);el('image',{href,width:size,height:size,preserveAspectRatio:'none'},p);}
-Z.forEach((z,i)=>{pola('darat'+i,UB_DARAT,1500/z,31+i*17);pola('airp'+i,UB_AIR,1700/z,-12+i*9);pola('makro'+i,UB_MAKRO,6000/z,-23+i*11);});
+Z.forEach((z,i)=>{pola('darat'+i,UB_DARAT,900/z,31+i*17);pola('kering'+i,UB_KERING,900/z,31+i*17);pola('airp'+i,UB_AIR,1400/z,-12+i*9);pola('makro'+i,UB_MAKRO,5200/z,-23+i*11);});
 const TINGKAT=[];
-function lapisPola(d,jenis,induk){Z.forEach((z,i)=>{const p=el('path',{d,fill:`url(#${jenis}${i})`},induk);TINGKAT.push({n:p,z});
-  if(jenis==='darat'){const m=el('path',{d,fill:`url(#makro${i})`,style:'mix-blend-mode:multiply'},induk);TINGKAT.push({n:m,z});}});}
-el('rect',{x:-SW*4,y:-SH*4,width:SW*9,height:SH*9,fill:'#164a6e'},svg);
-const gLaut=el('g',{},svg);lapisPola(`M${-SW*4} ${-SH*4}h${SW*9}v${SH*9}h${-SW*9}Z`,'airp',gLaut);
-/* anomali suhu laut Pasifik (lapisan hangat) — tumbuh di adegan 2 */
+function lapisPola(d,jenis,induk,makro=true){Z.forEach((z,i)=>{const p=el('path',{d,fill:`url(#${jenis}${i})`},induk);TINGKAT.push({n:p,z});
+  if(makro){const m=el('path',{d,fill:`url(#makro${i})`,style:'mix-blend-mode:multiply'},induk);TINGKAT.push({n:m,z});}});}
+el('rect',{x:-SW*4,y:-SH*4,width:SW*9,height:SH*9,fill:'#0f3d63'},svg);
+const gLaut=el('g',{},svg);lapisPola(`M${-SW*4} ${-SH*4}h${SW*9}v${SH*9}h${-SW*9}Z`,'airp',gLaut,false);
+/* anomali suhu laut Pasifik */
 const gradH=el('radialGradient',{id:'hangat'},defs);
 [[0,'#ff3b1f',.95],[.35,'#ff6a2a',.8],[.7,'#ff9a3c',.4],[1,'#ffb04a',0]].forEach(([o,c,a])=>el('stop',{offset:o,'stop-color':c,'stop-opacity':a},gradH));
 const [hx1,hy1]=titikPeta(-172,0),[hx2]=titikPeta(-82,0),[,hyN]=titikPeta(0,9);
 const hangat=el('ellipse',{cx:(hx1+hx2)/2,cy:hy1,rx:0,ry:0,fill:'url(#hangat)',style:'mix-blend-mode:hard-light;filter:blur(22px)'},svg);
-const pantaiD=Object.entries(DP).filter(([k])=>k.startsWith('pulau-')).map(([,d])=>d).join(' ');
-el('path',{d:pantaiD,fill:'none',stroke:'#5fd0d8','stroke-width':14,opacity:.3,style:'filter:blur(5px)'},svg);   // laut dangkal
-const gDarat=el('g',{},svg);lapisPola(pantaiD,'darat',gDarat);
+/* laut dangkal toska di sepanjang pantai (seperti terumbu di citra satelit) */
+const HALO=el('path',{d:PANTAI,fill:'none',stroke:'#2bb3c0','stroke-width':14,opacity:.38,'stroke-linejoin':'round',style:'filter:blur(3px)'},svg);
+el('path',{d:PANTAI,fill:'none',stroke:'#8fe6dc','stroke-width':3,opacity:.22,style:'filter:blur(1.5px)','stroke-linejoin':'round'},svg);
+const gDarat=el('g',{},svg);lapisPola(PANTAI,'darat',gDarat);
+/* lapisan kering (Nusa Tenggara, Sulawesi — kemarau) di atas darat, muncul saat dibutuhkan */
+const gKeringIndo=el('g',{opacity:0},svg);lapisPola(PULAU.nusantara,'kering',gKeringIndo);
+const gKeringTimur=el('g',{opacity:0},svg);lapisPola(PULAU.sulawesi+PULAU.nusatenggara,'kering',gKeringTimur);
+/* awan dunia (ikut kamera) + bayangannya di permukaan */
+const gBayang=el('g',{opacity:.55},svg),gAwan=el('g',{},svg);
+const AWN=[];function awanDunia(lon,lat,ukuran,seed,zmin=0,zmax=99){const [x,y]=titikPeta(lon,lat),w=ukuran,h=ukuran*.7,src=AWT[seed%4];
+  const b=el('image',{href:src,x:x-w/2+w*.06,y:y-h/2+h*.08,width:w,height:h,style:'filter:brightness(0) blur(3px)',opacity:.45},gBayang);
+  const a=el('image',{href:src,x:x-w/2,y:y-h/2,width:w,height:h,opacity:.9},gAwan);AWN.push({a,b,zmin,zmax});}
+function awanZoom(){for(const k of AWN){const f=Math.max(0,Math.min(1,Math.min((C.z-k.zmin)/(k.zmin*.4||1),(k.zmax-C.z)/(k.zmax*.3))));k.a.setAttribute('opacity',.9*f);k.b.setAttribute('opacity',.45*f);}}
+[[-150,9,900],[-128,-7,760],[-176,-12,820],[172,13,700],[-102,15,720],[142,10,640],[-160,-20,860],[-138,20,700],[180,-4,620]].forEach((a,i)=>awanDunia(...a,i,0,5));  // Pasifik
+[[95.2,2.6,46],[98.4,6.0,40],[99.9,1.4,52],[96.2,6.9,34],[101.6,3.6,44],[94.6,4.9,30]].forEach((a,i)=>awanDunia(...a,i+1,8,99));            // Sumatra utara
+[[111.2,-6.2,40],[113.8,-9.0,46],[114.8,-6.4,32],[110.0,-8.7,36]].forEach((a,i)=>awanDunia(...a,i+2,8,99));                   // Jawa Timur
+[[104,-1.5,150],[121,1.5,170],[128,-6.5,150],[110,4,140],[134,-2,150],[117,-10.4,120],[96,-4,130]].forEach((a,i)=>awanDunia(...a,i+3,2.6,11));       // Nusantara
 const gTepi=el('g',{fill:'none','stroke-linejoin':'round'},svg);
 
-/* ===== kamera = viewBox ===== */
-const C={x:SW/2,y:SH/2,z:1};
+/* ===== kamera = viewBox + kemiringan 3D (seperti referensi yang kadang menatap miring) ===== */
+const C={x:SW/2,y:SH/2,z:1,tilt:0};
 function vb(){const w=SW/C.z,h=SH/C.z;return [C.x-w/2,C.y-h/2,w,h];}
 function applyCam(){const [x,y,w,h]=vb();svg.setAttribute('viewBox',`${x} ${y} ${w} ${h}`);
   for(const t of TINGKAT)t.n.setAttribute('opacity',t.z===1?1:Math.max(0,Math.min(1,(Math.log(C.z/t.z)+.7)/.7)));
-  for(const g of TEPI)g.n.setAttribute('stroke-width',g.w*w/W);drawLabels();}
+  for(const g of TEPI)g.n.setAttribute('stroke-width',g.w*w/W);
+  $('#kam3d').style.transform=`perspective(1500px) rotateX(${C.tilt}deg) scale(${1+C.tilt/90})`;HALO.setAttribute('stroke-width',Math.min(14,16*w/W));$('#kabut').style.opacity=C.tilt/30;awanZoom();drawLabels();}
 const toScreen=(x,y)=>{const [vx,vy,w,h]=vb();return [(x-vx)/w*W,(y-vy)/h*H];};
 function zoom(at,x,y,z,dur=2.2,ease='power2.inOut'){const o={x:C._x??C.x,y:C._y??C.y,l:Math.log(C._z??C.z)};C._x=x;C._y=y;C._z=z;
   const p={x:o.x,y:o.y,l:o.l};tl.fromTo(p,{x:o.x,y:o.y,l:o.l},{x,y,l:Math.log(z),duration:dur,ease,immediateRender:false,onUpdate(){C.x=p.x;C.y=p.y;C.z=Math.exp(p.l);applyCam();}},at);}
-/* fokus: letakkan titik peta (lon,lat) di posisi LAYAR (sx,sy) dengan zoom z */
+const miring=(at,deg,dur=2,ease='sine.inOut')=>tl.to(C,{tilt:deg,duration:dur,ease,onUpdate:applyCam},at);
 function fokus(lon,lat,z,sx=W/2,sy=H/2){const [px,py]=titikPeta(lon,lat),w=SW/z;return [px-(sx-W/2)*w/W,py-(sy-H/2)*w/W,z];}
 
 /* ===== garis tepi menyala ===== */
 const TEPI=[];
-function garisTepi(d,at,{warna='darat',w=4,dur=1.4,sampai=null}={}){const c=css('--'+warna)||warna;
-  const n=el('path',{d,stroke:c,'stroke-width':w,opacity:0,style:`filter:drop-shadow(0 0 6px ${c})`},gTepi);const L=n.getTotalLength();
+function garisTepi(d,at,{warna='darat',w=3.5,dur=1.4,sampai=null}={}){const c=css('--'+warna)||warna;
+  const n=el('path',{d,stroke:c,'stroke-width':w,opacity:0,style:`filter:drop-shadow(0 0 5px ${c})`},gTepi);const L=n.getTotalLength();
   n.style.strokeDasharray=L;TEPI.push({n,w});tl.set(n,{opacity:1},at);
   tl.fromTo(n,{strokeDashoffset:L},{strokeDashoffset:0,duration:dur,ease:'power1.inOut',immediateRender:false},at);
   if(sampai)tl.to(n,{opacity:0,duration:.4},sampai);return n;}
 
 /* ===== label titik + denyut (ikut kamera) ===== */
 const LBL=[],DNY=[];const lsvg=$('#lapisLabel svg');
-function labelTitik(at,{lon,lat,teks,panjang=200,sampai,arah=-1}){const [x,y]=titikPeta(lon,lat);const d=document.createElement('div');d.className='lt';d.innerHTML=teks;$('#lapisLabel').appendChild(d);
+function labelTitik(at,{lon,lat,teks,panjang=200,sampai,arah=-1}){const [x,y]=titikPeta(lon,lat);const d=document.createElement('div');d.className='lt';d.dataset.bolehTumpuk='';d.innerHTML=teks;$('#lapisLabel').appendChild(d);
   const ln=el('line',{class:'lt-garis'},lsvg),dot=el('circle',{class:'lt-titik',r:0},lsvg),L={x,y,d,ln,dot,panjang,arah,p:{v:0}};LBL.push(L);
   tl.fromTo(L.p,{v:0},{v:1,duration:.5,ease:'power2.out',immediateRender:false,onUpdate:drawLabels},at);
   tl.fromTo(d,{opacity:0},{opacity:1,duration:.35,immediateRender:false},at+.15);
@@ -144,29 +163,29 @@ function denyut(at,{lon,lat,sampai,warna='--air',n=3}){const [x,y]=titikPeta(lon
     tl.set(D.p,{v:0,onUpdate:drawLabels},sampai);}}
 function drawLabels(){for(const L of LBL){const [sx,sy]=toScreen(L.x,L.y),ty=sy+L.arah*L.panjang*L.p.v,cx=Math.max(260,Math.min(W-260,sx));
   L.ln.setAttribute('x1',sx);L.ln.setAttribute('y1',sy);L.ln.setAttribute('x2',sx);L.ln.setAttribute('y2',ty);L.ln.setAttribute('opacity',L.p.v>0?.9:0);
-  L.dot.setAttribute('cx',sx);L.dot.setAttribute('cy',sy);L.dot.setAttribute('r',7*Math.min(1,L.p.v*2));
+  L.dot.setAttribute('cx',sx);L.dot.setAttribute('cy',sy);L.dot.setAttribute('r',6*Math.min(1,L.p.v*2));
   L.d.style.left=cx+'px';L.d.style.top=(L.arah<0?ty-L.d.offsetHeight-8:ty+8)+'px';}
-  for(const D of DNY){const [sx,sy]=toScreen(D.x,D.y),v=D.p.v;D.c.setAttribute('cx',sx);D.c.setAttribute('cy',sy);D.c.setAttribute('r',14+v*90);D.c.setAttribute('opacity',v>0?(1-v)*.95:0);}}
+  for(const D of DNY){const [sx,sy]=toScreen(D.x,D.y),v=D.p.v;D.c.setAttribute('cx',sx);D.c.setAttribute('cy',sy);D.c.setAttribute('r',12+v*80);D.c.setAttribute('opacity',v>0?(1-v)*.95:0);}}
 
-/* ===== caption karaoke (warna bermakna) ===== */
-const CAP_Y=880;
+/* ===== caption karaoke: berpindah ke dekat subjek seperti referensi (atas / bawah) ===== */
+const ATAS={x:W/2,y:110},BAWAH={x:W/2,y:838};
 const NASKAH=[
-  {at:.5, sampai:3.4, teks:'Tahun ini, ilmuwan iklim dunia kaget', kunci:{'iklim':'air'}},
-  {at:3.7,sampai:7.4, teks:'Lautan Pasifik memanas sampai memecahkan rekor', kunci:{'Pasifik':'air','rekor':'bahaya'}},
-  {at:7.7,sampai:10.2,teks:'Fenomena yang namanya El Niño ini', kunci:{'El':'bahaya','Niño':'bahaya'}},
-  {at:10.3,sampai:13.0,teks:'biasanya bikin Indonesia kering kerontang', kunci:{'Indonesia':'darat','kering':'bahaya','kerontang':'bahaya'}},
-  {at:13.3,sampai:15.8,teks:'Tapi coba lihat berita minggu-minggu terakhir', kunci:{}},
-  {at:16.0,sampai:17.7,teks:'Banjir di Aceh', kunci:{'Banjir':'air','Aceh':'darat'}},
-  {at:17.9,sampai:19.7,teks:'Banjir di Medan', kunci:{'Banjir':'air','Medan':'darat'}},
-  {at:20.0,sampai:24.8,teks:'Hujan 358 milimeter dalam sehari di Jawa Timur', kunci:{'358':'air','milimeter':'air','Jawa':'darat','Timur':'darat'}},
-  {at:25.2,sampai:27.6,teks:'Kok bisa, kemarau panjang dan banjir', kunci:{'kemarau':'darat','banjir':'air'}},
-  {at:27.7,sampai:30.4,teks:'terjadi di tahun yang sama?', kunci:{}},
-  {at:30.8,sampai:33.8,teks:'Di video ini, kita bongkar pelan-pelan', kunci:{}},
-  {at:34.1,sampai:36.5,teks:'Dan di akhir, ada hal penting', kunci:{'penting':'bahaya'}},
-  {at:36.6,sampai:39.4,teks:'yang perlu kamu siapkan sebelum Desember', kunci:{'Desember':'bahaya'}}];
+  {at:.5, sampai:3.4, teks:'Tahun ini, ilmuwan iklim dunia kaget', kunci:{'iklim':'air'}, pos:BAWAH},
+  {at:3.7,sampai:7.4, teks:'Lautan Pasifik memanas sampai memecahkan rekor', kunci:{'Pasifik':'air','rekor':'bahaya'}, pos:BAWAH},
+  {at:7.7,sampai:10.2,teks:'Fenomena yang namanya El Niño ini', kunci:{'El':'bahaya','Niño':'bahaya'}, pos:ATAS},
+  {at:10.3,sampai:13.0,teks:'biasanya bikin Indonesia kering kerontang', kunci:{'Indonesia':'darat','kering':'bahaya','kerontang':'bahaya'}, pos:ATAS},
+  {at:13.3,sampai:15.8,teks:'Tapi coba lihat berita minggu-minggu terakhir', kunci:{}, pos:BAWAH},
+  {at:16.0,sampai:17.7,teks:'Banjir di Aceh', kunci:{'Banjir':'air','Aceh':'darat'}, pos:BAWAH},
+  {at:17.9,sampai:19.7,teks:'Banjir di Langkat', kunci:{'Banjir':'air','Langkat':'darat'}, pos:BAWAH},
+  {at:20.0,sampai:24.8,teks:'Hujan 358 milimeter dalam sehari di Jawa Timur', kunci:{'358':'bahaya','milimeter':'bahaya','Jawa':'darat','Timur':'darat'}, pos:BAWAH},
+  {at:25.2,sampai:27.6,teks:'Kok bisa, kemarau panjang dan banjir', kunci:{'kemarau':'bahaya','banjir':'air'}, pos:BAWAH},
+  {at:27.7,sampai:30.4,teks:'terjadi di tahun yang sama?', kunci:{}, pos:BAWAH},
+  {at:30.8,sampai:33.8,teks:'Di video ini, kita bongkar pelan-pelan', kunci:{}, pos:ATAS},
+  {at:34.1,sampai:36.5,teks:'Dan di akhir, ada hal penting', kunci:{'penting':'bahaya'}, pos:ATAS},
+  {at:36.6,sampai:39.4,teks:'yang perlu kamu siapkan sebelum Desember', kunci:{'Desember':'bahaya'}, pos:ATAS}];
 const suku=w=>Math.max(1,(w.toLowerCase().match(/[aiueoñ]+/g)||[]).length+(/\d/.test(w)?w.replace(/\D/g,'').length*.6:0));
 function caption(){const box=$('#caption'),putih=css('--tinta');
-  NASKAH.forEach(f=>{const d=document.createElement('div');d.className='frasa';const ws=f.teks.split(/\s+/),pos=f.pos||{x:W/2,y:CAP_Y};
+  NASKAH.forEach(f=>{const d=document.createElement('div');d.className='frasa';const ws=f.teks.split(/\s+/),pos=f.pos||BAWAH;
     ws.forEach(w=>{const s=document.createElement('span');s.className='k';s.textContent=w;d.appendChild(s);});box.appendChild(d);
     d.style.left=pos.x+'px';d.style.transform='translateX(-50%)';d.style.textAlign='center';d.style.top=pos.y+'px';
     const spans=$$('.k',d),bicara=(f.sampai-f.at)*.85,tot=ws.reduce((a,w)=>a+suku(w),0);let t=f.at;
@@ -174,19 +193,12 @@ function caption(){const box=$('#caption'),putih=css('--tinta');
     spans.forEach((s,i)=>{const m=(f.kunci||{})[ws[i].replace(/[,.?]/g,'')];tl.set(s,{color:m?css('--'+m):putih},t);t+=bicara*suku(ws[i])/tot;});
     tl.to(d,{opacity:0,duration:.2},f.sampai);});}
 
-/* ===== atmosfer: awan, gradasi era, hujan lokal ===== */
-function gradasi(at,{sepia=0,saturasi=1,terang=1,dur=1}){const o=gradasi.o||(gradasi.o={s:0,t:1,b:1});
-  tl.to(o,{s:sepia,t:saturasi,b:terang,duration:dur,ease:'sine.inOut',onUpdate(){svg.style.filter=`sepia(${o.s}) saturate(${o.t}) brightness(${o.b})`;}},at);}
-const AW=[...Array(10)].map((_,i)=>{const d=document.createElement('div');d.className='awan';$('#awan').appendChild(d);
-  const w=420+rnd(i,9)*460;Object.assign(d.style,{width:w+'px',height:w*.6+'px',left:(rnd(i,3)*1920-w/2)+'px',top:(rnd(i,4)*1080-w*.3)+'px'});return d;});
-function awanLewat(at,dur=1.4){AW.forEach((d,i)=>{tl.fromTo(d,{opacity:0,scale:.6},{keyframes:{opacity:[0,.85,0],scale:[.6,1.4,2.4],easeEach:'none'},duration:dur,ease:'none',immediateRender:false},at+i*.04);});}
-/* awan tipis melayang di ketinggian (gerak latar terus-menerus pada shot lebar) */
-const AWT=[...Array(6)].map((_,i)=>{const d=document.createElement('div');d.className='awan';$('#awan').appendChild(d);
-  const w=300+rnd(i,21)*300;Object.assign(d.style,{width:w+'px',height:w*.5+'px',left:(rnd(i,22)*1700)+'px',top:(100+rnd(i,23)*700)+'px'});return d;});
-function awanTipis(at,sampai){AWT.forEach((d,i)=>{tl.fromTo(d,{opacity:0,x:0},{opacity:.28,x:-60,duration:1.2,immediateRender:false},at+i*.1);
-  tl.to(d,{x:-60-(sampai-at)*14,duration:sampai-at,ease:'none'},at);tl.to(d,{opacity:0,duration:.8},sampai-.8);});}
+/* ===== atmosfer: awan menembus lensa, hujan lokal, angka berjalan ===== */
+const AWD=[...Array(9)].map((_,i)=>{const d=document.createElement('div');d.className='awd';$('#awanDekat').appendChild(d);
+  const w=900+rnd(i,9)*700;Object.assign(d.style,{width:w+'px',height:w*.75+'px',left:(rnd(i,3)*1920-w/2)+'px',top:(rnd(i,4)*1080-w*.37)+'px',backgroundImage:`url(${AWT[i%4]})`});return d;});
+function awanLewat(at,dur=1.5){AWD.forEach((d,i)=>{tl.fromTo(d,{opacity:0,scale:.5},{keyframes:{opacity:[0,1,0],scale:[.5,1.5,2.8],easeEach:'none'},duration:dur,ease:'none',immediateRender:false},at+i*.05);});}
 const cvH=$('#hujan'),cxH=cvH.getContext('2d'),HJ={p:0,cx:640,cy:520,r:300};
-function gambarHujan(){cxH.clearRect(0,0,W,H);const g=cxH.createRadialGradient(HJ.cx,HJ.cy,0,HJ.cx,HJ.cy,HJ.r);
+function gambarHujan(){cxH.clearRect(0,0,W,H);
   for(let i=0;i<360;i++){const bx=rnd(i,1)*2*HJ.r-HJ.r,by0=rnd(i,2),ln=26+rnd(i,3)*30,sp=.8+rnd(i,4)*.6,by=((by0+HJ.p*sp)%1)*2*HJ.r-HJ.r;
     const x=HJ.cx+bx+by*.18,y=HJ.cy+by,dd=Math.hypot(x-HJ.cx,y-HJ.cy)/HJ.r;if(dd>1)continue;
     cxH.strokeStyle=`rgba(215,240,255,${Math.min(1,(1-dd)*1.3)})`;cxH.lineWidth=2.6;cxH.beginPath();cxH.moveTo(x,y);cxH.lineTo(x+ln*.18,y+ln);cxH.stroke();}}
@@ -196,52 +208,47 @@ function angkaJalan(at,sampai,nilai,dur=1.4){const o={v:0};tl.fromTo('#tengah',{
 
 /* ================= KOREOGRAFI ADEGAN 1 (0:00–0:40) ================= */
 caption();
-const kotak=id=>PETA.bentuk.find(b=>b.id===id).kotak;
-const ID_NUSA=['sumatra','jawa','madura','bali','lombok','sumbawa','flores','sumba','timor','kalimantan','sulawesi','halmahera','seram','buru','papua'].map(n=>'pulau-'+n);
-const dNusa=ID_NUSA.map(i=>DP[i]).join(' ');
-// 1 · lebar Pasifik: Indonesia di kiri, Amerika di kanan
-let f=fokus(-168,4,1.55);tl.set(C,{x:f[0],y:f[1],z:f[2],onUpdate:applyCam},0);[C._x,C._y,C._z]=f;
-zoom(0,...fokus(-160,2,1.75),3.6,'sine.inOut');awanTipis(0,7.5);
-tl.fromTo('#tempat',{opacity:0,x:-20},{opacity:1,x:0,duration:.5,immediateRender:false},.4);tl.to('#tempat',{opacity:0,duration:.3},6.8);
-// 2 · Pasifik memanas: bercak hangat tumbuh + kotak Niño 3.4
+// 1 · Pasifik dilihat miring dari ketinggian, kamera turun pelan
+let f=fokus(-165,2,1.5);tl.set(C,{x:f[0],y:f[1],z:f[2],tilt:30,onUpdate:applyCam},0);[C._x,C._y,C._z]=f;
+zoom(0,...fokus(-160,1,1.85),3.6,'sine.inOut');
+// 2 · menatap lurus ke bawah: bercak suhu laut memanas + kotak Niño 3.4
+miring(2.6,0,2.2);
 tl.to(hangat,{attr:{rx:(hx2-hx1)/2*1.1,ry:(hyN-hy1)*-1.6},duration:3.2,ease:'power2.out'},3.6);
-zoom(3.6,...fokus(-150,0,2.3,W/2,H/2-40),3.6);
+zoom(3.6,...fokus(-148,0,2.4,W/2,H/2-60),3.6);
 const [n1x,n1y]=titikPeta(-170,5),[n2x,n2y]=titikPeta(-120,-5);
-garisTepi(`M${n1x} ${n1y}H${n2x}V${n2y}H${n1x}Z`,5.0,{warna:'bahaya',w:4,dur:1.2,sampai:9.0});
-labelTitik(5.5,{lon:-145,lat:5,teks:'suhu laut <span class="bahaya">pecah rekor</span>',panjang:150,sampai:8.8});
-// 3 · kamera menyeberang ke Indonesia, Nusantara menguning-kering
-zoom(8.6,...fokus(118,-1.5,4.2,W/2,H/2-60),3.0);
+garisTepi(`M${n1x} ${n1y}H${n2x}V${n2y}H${n1x}Z`,5.0,{warna:'bahaya',w:3.5,dur:1.2,sampai:8.8});
+labelTitik(5.5,{lon:-145,lat:5,teks:'suhu laut <span class="bahaya">pecah rekor</span>',panjang:140,sampai:8.6});
+// 3 · kamera miring menyeberang ke Indonesia; Nusantara mengering
+zoom(8.6,...fokus(118,-3,4.4,W/2,H/2+40),3.0);miring(8.6,22,1.5);miring(10.2,0,1.4);
 tl.to(hangat,{attr:{rx:(hx2-hx1)*.4},duration:3,ease:'sine.inOut'},8.6);
-garisTepi(dNusa,10.6,{warna:'darat',w:3,dur:1.6,sampai:13.6});
-gradasi(10.8,{sepia:.85,saturasi:.7,terang:1.08,dur:1.4});
-// 4 · "tapi lihat berita": warna kembali, menembus awan ke Sumatra Utara
-gradasi(13.4,{sepia:0,saturasi:1,terang:1,dur:1});
-zoom(13.6,...fokus(97.2,4.3,15,W/2,H/2-40),2.4);awanLewat(14.2,1.5);
-// 5 · banjir di Aceh, banjir di Medan
-labelTitik(16.0,{lon:96.75,lat:4.6,teks:'<span class="air">Banjir</span> di <span class="darat">Aceh</span>',panjang:170,sampai:19.7});
-denyut(16.1,{lon:96.75,lat:4.6,sampai:19.8});
-labelTitik(17.9,{lon:98.67,lat:3.59,teks:'<span class="air">Banjir</span> di <span class="darat">Medan</span>',panjang:150,arah:1,sampai:19.7});
-denyut(18.0,{lon:98.67,lat:3.59,sampai:19.8});
+garisTepi(PULAU.nusantara,10.6,{warna:'darat',w:2.5,dur:1.6,sampai:13.4});
+tl.to(gKeringIndo,{attr:{opacity:.95},duration:1.4,ease:'sine.inOut'},10.8);tl.to(gKeringIndo,{attr:{opacity:0},duration:1,ease:'sine.inOut'},13.3);
+// 4 · menembus awan ke Sumatra bagian utara
+zoom(13.6,...fokus(97.4,3.9,16,W/2,H/2-20),2.4);awanLewat(14.0,1.6);
+// 5 · banjir di Aceh (Aceh Tengah) dan Langkat (Besitang)
+labelTitik(16.0,{lon:96.85,lat:4.55,teks:'<span class="air">Banjir</span> <span class="darat">Aceh</span><small>21 ribu warga terdampak</small>',panjang:170,sampai:19.7});
+denyut(16.1,{lon:96.85,lat:4.55,sampai:19.8});
+labelTitik(17.9,{lon:98.2,lat:4.03,teks:'<span class="air">Banjir</span> <span class="darat">Langkat</span><small>12 November</small>',panjang:150,arah:1,sampai:19.7});
+denyut(18.0,{lon:98.2,lat:4.03,sampai:19.8});
 // 6 · meluncur ke Jawa Timur: hujan lokal + angka 358 mm
-zoom(19.5,...fokus(112.6,-7.7,15,640,520),2.2);
-garisTepi(DP['pulau-jawa'],21.3,{warna:'air',w:4,dur:1.4,sampai:24.8});
+zoom(19.5,...fokus(112.6,-7.75,15,640,560),2.2);
+garisTepi(PULAU.jawa,21.3,{warna:'darat',w:3,dur:1.4,sampai:24.8});
 tl.fromTo('#hujan',{opacity:0},{opacity:1,duration:.6,immediateRender:false},21.0);tl.to('#hujan',{opacity:0,duration:.5},24.6);
 tl.fromTo(HJ,{p:0},{p:7,duration:4.2,ease:'none',immediateRender:false,onUpdate:gambarHujan},20.8);
 angkaJalan(21.6,24.9,358);
-// 7 · KERING atau BANJIR? peta Indonesia terbelah
-zoom(24.6,...fokus(117.5,-2.2,4.6,W/2,H/2-30),2.0);
-tl.fromTo('#garisTengah',{scaleY:0},{scaleY:1,duration:.7,ease:'power2.inOut',immediateRender:false},25.4);
-tl.fromTo('.split',{opacity:0},{opacity:1,duration:.7,immediateRender:false},25.6);
-tl.fromTo('#tKering',{opacity:0,x:-30},{opacity:1,x:0,duration:.5,immediateRender:false},25.9);
-tl.fromTo('#tBanjir',{opacity:0,x:30},{opacity:1,x:0,duration:.5,immediateRender:false},26.6);
+// 7 · dua wajah satu negeri: barat banjir (Sumatra), timur kering (Sulawesi, Nusa Tenggara)
+zoom(24.6,...fokus(110.5,-2.5,4.3,W/2,H/2+30),2.0);
+tl.to(gKeringTimur,{attr:{opacity:.95},duration:1.2,ease:'sine.inOut'},25.6);
+garisTepi(PULAU.sumatra,25.9,{warna:'air',w:3,dur:1.4,sampai:30.4});
+garisTepi(PULAU.sulawesi,25.6,{warna:'bahaya',w:3,dur:1.4,sampai:30.4});
+labelTitik(26.4,{lon:101.6,lat:-0.6,teks:'<span class="air">banjir</span>',panjang:120,arah:1,sampai:30.3});
+labelTitik(26.9,{lon:122.0,lat:-3.9,teks:'<span class="bahaya">lahan terbakar</span><small>Konawe, 11 November</small>',panjang:120,arah:1,sampai:30.3});
 tl.fromTo('#tanya',{opacity:0,scale:.4,rotation:-90},{opacity:1,scale:1,rotation:0,duration:.6,ease:'back.out(1.8)',immediateRender:false},27.8);
-tl.to('#tanya',{rotation:360,duration:2.2,ease:'power1.inOut'},28.5);
-tl.to(['.split','#tKering','#tBanjir','#tanya'],{opacity:0,duration:.6},30.6);tl.to('#garisTengah',{scaleY:0,transformOrigin:'50% 100%',duration:.6},30.6);
-// 8 · mundur pelan: Nusantara + Pasifik dalam satu bingkai
-zoom(30.6,...fokus(150,-2,2.0,W/2,H/2-40),4.4,'sine.inOut');awanTipis(31,39.6);
-tl.fromTo('#tempat2',{opacity:0,x:-20},{opacity:1,x:0,duration:.5,immediateRender:false},34.0);tl.to('#tempat2',{opacity:0,duration:.4},39.4);
-// 9 · "sebelum Desember": bercak hangat berdenyut sekali, kamera bernapas
-zoom(35,...fokus(140,-2,2.25,W/2,H/2-40),4.8,'sine.inOut');
+tl.to('#tanya',{rotation:360,duration:2.2,ease:'power1.inOut'},28.4);tl.to('#tanya',{opacity:0,duration:.4},30.4);
+tl.to(gKeringTimur,{attr:{opacity:0},duration:1.2,ease:'sine.inOut'},30.6);
+// 8 · naik dan memiringkan kamera: Nusantara + Pasifik dalam satu pandangan
+zoom(30.6,...fokus(148,0,2.0,W/2,H/2+60),4.6,'sine.inOut');miring(30.8,28,3.4);
+zoom(35.2,...fokus(152,1,2.25,W/2,H/2+60),4.8,'sine.inOut');
 tl.to(hangat,{attr:{rx:(hx2-hx1)/2*1.15},duration:2.4,ease:'sine.inOut',yoyo:true,repeat:1},34.6);
 tl.to({},{duration:.01},DUR);
 
