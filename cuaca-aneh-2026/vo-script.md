@@ -1,7 +1,19 @@
 # Cuaca Aneh Akhir 2026 — naskah VO (versi data tervalidasi)
 
-Suara: narator perempuan hangat (ElevenLabs) — dibuat setelah gambar disetujui.
-Musik: pelan, terus-menerus. SFX: di momen penting (angka 358, label banjir, kebakaran).
+Suara: **Mawar – Warm Educator & Storyteller** (`4Yq4ejKhkWeLHtZevhaz`), model `eleven_multilingual_v2`, bahasa Indonesia.
+Flow ElevenLabs: `MW8457RJl1GvETv1Gjfq` ("Cuaca Aneh 2026 — Adegan 1").
+Musik: `assets/audio/music.mp3` (eleven_music_v2, underscore dokumenter pelan, dipotong 33 dtk + fade), vol .14.
+SFX (eleven_text_to_sound_v2): sfx-swell (Pasifik memanas), sfx-whoosh (perpindahan kamera / menembus awan),
+sfx-ping (label & angka), sfx-hujan (hujan Jawa Timur).
+
+| Klip | Mulai | Durasi | Naskah (diucapkan) |
+|---|---|---|---|
+| vo1.mp3 | 0,5 | 5,5 dtk | Tahun ini, ilmuwan iklim dunia kaget. Lautan Pasifik memanas, sampai memecahkan rekor. |
+| vo2.mp3 | 6,2 | 4,4 dtk | Fenomena yang namanya El Nino ini, biasanya bikin Indonesia kering kerontang. |
+| vo3.mp3 | 10,9 | 9,5 dtk | Tapi coba lihat berita minggu-minggu terakhir. Banjir di Aceh. Banjir di Langkat. Hujan tiga ratus lima puluh delapan milimeter dalam sehari, di Jawa Timur. |
+| vo4.mp3 | 20,8 | 10,7 dtk | Kok bisa, kemarau panjang dan banjir terjadi di tahun yang sama? Di video ini, kita bongkar pelan-pelan. Dan di akhir, ada hal penting yang perlu kamu siapkan, sebelum Desember. |
+
+Durasi adegan 1: 33 dtk (animasi dipetakan ke jeda kalimat VO lewat `JANGKAR` di src.html).
 
 ## Adegan 1 — Hook (0:00–0:40) · video long 16:9
 

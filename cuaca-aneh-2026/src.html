@@ -54,10 +54,21 @@ html,body{margin:0;height:100%;background:#000;overflow:hidden}
 <script>
 /*PETADATA*/
 const $=s=>document.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-const W=1920,H=1080,DUR=40,NS='http://www.w3.org/2000/svg';
+const W=1920,H=1080,DUR=33,NS='http://www.w3.org/2000/svg';
 function fit(){const s=Math.min(innerWidth/W,innerHeight/H);$('#stage').style.transform=`translate(-50%,-50%) scale(${s})`;}
 addEventListener('resize',fit);fit();
 const tl=gsap.timeline({paused:true});
+/* SINKRON VO: koreografi ditulis di 'waktu rancangan' (40 dtk), lalu dipetakan ke waktu suara asli
+   lewat titik jangkar (awal tiap frasa VO, dari silencedetect). Caption memakai waktu VO langsung. */
+const JANGKAR=[[0,0],[.5,.5],[3.7,2.73],[7.7,6.2],[10.3,8.0],[13.3,10.9],[16.0,13.46],[17.9,14.82],[20.0,16.13],[24.8,19.94],
+  [25.2,20.8],[27.7,22.65],[30.4,24.07],[30.8,24.41],[34.1,26.98],[36.6,29.1],[39.4,31.15],[40,33]];
+let WARP=true;
+function Tw(t){if(!WARP||typeof t!=='number')return t;for(let i=1;i<JANGKAR.length;i++){const [a0,b0]=JANGKAR[i-1],[a1,b1]=JANGKAR[i];
+  if(t<=a1||i===JANGKAR.length-1)return b0+(t-a0)*(b1-b0)/(a1-a0);}return t;}
+['to','fromTo','set'].forEach(m=>{const asli=tl[m].bind(tl);tl[m]=function(...args){const iPos=m==='fromTo'?3:2,iVars=m==='fromTo'?2:1;
+  const p=args[iPos];if(WARP&&typeof p==='number'){const v=args[iVars];if(v&&typeof v.duration==='number'){const rep=(v.repeat||0)+1,tot=v.duration*rep;
+      args[iVars]=Object.assign({},v,{duration:(Tw(p+tot)-Tw(p))/rep});}args[iPos]=Tw(p);}
+  return asli(...args);};});
 const rnd=(a,b)=>{const x=Math.sin(a*12.9898+b*78.233)*43758.5453;return x-Math.floor(x);};
 const el=(tag,a={},p)=>{const n=document.createElementNS(NS,tag);for(const k in a)n.setAttribute(k,a[k]);if(p)p.appendChild(n);return n;};
 const css=v=>getComputedStyle(document.body).getPropertyValue(v).trim();
@@ -170,19 +181,19 @@ function drawLabels(){for(const L of LBL){const [sx,sy]=toScreen(L.x,L.y),ty=sy+
 /* ===== caption karaoke: berpindah ke dekat subjek seperti referensi (atas / bawah) ===== */
 const ATAS={x:W/2,y:110},BAWAH={x:W/2,y:838};
 const NASKAH=[
-  {at:.5, sampai:3.4, teks:'Tahun ini, ilmuwan iklim dunia kaget', kunci:{'iklim':'air'}, pos:BAWAH},
-  {at:3.7,sampai:7.4, teks:'Lautan Pasifik memanas sampai memecahkan rekor', kunci:{'Pasifik':'air','rekor':'bahaya'}, pos:BAWAH},
-  {at:7.7,sampai:10.2,teks:'Fenomena yang namanya El Niño ini', kunci:{'El':'bahaya','Niño':'bahaya'}, pos:ATAS},
-  {at:10.3,sampai:13.0,teks:'biasanya bikin Indonesia kering kerontang', kunci:{'Indonesia':'darat','kering':'bahaya','kerontang':'bahaya'}, pos:ATAS},
-  {at:13.3,sampai:15.8,teks:'Tapi coba lihat berita minggu-minggu terakhir', kunci:{}, pos:BAWAH},
-  {at:16.0,sampai:17.7,teks:'Banjir di Aceh', kunci:{'Banjir':'air','Aceh':'darat'}, pos:BAWAH},
-  {at:17.9,sampai:19.7,teks:'Banjir di Langkat', kunci:{'Banjir':'air','Langkat':'darat'}, pos:BAWAH},
-  {at:20.0,sampai:24.8,teks:'Hujan 358 milimeter dalam sehari di Jawa Timur', kunci:{'358':'bahaya','milimeter':'bahaya','Jawa':'darat','Timur':'darat'}, pos:BAWAH},
-  {at:25.2,sampai:27.6,teks:'Kok bisa, kemarau panjang dan banjir', kunci:{'kemarau':'bahaya','banjir':'air'}, pos:BAWAH},
-  {at:27.7,sampai:30.4,teks:'terjadi di tahun yang sama?', kunci:{}, pos:BAWAH},
-  {at:30.8,sampai:33.8,teks:'Di video ini, kita bongkar pelan-pelan', kunci:{}, pos:ATAS},
-  {at:34.1,sampai:36.5,teks:'Dan di akhir, ada hal penting', kunci:{'penting':'bahaya'}, pos:ATAS},
-  {at:36.6,sampai:39.4,teks:'yang perlu kamu siapkan sebelum Desember', kunci:{'Desember':'bahaya'}, pos:ATAS}];
+  {at:.5, sampai:2.45, teks:'Tahun ini, ilmuwan iklim dunia kaget', kunci:{'iklim':'air'}, pos:BAWAH},
+  {at:2.73,sampai:5.65, teks:'Lautan Pasifik memanas sampai memecahkan rekor', kunci:{'Pasifik':'air','rekor':'bahaya'}, pos:BAWAH},
+  {at:6.2,sampai:8.0,teks:'Fenomena yang namanya El Niño ini', kunci:{'El':'bahaya','Niño':'bahaya'}, pos:ATAS},
+  {at:8.0,sampai:10.4,teks:'biasanya bikin Indonesia kering kerontang', kunci:{'Indonesia':'darat','kering':'bahaya','kerontang':'bahaya'}, pos:ATAS},
+  {at:10.9,sampai:13.15,teks:'Tapi coba lihat berita minggu-minggu terakhir', kunci:{}, pos:BAWAH},
+  {at:13.46,sampai:14.6,teks:'Banjir di Aceh', kunci:{'Banjir':'air','Aceh':'darat'}, pos:BAWAH},
+  {at:14.82,sampai:15.9,teks:'Banjir di Langkat', kunci:{'Banjir':'air','Langkat':'darat'}, pos:BAWAH},
+  {at:16.13,sampai:20.2,teks:'Hujan 358 milimeter dalam sehari di Jawa Timur', kunci:{'358':'bahaya','milimeter':'bahaya','Jawa':'darat','Timur':'darat'}, pos:BAWAH},
+  {at:20.8,sampai:22.65,teks:'Kok bisa, kemarau panjang dan banjir', kunci:{'kemarau':'bahaya','banjir':'air'}, pos:BAWAH},
+  {at:22.65,sampai:24.2,teks:'terjadi di tahun yang sama?', kunci:{}, pos:BAWAH},
+  {at:24.41,sampai:26.75,teks:'Di video ini, kita bongkar pelan-pelan', kunci:{}, pos:ATAS},
+  {at:26.98,sampai:29.1,teks:'Dan di akhir, ada hal penting', kunci:{'penting':'bahaya'}, pos:ATAS},
+  {at:29.1,sampai:31.6,teks:'yang perlu kamu siapkan sebelum Desember', kunci:{'Desember':'bahaya'}, pos:ATAS}];
 const suku=w=>Math.max(1,(w.toLowerCase().match(/[aiueoñ]+/g)||[]).length+(/\d/.test(w)?w.replace(/\D/g,'').length*.6:0));
 function caption(){const box=$('#caption'),putih=css('--tinta');
   NASKAH.forEach(f=>{const d=document.createElement('div');d.className='frasa';const ws=f.teks.split(/\s+/),pos=f.pos||BAWAH;
@@ -207,7 +218,7 @@ function angkaJalan(at,sampai,nilai,dur=1.4){const o={v:0};tl.fromTo('#tengah',{
   tl.to('#tengah',{opacity:0,duration:.4},sampai);}
 
 /* ================= KOREOGRAFI ADEGAN 1 (0:00–0:40) ================= */
-caption();
+WARP=false;caption();WARP=true;
 // 1 · Pasifik dilihat miring dari ketinggian, kamera turun pelan
 let f=fokus(-165,2,1.5);tl.set(C,{x:f[0],y:f[1],z:f[2],tilt:30,onUpdate:applyCam},0);[C._x,C._y,C._z]=f;
 zoom(0,...fokus(-160,1,1.85),3.6,'sine.inOut');
@@ -250,7 +261,7 @@ tl.to(gKeringTimur,{attr:{opacity:0},duration:1.2,ease:'sine.inOut'},30.6);
 zoom(30.6,...fokus(148,0,2.0,W/2,H/2+60),4.6,'sine.inOut');miring(30.8,28,3.4);
 zoom(35.2,...fokus(152,1,2.25,W/2,H/2+60),4.8,'sine.inOut');
 tl.to(hangat,{attr:{rx:(hx2-hx1)/2*1.15},duration:2.4,ease:'sine.inOut',yoyo:true,repeat:1},34.6);
-tl.to({},{duration:.01},DUR);
+WARP=false;tl.to({},{duration:.01},DUR);
 
 /* ---------- kontrol: autoplay + loop tanpa player; ?debug=1; ?clean=1 ---------- */
 const q=new URLSearchParams(location.search);
@@ -264,7 +275,23 @@ if(q.has('debug')){const dbg=$('#dbg');dbg.style.display='flex';const sc=$('#dSc
   sc.addEventListener('pointerdown',()=>{drag=true;tl.pause();});addEventListener('pointerup',()=>drag=false);
   sc.addEventListener('input',()=>{tl.pause();tl.time(sc.value/1000*DUR);});$('#dPlay').onclick=()=>tl.paused()?tl.play():tl.pause();}
 /* SUARA (diisi setelah gambar disetujui): VO ElevenLabs per paragraf + musik pelan + SFX */
-window.AUDIO_PLAN = window.AUDIO_PLAN || { vo: [], sfx: [], music: null };
+window.AUDIO_PLAN = {
+  vo: [ {at:.5,  src:'assets/audio/vo1.mp3', vol:1},
+        {at:6.2, src:'assets/audio/vo2.mp3', vol:1},
+        {at:10.9,src:'assets/audio/vo3.mp3', vol:1},
+        {at:20.8,src:'assets/audio/vo4.mp3', vol:1} ],
+  sfx: [ {at:2.9,  src:'assets/audio/sfx-swell.mp3',  vol:.4},   // Pasifik memanas
+         {at:6.8,  src:'assets/audio/sfx-whoosh.mp3', vol:.3},   // menyeberang ke Indonesia
+         {at:11.5, src:'assets/audio/sfx-whoosh.mp3', vol:.45},  // menembus awan
+         {at:13.5, src:'assets/audio/sfx-ping.mp3',   vol:.35},  // label Aceh
+         {at:14.85,src:'assets/audio/sfx-ping.mp3',   vol:.35},  // label Langkat
+         {at:15.8, src:'assets/audio/sfx-whoosh.mp3', vol:.3},   // meluncur ke Jawa Timur
+         {at:16.9, src:'assets/audio/sfx-hujan.mp3',  vol:.5},   // hujan lebat
+         {at:17.4, src:'assets/audio/sfx-ping.mp3',   vol:.45},  // angka 358 mm
+         {at:22.05,src:'assets/audio/sfx-ping.mp3',   vol:.35},  // label Konawe
+         {at:24.25,src:'assets/audio/sfx-whoosh.mp3', vol:.25} ],// kamera naik
+  music: {src:'assets/audio/music.mp3', vol:.14}
+};
 var MF=(function(){var P=window.AUDIO_PLAN,T=window.OPENER.tl,on=false,last=0,noop=function(){};
   function mk(s,music){var a=new Audio(s.src);a.preload='auto';a.volume=s.vol==null?(music?.15:1):s.vol;return{at:s.at||0,el:a,music:!!music};}
   var LONG=(P.vo||[]).map(function(s){return mk(s);}).concat(P.music?[mk(P.music,true)]:[]),SFX=(P.sfx||[]).map(function(s){return mk(s);}),ALL=LONG.concat(SFX);
